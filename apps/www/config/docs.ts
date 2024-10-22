@@ -12,29 +12,29 @@ export const docsConfig: DocsConfig = {
       title: "Documentation",
       href: "/docs",
     },
-    {
-      title: "Components",
-      href: "/docs/components/accordion",
-    },
+    // {
+    //   title: "Components",
+    //   href: "/docs/components/accordion",
+    // },
     {
       title: "Blocks",
       href: "/blocks",
-    },
-    {
-      title: "Charts",
-      href: "/charts",
     },
     {
       title: "Themes",
       href: "/themes",
     },
     {
-      title: "Examples",
-      href: "/examples",
+      title: "Canvases",
+      href: "/canvases",
     },
     {
-      title: "Colors",
-      href: "/colors",
+      title: "Switchers",
+      href: "/switchers",
+    },
+    {
+      title: "Visualizations",
+      href: "/visualizations",
     },
   ],
   sidebarNav: [
