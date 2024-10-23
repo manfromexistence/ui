@@ -129,46 +129,46 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
-    // {
-    //   title: "Button",
-    //   items: [
-    //     {
-    //       title: "Default",
-    //       href: "/docs/installation/default",
-    //       items: [],
-    //     },
-    //   ],
-    // },
-    // {
-    //   title: "Text",
-    //   items: [
-    //     {
-    //       title: "Default",
-    //       href: "/docs/installation/default",
-    //       items: [],
-    //     },
-    //   ],
-    // },
-    // {
-    //   title: "Card",
-    //   items: [
-    //     {
-    //       title: "Default",
-    //       href: "/docs/installation/default",
-    //       items: [],
-    //     },
-    //   ],
-    // },
-    // {
-    //   title: "Background",
-    //   items: [
-    //     {
-    //       title: "Default",
-    //       href: "/docs/installation/default",
-    //       items: [],
-    //     },
-    //   ],
-    // },
+    {
+      title: "Buttons",
+      items: [
+        {
+          title: "Default",
+          href: "/docs/buttons/default",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Texts",
+      items: [
+        {
+          title: "Default",
+          href: "/docs/texts/default",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Cards",
+      items: [
+        {
+          title: "Default",
+          href: "/docs/cards/default",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Backgrounds",
+      items: [
+        {
+          title: "Default",
+          href: "/docs/backgrounds/default",
+          items: [],
+        },
+      ],
+    },
     {
       title: "Components",
       items: [
@@ -328,26 +328,26 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/statusbar",
           items: [],
         },
-        {
-          title: "Button",
-          href: "/docs/components/button",
-          items: [],
-        },
-        {
-          title: "Background",
-          href: "/docs/components/background",
-          items: [],
-        },
-        {
-          title: "Text",
-          href: "/docs/components/text",
-          items: [],
-        },
-        {
-          title: "Card",
-          href: "/docs/components/card",
-          items: [],
-        },
+        // {
+        //   title: "Button",
+        //   href: "/docs/components/button",
+        //   items: [],
+        // },
+        // {
+        //   title: "Background",
+        //   href: "/docs/components/background",
+        //   items: [],
+        // },
+        // {
+        //   title: "Text",
+        //   href: "/docs/components/text",
+        //   items: [],
+        // },
+        // {
+        //   title: "Card",
+        //   href: "/docs/components/card",
+        //   items: [],
+        // },
       ],
     },
   ],
