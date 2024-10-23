@@ -5,7 +5,7 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
-  - init: pnpm install && pnpm run build
+  - init: npm install -g npm@10.9.0 && npm install -g bun && cd apps/www && pnpm install && pnpm run build
     command: pnpm run dev
 
 
