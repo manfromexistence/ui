@@ -309,6 +309,26 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Searchbar",
+          href: "/docs/components/searchbar",
+          items: [],
+        },
+        {
+          title: "Stage Manager",
+          href: "/docs/components/stage-manager",
+          items: [],
+        },
+        {
+          title: "Dynamic Island",
+          href: "/docs/components/dynamic-island",
+          items: [],
+        },
+        {
+          title: "Statusbar",
+          href: "/docs/components/statusbar",
+          items: [],
+        },
+        {
           title: "Button",
           href: "/docs/components/button",
           items: [],
