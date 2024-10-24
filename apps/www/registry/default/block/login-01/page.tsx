@@ -1,6 +1,6 @@
 import { LoginForm } from "@/registry/default/block/login-01/components/login-form"
 
-export const description = "A simple login form."
+export const description = "A simple login form. Really?"
 
 export const iframeHeight = "870px"
 
