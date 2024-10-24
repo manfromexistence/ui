@@ -328,26 +328,111 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/statusbar",
           items: [],
         },
-        // {
-        //   title: "Button",
-        //   href: "/docs/components/button",
-        //   items: [],
-        // },
-        // {
-        //   title: "Background",
-        //   href: "/docs/components/background",
-        //   items: [],
-        // },
-        // {
-        //   title: "Text",
-        //   href: "/docs/components/text",
-        //   items: [],
-        // },
-        // {
-        //   title: "Card",
-        //   href: "/docs/components/card",
-        //   items: [],
-        // },
+        {
+          title: "Image",
+          href: "/docs/components/image",
+          items: [],
+        },
+        {
+          title: "List",
+          href: "/docs/components/list",
+          items: [],
+        },
+        {
+          title: "Tour",
+          href: "/docs/components/tour",
+          items: [],
+        },
+        {
+          title: "Statics",
+          href: "/docs/components/statics",
+          items: [],
+        },
+        {
+          title: "Timeline",
+          href: "/docs/components/timeline",
+          items: [],
+        },
+        {
+          title: "Description",
+          href: "/docs/components/description",
+          items: [],
+        },
+        {
+          title: "Treeselect",
+          href: "/docs/components/treeselect",
+          items: [],
+        },
+        {
+          title: "Number Input",
+          href: "/docs/components/number-input",
+          items: [],
+        },
+        {
+          title: "Date Picker",
+          href: "/docs/components/date-picker",
+          items: [],
+        },
+        {
+          title: "Time Picker",
+          href: "/docs/components/time-picker",
+          items: [],
+        },
+        {
+          title: "Mention",
+          href: "/docs/components/mention",
+          items: [],
+        },
+        {
+          title: "Transfer",
+          href: "/docs/components/transfer",
+          items: [],
+        },
+        {
+          title: "Cascader",
+          href: "/docs/components/cascader",
+          items: [],
+        },
+        {
+          title: "Autocomplete",
+          href: "/docs/components/autocomplete",
+          items: [],
+        },
+        {
+          title: "Steps",
+          href: "/docs/components/steps",
+          items: [],
+        },
+        {
+          title: "Anchor",
+          href: "/docs/components/Anchor",
+          items: [],
+        },
+        {
+          title: "DND",
+          href: "/docs/components/dnd",
+          items: [],
+        },
+        {
+          title: "Button",
+          href: "/docs/components/button",
+          items: [],
+        },
+        {
+          title: "Background",
+          href: "/docs/components/background",
+          items: [],
+        },
+        {
+          title: "Text",
+          href: "/docs/components/text",
+          items: [],
+        },
+        {
+          title: "Card",
+          href: "/docs/components/card",
+          items: [],
+        },
       ],
     },
   ],
