@@ -129,46 +129,46 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
-    {
-      title: "Buttons",
-      items: [
-        {
-          title: "Default",
-          href: "/docs/buttons/default",
-          items: [],
-        },
-      ],
-    },
-    {
-      title: "Texts",
-      items: [
-        {
-          title: "Default",
-          href: "/docs/texts/default",
-          items: [],
-        },
-      ],
-    },
-    {
-      title: "Cards",
-      items: [
-        {
-          title: "Default",
-          href: "/docs/cards/default",
-          items: [],
-        },
-      ],
-    },
-    {
-      title: "Backgrounds",
-      items: [
-        {
-          title: "Default",
-          href: "/docs/backgrounds/default",
-          items: [],
-        },
-      ],
-    },
+    // {
+    //   title: "Buttons",
+    //   items: [
+    //     {
+    //       title: "Default",
+    //       href: "/docs/buttons/default",
+    //       items: [],
+    //     },
+    //   ],
+    // },
+    // {
+    //   title: "Texts",
+    //   items: [
+    //     {
+    //       title: "Default",
+    //       href: "/docs/texts/default",
+    //       items: [],
+    //     },
+    //   ],
+    // },
+    // {
+    //   title: "Cards",
+    //   items: [
+    //     {
+    //       title: "Default",
+    //       href: "/docs/cards/default",
+    //       items: [],
+    //     },
+    //   ],
+    // },
+    // {
+    //   title: "Backgrounds",
+    //   items: [
+    //     {
+    //       title: "Default",
+    //       href: "/docs/backgrounds/default",
+    //       items: [],
+    //     },
+    //   ],
+    // },
     {
       title: "Components",
       items: [
