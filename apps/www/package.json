@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "rimraf .contentlayer && concurrently \"contentlayer2 dev\" \"next dev\"",
+    "dev": "rimraf .contentlayer && concurrently \"contentlayer2 dev && pnpm build:registry\" \"next dev\"",
     "build": "contentlayer2 build && pnpm build:registry && next build",
     "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-screenshots.mts",
