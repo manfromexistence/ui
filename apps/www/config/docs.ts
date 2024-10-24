@@ -214,11 +214,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Feedback",
-          href: "/docs/components/feedback",
-          items: [],
-        },
-        {
           title: "Notification",
           href: "/docs/components/notification",
           items: [],
