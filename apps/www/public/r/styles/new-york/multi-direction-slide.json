@@ -1,0 +1,15 @@
+{
+  "name": "multi-direction-slide",
+  "type": "registry:example",
+  "registryDependencies": [
+    "text"
+  ],
+  "files": [
+    {
+      "path": "examples/texts/multi-direction-slide.tsx",
+      "content": "import { MultiDirectionSlide } from \"@/registry/new-york/ui/text\"\n\nexport default function MultiDirectionSlideDemo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <MultiDirectionSlide key={0} />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

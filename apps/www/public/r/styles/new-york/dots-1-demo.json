@@ -1,0 +1,15 @@
+{
+  "name": "dots-1-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "dots"
+  ],
+  "files": [
+    {
+      "path": "examples/dots-1-demo.tsx",
+      "content": "import { Dots_v1 } from \"@/registry/new-york/ui/dots\"\n\nexport default function Dots_v1_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Dots_v1 />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

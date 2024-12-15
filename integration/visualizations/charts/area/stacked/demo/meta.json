@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "stacked.jsx",
+      "title": "Stacked Area Chart",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*_SQ6TItK-U8AAAAAAAAAAABkARQnAQ"
+    },
+    {
+      "filename": "area-none.jsx",
+      "title": "Area Chart (with Null Values)",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*-nK6RrEhNp8AAAAAAAAAAABkARQnAQ"
+    },
+    {
+      "filename": "percent.jsx",
+      "title": "Percent Stacked Area Chart",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*o8X_TZ1reQUAAAAAAAAAAABkARQnAQ"
+    }
+  ]
+}

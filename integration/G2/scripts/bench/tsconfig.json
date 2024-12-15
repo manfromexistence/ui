@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "paths": {
+      "@antv/g2v5": ["../../src/index.ts"],
+      "@/*": ["./*"]
+    }
+  }
+}

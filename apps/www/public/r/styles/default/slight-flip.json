@@ -1,0 +1,15 @@
+{
+  "name": "slight-flip",
+  "type": "registry:example",
+  "registryDependencies": [
+    "text"
+  ],
+  "files": [
+    {
+      "path": "examples/texts/slight-flip.tsx",
+      "content": "import { SlightFlip } from \"@/registry/default/ui/text\"\n\nexport default function SlightFlipDemo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <SlightFlip />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

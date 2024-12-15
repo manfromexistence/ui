@@ -1,0 +1,23 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["FARMUI_SYS"],
+  "globalDependencies": ["**/.env"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": ["NEXT_PUBLIC_VERCEL_ENV", "NEXT_PUBLIC_VERCEL_ENV"]
+    },
+    "wev:dev": {
+      "outputs": ["dist/**", ".next/**"],
+      "env": ["NEXT_PUBLIC_VERCEL_ENV", "NEXT_PUBLIC_VERCEL_ENV"]
+    },
+    "lint": {},
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+
+
+}

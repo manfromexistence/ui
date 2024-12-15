@@ -1,0 +1,40 @@
+{
+  "title": {
+    "zh": "中文分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "sankey.ts",
+      "title": {
+        "zh": "桑基图",
+        "en": "Sankey"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*dACBR7ANcfEAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "chord.ts",
+      "title": {
+        "zh": "弦图",
+        "en": "Chord"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*AwKoTakLlHAAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "forceGraph.ts",
+      "title": {
+        "zh": "力导向图",
+        "en": "forceGraph"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*nbN4TYyfq70AAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "forceGraph-disjoint.ts",
+      "title": {
+        "zh": "离散力导向图",
+        "en": "forceGraph with disjoint"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*0eUHS6s10m8AAAAAAAAAAAAADmJ7AQ/original"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "title": {
+    "zh": "中文分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "gold.jsx",
+      "title": "A Certain Gold Real-time Gold Price Trend Chart",
+      "screenshot": "https://gw.alipayobjects.com/zos/rmsportal/nhKcpmYFRYcSeQgTQSZW.png"
+    },
+    {
+      "filename": "dynamic.jsx",
+      "title": "Real-time Polyline",
+      "screenshot": "https://gw.alipayobjects.com/zos/rmsportal/McevuIUuSZcUbkBEOGRc.gif"
+    }
+  ]
+}

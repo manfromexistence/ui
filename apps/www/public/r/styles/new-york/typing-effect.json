@@ -1,0 +1,15 @@
+{
+  "name": "typing-effect",
+  "type": "registry:example",
+  "registryDependencies": [
+    "text"
+  ],
+  "files": [
+    {
+      "path": "examples/texts/typing-effect.tsx",
+      "content": "import { TypingEffect } from \"@/registry/new-york/ui/text\"\n\nexport default function TypingEffectDemo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <TypingEffect />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

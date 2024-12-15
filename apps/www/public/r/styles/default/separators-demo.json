@@ -1,0 +1,15 @@
+{
+  "name": "separators-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "separators"
+  ],
+  "files": [
+    {
+      "path": "examples/separators-demo.tsx",
+      "content": "import { FaPlus } from \"react-icons/fa6\"\n\nimport { Separators } from \"@/registry/default/ui/separators\"\n\nexport default function SeparatorsDemo() {\n  return (\n    <div className=\"flex-col-center min-w-full gap-12 pt-6\">\n      <Separators gradient />\n      <Separators />\n      <Separators label={<span className=\"px-2\">Section</span>} gradient />\n      <Separators label={<span className=\"px-2\">Section</span>} />\n      <Separators\n        label={\n          <div className=\"rounded-full border border-dashed px-4 py-1\">\n            Section\n          </div>\n        }\n        gradient\n      />\n      <Separators\n        label={<div className=\"rounded-full border px-4 py-1\">Section</div>}\n      />\n      <Separators\n        label={\n          <div className=\"rounded-full border px-12 py-2\">\n            <FaPlus />\n          </div>\n        }\n        gradient\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

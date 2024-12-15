@@ -1,0 +1,105 @@
+{
+  "title": {
+    "zh": "分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "logo.ts",
+      "title": {
+        "zh": "Logo",
+        "en": "Logo"
+      },
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_816329/afts/img/A*XgipRbN_k3wAAAAAAAAAAAAAARQnAQ"
+    },
+    {
+      "filename": "zoom.ts",
+      "title": {
+        "zh": "Zoom 缩放",
+        "en": "Zoom"
+      },
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_816329/afts/img/A*PRkHRonRENYAAAAAAAAAAAAAARQnAQ"
+    },
+    {
+      "filename": "scale.ts",
+      "title": {
+        "zh": "Scale 比例尺",
+        "en": "Scale"
+      },
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_816329/afts/img/A*5dWeRaRpOHEAAAAAAAAAAAAAARQnAQ"
+    },
+    {
+      "filename": "fullscreen.ts",
+      "title": {
+        "zh": "Fullscreen 全屏",
+        "en": "Fullscreen"
+      },
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_816329/afts/img/A*fqJlQ5vJVicAAAAAAAAAAAAAARQnAQ"
+    },
+    {
+      "filename": "geolocate.ts",
+      "title": {
+        "zh": "GeoLocate 定位",
+        "en": "GeoLocate"
+      },
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_816329/afts/img/A*aElZR7bPFGAAAAAAAAAAAAAAARQnAQ"
+    },
+    {
+      "filename": "exportimage.ts",
+      "title": {
+        "zh": "ExportImage 导出图片",
+        "en": "ExportImage"
+      },
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_816329/afts/img/A*at1HRbHfipUAAAAAAAAAAAAAARQnAQ"
+    },
+    {
+      "filename": "mouselocation.ts",
+      "title": {
+        "zh": "MouseLocation 鼠标经纬度",
+        "en": "MouseLocation"
+      },
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_816329/afts/img/A*sJF1S4JaPx8AAAAAAAAAAAAAARQnAQ"
+    },
+    {
+      "filename": "layerswitch.ts",
+      "title": {
+        "zh": "LayerSwitch 图层显隐控制",
+        "en": "LayerSwitch"
+      },
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_816329/afts/img/A*gWO_T6xpVtwAAAAAAAAAAAAAARQnAQ"
+    },
+    {
+      "filename": "layerswitch1.ts",
+      "title": {
+        "zh": "LayerSwitch 图层显隐控制（展示图层图片）",
+        "en": "LayerSwitch"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_k6sfo0/afts/img/A*sJVXRbmd6_UAAAAAAAAAAAAADjWqAQ/original"
+    },
+    {
+      "filename": "maptheme.ts",
+      "title": {
+        "zh": "MapTheme 地图样式切换",
+        "en": "MapTheme"
+      },
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_816329/afts/img/A*byM3QZbjqScAAAAAAAAAAAAAARQnAQ"
+    },
+    {
+      "filename": "swipe.ts",
+      "title": {
+        "zh": "Swipe 卷帘对比",
+        "en": "Swipe"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*-bMESIfHN9IAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "syncScene.ts",
+      "new": "true",
+      "title": {
+        "zh": "双屏对比",
+        "en": "SyncScene"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*9ABcToHql7UAAAAAAAAAAAAADmJ7AQ/original"
+    }
+  ]
+}

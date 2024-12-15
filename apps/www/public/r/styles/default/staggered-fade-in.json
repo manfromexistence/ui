@@ -1,0 +1,15 @@
+{
+  "name": "staggered-fade-in",
+  "type": "registry:example",
+  "registryDependencies": [
+    "text"
+  ],
+  "files": [
+    {
+      "path": "examples/texts/staggered-fade-in.tsx",
+      "content": "import { StaggeredFadeIn } from \"@/registry/default/ui/text\"\n\nexport default function StaggeredFadeInDemo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <StaggeredFadeIn />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

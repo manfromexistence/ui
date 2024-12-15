@@ -1,0 +1,95 @@
+---
+title: Buttons
+description: Displays a button or a component that looks like a button.
+featured: true
+component: true
+---
+
+<ComponentPreview name="button-shine" description="A shine button" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://manfromexistence-ui.vercel.app/r/buttons"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="buttons" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/buttons"
+```
+
+```tsx
+<Button variant="button-shine">Shine Button</Button>
+```
+
+## Examples
+
+### Icon Right
+
+<ComponentPreview name="button-icon-right" description="A icon right button" />
+
+### Icon Left
+
+<ComponentPreview name="button-icon-left" description="A icon left button" />
+
+### Gooey Right
+
+<ComponentPreview
+  name="button-gooey-right"
+  description="A gooey right button"
+/>
+
+### Gooey Left
+
+<ComponentPreview name="button-gooey-left" description="A gooey left button" />
+
+### Ring Hover
+
+<ComponentPreview name="button-ring-hover" description="A ring-hover button" />
+
+### Link Hover 1
+
+<ComponentPreview
+  name="button-link-hover-1"
+  description="A link hover 1 button"
+/>
+
+### Link Hover 2
+
+<ComponentPreview
+  name="button-link-hover-2"
+  description="A link hover 2 button"
+/>

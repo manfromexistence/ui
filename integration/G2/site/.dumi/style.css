@@ -1,0 +1,21 @@
+.demo-card-screenshot {
+  background-size: cover !important;
+  padding-top: 62.5% !important;
+  transition: background-position 2s !important;
+}
+
+.demo-card-screenshot:hover {
+  background-position: right bottom !important;
+}
+
+.markdown {
+  font-size: 16px !important;
+}
+
+.dumi-default-table {
+  margin: 0 !important;
+}
+
+.g2-tooltip-list-item {
+  margin-left: 0px !important;
+}

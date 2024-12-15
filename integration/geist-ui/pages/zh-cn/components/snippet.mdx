@@ -1,0 +1,132 @@
+import { Layout, Playground, Attributes } from 'lib/components'
+import { Snippet, Spacer, Code } from 'components'
+
+export const meta = {
+  title: '片段 Snippet',
+  group: '其他',
+}
+
+## Snippet / 片段
+
+显示可拷贝的命令行代码片段。
+
+<Playground
+  desc="展示一个命令。"
+  scope={{ Snippet }}
+  code={`
+<Snippet text="yarn add @geist-ui/core" width="300px" />
+`}
+/>
+
+<Playground
+  title="宽度"
+  desc="手动地指定宽度。"
+  scope={{ Snippet }}
+  code={`
+<Snippet text="yarn add @geist-ui/core" width="100%" />
+`}
+/>
+
+<Playground
+  title="类型"
+  desc="以颜色区分不同的类型。"
+  scope={{ Snippet, Spacer }}
+  code={`
+<>
+  <Snippet text="yarn add @geist-ui/core" type="dark" width="300px" />
+  <Spacer />
+  <Snippet text="yarn add @geist-ui/core" type="success" width="300px" />
+  <Spacer />
+  <Snippet text="yarn add @geist-ui/core" type="warning" width="300px" />
+  <Spacer />
+  <Snippet text="yarn add @geist-ui/core" type="error" width="300px" />
+  <Spacer />
+  <Snippet text="yarn add @geist-ui/core" type="secondary" width="300px" />
+  <Spacer />
+  <Snippet text="yarn add @geist-ui/core" type="lite" width="300px" />
+</>
+`}
+/>
+
+<Playground
+  title="多行"
+  scope={{ Snippet }}
+  code={`
+<Snippet text={['cd project', 'now']} width="300px" />
+`}
+/>
+
+<Playground
+  title="无拷贝"
+  desc="隐藏拷贝按钮。 (禁用拷贝)"
+  scope={{ Snippet }}
+  code={`
+<Snippet copy="prevent" text="yarn add @geist-ui/core" width="300px" />
+`}
+/>
+
+<Playground
+  title="填充"
+  scope={{ Snippet, Spacer }}
+  code={`
+<>
+  <Snippet text="yarn add @geist-ui/core" type="success" filled width="300px" />
+  <Spacer />
+  <Snippet text="yarn add @geist-ui/core" type="warning" filled width="300px" />
+  <Spacer />
+  <Snippet text="yarn add @geist-ui/core" type="error" filled width="300px" />
+  <Spacer />
+  <Snippet text="yarn add @geist-ui/core" type="secondary" filled width="300px" />
+</>
+`}
+/>
+
+<Attributes edit="/pages/zh-cn/components/snippet.mdx">
+<Attributes.Title>Snippet.Props</Attributes.Title>
+
+| 属性          | 描述               | 类型                     | 推荐值                        | 默认                   |
+| ------------- | ------------------ | ------------------------ | ----------------------------- | ---------------------- |
+| **text**      | 命令文本           | `string` `Array<string>` | -                             | -                      |
+| **type**      | 组件类型           | `SnippetTypes`           | [SnippetTypes](#snippettypes) | `default`              |
+| **filled**    | 填充风格的样式     | `boolean`                | -                             | `false`                |
+| **width**     | 设置 CSS 宽度      | `string`                 | -                             | `initial`              |
+| **copy**      | 拷贝按钮的工作方式 | `CopyTypes`              | [CopyTypes](#copytypes)       | `default`              |
+| **symbol**    | 组件左侧显示的字符 | `string`                 | -                             | `$`                    |
+| **toastText** | 拷贝提示的字符     | `string`                 | -                             | `Copied to clipboard!` |
+| **toastType** | 拷贝提示的类型     | `ToastTypes`             | [ToastTypes](#toasttypes)     | `success`              |
+| ...           | 原生属性           | `HTMLAttributes`         | `'id', 'name', ...`           | -                      |
+
+<Attributes.Title>SnippetTypes</Attributes.Title>
+
+```ts
+type SnippetTypes =
+  | 'default'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'dark'
+  | 'lite'
+```
+
+<Attributes.Title>CopyTypes</Attributes.Title>
+
+```ts
+type CopyTypes = 'default' | 'silent' | 'prevent'
+```
+
+<Attributes.Title>SnippetTypes</Attributes.Title>
+
+```ts
+type SnippetTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+```
+
+<Attributes.Title>ToastTypes</Attributes.Title>
+
+```ts
+type ToastTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+```
+
+</Attributes>
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

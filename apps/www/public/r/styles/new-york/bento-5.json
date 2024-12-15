@@ -1,0 +1,15 @@
+{
+  "name": "bento-5",
+  "type": "registry:ui",
+  "registryDependencies": [
+    ""
+  ],
+  "files": [
+    {
+      "path": "ui/bento-5.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\nexport const Cell = ({ i = 0 }) => {\n  return (\n    <div className=\"center size-full rounded-lg bg-zinc-200 text-xl dark:bg-zinc-900\">\n      {i}\n    </div>\n  )\n}\nconst cells = [1, 2, 3, 4, 5]\n//======================================\nexport const Bento_5_v1 = () => {\n  return (\n    <div>\n      <div className=\"grid gap-2 md:grid-cols-4\">\n        {cells.map((n, i) => (\n          <div\n            key={n}\n            className={cn(\n              \"h-32 rounded-lg p-1\",\n              i == 0 && \"md:col-start-1\",\n              i == 1 && \"md:col-span-2\",\n              i == 2 && \"md:col-start-4\",\n              i > 2 && \"md:col-span-2\"\n            )}\n          >\n            <Cell i={i + 1} />\n          </div>\n        ))}\n      </div>\n    </div>\n  )\n}\n\n//======================================\nexport const Bento_5_v2 = () => {\n  return (\n    <div>\n      <div className=\"grid gap-2 md:grid-cols-4\">\n        {cells.map((n, i) => (\n          <div\n            key={n}\n            className={cn(\n              \"h-32 rounded-lg p-1\",\n              i < 3 && \"md:col-span-2\",\n              i == 2 && \"md:col-span-4\",\n              i > 2 && \"md:col-span-2\"\n            )}\n          >\n            <Cell i={i + 1} />\n          </div>\n        ))}\n      </div>\n    </div>\n  )\n}\n\n//======================================\nexport const Bento_5_v3 = () => {\n  return (\n    <div>\n      <div className=\"grid gap-2 sm:grid-cols-2 md:grid-cols-9\">\n        {cells.map((n, i) => (\n          <div\n            key={n}\n            className={cn(\n              \"h-32 rounded-lg p-1\",\n              i == 0 && \"md:col-span-5\",\n              i == 1 && \"md:col-span-4\",\n              i > 1 && \"md:col-span-3\"\n            )}\n          >\n            <Cell i={i + 1} />\n          </div>\n        ))}\n      </div>\n    </div>\n  )\n}\n\n//======================================\nexport const Bento_5_v4 = () => {\n  return (\n    <div>\n      <div className=\"grid gap-2 md:grid-cols-4\">\n        {cells.map((n, i) => (\n          <div\n            key={n}\n            className={cn(\n              \"h-32 rounded-lg p-1\",\n              i == 1 && \"md:col-span-2 md:row-span-2 md:h-full\",\n              i == 4 && \"md:col-start-4\"\n            )}\n          >\n            <Cell i={i + 1} />\n          </div>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

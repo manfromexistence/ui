@@ -1,0 +1,75 @@
+---
+title: Date Time Picker
+description: A Selector that let's yok select Date and Time at once.
+component: true
+---
+
+<ComponentPreview
+  name="date-time-picker-demo"
+  description="A Date Time Picker component."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://manfromexistence-ui.vercel.app/r/date-time-picker"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="date-time-picker" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  MultiSelector,
+  MultiSelectorContent,
+  MultiSelectorInput,
+  MultiSelectorItem,
+  MultiSelectorList,
+  MultiSelectorTrigger,
+} from "@/components/multi-select"
+```
+
+```tsx
+<MultiSelector
+  values={field.values}
+  onValuesChange={field.onChange}
+  loop
+  className="max-w-xs"
+>
+  <MultiSelectorTrigger>
+    <MultiSelectorInput placeholder="Select languages" />
+  </MultiSelectorTrigger>
+  <MultiSelectorContent>
+    <MultiSelectorList>
+      <MultiSelectorItem value={"React"}>React</MultiSelectorItem>
+      <MultiSelectorItem value={"Vue"}>Vue</MultiSelectorItem>
+      <MultiSelectorItem value={"Svelte"}> Svelte</MultiSelectorItem>
+    </MultiSelectorList>
+  </MultiSelectorContent>
+</MultiSelector>
+```

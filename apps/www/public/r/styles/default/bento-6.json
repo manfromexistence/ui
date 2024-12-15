@@ -1,0 +1,15 @@
+{
+  "name": "bento-6",
+  "type": "registry:ui",
+  "registryDependencies": [
+    ""
+  ],
+  "files": [
+    {
+      "path": "ui/bento-6.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\nconst Cell = ({ i = 0 }) => {\n  return (\n    <div className=\"center size-full rounded-lg bg-zinc-200 text-xl dark:bg-zinc-900\">\n      {i}\n    </div>\n  )\n}\n\nconst cells = [1, 2, 3, 4, 5, 6]\n//======================================\nexport const Bento_6_v1 = () => {\n  return (\n    <div className=\"grid gap-2 sm:grid-cols-2 md:grid-cols-4\">\n      {cells.map((n, i) => (\n        <div\n          key={n}\n          className={cn(\n            \"h-32 rounded-lg p-1\",\n            i == 1 && \"md:col-span-2 md:row-span-2 md:h-full\",\n            i == 4 && \"md:col-start-4\",\n            i == 5 && \"md:col-span-4\"\n          )}\n        >\n          <Cell i={i + 1} />\n        </div>\n      ))}\n    </div>\n  )\n}\n\n//======================================\nexport const Bento_6_v2 = () => {\n  return (\n    <div className=\"grid gap-2 sm:grid-cols-2 md:grid-cols-4\">\n      {cells.map((n, i) => (\n        <div\n          key={n}\n          className={cn(\n            \"min-h-32 rounded-lg p-1\",\n            i === 0 && \"row-span-2 h-full\",\n            i === 2 && \"row-span-2 h-full\"\n          )}\n        >\n          <Cell i={i + 1} />\n        </div>\n      ))}\n    </div>\n  )\n}\n\n//======================================\nexport const Bento_6_v3 = () => {\n  return (\n    <div className=\"grid gap-2 sm:grid-cols-2 md:grid-cols-4\">\n      {cells.map((n, i) => (\n        <div\n          key={n}\n          className={cn(\n            \"h-32 rounded-lg p-1\",\n            i == 2 && \"col-span-2\",\n            i == 3 && \"col-span-2\"\n          )}\n        >\n          <Cell i={i + 1} />\n        </div>\n      ))}\n    </div>\n  )\n}\n\n//======================================\nexport const Bento_6_v4 = () => {\n  return (\n    <div className=\"grid gap-2 sm:grid-cols-2 md:grid-cols-6\">\n      {cells.map((n, i) => (\n        <div\n          key={n}\n          className={cn(\n            \"h-32 rounded-lg p-1\",\n            i < 2 && \"md:col-span-3\",\n            i == 2 && \"md:col-span-4\",\n            i == 3 && \"md:col-span-2\",\n            i == 4 && \"md:col-span-2\",\n            i == 5 && \"md:col-span-4\"\n          )}\n        >\n          <Cell i={i + 1} />\n        </div>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

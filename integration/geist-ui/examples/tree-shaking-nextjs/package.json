@@ -1,0 +1,19 @@
+{
+  "name": "tree-shaking-nextjs",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "analyze": "ANALYZE=true yarn build"
+  },
+  "dependencies": {
+    "@geist-ui/core": "^2.3.3",
+    "next": "^12.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^9.4.4"
+  }
+}

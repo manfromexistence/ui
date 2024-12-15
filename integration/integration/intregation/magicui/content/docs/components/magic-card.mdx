@@ -1,0 +1,58 @@
+---
+title: Magic Card
+date: 2024-07-07
+description: A spotlight effect that follows your mouse cursor and highlights borders on hover.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="magic-card-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/magic-card"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="magic-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+### MagicCard
+
+| Prop name            | Type            | Default   | Description                                 |
+| -------------------- | --------------- | --------- | ------------------------------------------- |
+| children             | React.ReactNode | -         | The content to be rendered inside the card  |
+| className            | string          | -         | Additional CSS classes to apply to the card |
+| gradientSize         | number          | 200       | Size of the gradient effect                 |
+| gradientColor        | string          | "#262626" | Color of the gradient effect                |
+| gradientOpacity      | number          | -         | Opacity of the gradient effect              |
+| gradientTransparency | number          | 80        | Transparency level of the gradient effect   |
+
+## Credits
+
+This component is inspired by [Linear.app](https://linear.app/features)

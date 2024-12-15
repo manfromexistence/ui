@@ -1,0 +1,15 @@
+{
+  "name": "button-icon-right",
+  "type": "registry:example",
+  "registryDependencies": [
+    "buttons"
+  ],
+  "files": [
+    {
+      "path": "examples/buttons/icon-right.tsx",
+      "content": "import { ArrowRightIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york/ui/buttons\"\n\nexport default function ButtonIconRight() {\n  return (\n    <Button variant=\"expandIcon\" Icon={ArrowRightIcon} iconPlacement=\"right\">\n      Icon Right\n    </Button>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@primitives/border",
+  "version": "3.1.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.tsx",
+  "browser": "src/index.tsx",
+  "react-native": "src/index.tsx",
+  "repository": "bubble-dev/_",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.13.0"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@babel/runtime": "^7.13.17",
+    "@primitives/block": "^3.1.0",
+    "@themeables/border": "^4.1.0",
+    "colorido": "^2.1.0",
+    "refun": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.4",
+    "react": "17.0.1"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "title": {
+    "zh": "中文分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "click.js",
+      "title": {
+        "zh": "点选",
+        "en": "Click Select"
+      },
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_f8c6a0/afts/img/A*F0RGQ67xbGYAAAAAAAAAAAAAARQnAQ"
+    },
+    {
+      "filename": "brush.js",
+      "title": {
+        "zh": "框选",
+        "en": "Brush Select"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*OeBHQZKfEwsAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "brush-combo.js",
+      "title": {
+        "zh": "框选组合",
+        "en": "Brush Combo"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*hE19RZL7iYQAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "lasso.js",
+      "title": {
+        "zh": "拉索选择",
+        "en": "Lasso Select"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*GSdRQ5TO9IAAAAAAAAAAAAAADmJ7AQ/original"
+    }
+  ]
+}

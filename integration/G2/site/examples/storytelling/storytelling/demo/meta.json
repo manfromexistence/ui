@@ -1,0 +1,48 @@
+{
+  "title": {
+    "zh": "中文分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "gantt.ts",
+      "title": {
+        "zh": "甘特图动画",
+        "en": "Gantt with Animation"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*hyB5RIY-qcMAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "interval-keyframe.ts",
+      "title": {
+        "zh": "条帧动画",
+        "en": "Interval Keyframe"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*Nmz5Rb8rvOgAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "point-keyframe.ts",
+      "title": {
+        "zh": "点帧动画",
+        "en": "Point Keyframe"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*MOozSI2JRJIAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "facet-keyframe.ts",
+      "title": {
+        "zh": "分面帧动画",
+        "en": "Facet Keyframe"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*vtjDQ4sJHJkAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "stocks-keyframe.ts",
+      "title": {
+        "zh": "混合帧动画",
+        "en": "Composite Keyframe"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*oJvJS4QL8u0AAAAAAAAAAAAADmJ7AQ/original"
+    }
+  ]
+}

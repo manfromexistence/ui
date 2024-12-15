@@ -1,0 +1,44 @@
+{
+  "name": "@antv/l7-test-utils",
+  "version": "2.22.3",
+  "private": true,
+  "description": "Test utils for L7",
+  "keywords": [],
+  "homepage": "https://github.com/antvis/L7#readme",
+  "bugs": {
+    "url": "https://github.com/antvis/L7/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antvis/L7.git"
+  },
+  "license": "MIT",
+  "author": "https://github.com/orgs/antvis/people",
+  "sideEffects": true,
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts",
+  "files": [
+    "lib",
+    "es"
+  ],
+  "scripts": {
+    "dev": "father dev",
+    "build": "npm run clean && father build",
+    "check-deps": "father doctor",
+    "lint": "eslint src",
+    "clean": "rimraf dist es lib"
+  },
+  "dependencies": {
+    "gl": "^8.0.2",
+    "regl": "1.6.1"
+  },
+  "peerDependencies": {
+    "@antv/l7-map": "workspace:^",
+    "@antv/l7-maps": "workspace:^",
+    "@antv/l7-scene": "workspace:^"
+  },
+  "devDependencies": {
+    "@types/gl": "^6.0.5"
+  }
+}

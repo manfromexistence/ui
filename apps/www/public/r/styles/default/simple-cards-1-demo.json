@@ -1,0 +1,15 @@
+{
+  "name": "simple-cards-1-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "card-simple"
+  ],
+  "files": [
+    {
+      "path": "examples/cards/simple-cards-1.tsx",
+      "content": "import { SimpleCard_V1 } from \"@/registry/default/ui/card-simple\"\n\nexport default function SimpleCard_V1_Demo() {\n  return (\n    <div className=\"min-w-full\">\n      <SimpleCard_V1 />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

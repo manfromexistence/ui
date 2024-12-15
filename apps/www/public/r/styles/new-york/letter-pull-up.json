@@ -1,0 +1,15 @@
+{
+  "name": "letter-pull-up",
+  "type": "registry:example",
+  "registryDependencies": [
+    "text"
+  ],
+  "files": [
+    {
+      "path": "examples/texts/letter-pull-up.tsx",
+      "content": "import { LetterPullUp } from \"@/registry/new-york/ui/text\"\n\nexport default function LetterPullUpDemo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <LetterPullUp />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

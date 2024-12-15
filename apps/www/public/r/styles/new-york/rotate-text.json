@@ -1,0 +1,15 @@
+{
+  "name": "rotate-text",
+  "type": "registry:example",
+  "registryDependencies": [
+    "text"
+  ],
+  "files": [
+    {
+      "path": "examples/texts/rotate-text.tsx",
+      "content": "import { RotateText } from \"@/registry/new-york/ui/text\"\n\nexport default function RotateTextDemo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <RotateText />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

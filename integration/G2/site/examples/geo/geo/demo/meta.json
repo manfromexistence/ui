@@ -1,0 +1,64 @@
+{
+  "title": {
+    "zh": "中文分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "choropleth-usa.ts",
+      "title": {
+        "zh": "美国行政地图",
+        "en": "USA Choropleth"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*vcI7RqX24U0AAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "flights-airports.ts",
+      "title": {
+        "zh": "航班机场图",
+        "en": "Flights and Airports"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*mVdhSZ1wvDgAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "london-tube-lines.ts",
+      "title": {
+        "zh": "伦敦地铁图",
+        "en": "London Tube line"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*CQ4iT4UbQmAAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "world-map.ts",
+      "title": {
+        "zh": "世界地图",
+        "en": "World Map"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*qW_OT4OkivEAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "projection-comparison.ts",
+      "title": {
+        "zh": "投影比较",
+        "en": "Projection Comparison"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*eM7qSrDEZcYAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "hexjson-usa.ts",
+      "title": {
+        "zh": "六边形美国地图",
+        "en": "Hexbin USA Map"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*BAtYRoaNsp4AAAAAAAAAAAAADmJ7AQ/fmt.webp"
+    },
+    {
+      "filename": "hexbin-china.ts",
+      "title": {
+        "zh": "六边形中国地图",
+        "en": "Hexbin China Map"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*T0WkT5NCw7UAAAAAAAAAAAAADmJ7AQ/fmt.webp"
+    }
+  ]
+}

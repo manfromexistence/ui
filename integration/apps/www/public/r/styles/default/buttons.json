@@ -1,0 +1,36 @@
+{
+  "name": "buttons",
+  "type": "registry:ui",
+  "dependencies": [
+    "@radix-ui/react-slot"
+  ],
+  "files": [
+    {
+      "path": "ui/buttons.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot, Slottable } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-destructive-foreground hover:bg-destructive/90\",\n        outline:\n          \"border border-input bg-background hover:bg-accent hover:text-accent-foreground\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost: \"hover:bg-accent hover:text-accent-foreground\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n        expandIcon:\n          \"group relative bg-primary text-primary-foreground hover:bg-primary/90\",\n        ringHover:\n          \"bg-primary text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:ring-2 hover:ring-primary/90 hover:ring-offset-2\",\n        shine:\n          \"animate-shine bg-gradient-to-r from-primary via-primary/75 to-primary bg-[length:400%_100%] text-primary-foreground \",\n        gooeyRight:\n          \"relative z-0 overflow-hidden bg-primary from-zinc-400 text-primary-foreground transition-all duration-500 before:absolute before:inset-0 before:-z-10 before:translate-x-[150%] before:translate-y-[150%] before:scale-[2.5] before:rounded-[100%] before:bg-gradient-to-r before:transition-transform before:duration-1000  hover:before:translate-x-[0%] hover:before:translate-y-[0%] \",\n        gooeyLeft:\n          \"relative z-0 overflow-hidden bg-primary from-zinc-400 text-primary-foreground transition-all duration-500 after:absolute after:inset-0 after:-z-10 after:translate-x-[-150%] after:translate-y-[150%] after:scale-[2.5] after:rounded-[100%] after:bg-gradient-to-l after:transition-transform after:duration-1000  hover:after:translate-x-[0%] hover:after:translate-y-[0%] \",\n        linkHover1:\n          \"relative after:absolute after:bottom-2 after:h-[1px] after:w-2/3 after:origin-bottom-left after:scale-x-100 after:bg-primary after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-right hover:after:scale-x-0\",\n        linkHover2:\n          \"relative after:absolute after:bottom-2 after:h-[1px] after:w-2/3 after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100\",\n      },\n      size: {\n        default: \"h-10 px-4 py-2\",\n        sm: \"h-9 rounded-md px-3\",\n        lg: \"h-11 rounded-md px-8\",\n        icon: \"h-10 w-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\ninterface DefaultIconProps {\n  Icon: React.ElementType\n  iconPlacement: \"left\" | \"right\"\n}\n\ninterface DefaultIconRefProps {\n  Icon?: never\n  iconPlacement?: undefined\n}\n\nexport interface ButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof buttonVariants> {\n  asChild?: boolean\n}\n\nexport type ButtonIconProps = DefaultIconProps | DefaultIconRefProps\n\nconst Button = React.forwardRef<\n  HTMLButtonElement,\n  ButtonProps & ButtonIconProps\n>(\n  (\n    {\n      className,\n      variant,\n      size,\n      asChild = false,\n      Icon,\n      iconPlacement,\n      ...props\n    },\n    ref\n  ) => {\n    const Comp = asChild ? Slot : \"button\"\n    return (\n      <Comp\n        className={cn(buttonVariants({ variant, size, className }))}\n        ref={ref}\n        {...props}\n      >\n        {Icon && iconPlacement === \"left\" && (\n          <div className=\"group-hover:translate-x-100 w-0 translate-x-[0%] pr-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:pr-2 group-hover:opacity-100\">\n            <Icon />\n          </div>\n        )}\n        <Slottable>{props.children}</Slottable>\n        {Icon && iconPlacement === \"right\" && (\n          <div className=\"w-0 translate-x-[100%] pl-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-0 group-hover:pl-2 group-hover:opacity-100\">\n            <Icon />\n          </div>\n        )}\n      </Comp>\n    )\n  }\n)\nButton.displayName = \"Button\"\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {
+          "keyframes": {
+            "shine": {
+              "from": {
+                "backgroundPosition": "200% 0"
+              },
+              "to": {
+                "backgroundPosition": "-200% 0"
+              }
+            }
+          },
+          "animation": {
+            "shine": "shine 8s ease-in-out infinite"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Translator Test</title>
+</head>
+
+<body>
+  <style>
+    .textAreas {
+      display: flex;
+    }
+
+    textarea {
+      padding: 10px;
+      margin-right: 10px;
+    }
+
+    .dropdown {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      appearance: none;
+      /* Remove default arrow */
+      -moz-appearance: none;
+      /* Firefox */
+      -webkit-appearance: none;
+    }
+
+    .dropdown:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .dropdown option {
+      padding: 10px;
+    }
+  </style>
+  <h1 id="word">Google Translator Test</h1>
+  <script src="https://cdn.statically.io/gh/vidya-hub/open-google-translator/main/dist/bundle.js"></script>
+  <div class="dropdown-container">
+    <select id="languageDropdown" class="dropdown">
+      <option value="">-- Select Language --</option>
+    </select>
+  </div>
+
+  <br />
+  <br />
+  <div class="textAreas">
+    <textarea id="textToTranslate" placeholder="Enter text to translate" onchange="" cols="40" rows="5"></textarea>
+    <textarea id="textToDisplay" placeholder="Translated Text" onchange="" cols="40" rows="5"></textarea>
+  </div>
+  <script>
+    const languages = openGoogleTranslator.supportedLanguages();
+    var dropdown = document.getElementById("languageDropdown");
+    for (const code in languages) {
+      if (languages.hasOwnProperty(code)) {
+        var option = document.createElement("option");
+        option.value = code;
+        option.text = languages[code];
+        dropdown.appendChild(option);
+      }
+    }
+    async function testTranslation() {
+      var textToTranslate = document.getElementById("textToTranslate");
+      var textToDisplay = document.getElementById("textToDisplay");
+      var dropdown = document.getElementById("languageDropdown");
+
+      var selectedLanguageCode = dropdown.value;
+      var enteredText = textToTranslate.value;
+      var sentenceToTranslate = [enteredText];
+
+      var translatedData = await openGoogleTranslator.TranslateLanguageData({
+        fromLanguage: "en",
+        toLanguage:
+          selectedLanguageCode.length == 0 ? "en" : selectedLanguageCode,
+        listOfWordsToTranslate: sentenceToTranslate,
+      });
+      textToDisplay.value = translatedData[0]["translation"];
+      console.log(translatedData[0]["translation"]);
+    }
+  </script>
+  <br />
+  <br />
+  <button id="trnButton" style="
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 8px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      " onclick="testTranslation()">
+    Translate
+  </button>
+</body>
+
+</html>

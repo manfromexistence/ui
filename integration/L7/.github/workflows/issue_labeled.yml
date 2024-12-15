@@ -1,0 +1,65 @@
+name: Issue Labeled
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  issues: write # for actions-cool/issues-helper to update issues
+
+jobs:
+  issue-labeled:
+    if: github.actor != github.event.issue.user.login
+    runs-on: ubuntu-latest
+    steps:
+      - name: Need reproduce
+        if: github.event.label.name == '🤔 need reproduce'
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello @${{ github.event.issue.user.login }}. Please provide a online reproduction by forking codesandbox of [@antv/l7 demo template](https://codesandbox.io/s/l7-demo-w4v6pr?file=/index.js) Issues labeled by `Need Reproduce` will be closed if no activities in 3 days.
+
+            你好 @${{ github.event.issue.user.login }}, 我们需要你提供一个在线的重现实例以便于我们帮你排查问题。你可以通过点击这里创建一个 [@antv/l7 demo 模板](https://codesandbox.io/s/l7-demo-w4v6pr?file=/index.js) 3 天内未跟进此 issue 将会被自动关闭。
+
+            ![](https://gw.alipayobjects.com/zos/antfincdn/y9kwg7DVCd/reproduce.gif)
+
+      - name: Need more info
+        if: github.event.label.name == '👀 need more info'
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello, @${{ github.event.issue.user.login }}, the information you provided is not enough for us to troubleshoot the problem. Please complete the issue description, provide gifs, screenshots, config, version. And explain the reproduction steps in detail. Thanks so much for your cooperation! The issue will be closed without any replay within 15 days.
+
+            你好 @${{ github.event.issue.user.login }}，你所提供的信息不足于我们排查问题, 请按照 issue 模板填写相关信息, 提供 gif, 截图, 代码片段, 配置信息, 版本号, 可复现链接等方式, 详细说明复现步骤, 感谢配合, 谢谢! 15 天内未回复issue自动关闭。
+
+      - name: Invalid
+        if: github.event.label.name == '⛔ invalid'
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'create-comment,close-issue'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello @${{ github.event.issue.user.login }}, please fill in the relevant information according to the issue template to facilitate communication efficiently. recommend you to read [如何向开源项目提交无法解答的问题](https://zhuanlan.zhihu.com/p/25795393), Thanks so much!
+
+            你好 @${{ github.event.issue.user.login }}，请按照 issue 模板填写相关信息, 方便大家高效沟通, 强烈推荐你阅读[如何向开源项目提交无法解答的问题](https://zhuanlan.zhihu.com/p/25795393)。
+
+      - name: Help wanted
+        if: github.event.label.name == 'help wanted'
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello @${{ github.event.issue.user.login }}, We totally like your proposal/feedback. welcome to [send us a Pull Request](https://help.github.com/en/articles/creating-a-pull-request) to solve this problem and contribute to the open source project. After submitting the code, please send a Pull Request to the master branch. We will review it and look forward to your contribution.
+
+            你好 @${{ github.event.issue.user.login }}，同意你的反馈，欢迎直接在此仓库 [创建一个 Pull Request](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) 来解决这个问题，为开源项目贡献一份力量。提交代码后，请将 Pull Request 发到 master 分支，我们会进行 Review，期待您的贡献。
+
+            ![giphy](https://user-images.githubusercontent.com/507615/62342668-4735dc00-b51a-11e9-92a7-d46fbb1cc0c7.gif)

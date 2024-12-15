@@ -1,0 +1,12 @@
+s2-site
+node_modules
+.cache
+.history
+esm
+lib
+dist
+temp
+.idea
+*.d.ts
+.eslintrc*
+/scripts/*

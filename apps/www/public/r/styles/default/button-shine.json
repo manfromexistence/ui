@@ -1,0 +1,15 @@
+{
+  "name": "button-shine",
+  "type": "registry:example",
+  "registryDependencies": [
+    "buttons"
+  ],
+  "files": [
+    {
+      "path": "examples/buttons/shine.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/buttons\"\n\nexport default function ButtonShine() {\n  return <Button variant=\"shine\">Shine</Button>\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

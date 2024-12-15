@@ -1,0 +1,15 @@
+{
+  "name": "blur-in",
+  "type": "registry:example",
+  "registryDependencies": [
+    "text"
+  ],
+  "files": [
+    {
+      "path": "examples/texts/blur-in.tsx",
+      "content": "import { BlurIn } from \"@/registry/new-york/ui/text\"\n\nexport default function BlurInDemo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <BlurIn />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

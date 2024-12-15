@@ -1,0 +1,15 @@
+{
+  "name": "spinner-round",
+  "type": "registry:example",
+  "registryDependencies": [
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "examples/spinner-round.tsx",
+      "content": "import { RoundSpinner } from \"@/registry/default/ui/spinner\"\n\nexport default function SpinnerRoundDemo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <RoundSpinner />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

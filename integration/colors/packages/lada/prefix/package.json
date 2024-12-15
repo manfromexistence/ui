@@ -1,0 +1,24 @@
+{
+  "name": "@lada/prefix",
+  "version": "2.1.1",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.node.ts",
+  "browser": "src/index.ts",
+  "react-native": "src/index.native.ts",
+  "repository": "bubble-dev/_",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.13.0"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "tsfn": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.4",
+    "@types/react-native": "^0.64.4",
+    "react": "17.0.1",
+    "react-native": "0.64.0"
+  }
+}

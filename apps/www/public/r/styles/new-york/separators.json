@@ -1,0 +1,19 @@
+{
+  "name": "separators",
+  "type": "registry:ui",
+  "dependencies": [
+    ""
+  ],
+  "devDependencies": [],
+  "registryDependencies": [
+    ""
+  ],
+  "files": [
+    {
+      "path": "ui/separators.tsx",
+      "content": "import { FaPlus } from \"react-icons/fa\"\n\nimport { cn } from \"@/lib/utils\"\n\n/**\n * \n * USAGE EXAMPLES\n * \n * const Usage = () => (\n  <div>\n    <Separator gradient />\n    <Separator />\n    <Separator label={<span className=\"px-2\">Section</span>} gradient />\n    <Separator label={<span className=\"px-2\">Section</span>} />\n    <Separator\n      label={\n        <div className=\"border px-4 py-1 rounded-full border-dashed\">\n          Section\n        </div>\n      }\n      gradient\n    />\n    <Separator\n      label={<div className=\"border px-4 py-1 rounded-full\">Section</div>}\n    />\n    <Separator\n      label={\n        <div className=\"border px-12 py-2 rounded-full\">\n          <FaPlus />\n        </div>\n      }\n      gradient\n    />\n  </div>\n);\n */\ntype SeparatorProps = {\n  /**\n   * @default \"\"\n   */\n  label?: React.ReactNode\n  /**\n   * @default false\n   */\n  gradient?: boolean\n  className?: string\n}\n//======================================\nexport const Separators = ({\n  label,\n  gradient = false,\n  className = \"\",\n}: SeparatorProps) => {\n  if (label) {\n    return (\n      <div className=\"flex w-full items-center\">\n        <div\n          className={cn(\n            \"h-[1px] w-full rounded-full\",\n            gradient\n              ? \"bg-gradient-to-r from-transparent to-zinc-500 dark:from-zinc-800 dark:to-zinc-400\"\n              : \"bg-zinc-300 dark:bg-zinc-800\",\n            className\n          )}\n        ></div>\n        <div className=\"w-fit text-nowrap uppercase text-gray-600 dark:text-gray-300\">\n          {label}\n        </div>\n        <div\n          className={cn(\n            \"h-[1px] w-full rounded-full\",\n            gradient\n              ? \"bg-gradient-to-r from-zinc-500 to-transparent dark:from-zinc-200 dark:to-zinc-700\"\n              : \"bg-zinc-300 dark:bg-zinc-800\",\n            className\n          )}\n        ></div>\n      </div>\n    )\n  }\n  return (\n    <div\n      className={cn(\n        \"h-[1px] w-full rounded-full\",\n        gradient\n          ? \"bg-gradient-to-r from-transparent via-zinc-500 to-transparent dark:from-zinc-800 dark:via-zinc-200 dark:to-zinc-700\"\n          : \"bg-zinc-300 dark:bg-zinc-800\",\n        className\n      )}\n    />\n  )\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

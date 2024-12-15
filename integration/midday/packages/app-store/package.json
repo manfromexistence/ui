@@ -1,0 +1,29 @@
+{
+  "name": "@midday/app-store",
+  "version": "1.0.0",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^0.0.66",
+    "@slack/bolt": "^3.22.0",
+    "@slack/web-api": "^7.5.0",
+    "ai": "^3.4.9",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "typescript": "^5.6.3"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./slack": "./src/slack/index.ts",
+    "./slack-notifications": "./src/slack/lib/notifications/transactions.ts",
+    "./db": "./src/db/index.ts"
+  }
+}

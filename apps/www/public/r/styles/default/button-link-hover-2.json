@@ -1,0 +1,15 @@
+{
+  "name": "button-link-hover-2",
+  "type": "registry:example",
+  "registryDependencies": [
+    "buttons"
+  ],
+  "files": [
+    {
+      "path": "examples/buttons/link-hover-2.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/buttons\"\n\nexport default function ButtonLinkHover2() {\n  return <Button variant=\"linkHover2\">Link Hover 2</Button>\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

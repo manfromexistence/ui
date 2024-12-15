@@ -1,0 +1,15 @@
+{
+  "name": "card-expandable",
+  "type": "registry:ui",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "ui/card-expandable.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/registry/new-york/ui/button\"\n\nexport function ExpandableCard({\n  /**\n   * The height of the card when it is collapsed.\n   */\n  height = \"8rem\",\n  /**\n   * The class name to apply to the root container.\n   */\n  className = \"\",\n  children,\n  /**\n   * Whether the button should be full width or not.\n   */\n  wide = false,\n}: {\n  height: string\n  wide?: boolean\n  className?: string\n  children: React.ReactNode\n}) {\n  const [isExpanded, setIsExpanded] = React.useState(false)\n  const [contentHeight, setContentHeight] = React.useState(0)\n  const contentRef = React.useRef<HTMLDivElement>(null)\n\n  React.useEffect(() => {\n    if (contentRef.current) {\n      setContentHeight(contentRef.current.scrollHeight)\n    }\n  }, [])\n  return (\n    <div\n      className={cn(\n        \"bg-white dark:bg-zinc-950 dark:from-zinc-950 from-white w-full border px-4 pt-8 pb-3 rounded-lg shadow\",\n        className\n      )}\n    >\n      <div className=\"relative overflow-hidden bg-inherit dark:bg-inherit\">\n        <div\n          ref={contentRef}\n          id=\"expandable-content\"\n          className=\"transition-all duration-300 ease-in-out\"\n          style={{ height: isExpanded ? `${contentHeight}px` : height }}\n        >\n          <>{children}</>\n        </div>\n        <div\n          data-expanded={isExpanded}\n          className=\"absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-inherit dark:from-inherit/50 to-transparent pointer-events-none data-[expanded=true]:opacity-0 transition-opacity duration-300 ease-in-out\"\n          aria-hidden={isExpanded ? \"true\" : \"false\"}\n        />\n        <div\n          className={cn(\n            \"mx-auto bg-inherit dark:bg-inherit\",\n            wide ? \"w-full\" : \"w-fit\",\n            isExpanded ? \"pt-2\" : \"absolute bottom-4 inset-x-0\"\n          )}\n        >\n          <Button\n            variant=\"outline\"\n            className=\"w-full bg-inherit dark:bg-inherit rounded-lg\"\n            onClick={() => setIsExpanded(!isExpanded)}\n            aria-expanded={isExpanded}\n            aria-controls=\"expandable-content\"\n          >\n            {isExpanded ? \"Collapse\" : \"Expand\"}\n          </Button>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

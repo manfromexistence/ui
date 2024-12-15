@@ -1,0 +1,13 @@
+{
+  "title": {
+    "zh": "中文分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "basic.js",
+      "title": "点击聚焦",
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*ph6tS4k6S-oAAAAAAAAAAAAADmJ7AQ/original"
+    }
+  ]
+}

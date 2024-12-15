@@ -1,0 +1,69 @@
+{
+  "title": {
+    "zh": "Lottie",
+    "en": "Lottie"
+  },
+  "demos": [
+    {
+      "filename": "lottie-player-basic-shapes.js",
+      "title": {
+        "zh": "Lottie 播放器 - 基础图形",
+        "en": "Lottie Player - Basic shapes"
+      }
+    },
+    {
+      "filename": "lottie-player-transform.js",
+      "title": {
+        "zh": "Lottie 播放器 - 变换",
+        "en": "Lottie Player - Transform"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/mdn/huamei_qa8qxu/afts/img/A*U_bTSJXuQMQAAAAAAAAAAAAADmJ7AQ"
+    },
+    {
+      "filename": "lottie-player-assets.js",
+      "title": {
+        "zh": "Lottie 播放器 - 图片资产",
+        "en": "Lottie Player - Displaying assets"
+      },
+      "screenshot": "https://gw.alipayobjects.com/zos/raptor/1667977747890/A_NVmwSb89Y3kAAAAAAAAAAAAAARQnAQ.gif"
+    },
+    {
+      "filename": "radar.js",
+      "title": {
+        "zh": "雷达",
+        "en": "Radar"
+      },
+      "screenshot": "https://gw.alipayobjects.com/zos/raptor/1669793623610/radar.gif"
+    },
+    {
+      "filename": "ant.js",
+      "title": {
+        "zh": "蚂蚁形象",
+        "en": "Ant"
+      }
+    },
+    {
+      "filename": "spring.js",
+      "title": {
+        "zh": "弹簧",
+        "en": "Spring"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/antforest/afts/img/A*RxrUQKfhT_AAAAAAAAAAAAAADrd2AQ/Dec-14-2022%2015-15-29.gif"
+    },
+    {
+      "filename": "arrow.js",
+      "title": {
+        "zh": "箭头",
+        "en": "Arrow"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/antforest/afts/img/A*wi6FS4B16roAAAAAAAAAAAAADrd2AQ/Dec-14-2022%2015-16-27.gif"
+    },
+    {
+      "filename": "use-animations.js",
+      "title": {
+        "zh": "图标",
+        "en": "Icons"
+      }
+    }
+  ]
+}

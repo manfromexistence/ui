@@ -1,0 +1,48 @@
+{
+  "title": {
+    "zh": "中文分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "axis-x.ts",
+      "title": {
+        "zh": "x 方向坐标轴",
+        "en": "AxisX"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*kcACSYV4r-cAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "axis-xy.ts",
+      "title": {
+        "zh": "x 和 y 方向坐标轴",
+        "en": "AxisX and AxisY"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*84x4RKr1uA8AAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "axis-polar.ts",
+      "title": {
+        "zh": "极坐标下坐标轴",
+        "en": "Axis Polar"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*s_KgSKR6XeIAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "axis-multi.ts",
+      "title": {
+        "zh": "多坐标轴",
+        "en": "Multi Axis"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*aeDQQqTlA1sAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "axis.ts",
+      "title": {
+        "zh": "自定义坐标轴标签",
+        "en": "Axis"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*NEbsT6qCFSEAAAAAAAAAAAAADmJ7AQ/original"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "name": "@antv/s2-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "S2 sites deployed on gh-pages",
+  "keywords": [
+    "antv",
+    "s2",
+    "spreadsheet",
+    "site"
+  ],
+  "homepage": "https://s2.antv.antgroup.com",
+  "bugs": {
+    "url": "https://github.com/antvis/S2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antvis/S2"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "dumi build",
+    "clean": "rimraf .dumi",
+    "deploy": "dumi build &&  cp ./CNAME ./dist/CNAME && gh-pages -d dist",
+    "develop": "dumi dev",
+    "preview": "dumi preview",
+    "start": "dumi dev"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.3.7",
+    "@antv/dumi-theme-antv": "^0.5.2",
+    "@antv/g": "^6.1.8",
+    "@antv/g-canvas": "^2.0.26",
+    "@antv/g-plugin-a11y": "^1.1.8",
+    "@antv/g-plugin-rough-canvas-renderer": "^2.0.26",
+    "@antv/g2": "^5.1.21",
+    "@antv/s2": "workspace:*",
+    "@antv/s2-react": "workspace:*",
+    "@antv/s2-react-components": "workspace:*",
+    "antd": "^5.17.0",
+    "copy-to-clipboard": "^3.3.3",
+    "dumi": "^2.4.7",
+    "gh-pages": "^6.1.1",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@google-cloud/translate": "^7.0.3",
+    "@stone-lyl/google-translate-script": "^0.1.0",
+    "hast-util-to-html": "^8.0.3",
+    "micromark-extension-directive": "^2.1.2",
+    "rehype-document": "^6.1.0",
+    "rehype-format": "^4.0.1",
+    "rehype-parse": "^8.0.4",
+    "rehype-remark": "^9.1.2",
+    "rehype-stringify": "^9.0.3",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "remark-stringify": "^10.0.2",
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.1"
+  },
+  "tnpm": {
+    "mode": "pnpm"
+  }
+}

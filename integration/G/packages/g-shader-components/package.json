@@ -1,0 +1,38 @@
+{
+  "name": "@antv/g-shader-components",
+  "version": "2.0.0",
+  "description": "Shader components based on glslify",
+  "keywords": [
+    "antv",
+    "g"
+  ],
+  "homepage": "https://github.com/antvis/g#readme",
+  "bugs": {
+    "url": "https://github.com/antvis/g/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antvis/g.git"
+  },
+  "license": "MIT",
+  "author": "https://github.com/orgs/antvis/people",
+  "main": "scene.both.glsl",
+  "files": [
+    "package.json",
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "sync": "tnpm sync"
+  },
+  "devDependencies": {
+    "glslify": "^7.1.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.25.6"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "calendars-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "calendars"
+  ],
+  "files": [
+    {
+      "path": "examples/calendars-demo.tsx",
+      "content": "\"use client\"\n\nimport { exampleFeatures } from \"@/lib/content\"\nimport {\n  CalendarBody,\n  CalendarDate,\n  CalendarDatePagination,\n  CalendarDatePicker,\n  CalendarHeader,\n  CalendarItem,\n  CalendarMonthPicker,\n  CalendarProvider,\n  CalendarYearPicker,\n} from \"@/registry/new-york/ui/calendars\"\n\nconst earliestYear =\n  exampleFeatures\n    .map((feature) => feature.startAt.getFullYear())\n    .sort()\n    .at(0) ?? new Date().getFullYear()\n\nconst latestYear =\n  exampleFeatures\n    .map((feature) => feature.endAt.getFullYear())\n    .sort()\n    .at(-1) ?? new Date().getFullYear()\n\nexport default function CalendarsDemo() {\n  return (\n    <CalendarProvider>\n      <CalendarDate>\n        <CalendarDatePicker>\n          <CalendarMonthPicker />\n          <CalendarYearPicker start={earliestYear} end={latestYear} />\n        </CalendarDatePicker>\n        <CalendarDatePagination />\n      </CalendarDate>\n      <CalendarHeader />\n      <CalendarBody features={exampleFeatures}>\n        {({ feature }) => <CalendarItem key={feature.id} feature={feature} />}\n      </CalendarBody>\n    </CalendarProvider>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

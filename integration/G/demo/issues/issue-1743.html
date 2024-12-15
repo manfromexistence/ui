@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,user-scalable=no,initial-scale=1,shrink-to-fit=no"
+    />
+    <title>issue-1743</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        height: 100vh;
+        padding: 111px 0 0 111px;
+        /* padding: 100px 0 0 100px; */
+      }
+
+      #container {
+        /* border: 1px solid #ddd; */
+        background-color: #ddd;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container"></div>
+    <script
+      src="../../packages/g/dist/index.umd.min.js"
+      type="application/javascript"
+    ></script>
+    <script
+      src="../../packages/g-canvas/dist/index.umd.min.js"
+      type="application/javascript"
+    ></script>
+    <script src="../../packages/g-plugin-control/dist/index.umd.min.js"></script>
+    <script>
+      console.log(window.G);
+      const { Circle, CanvasEvent, Canvas, HTML } = window.G;
+
+      // create a renderer
+      const canvasRenderer = new window.G.Canvas2D.Renderer();
+      canvasRenderer.registerPlugin(new window.G.Control.Plugin());
+
+      // create a canvas
+      const canvas = new Canvas({
+        container: 'container',
+        width: 600,
+        height: 600,
+        renderer: canvasRenderer,
+      });
+
+      const circle = new Circle({
+        style: {
+          cx: 200,
+          cy: 200,
+          r: 50,
+          fill: 'red',
+          transform: 'translate(120px, 120px) scale(2)',
+          transformOrigin: 'center center',
+          // transformOrigin: '200px 200px',
+        },
+      });
+
+      const html = new HTML({
+        style: {
+          x: 150,
+          y: 150,
+          width: 100,
+          height: 100,
+          innerHTML:
+            '<h1 style="width: 100px; height: 100px;">This is Title</h1>',
+          transform: 'translate(120px, 120px) scale(2)',
+          transformOrigin: 'center center',
+          // transformOrigin: '50px 50px',
+        },
+      });
+
+      canvas.addEventListener(CanvasEvent.READY, () => {
+        canvas.appendChild(circle);
+        canvas.appendChild(html);
+
+        // console.log(
+        //   'transform',
+        //   circle.getWorldTransform(),
+        //   html.getWorldTransform(),
+        // );
+
+        console.log('canvas.getCamera()', canvas.getCamera(), circle, html);
+        console.log(
+          'circle',
+          'getBoundingClientRect',
+          circle.getBoundingClientRect(),
+          'getBounds',
+          circle.getBounds(),
+        );
+        console.log(
+          'html',
+          'getBoundingClientRect',
+          html.getBoundingClientRect(),
+          'getBounds',
+          html.getBounds(),
+        );
+
+        console.log('Camera pan(-50, 50) --------------------------');
+        canvas.getCamera().pan(-50, 50);
+        requestAnimationFrame(() => {
+          console.log(
+            'circle',
+            'getBoundingClientRect',
+            circle.getBoundingClientRect(),
+            'getBounds',
+            circle.getBounds(),
+          );
+          console.log(
+            'html',
+            'getBoundingClientRect',
+            html.getBoundingClientRect(),
+            'getBounds',
+            html.getBounds(),
+          );
+
+          console.log('Camera setZoom(1.2) --------------------------');
+          canvas.getCamera().setZoom(1.2);
+          requestAnimationFrame(() => {
+            console.log(
+              'circle',
+              'getBoundingClientRect',
+              circle.getBoundingClientRect(),
+              'getBounds',
+              circle.getBounds(),
+            );
+            console.log(
+              'html',
+              'getBoundingClientRect',
+              html.getBoundingClientRect(),
+              'getBounds',
+              html.getBounds(),
+            );
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

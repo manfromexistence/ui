@@ -1,0 +1,7 @@
+/dist
+.dumi/tmp
+.dumi/tmp-production
+/support
+
+## api doc
+docs/api/.gitignore

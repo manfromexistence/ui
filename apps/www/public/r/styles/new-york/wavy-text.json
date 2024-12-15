@@ -1,0 +1,15 @@
+{
+  "name": "wavy-text",
+  "type": "registry:example",
+  "registryDependencies": [
+    "text"
+  ],
+  "files": [
+    {
+      "path": "examples/texts/wavy-text.tsx",
+      "content": "import { WavyText } from \"@/registry/new-york/ui/text\"\n\nexport default function WavyTextDemo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <WavyText />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

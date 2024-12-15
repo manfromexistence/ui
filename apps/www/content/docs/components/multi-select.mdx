@@ -1,0 +1,75 @@
+---
+title: Multi Select
+description: A Selector that you can select multiple items at once.
+component: true
+---
+
+<ComponentPreview
+  name="multi-select-demo"
+  description="A Multi Select component."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://manfromexistence-ui.vercel.app/r/multi-select"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="multi-select" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  MultiSelector,
+  MultiSelectorContent,
+  MultiSelectorInput,
+  MultiSelectorItem,
+  MultiSelectorList,
+  MultiSelectorTrigger,
+} from "@/components/multi-select"
+```
+
+```tsx
+<MultiSelector
+  values={field.values}
+  onValuesChange={field.onChange}
+  loop
+  className="max-w-xs"
+>
+  <MultiSelectorTrigger>
+    <MultiSelectorInput placeholder="Select languages" />
+  </MultiSelectorTrigger>
+  <MultiSelectorContent>
+    <MultiSelectorList>
+      <MultiSelectorItem value={"React"}>React</MultiSelectorItem>
+      <MultiSelectorItem value={"Vue"}>Vue</MultiSelectorItem>
+      <MultiSelectorItem value={"Svelte"}> Svelte</MultiSelectorItem>
+    </MultiSelectorList>
+  </MultiSelectorContent>
+</MultiSelector>
+```

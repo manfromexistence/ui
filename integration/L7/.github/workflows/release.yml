@@ -1,0 +1,143 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  pull_request_review:
+    types: [submitted]
+
+concurrency:
+  group: '${{ github.workflow }} - ${{ github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  release:
+    # created version approved PR by changesets bot or manual dispatch
+    if: |
+      (
+        github.event_name == 'pull_request_review' &&
+        github.event.pull_request.user.type == 'Bot' &&
+        startswith(github.event.pull_request.head.ref, 'changeset-release/') &&
+        github.event.review.state == 'APPROVED'
+      ) ||
+      github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    outputs:
+      published: ${{ steps.changesets.outputs.published }}
+      publishedPackages: ${{ steps.changesets.outputs.publishedPackages }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        uses: ./.github/actions/prepare-install
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Release NPM and Github
+        id: changesets
+        uses: changesets/action@v1
+        env:
+          # need personal access token when Triggering a workflow from a workflow
+          # triggering release event of Release Notify and Deploy Site
+          # https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#triggering-a-workflow-from-a-workflow
+          GITHUB_TOKEN: ${{ secrets.YJ_GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.YJ_NPM_TOKEN }}
+        with:
+          publish: pnpm publish-packages
+          # 暂时关闭自动创建 Github Releases，待解决问题：
+          # - 只创建主包 @antv/l7 的 Github Release，并解决同步所有日志到 release body
+          createGithubReleases: false
+
+      # when release not publish
+      - name: Released not publish
+        if: steps.changesets.outputs.published == 'false'
+        run: |
+          if [[ ${{ steps.changesets.outputs.hasChangesets }} == false ]]; then
+            # No changesets
+            echo "::error title=No changesets found::All changesets are empty, please add changeset"
+          else
+            # Released failed
+            echo "::error title=Publish failed::Released NPM or Github failed"
+          fi
+          exit 1
+
+      # release failed notify
+      - name: Release failed ding talk dev group notify
+        if: ${{ failure() }}
+        uses: zcong1993/actions-ding@master
+        with:
+          dingToken: ${{ secrets.DING_TALK_ACCESS_TOKEN }}
+          ignoreError: true
+          body: |
+            {
+              "msgtype": "link",
+              "link": {
+                "title": "🚨 自动发布失败 (${{ github.head_ref || github.ref_name }})",
+                "text": "🔗 请点击链接查看具体原因, 及时修复, 尝试点击右上角 [Re-run all jobs] 重试, 或手动发布 🚑",
+                "messageUrl": "https://github.com/${{github.repository}}/actions/workflows/release.yml",
+                "picUrl": "https://gw.alipayobjects.com/mdn/antv_site/afts/img/A*o40BRo-ANLoAAAAAAAAAAABkARQnAQ"
+              }
+            }
+
+  # when release published successful
+  release-succeeded:
+    needs: release
+    if: needs.release.outputs.published == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release succeeded comment
+        if: github.event_name == 'pull_request_review'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Released to successful 🎉
+
+            - Released [NPM][1]
+            - Released [Github][2]
+
+            `${{ needs.release.outputs.publishedPackages }}`
+
+            [1]: https://www.npmjs.com/package/@antv/l7?activeTab=versions
+            [2]: https://github.com/${{github.repository}}/releases
+          reactions: 'rocket'
+
+      - name: automerge
+        if: github.event_name == 'pull_request_review'
+        uses: 'pascalgn/automerge-action@v0.16.2'
+        env:
+          MERGE_LABELS: ''
+          PULL_REQUEST: ${{ github.event.pull_request.number }}
+          MERGE_METHOD: 'squash'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get main version
+        id: main_version
+        uses: actions/github-script@v7
+        with:
+          result-encoding: string
+          script: |
+            const publishedPackages = ${{ needs.release.outputs.publishedPackages }};
+            const mainPackage = publishedPackages.find((item) => item.name === '@antv/l7');
+            const version = mainPackage ? `@antv/l7@${mainPackage.version}` : '';
+            return version;
+
+      # release successful notify, only trigger by bot PR and not prerelease (like: @antv/l7@2.21.5-beta.1)
+      - name: Release successful ding talk dev group notify
+        if: github.event_name == 'pull_request_review' && !contains(steps.main_version.outputs.result, '-')
+        uses: zcong1993/actions-ding@master
+        with:
+          dingToken: ${{ secrets.DING_TALK_ACCESS_TOKEN }}
+          ignoreError: true
+          body: |
+            {
+              "msgtype": "link",
+              "link": {
+                "title": "自动发布成功 (${{ steps.main_version.outputs.result || github.head_ref || github.ref_name }})",
+                "text": "🔗 点击链接查看详情",
+                "messageUrl": "https://github.com/${{github.repository}}/pull/${{ github.event.pull_request.number }}",
+                "picUrl": ""
+              }
+            }

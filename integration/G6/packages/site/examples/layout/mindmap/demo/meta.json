@@ -1,0 +1,40 @@
+{
+  "title": {
+    "zh": "中文分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "auto-side.js",
+      "title": {
+        "zh": "子节点自动分布",
+        "en": "Auto Mindmap Layout"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*im2UR5hT3WcAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "right-side.js",
+      "title": {
+        "zh": "子节点右侧分布",
+        "en": "Right Side Mindmap Layout"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*p1cYSJqxbogAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "left-side.js",
+      "title": {
+        "zh": "子节点左侧分布",
+        "en": "Left Side Mindmap Layout"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*iy_tQ49Nn1EAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "custom-side.js",
+      "title": {
+        "zh": "自定义子节点分布",
+        "en": "Custom Mindmap Layout"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*m9p-TpQGI-YAAAAAAAAAAAAADmJ7AQ/original"
+    }
+  ]
+}

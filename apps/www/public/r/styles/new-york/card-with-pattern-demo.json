@@ -1,0 +1,15 @@
+{
+  "name": "card-with-pattern-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "card-with-pattern"
+  ],
+  "files": [
+    {
+      "path": "example/cards/with-pattern.tsx",
+      "content": "import {\n  CardBody,\n  CardWithCircleEllipsis,\n  CardWithEllipsis,\n  CardWithGrid,\n  CardWithGridEllipsis,\n  CardWithLines,\n  CardWithNoise,\n  CardWithPlus,\n  CardWithSquareX,\n} from \"@/registry/new-york/ui/card-with-pattern\"\n\nexport function CardWithCircleEllipsis_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <CardWithCircleEllipsis>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </CardWithCircleEllipsis>\n    </div>\n  )\n}\n\nexport function CardWithEllipsis_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <CardWithEllipsis>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </CardWithEllipsis>\n    </div>\n  )\n}\n\nexport function CardWithGrid_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <CardWithGrid>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </CardWithGrid>\n    </div>\n  )\n}\n\nexport function CardWithGridEllipsis_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <CardWithGridEllipsis>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </CardWithGridEllipsis>\n    </div>\n  )\n}\n\nexport function CardWithLines_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <CardWithLines>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </CardWithLines>\n    </div>\n  )\n}\n\nexport function CardWithPlus_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <CardWithPlus>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </CardWithPlus>\n    </div>\n  )\n}\n\nexport function CardWithSquareX_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <CardWithSquareX>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </CardWithSquareX>\n    </div>\n  )\n}\n\nexport function CardWithNoise_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <CardWithNoise>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </CardWithNoise>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

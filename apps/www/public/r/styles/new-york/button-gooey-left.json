@@ -1,0 +1,15 @@
+{
+  "name": "button-gooey-left",
+  "type": "registry:example",
+  "registryDependencies": [
+    "buttons"
+  ],
+  "files": [
+    {
+      "path": "examples/buttons/gooey-left.tsx",
+      "content": "import { Button } from \"@/registry/new-york/ui/buttons\"\n\nexport default function ButtonGooeyLeft() {\n  return <Button variant=\"gooeyLeft\">Gooey left</Button>\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

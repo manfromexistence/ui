@@ -1,0 +1,15 @@
+{
+  "name": "card-simple-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "card-simple"
+  ],
+  "files": [
+    {
+      "path": "example/cards/simple-cards.tsx",
+      "content": "import {\n  SimpleCard_V1,\n  SimpleCard_V2,\n  SimpleCard_V3,\n  SimpleCard_V4,\n  SimpleCard_V5,\n  SimpleCard_V6,\n  SimpleCard_V7,\n} from \"@/registry/new-york/ui/card-simple\"\n\nexport function SimpleCard_V1_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <SimpleCard_V1 />\n    </div>\n  )\n}\n\nexport function SimpleCard_V2_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <SimpleCard_V2 />\n    </div>\n  )\n}\n\nexport function SimpleCard_V3_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <SimpleCard_V3 />\n    </div>\n  )\n}\n\nexport function SimpleCard_V4_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <SimpleCard_V4 />\n    </div>\n  )\n}\n\nexport function SimpleCard_V5_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <SimpleCard_V5 />\n    </div>\n  )\n}\n\nexport function SimpleCard_V6_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <SimpleCard_V6 />\n    </div>\n  )\n}\n\nexport function SimpleCard_V7_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <SimpleCard_V7 />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

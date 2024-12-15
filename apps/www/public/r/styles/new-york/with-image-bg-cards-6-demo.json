@@ -1,0 +1,15 @@
+{
+  "name": "with-image-bg-cards-6-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "card-with-image-bg"
+  ],
+  "files": [
+    {
+      "path": "examples/cards/with-image-bg-cards-6.tsx",
+      "content": "import { Card_with_image_v6 } from \"@/registry/new-york/ui/card-with-image-bg\"\n\nexport default function Card_with_image_v6_Demo() {\n  return (\n    <div className=\"min-w-full\">\n      <Card_with_image_v6 />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

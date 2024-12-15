@@ -1,0 +1,40 @@
+{
+  "title": {
+    "zh": "中文分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "basic.js",
+      "title": {
+        "zh": "基本 Circular 布局",
+        "en": "Basic Circular Layout"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*qJi5Q4qg6W8AAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "degree.js",
+      "title": {
+        "zh": "按照节点度数排序",
+        "en": "Degree Ordered"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*eWecT7lzB0kAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "spiral.js",
+      "title": {
+        "zh": "螺旋线布局",
+        "en": "Spiral Layout"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*x4HvSr25sHkAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "division.js",
+      "title": {
+        "zh": "分割环形布局",
+        "en": "Divided Circular Layout"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*9wz2RJH1lxkAAAAAAAAAAAAADmJ7AQ/original"
+    }
+  ]
+}

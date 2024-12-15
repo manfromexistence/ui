@@ -1,0 +1,15 @@
+{
+  "name": "button-icon-left",
+  "type": "registry:example",
+  "registryDependencies": [
+    "buttons"
+  ],
+  "files": [
+    {
+      "path": "examples/buttons/icon-left.tsx",
+      "content": "import { ArrowLeftIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york/ui/buttons\"\n\nexport default function ButtonIconLeft() {\n  return (\n    <Button variant=\"expandIcon\" Icon={ArrowLeftIcon} iconPlacement=\"left\">\n      Icon left\n    </Button>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

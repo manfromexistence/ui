@@ -1,0 +1,35 @@
+{
+  "name": "open-google-translator",
+  "version": "1.0.5",
+  "description": "A versatile and easy-to-use NPM package that leverages the power of the Google Translator API",
+  "main": "src/index.js",
+  "types": "types.d.ts",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "build": "browserify src/index.js -o dist/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vidya-hub/open-google-translator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vidya-hub/open-google-translator/issues"
+  },
+  "homepage": "https://github.com/vidya-hub/open-google-translator#readme",
+  "keywords": [
+    "translator",
+    "google-translator",
+    "free-google-translator",
+    "open-google-translator",
+    "translate"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.14.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "card-with-image-bg-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "card-with-image-bg"
+  ],
+  "files": [
+    {
+      "path": "example/cards/with-image-bg.tsx",
+      "content": "import {\n  Card_with_image_v1,\n  Card_with_image_v2,\n  Card_with_image_v3,\n  Card_with_image_v4,\n  Card_with_image_v5,\n  Card_with_image_v6,\n} from \"@/registry/new-york/ui/card-with-image-bg\"\n\nexport function Card_with_image_v1_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Card_with_image_v1 />\n    </div>\n  )\n}\n\nexport function Card_with_image_v2_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Card_with_image_v2 />\n    </div>\n  )\n}\n\nexport function Card_with_image_v3_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Card_with_image_v3 />\n    </div>\n  )\n}\n\nexport function Card_with_image_v4_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Card_with_image_v4 />\n    </div>\n  )\n}\n\nexport function Card_with_image_v5_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Card_with_image_v5 />\n    </div>\n  )\n}\n\nexport function Card_with_image_v6_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Card_with_image_v6 />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

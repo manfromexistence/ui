@@ -1,0 +1,32 @@
+{
+  "title": {
+    "zh": "中文分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "logo.ts",
+      "title": {
+        "zh": "浏览器图标",
+        "en": "Browser Logo"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*R8TRQJMrQ-AAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "icon.ts",
+      "title": {
+        "zh": " 图标标记",
+        "en": "Icon symbol"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*CKmISLNs5FAAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "contributor.ts",
+      "title": {
+        "zh": "贡献者",
+        "en": "Contributor"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*zD2UToZzYloAAAAAAAAAAAAADmJ7AQ/original"
+    }
+  ]
+}

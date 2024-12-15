@@ -1,0 +1,15 @@
+{
+  "name": "three-d-carousel-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "three-d-carousel"
+  ],
+  "files": [
+    {
+      "path": "examples/three-d-carousel-demo.tsx",
+      "content": "import ThreeDPhotoCarousel from \"@/registry/default/ui/three-d-carousel\"\n\nexport default function ThreeDPhotoCarouselDemo() {\n  return (\n    <div className=\"w-full max-w-4xl\">\n      <div className=\"min-h-[500px]  flex flex-col justify-center border border-dashed rounded-lg space-y-4\">\n        <div className=\"p-2\">\n          <ThreeDPhotoCarousel />\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "phone-input-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "button",
+    "form",
+    "phone-input-demo"
+  ],
+  "files": [
+    {
+      "path": "examples/phone-input-demo.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { useForm } from \"react-hook-form\"\nimport { toast } from \"sonner\"\nimport * as z from \"zod\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport {\n  Form,\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"@/registry/new-york/ui/form\"\nimport { PhoneInput } from \"@/registry/new-york/ui/phone-input\"\n\nconst formSchema = z.object({\n  name_2438888165: z.string(),\n})\n\nexport default function MyForm() {\n  const form = useForm<z.infer<typeof formSchema>>({\n    resolver: zodResolver(formSchema),\n  })\n\n  function onSubmit(values: z.infer<typeof formSchema>) {\n    try {\n      console.log(values)\n      toast(\n        <pre className=\"mt-2 w-[340px] rounded-md bg-slate-950 p-4\">\n          <code className=\"text-white\">{JSON.stringify(values, null, 2)}</code>\n        </pre>\n      )\n    } catch (error) {\n      console.error(\"Form submission error\", error)\n      toast.error(\"Failed to submit the form. Please try again.\")\n    }\n  }\n\n  return (\n    <Form {...form}>\n      <form\n        onSubmit={form.handleSubmit(onSubmit)}\n        className=\"mx-auto max-w-3xl space-y-8 py-10\"\n      >\n        <FormField\n          control={form.control}\n          name=\"name_2438888165\"\n          render={({ field }) => (\n            <FormItem className=\"flex flex-col items-start\">\n              <FormLabel>Phone number</FormLabel>\n              <FormControl className=\"w-full\">\n                <PhoneInput\n                  placeholder=\"Placeholder\"\n                  {...field}\n                  defaultCountry=\"TR\"\n                />\n              </FormControl>\n              <FormDescription>Enter your phone number.</FormDescription>\n              <FormMessage />\n            </FormItem>\n          )}\n        />\n\n        <Button type=\"submit\">Submit</Button>\n      </form>\n    </Form>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

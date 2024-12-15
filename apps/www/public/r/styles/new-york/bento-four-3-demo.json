@@ -1,0 +1,15 @@
+{
+  "name": "bento-four-3-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "bento-4"
+  ],
+  "files": [
+    {
+      "path": "examples/bentos/bento-four-3-demo.tsx",
+      "content": "import { Bento_4_v3 } from \"@/registry/new-york/ui/bento-4\"\n\nexport default function Bento_4_v3_Demo() {\n  return (\n    <div className=\"min-w-full\">\n      <Bento_4_v3 />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

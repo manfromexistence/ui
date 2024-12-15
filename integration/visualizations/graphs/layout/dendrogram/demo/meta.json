@@ -1,0 +1,32 @@
+{
+  "title": {
+    "zh": "中文分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "basic.js",
+      "title": {
+        "zh": "生态树",
+        "en": "Dendrogram Layout"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*7tDPSa-LHbAAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "vertical.js",
+      "title": {
+        "zh": "垂直布局",
+        "en": "Vertical Layout"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*mp3BRbyBzCEAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "radial.js",
+      "title": {
+        "zh": "径向布局",
+        "en": "Radial Layout"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*nBIIR5yhTlQAAAAAAAAAAAAADmJ7AQ/original"
+    }
+  ]
+}

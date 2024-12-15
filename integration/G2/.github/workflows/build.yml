@@ -1,0 +1,41 @@
+name: build
+
+on:
+  push:
+    branches: [v5]
+  pull_request:
+    branches: [v5]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: '16'
+
+      - name: Run CI
+        run: |
+          npm install
+          npm run ci
+
+      - name: Update coverall
+        if: ${{ success() }}
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload blob report to GitHub Actions Artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: snapshots
+          path: |
+            __tests__/integration/snapshots/**/*-actual.svg
+            __tests__/integration/snapshots/**/*-actual.html
+          retention-days: 1

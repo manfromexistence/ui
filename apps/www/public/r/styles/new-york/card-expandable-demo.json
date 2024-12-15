@@ -1,0 +1,15 @@
+{
+  "name": "card-expandable-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "card-expandable"
+  ],
+  "files": [
+    {
+      "path": "examples/cards/expandable-card.tsx",
+      "content": "import { ExpandableCard } from \"@/registry/new-york/ui/card-expandable\"\n\nexport function ExpandableCard_Demo() {\n  return (\n    <div className=\"min-w-full\">\n      <ExpandableCard height=\"10rem\" wide>\n        <div className=\"prose-p:mt-0 text-sm/relaxed\">\n          <h4 className=\"my-2 text-lg font-bold\">Default expandable card</h4>\n          Lorem ipsum, consectetur adipiscing elit. Nullam pulvinar risus non\n          risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed\n          porttitor quam. ipsum dolor sit amet, consectetur adipiscing elit.\n          Nullam pulvinar risus non risus hendrerit venenatis. Pellentesque sit\n          amet hendrerit risus, sed porttitor quam. Magna exercitation\n          reprehenderit magna cillum tempor amet aliquip ullamco.\n        </div>\n      </ExpandableCard>\n      <br />\n      <ExpandableCard height=\"10rem\" wide>\n        <div className=\"prose-p:mt-0 text-sm/relaxed\">\n          <h4 className=\"my-2 text-lg font-bold\">\n            Customize the height & button width\n          </h4>\n          Lorem ipsum, consectetur adipiscing elit. Nullam pulvinar risus non\n          risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed\n          porttitor quam. ipsum dolor sit amet, consectetur adipiscing elit.\n          Nullam pulvinar risus non risus hendrerit venenatis. Pellentesque sit\n          amet hendrerit risus, sed porttitor quam. Magna exercitation\n          reprehenderit magna cillum tempor amet aliquip ullamco.\n        </div>\n      </ExpandableCard>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

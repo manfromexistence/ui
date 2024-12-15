@@ -1,0 +1,15 @@
+{
+  "name": "card-multi-layers-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "card-multi-layers"
+  ],
+  "files": [
+    {
+      "path": "example/cards/multi-layers.tsx",
+      "content": "import {\n  CardBody,\n  MultilayerCardV_1,\n  MultilayerCardV_2,\n  MultilayerCardV_3,\n  MultilayerCardV_4,\n} from \"@/registry/new-york/ui/card-multi-layers\"\n\nexport function MultilayerCardV_1_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <MultilayerCardV_1>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </MultilayerCardV_1>\n    </div>\n  )\n}\n\nexport function MultilayerCardV_2_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <MultilayerCardV_2>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </MultilayerCardV_2>\n    </div>\n  )\n}\n\nexport function MultilayerCardV_3_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <MultilayerCardV_3>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </MultilayerCardV_3>\n    </div>\n  )\n}\n\nexport function MultilayerCardV_4_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <MultilayerCardV_4>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </MultilayerCardV_4>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

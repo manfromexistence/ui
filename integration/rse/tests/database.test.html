@@ -1,0 +1,130 @@
+<!--
+We're using the browser's help in both the editor and the test, therefore this suite is severely flawed.
+However, because the editor uses a different technique than the test, we can warn when only 1 of the 2 parties
+says a RULE is valid (!).
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style>
+            table {
+                font-family: Consolas, monospace;
+                white-space: pre;
+                border-collapse: collapse;
+                width: 100%;
+                font-size: small;
+            }
+
+            td,
+            th {
+                border: solid 1px gray;
+                vertical-align: top;
+                text-align: left;
+                max-width: 200px;
+                width: 200px;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="module">
+            import database from './database.js';
+            import parse from './parse.js';
+            import validate from './validate.js';
+
+            /**
+             *
+             */
+            const summarizeBrowserRules = (list, indent = '') => {
+                let summary = '';
+                for (const rule of list) {
+                    let selector = rule.cssText;
+                    if (selector) {
+                        selector = selector.replace(/{[\s\S]*/, '');
+                        selector = selector.toLowerCase();
+                        selector = selector.trim();
+                        if (selector) {
+                            summary += indent + selector + '\r\n';
+                        }
+                    }
+                    if (rule.cssRules) {
+                        summary += summarizeBrowserRules(rule.cssRules, indent + '    ');
+                    }
+                }
+                return summary;
+            };
+
+            /**
+             *
+             */
+            const summarizeEditorRules = (list, indent = '') => {
+                let summary = '';
+                for (const rule of list) {
+                    let selector = rule.selector;
+                    if (selector && rule.isValid) {
+                        selector = selector.replace(/\/\*[\s\S]*?\*\//g, '');
+                        selector = selector.replace(/\s+/g, ' ');
+                        selector = selector.toLowerCase();
+                        selector = selector.trim();
+                        if (rule.hasSemicolon) {
+                            selector += ';';
+                        }
+                        if (selector) {
+                            summary += indent + selector + '\r\n';
+                        }
+                    }
+                    if (rule.type === 'atrule' && rule.children.length) {
+                        summary += summarizeEditorRules(rule.children, indent + '    ');
+                    }
+                }
+                return summary;
+            };
+
+            /**
+             *
+             */
+            const run = () => {
+                let totalCount = 0;
+                let correctCount = 0;
+                let markup =
+                    '' +
+                    '<table>' +
+                    '   <tr>' +
+                    '       <th>Input</th>' +
+                    '       <th>Expected output</th>' +
+                    '       <th>Actual Output</th>' +
+                    '   </tr>';
+                const style = document.createElement('style');
+                document.head.appendChild(style);
+
+                for (const item of database) {
+                    style.innerHTML = item;
+                    const sheet = style.sheet;
+                    const expected = summarizeBrowserRules(sheet.cssRules);
+                    const actual = summarizeEditorRules(validate(parse(item)));
+
+                    const isCorrect = expected === actual;
+                    correctCount = correctCount + (isCorrect ? 1 : 0);
+                    totalCount++;
+                    // if (isCorrect) {
+                    //     continue;
+                    // }
+                    const resultStyle = ' style="background:' + (isCorrect ? 'lime' : 'red') + '"';
+
+                    markup += '<tr>';
+                    markup += `<td><b>${item}</b></td>`;
+                    markup += `<td>${expected}</td>`;
+                    markup += `<td${resultStyle}>${actual}</td>`;
+                    markup += '</tr>';
+                }
+                markup += '</table>';
+                markup = `${correctCount}/${totalCount}` + markup;
+                document.body.insertAdjacentHTML('beforeend', markup);
+                document.head.removeChild(style);
+            };
+
+            run();
+        </script>
+    </body>
+</html>

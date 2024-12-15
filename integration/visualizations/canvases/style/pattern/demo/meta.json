@@ -1,0 +1,52 @@
+{
+  "demos": [
+    {
+      "filename": "pattern.js",
+      "title": {
+        "zh": "Pattern",
+        "en": "Pattern"
+      },
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_6ae20b/afts/img/A*cRmFTItZOtYAAAAAAAAAAAAAARQnAQ"
+    },
+    {
+      "filename": "rect.js",
+      "title": {
+        "zh": "Rect as pattern",
+        "en": "Rect as pattern"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*8kA4QZ8xU88AAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "dots.js",
+      "title": {
+        "zh": "Dots Pattern",
+        "en": "Dots Pattern"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*Xce3RrT3zAMAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "lines.js",
+      "title": {
+        "zh": "Lines Pattern",
+        "en": "Lines Pattern"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*cQp7TrgGMoUAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "squares.js",
+      "title": {
+        "zh": "Squares Pattern",
+        "en": "Squares Pattern"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*JB3lRoeyzdIAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "piechart.js",
+      "title": {
+        "zh": "Pie Chart",
+        "en": "Pie Chart"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*zf6PSJ4u6yAAAAAAAAAAAAAADmJ7AQ/original"
+    }
+  ]
+}

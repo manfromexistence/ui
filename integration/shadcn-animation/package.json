@@ -1,0 +1,38 @@
+{
+  "name": "shadcn-animation",
+  "version": "0.0.1-beta",
+  "description": "Shadcn Animation is a Tailwind CSS Plugin made by Manfromexistence. It’s a simple, yet powerful, animation library for Tailwind CSS specially useful when working with Shadcn/Ui.",
+  "keywords": [
+    "tailwindcss",
+    "tailwind",
+    "plugin",
+    "animation",
+    "preset",
+    "motion",
+    "animate",
+    "css",
+    "design"
+  ],
+  "author": "Manfromexistence (https://manfromexistence.vercel.app/)",
+  "homepage": "https://manfromexistence-ui/animation",
+  "main": "src/index.js",
+  "bugs": {
+    "url": "https://github.com/manfromexistence/ui/issues"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manfromexistence/ui.git"
+  },
+  "license": "MIT",
+  "files": [
+    "src/"
+  ],
+  "type": "module",
+  "devDependencies": {
+    "tailwindcss": "^3.4.12"
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=3.0.0 || insiders"
+  }
+}

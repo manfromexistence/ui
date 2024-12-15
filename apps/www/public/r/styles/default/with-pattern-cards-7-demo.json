@@ -1,0 +1,15 @@
+{
+  "name": "with-pattern-cards-7-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "card-with-pattern"
+  ],
+  "files": [
+    {
+      "path": "examples/cards/with-pattern-cards-7.tsx",
+      "content": "import { CardBody, CardWithPlus } from \"@/registry/default/ui/card-with-pattern\"\n\nexport default function CardWithPlus_Demo() {\n  return (\n    <div className=\"min-w-full\">\n      <CardWithPlus>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </CardWithPlus>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

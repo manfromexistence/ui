@@ -1,0 +1,28 @@
+{
+  "title": {
+    "zh": "中文分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "scatter.jsx",
+      "title": "Scatter Plot",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*Xpt7QLmlgz0AAAAAAAAAAABkARQnAQ"
+    },
+    {
+      "filename": "bubble.jsx",
+      "title": "Bubble Chart",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*eKP_RJ2aMfgAAAAAAAAAAABkARQnAQ"
+    },
+    {
+      "filename": "ordered-bubble.jsx",
+      "title": "Usage Comparison",
+      "screenshot": "https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*5ZpOQp1aUTMAAAAAAAAAAABkARQnAQ"
+    },
+    {
+      "filename": "roam.jsx",
+      "title": "Bubble Chart Zoom Pan",
+      "screenshot": "https://gw.alipayobjects.com/zos/finxbff/compress-tinypng/e504a76f-5ddc-48fe-a947-00cb4bf7e8c9.gif"
+    }
+  ]
+}

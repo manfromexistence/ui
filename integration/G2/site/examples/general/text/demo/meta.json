@@ -1,0 +1,57 @@
+{
+  "title": {
+    "zh": "中文分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "paragraph.ts",
+      "title": {
+        "zh": "文本段落",
+        "en": "Paragraph"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*W9TRQJd7BbsAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "poetry.ts",
+      "title": {
+        "zh": "诗词可视化",
+        "en": "Poetry"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*hKf9TbJEeooAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "train.ts",
+      "title": {
+        "zh": "火车调度",
+        "en": "Train"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*9oS5TKxuK-MAAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "wordCloud.ts",
+      "title": {
+        "zh": "词云图",
+        "en": "WordCloud"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*0xE1T7W2Oq4AAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "wordCloud-english.ts",
+      "title": {
+        "zh": "英文字符词云图",
+        "en": "English WordCloud"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*H6BoRoDMolwAAAAAAAAAAAAADmJ7AQ/fmt.webp"
+    },
+    
+    {
+      "filename": "wordCloud-mask.ts",
+      "title": {
+        "zh": "带图片遮罩的词云图",
+        "en": "WordCloud with image mask"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*P6MoSriYWhkAAAAAAAAAAAAADmJ7AQ/original"
+    }
+  ]
+}

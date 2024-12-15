@@ -1,0 +1,15 @@
+{
+  "name": "grid-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    ""
+  ],
+  "files": [
+    {
+      "path": "examples/grid-demo.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\nexport default function GridDemo() {\n  const PlusIcon = ({ className, ...rest }: any) => {\n    return (\n      <svg\n        xmlns=\"http://www.w3.org/2000/svg\"\n        fill=\"none\"\n        viewBox=\"0 0 24 24\"\n        width={24}\n        height={24}\n        strokeWidth=\"1\"\n        stroke=\"currentColor\"\n        {...rest}\n        className={cn(\"absolute size-6 text-black dark:text-white\", className)}\n      >\n        <path strokeLinecap=\"round\" strokeLinejoin=\"round\" d=\"M12 6v12m6-6H6\" />\n      </svg>\n    )\n  }\n\n  return (\n    <div className=\"relative grid h-24 w-full grid-cols-9 border\">\n      <PlusIcon className=\"absolute -left-5 -top-5 h-10 w-10\" />\n      <PlusIcon className=\"absolute -bottom-5 -right-5 h-10 w-10\" />\n\n      <span className=\"h-full w-full border-b border-r\"></span>\n      <span className=\"h-full w-full border-b border-r\"></span>\n      <span className=\"h-full w-full border-b border-r\"></span>\n      <span className=\"h-full w-full border-b border-r\"></span>\n      <span className=\"h-full w-full border-b border-r\"></span>\n      <span className=\"h-full w-full border-b border-r\"></span>\n      <span className=\"h-full w-full border-b border-r\"></span>\n      <span className=\"h-full w-full border-b border-r\"></span>\n      <span className=\"h-full w-full border-b\"></span>\n\n      <span className=\"h-full w-full border-r\"></span>\n      <span className=\"h-full w-full border-r\"></span>\n      <span className=\"h-full w-full border-r\"></span>\n      <span className=\"h-full w-full border-r\"></span>\n      <span className=\"h-full w-full border-r\"></span>\n      <span className=\"h-full w-full border-r\"></span>\n      <span className=\"h-full w-full border-r\"></span>\n      <span className=\"h-full w-full border-r\"></span>\n      <span className=\"h-full w-full\"></span>\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

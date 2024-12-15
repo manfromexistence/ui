@@ -1,0 +1,49 @@
+---
+title: Dock
+description: An interactive dock component inspired by macOS dock with animation capabilities.
+component: true
+links:
+---
+
+<ComponentPreview
+  name="dock-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="A dock"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://manfromexistence-ui.vercel.app/r/dock" "https://manfromexistence-ui.vercel.app/r/dock-rainbow"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+  <Steps>
+    <Step>Copy and paste the following code into your project.</Step>
+    <ComponentSource name="dock" />
+    <Step>Update the import paths to match your project setup.</Step>
+  </Steps>
+</TabsContent>
+
+</Tabs>
+
+## Examples
+
+### Rainbow Doxs
+
+<ComponentPreview
+  name="dock-rainbow-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="A dock with rainbow items in it."
+/>

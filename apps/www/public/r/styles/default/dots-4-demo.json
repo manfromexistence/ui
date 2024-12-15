@@ -1,0 +1,15 @@
+{
+  "name": "dots-4-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "dots"
+  ],
+  "files": [
+    {
+      "path": "examples/dots-4-demo.tsx",
+      "content": "import { Dots_v4 } from \"@/registry/default/ui/dots\"\n\nexport default function Dots_v4_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Dots_v4 />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

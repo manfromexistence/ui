@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "jsx": "React",
+    "target": "es5",
+    "outDir": "./.ts",
+    "declaration": true,
+    "stripInternal": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "lib": ["es2015", "es2017", "dom"]
+  },
+  "files": [
+    "src/index.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "types": [
+    "React",
+    "CodeMirror"
+  ]
+}

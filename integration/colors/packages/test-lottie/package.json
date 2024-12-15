@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "name": "test-lottie",
+  "version": "0.0.0",
+  "description": "testing lottie in native",
+  "keywords": [],
+  "main": "src/index.tsx",
+  "browser": "src/index.tsx",
+  "react-native": "src/index.native.tsx",
+  "repository": "bubble-dev/_",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.13.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "lottie-react-native": "^4.0.2"
+  },
+  "devDependencies": {
+    "@revert/sandbox": "^0.3.4",
+    "autoprops": "^4.0.2",
+    "react": "17.0.1"
+  }
+}

@@ -1,0 +1,134 @@
+import { Layout, Playground, Attributes } from 'lib/components'
+import { Badge, Spacer, Button, Link, Avatar, useTheme } from 'components'
+import NextLink from 'next/link'
+
+export const meta = {
+  title: '徽章 Badge',
+  group: '数据展示',
+}
+
+## Badge / 徽章
+
+显示一个需要注意的指标。
+
+<Playground
+  scope={{ Badge, Spacer }}
+  desc="展示一个数字或一段文字。"
+  code={`
+  <>
+    <Badge>1</Badge> <Spacer h={.5} />
+    <Badge>50</Badge> <Spacer h={.5} />
+    <Badge>100</Badge> <Spacer h={.5} />
+    <Badge>2020</Badge>
+  </>
+`}
+/>
+
+<Playground
+  title="类型"
+  desc="以不同的色彩表达不同的状态。"
+  scope={{ Badge, Spacer }}
+  code={`
+  <>
+    <Badge type="success">成功</Badge> <Spacer h={.5} />
+    <Badge type="warning">警告</Badge> <Spacer h={.5} />
+    <Badge type="error">错误</Badge> <Spacer h={.5} />
+    <Badge type="secondary">次要的</Badge>
+  </>
+`}
+/>
+
+<Playground
+  title="Custom color"
+  desc={
+    <>
+      了解更多颜色，请参考{' '}
+      <NextLink href="/zh-cn/guide/colors">
+        <Link color>色彩章节</Link>
+      </NextLink>
+      。
+    </>
+  }
+  scope={{ Badge, Spacer, useTheme }}
+  code={`
+() => {
+  const theme = useTheme()
+  return (
+    <>
+      <Badge style={{ backgroundColor: theme.palette.successLight }}>淡色成功状态</Badge> <Spacer h={.5} />
+      <Badge style={{ backgroundColor: theme.palette.successDark }}>深色成功状态</Badge> <Spacer h={.5} />
+      <Badge style={{ backgroundColor: theme.palette.alert }}>警告</Badge> <Spacer h={.5} />
+      <Badge style={{ backgroundColor: theme.palette.purple }}>紫色</Badge> <Spacer h={.5} />
+      <Badge style={{ backgroundColor: theme.palette.violet }}>紫罗兰</Badge> <Spacer h={.5} />
+      <Badge style={{ backgroundColor: theme.palette.cyanLighter, color: theme.palette.foreground }}>淡青色</Badge> <Spacer h={.5} />
+    </>
+  )
+}
+`}
+/>
+
+<Playground
+  title="锚点"
+  desc="将徽章固定在指定位置。"
+  scope={{ Badge, Avatar, Spacer, Button, Link }}
+  code={`
+<>
+  <Badge.Anchor>
+    <Badge scale={0.5}>10</Badge>
+    <Avatar src="/images/avatar.png" />
+  </Badge.Anchor>
+  <Spacer inline w={2.5} />
+  <Badge.Anchor placement="bottomRight">
+    <Badge scale={0.5} type="success">10</Badge>
+    <Avatar scale={2} isSquare src="/images/avatar.png" />
+  </Badge.Anchor>
+  <Spacer inline w={2.5} />
+  <Badge.Anchor>
+    <Badge scale={0.5} type="warning">99+</Badge>
+    <Button scale={0.5} auto>按钮</Button>
+  </Badge.Anchor>
+  <Spacer inline w={2.5} />
+  <Badge.Anchor>
+    <Badge scale={0.5} type="error" dot />
+    <Link target="_blank" href="https://github.com/geist-org/geist-ui/">组件库</Link>
+  </Badge.Anchor>
+  <Spacer inline w={2.5} />
+  <Badge.Anchor>
+    <Badge type="error" dot padding="5px" />
+    <Link target="_blank" href="https://github.com/geist-org/geist-ui/">分享链接</Link>
+  </Badge.Anchor>
+</>
+`}
+/>
+
+<Attributes edit="/pages/zh-cn/components/badge.mdx">
+<Attributes.Title>Badge.Props</Attributes.Title>
+
+| 属性     | 描述               | 类型             | 推荐值                          | 默认      |
+| -------- | ------------------ | ---------------- | ------------------------------- | --------- |
+| **type** | 徽章的类型         | `BadgeTypes`     | [BadgeTypes](#badgetypes)       | `default` |
+| **dot**  | 忽略内容并显示圆点 | `boolean`        | -                               | `false`   |
+| ...      | 原生属性           | `HTMLAttributes` | `'alt', 'id', 'className', ...` | -         |
+
+<Attributes.Title>Badge.Anchor.Props</Attributes.Title>
+
+| 属性          | 描述           | 类型              | 推荐值                              | 默认       |
+| ------------- | -------------- | ----------------- | ----------------------------------- | ---------- |
+| **placement** | 固定徽章的位置 | `AnchorPlacement` | [AnchorPlacement](#anchorplacement) | `topRight` |
+| ...           | 原生属性       | `HTMLAttributes`  | `'alt', 'id', 'className', ...`     | -          |
+
+<Attributes.Title>BadgeTypes</Attributes.Title>
+
+```ts
+type BadgeTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+```
+
+<Attributes.Title>AnchorPlacement</Attributes.Title>
+
+```ts
+type AnchorPlacement = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'
+```
+
+</Attributes>
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

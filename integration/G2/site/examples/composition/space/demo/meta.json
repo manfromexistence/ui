@@ -1,0 +1,24 @@
+{
+  "title": {
+    "zh": "中文分类",
+    "en": "Category"
+  },
+  "demos": [
+    {
+      "filename": "space-layer.ts",
+      "title": {
+        "zh": "层叠容器",
+        "en": "Space Layer"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*wlGJTKOP2L4AAAAAAAAAAAAADmJ7AQ/original"
+    },
+    {
+      "filename": "space-flex.ts",
+      "title": {
+        "zh": "弹性容器",
+        "en": "Space Flex"
+      },
+      "screenshot": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*Cc53QaoWAQ0AAAAAAAAAAAAADmJ7AQ/original"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+*.svg
+.DS_Store
+.gitignore
+.prettierignore
+.editorconfig
+.eslintignore
+node_modules
+yarn.lock
+yarn-error.log
+npm-debug.log
+lerna-debug.log
+CNAME
+LICENSE
+.cache
+.history
+
+# package output dist
+packages/*/es/**
+packages/*/lib/**
+packages/*/dist/**
+
+# legacy
+legacy/
+
+# website for root cli prettier
+site/dist/
+site/.dumi/tmp/
+site/.dumi/tmp-production/
+site/public/
+site/public_site/
+
+# examples for data
+examples/data/

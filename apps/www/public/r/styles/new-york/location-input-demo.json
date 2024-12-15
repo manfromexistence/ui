@@ -1,0 +1,15 @@
+{
+  "name": "location-input-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "location-input"
+  ],
+  "files": [
+    {
+      "path": "examples/location-input-demo.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { useForm } from \"react-hook-form\"\nimport { toast } from \"sonner\"\nimport * as z from \"zod\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/registry/new-york/ui/button\"\nimport {\n  Form,\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"@/registry/new-york/ui/form\"\nimport LocationInput from \"@/registry/new-york/ui/location-input\"\n\nconst formSchema = z.object({\n  dub: z.tuple([z.string(), z.string().optional()]),\n})\n\nexport default function MyForm() {\n  const [countryName, setCountryName] = useState<string>(\"\")\n  const [stateName, setStateName] = useState<string>(\"\")\n\n  const form = useForm<z.infer<typeof formSchema>>({\n    resolver: zodResolver(formSchema),\n  })\n\n  function onSubmit(values: z.infer<typeof formSchema>) {\n    try {\n      console.log(values)\n      toast(\n        <pre className=\"mt-2 w-[340px] rounded-md bg-slate-950 p-4\">\n          <code className=\"text-white\">{JSON.stringify(values, null, 2)}</code>\n        </pre>\n      )\n    } catch (error) {\n      console.error(\"Form submission error\", error)\n      toast.error(\"Failed to submit the form. Please try again.\")\n    }\n  }\n\n  return (\n    <Form {...form}>\n      <form\n        onSubmit={form.handleSubmit(onSubmit)}\n        className=\"mx-auto max-w-3xl space-y-8 py-10\"\n      >\n        <FormField\n          control={form.control}\n          name=\"dub\"\n          render={({ field }) => (\n            <FormItem>\n              <FormLabel>Select Country</FormLabel>\n              <FormControl>\n                <LocationInput\n                  onCountryChange={(country) => {\n                    setCountryName(country?.name || \"\")\n                    form.setValue(field.name, [\n                      country?.name || \"\",\n                      stateName || \"\",\n                    ])\n                  }}\n                  onStateChange={(state) => {\n                    setStateName(state?.name || \"\")\n                    form.setValue(field.name, [\n                      countryName || \"\",\n                      state?.name || \"\",\n                    ])\n                  }}\n                />\n              </FormControl>\n              <FormDescription>\n                If your country has states, it will be appear after selecting\n                country\n              </FormDescription>\n              <FormMessage />\n            </FormItem>\n          )}\n        />\n        <Button type=\"submit\">Submit</Button>\n      </form>\n    </Form>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

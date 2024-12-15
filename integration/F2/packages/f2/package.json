@@ -1,0 +1,49 @@
+{
+  "name": "@antv/f2",
+  "version": "5.7.3",
+  "description": "Charts for mobile visualization.",
+  "keywords": [
+    "antv",
+    "f2",
+    "chart",
+    "charts",
+    "mobile",
+    "visualization",
+    "data visualization",
+    "canvas",
+    "2d draw",
+    "mobile visualization",
+    "interactive"
+  ],
+  "homepage": "https://f2.antv.vision/",
+  "bugs": {
+    "url": "https://github.com/antvis/f2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antvis/f2"
+  },
+  "license": "MIT",
+  "author": "https://github.com/orgs/antvis/people",
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "unpkg": "dist/index.min.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts",
+  "dependencies": {
+    "@antv/event-emitter": "^0.1.2",
+    "@antv/f-engine": "^1.3.1",
+    "@antv/f-lottie": "^1.0.1",
+    "@antv/util": "^3.0.6",
+    "@babel/runtime": "^7.12.5",
+    "d3-cloud": "~1.2.5",
+    "fecha": "~4.2.0",
+    "gl-matrix": "^3.1.0",
+    "tslib": "^2.3.1",
+    "type-fest": "^3.5.0"
+  },
+  "devDependencies": {
+    "@antv/g-mobile-svg": "~0.10.0"
+  },
+  "miniprogram": "dist"
+}

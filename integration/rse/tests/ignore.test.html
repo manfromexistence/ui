@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style>
+            table {
+                font-family: Consolas, monospace;
+                white-space: pre-wrap;
+                border-collapse: collapse;
+                width: 100%;
+                font-size: small;
+            }
+
+            td,
+            th {
+                width: 200px;
+                max-width: 200px;
+                border: solid 1px gray;
+                vertical-align: top;
+                text-align: left;
+            }
+        </style>
+        <script type="module">
+            window.db = {it: [], results: []};
+            window.it = (...args) => {
+                window.db.it.push(args);
+            };
+            window.expect = (output) => {
+                const result = window.db.results.slice(-1)[0];
+                result.output = output;
+                return {
+                    toEqual: (expected) => {
+                        result.expected = expected;
+                    },
+                };
+            };
+        </script>
+        <script type="module" src="ignore.test.js"></script>
+    </head>
+    <body>
+        <script type="module">
+            const run = () => {
+                const {it, results} = window.db;
+                let totalCount = 0;
+                let correctCount = 0;
+                let markup =
+                    '' +
+                    '<table>' +
+                    '   <tr>' +
+                    '       <th>Input</th>' +
+                    '       <th>Expected output</th>' +
+                    '       <th>Actual Output</th>' +
+                    '   </tr>';
+                for (const args of it) {
+                    const label = args[0];
+                    const closure = args[1];
+                    const result = {label};
+                    results.push(result);
+
+                    closure();
+
+                    const expected = result.expected;
+                    const actual = result.output;
+                    const isCorrect = expected === actual;
+                    correctCount = correctCount + (isCorrect ? 1 : 0);
+                    totalCount++;
+                    const resultStyle = ' style="background:' + (isCorrect ? 'lime' : 'red') + '"';
+
+                    markup += '<tr>';
+                    markup += `<td><b>${label}</b></td>`;
+                    markup += `<td>${expected}</td>`;
+                    markup += `<td${resultStyle}>${actual}</td>`;
+                    markup += '</tr>';
+                }
+                markup += '</table>';
+                markup = `${correctCount}/${totalCount}` + markup;
+                document.body.insertAdjacentHTML('beforeend', markup);
+            };
+            run();
+        </script>
+    </body>
+</html>

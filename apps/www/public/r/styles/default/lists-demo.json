@@ -1,0 +1,15 @@
+{
+  "name": "lists-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "lists"
+  ],
+  "files": [
+    {
+      "path": "examples/lists-demo.tsx",
+      "content": "\"use client\"\n\nimport { useState, type FC } from \"react\"\nimport type { DragEndEvent } from \"@dnd-kit/core\"\n\nimport { exampleFeatures, exampleStatuses } from \"@/lib/content\"\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/default/ui/avatar\"\nimport {\n  ListGroup,\n  ListHeader,\n  ListItem,\n  ListItems,\n  ListProvider,\n} from \"@/registry/default/ui/lists\"\n\nexport default function ListsDemo() {\n  const [features, setFeatures] = useState(exampleFeatures)\n\n  const handleDragEnd = (event: DragEndEvent) => {\n    const { active, over } = event\n\n    if (!over) {\n      return\n    }\n\n    const status = exampleStatuses.find((status) => status.name === over.id)\n\n    if (!status) {\n      return\n    }\n\n    setFeatures(\n      features.map((feature) => {\n        if (feature.id === active.id) {\n          return { ...feature, status }\n        }\n\n        return feature\n      })\n    )\n  }\n\n  return (\n    <ListProvider onDragEnd={handleDragEnd}>\n      {exampleStatuses.map((status) => (\n        <ListGroup key={status.name} id={status.name}>\n          <ListHeader name={status.name} color={status.color} />\n          <ListItems>\n            {features\n              .filter((feature) => feature.status.name === status.name)\n              .map((feature, index) => (\n                <ListItem\n                  key={feature.id}\n                  id={feature.id}\n                  name={feature.name}\n                  parent={feature.status.name}\n                  index={index}\n                >\n                  <div\n                    className=\"h-2 w-2 shrink-0 rounded-full\"\n                    style={{ backgroundColor: feature.status.color }}\n                  />\n                  <p className=\"m-0 flex-1 text-sm font-medium\">\n                    {feature.name}\n                  </p>\n                  {feature.owner && (\n                    <Avatar className=\"h-4 w-4 shrink-0\">\n                      <AvatarImage src={feature.owner.image} />\n                      <AvatarFallback>\n                        {feature.owner.name?.slice(0, 2)}\n                      </AvatarFallback>\n                    </Avatar>\n                  )}\n                </ListItem>\n              ))}\n          </ListItems>\n        </ListGroup>\n      ))}\n    </ListProvider>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "demos": [
+    {
+      "filename": "inheritance.js",
+      "title": {
+        "zh": "属性继承",
+        "en": "Inheritance"
+      }
+    },
+    {
+      "filename": "color.js",
+      "title": {
+        "zh": "<color>",
+        "en": "<color>"
+      }
+    },
+    {
+      "filename": "paint.js",
+      "title": {
+        "zh": "<paint>",
+        "en": "<paint>"
+      }
+    },
+    {
+      "filename": "length.js",
+      "title": {
+        "zh": "<length>",
+        "en": "<length>"
+      }
+    },
+    {
+      "filename": "custom-property.js",
+      "title": {
+        "zh": "自定义属性",
+        "en": "Use custom property"
+      }
+    }
+  ]
+}

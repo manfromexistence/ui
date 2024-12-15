@@ -1,0 +1,46 @@
+{
+  "name": "@antv/l7-three",
+  "version": "2.22.3",
+  "description": "Three for L7 ",
+  "keywords": [
+    "3D",
+    "L7",
+    "three"
+  ],
+  "homepage": "https://github.com/antvis/L7#readme",
+  "bugs": {
+    "url": "https://github.com/antvis/L7/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antvis/L7.git"
+  },
+  "license": "MIT",
+  "author": "https://github.com/orgs/antvis/people",
+  "main": "lib/index.js",
+  "unpkg": "dist/l7-three.min.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts",
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "!dist/report.html"
+  ],
+  "scripts": {
+    "dev": "father dev",
+    "build": "npm run clean && father build",
+    "check-deps": "father doctor",
+    "lint": "eslint src",
+    "clean": "rimraf dist es lib"
+  },
+  "dependencies": {
+    "@antv/l7": "workspace:*",
+    "@babel/runtime": "^7.7.7",
+    "three": "0.115.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}

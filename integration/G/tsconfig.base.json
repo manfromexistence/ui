@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+
+    "rootDir": "${configDir}/src",
+    "outDir": "${configDir}/dist",
+
+    "jsx": "react",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "pretty": true,
+    "lib": ["dom", "esnext"],
+    "resolveJsonModule": true,
+    "downlevelIteration": true,
+    "importHelpers": true,
+
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "${configDir}/types",
+    // "emitDeclarationOnly": true,
+
+    "sourceMap": true,
+    "removeComments": false,
+
+    "typeRoots": ["node_modules/@types"],
+    "skipLibCheck": true
+  },
+  "include": ["${configDir}/src/**/*"],
+  "exclude": []
+}

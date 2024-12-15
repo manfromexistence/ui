@@ -1,0 +1,14 @@
+node_modules
+dist
+lib
+module
+*.log
+*.tgz
+
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

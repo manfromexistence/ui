@@ -1,0 +1,5 @@
+{
+  "extends": "../tsconfig.json",
+  "include": [".dumirc.ts", "**/*"],
+  "exclude": ["public_site", "public", "node_modules"]
+}
