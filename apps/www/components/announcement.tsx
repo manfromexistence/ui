@@ -8,7 +8,7 @@ export function Announcement() {
       className="group mb-2 inline-flex items-center px-0.5 text-sm font-medium"
     >
       <span className="underline-offset-4 group-hover:underline">
-        New sidebar component
+        New components
       </span>
       <ArrowRight className="ml-1 h-4 w-4" />
     </Link>
