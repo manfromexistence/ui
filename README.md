@@ -1,12 +1,12 @@
 # manfromexistence/ui
 
-Accessible and customizable components that you can copy and paste into your apps. Free. Open Source. **Use this to build your own component library**.
+A thoughtfully designed and meticulously crafted UI library empowering developers to build exceptional user experiences.
 
-![hero](apps/www/public/og.jpg)
+![hero](ui.png)
 
 ## Documentation
 
-Visit http://manfromexistence-ui.vercel.app/docs to view the documentation.
+Visit https://manfromexistence-ui.vercel.app/docs to view the documentation.
 
 ## Contributing
 
