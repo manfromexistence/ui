@@ -1,1 +1,0 @@
-The string dark and compact in algorithm

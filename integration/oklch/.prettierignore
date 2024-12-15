@@ -1,5 +1,0 @@
-*.yml
-*.yaml
-.husky
-.github
-node_modules

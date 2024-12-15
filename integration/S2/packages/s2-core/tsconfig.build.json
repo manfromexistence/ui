@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "include": ["src/**/*", "./typings.d.ts", "../../global.d.ts"],
-  "compilerOptions": {
-    "paths": {
-      "@antv/s2": ["s2-core/src/index.ts"]
-    }
-  }
-}

@@ -1,9 +1,0 @@
-# Node
-node_modules/
-
-# Build
-dist
-lib
-esm
-
-

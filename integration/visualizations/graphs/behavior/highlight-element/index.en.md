@@ -1,3 +1,0 @@
----
-title: Highlight Element
----
