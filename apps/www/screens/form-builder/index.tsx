@@ -130,40 +130,44 @@ export default function FormBuilder() {
       <If
         condition={formFields.length > 0}
         render={() => (
-          <ResizablePanelGroup
-            direction="horizontal"
-            className="min-h-[99vh] w-full"
-          >
-            <ResizablePanel defaultSize={17.5}>
-              <div className="h-full">
-                <FieldSelectorWithSeparator
-                  addFormField={(variant: string, index: number = 0) =>
-                    addFormField(variant, index)
-                  }
-                />
-              </div>
-            </ResizablePanel>
-            <ResizableHandle />
-            <ResizablePanel defaultSize={37.5}>
-              <div className="flex h-full p-4">
-                <FormFieldList
-                  formFields={formFields}
-                  setFormFields={setFormFields}
-                  updateFormField={updateFormField}
-                  openEditDialog={openEditDialog}
-                />
-              </div>
-            </ResizablePanel>
-            <ResizableHandle />
-            <ResizablePanel defaultSize={45}>
-              <div className="flex h-full items-center p-4">
-                <div className="col-span-1 h-full w-full space-y-3">
-                  {/* <SpecialComponentsNotice formFields={formFields} /> */}
-                  <FormPreview formFields={formFields} />
-                </div>
-              </div>
-            </ResizablePanel>
-          </ResizablePanelGroup>
+          <div className="container-wrapper h-full w-full">
+            <div className="container">
+              <ResizablePanelGroup
+                direction="horizontal"
+                className="min-h-[99vh] w-full"
+              >
+                <ResizablePanel defaultSize={30}>
+                  <div className="h-full">
+                    <FieldSelectorWithSeparator
+                      addFormField={(variant: string, index: number = 0) =>
+                        addFormField(variant, index)
+                      }
+                    />
+                  </div>
+                </ResizablePanel>
+                <ResizableHandle />
+                <ResizablePanel defaultSize={25}>
+                  <div className="flex h-full p-4">
+                    <FormFieldList
+                      formFields={formFields}
+                      setFormFields={setFormFields}
+                      updateFormField={updateFormField}
+                      openEditDialog={openEditDialog}
+                    />
+                  </div>
+                </ResizablePanel>
+                <ResizableHandle />
+                <ResizablePanel defaultSize={45}>
+                  <div className="flex h-full items-center p-4">
+                    <div className="col-span-1 h-full w-full space-y-3">
+                      {/* <SpecialComponentsNotice formFields={formFields} /> */}
+                      <FormPreview formFields={formFields} />
+                    </div>
+                  </div>
+                </ResizablePanel>
+              </ResizablePanelGroup>
+            </div>
+          </div>
         )}
         otherwise={() => (
           <div className="flex w-full flex-col">
