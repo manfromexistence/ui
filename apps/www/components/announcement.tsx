@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react"
 export function Announcement() {
   return (
     <Link
-      href="/docs/components/sidebar"
+      href="/docs/components/dock"
       className="group mb-2 inline-flex items-center px-0.5 text-sm font-medium"
     >
       <span className="underline-offset-4 group-hover:underline">

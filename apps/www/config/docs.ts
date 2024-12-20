@@ -181,11 +181,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/separators",
           items: [],
         },
-        {
-          title: "Cards",
-          href: "/docs/components/cards",
-          items: [],
-        },
+        // {
+        //   title: "Cards",
+        //   href: "/docs/components/cards",
+        //   items: [],
+        // },
         {
           title: "Bento",
           href: "/docs/components/bento",
@@ -201,12 +201,12 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/buttons",
           items: [],
         },
-        {
-          title: "Sintature Input",
-          href: "/docs/components/signature-input",
-          items: [],
-          label: "new",
-        },
+        // {
+        //   title: "Sintature Input",
+        //   href: "/docs/components/signature-input",
+        //   items: [],
+        //   label: "new",
+        // },
         {
           title: "Tooltip",
           href: "/docs/components/tooltip",
