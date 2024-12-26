@@ -1,0 +1,133 @@
+import { ButtonDropdown, Spacer } from 'components'
+import { Layout, Attributes, Playground } from 'lib/components'
+import Plus from '@geist-ui/icons/plus'
+
+export const meta = {
+  title: '下拉按钮 Btn Dropdown',
+  group: '导航',
+  index: 105,
+}
+
+## Button Dropdown / 下拉按钮
+
+显示相关的操作。
+
+<Playground
+  scope={{ ButtonDropdown }}
+  code={`
+<ButtonDropdown>
+  <ButtonDropdown.Item main>默认按钮</ButtonDropdown.Item>
+  <ButtonDropdown.Item>次要的按钮</ButtonDropdown.Item>
+  <ButtonDropdown.Item>第三个按钮</ButtonDropdown.Item>
+</ButtonDropdown>
+`}
+/>
+
+<Playground
+  title="禁用"
+  desc="禁用所有的按钮。"
+  scope={{ ButtonDropdown }}
+  code={`
+<ButtonDropdown disabled>
+  <ButtonDropdown.Item main>默认动作</ButtonDropdown.Item>
+  <ButtonDropdown.Item>Secondary Action</ButtonDropdown.Item>
+  <ButtonDropdown.Item>Tertiary Action</ButtonDropdown.Item>
+</ButtonDropdown>
+`}
+/>
+
+<Playground
+  title="加载中"
+  desc="显示一个友好的加载指示器。"
+  scope={{ ButtonDropdown }}
+  code={`
+<ButtonDropdown loading>
+  <ButtonDropdown.Item main>Default Action</ButtonDropdown.Item>
+  <ButtonDropdown.Item>Secondary Action</ButtonDropdown.Item>
+  <ButtonDropdown.Item>Tertiary Action</ButtonDropdown.Item>
+</ButtonDropdown>
+`}
+/>
+
+<Playground
+  title="类型"
+  scope={{ ButtonDropdown, Spacer }}
+  code={`
+<>
+  <ButtonDropdown type="secondary" scale={0.5}>
+    <ButtonDropdown.Item main>次要的</ButtonDropdown.Item>
+  </ButtonDropdown>
+  <Spacer h={.5} />
+  <ButtonDropdown type="success" scale={0.5}>
+    <ButtonDropdown.Item main>成功</ButtonDropdown.Item>
+  </ButtonDropdown>
+  <Spacer h={.5} />
+  <ButtonDropdown type="warning" scale={0.5}>
+    <ButtonDropdown.Item main>警告</ButtonDropdown.Item>
+  </ButtonDropdown>
+  <Spacer h={.5} />
+  <ButtonDropdown type="error" scale={0.5}>
+    <ButtonDropdown.Item main>错误</ButtonDropdown.Item>
+  </ButtonDropdown>
+</>
+`}
+/>
+
+<Playground
+  title="多类型"
+  desc="为每个按钮设定不同的类型。"
+  scope={{ ButtonDropdown }}
+  code={`
+<ButtonDropdown auto scale={2/3}>
+  <ButtonDropdown.Item main>访问账户</ButtonDropdown.Item>
+  <ButtonDropdown.Item>屏蔽账户</ButtonDropdown.Item>
+  <ButtonDropdown.Item>锁定账户</ButtonDropdown.Item>
+  <ButtonDropdown.Item type="error">移除账户</ButtonDropdown.Item>
+</ButtonDropdown>
+`}
+/>
+
+<Playground
+  title="自定义右侧图标"
+  desc="右侧图标的色彩和大小将会被自动设置。"
+  scope={{ ButtonDropdown, Plus }}
+  code={`
+<ButtonDropdown scale={2/3} auto icon={<Plus />}>
+  <ButtonDropdown.Item main>访问账户</ButtonDropdown.Item>
+  <ButtonDropdown.Item>屏蔽账户</ButtonDropdown.Item>
+  <ButtonDropdown.Item>锁定账户</ButtonDropdown.Item>
+  <ButtonDropdown.Item type="error">移除账户</ButtonDropdown.Item>
+</ButtonDropdown>
+`}
+/>
+
+<Attributes edit="/pages/zh-cn/components/button-dropdown.mdx">
+<Attributes.Title>ButtonDropdown.Props</Attributes.Title>
+
+| 属性         | 描述               | 类型                  | 推荐值                                      | 默认                   |
+| ------------ | ------------------ | --------------------- | ------------------------------------------- | ------------------ |
+| **type**     | 按钮类型           | `ButtonDropdownTypes` | [ButtonDropdownTypes](#buttondropdowntypes) | `default`            |
+| **loading**  | 显示加载中的指示器  | `boolean`             | -                                           | `false`               |
+| **auto**     | 自动缩放宽度       | `boolean`             | -                                           | `false`               |
+| **disabled** | 禁用所有按钮       | `boolean`             | -                                           | `false`               |
+| **icon**     | 右侧图标           | `ReactNode`           | -                                           | `ButtonDropdownIcon` |
+| ...          | 原生属性           | `HTMLAttributes`      | `'autoFocus', 'name', ...`                  | -                    |
+
+<Attributes.Title>ButtonDropdown.Item.Props</Attributes.Title>
+
+| 属性        | 描述             | 类型                   | 推荐值                                      | 默认      |
+| ----------- | ---------------- | ---------------------- | ------------------------------------------- | --------- |
+| **type**    | 当前单个按钮类型 | `ButtonDropdownTypes`  | [ButtonDropdownTypes](#buttondropdowntypes) | `default` |
+| **main**    | 是否为主要按钮   | `boolean`              | -                                           | `false`   |
+| **onClick** | 按钮的点击事件   | `MouseEventHandler`    | -                                           | -         |
+| ...         | 原生属性         | `ButtonHTMLAttributes` | `'id', 'name', ...`                         | -         |
+
+<Attributes.Title>ButtonDropdownTypes</Attributes.Title>
+
+```ts
+type ButtonDropdownTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+```
+
+</Attributes>
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

@@ -1,0 +1,60 @@
+import { Layout, Playground, Attributes } from 'lib/components'
+import { Keyboard } from 'components'
+
+export const meta = {
+  title: '键盘 keyboard',
+  group: '数据展示',
+}
+
+## Keyboard / 键盘
+
+显示用于键盘输入的按键字符。
+
+组件 `Keyboard` 只用于展示布局样式，如需绑定按键事件，请阅读 [useKeyboard](/zh-cn/hooks/use-keyboard)。
+
+<Playground
+  scope={{ Keyboard }}
+  code={`
+<Keyboard>f</Keyboard>
+`}
+/>
+
+<Playground
+  title="修饰符"
+  scope={{ Keyboard }}
+  code={`
+<div>
+  <Keyboard command mr="10px" />
+  <Keyboard shift mr="10px" />
+  <Keyboard option mr="10px" />
+  <Keyboard ctrl mr="10px" />
+</div>
+`}
+/>
+
+<Playground
+  title="组合键"
+  scope={{ Keyboard }}
+  code={`
+<div>
+  <Keyboard command mr="10px">f</Keyboard>
+  <Keyboard shift mr="10px">e</Keyboard>
+  <Keyboard option ctrl mr="10px">b</Keyboard>
+</div>
+`}
+/>
+
+<Attributes edit="/pages/zh-cn/components/keyboard.mdx">
+<Attributes.Title>Keyboard.Props</Attributes.Title>
+
+| 属性        | 描述              | 类型                   | 推荐值                        | 默认    |
+| ----------- | ----------------- | ---------------------- | ----------------------------- | ------- |
+| **command** | 显示 Command 按钮 | `boolean`              | -                             | `false` |
+| **shift**   | 显示 Shift 按钮   | `boolean`              | -                             | `false` |
+| **option**  | 显示 Option 按钮  | `boolean`              | -                             | `false` |
+| **ctrl**    | 显示 Control 按钮 | `boolean`              | -                             | `false` |
+| ...         | 原生属性          | `KeygenHTMLAttributes` | `'keyType', 'className', ...` | -       |
+
+</Attributes>
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

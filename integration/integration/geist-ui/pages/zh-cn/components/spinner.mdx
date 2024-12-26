@@ -1,0 +1,31 @@
+import { Layout, Playground, Attributes } from 'lib/components'
+import { Spinner } from 'components'
+
+export const meta = {
+  title: '指示器 Spinner',
+  group: '反馈',
+}
+
+## Spinner / 指示器
+
+表示一个动作正在进行中。
+
+作为加载指示器，可以参阅类似组件 [Loading](/zh-cn/components/loading).
+
+<Playground
+  scope={{ Spinner }}
+  code={`
+<Spinner />
+`}
+/>
+
+<Attributes edit="/pages/zh-cn/components/spinner.mdx">
+<Attributes.Title>Spinner.Props</Attributes.Title>
+
+| 属性 | 描述     | 类型             | 推荐值                   | 默认 |
+| ---- | -------- | ---------------- | ------------------------ | ---- |
+| ...  | 原生属性 | `HTMLAttributes` | `'id', 'className', ...` | -    |
+
+</Attributes>
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

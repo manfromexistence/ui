@@ -1,0 +1,41 @@
+import Layout from 'lib/components/layout'
+import { Note } from 'components'
+
+export const meta = {
+  title: 'Introduction',
+  group: 'Getting Started',
+  index: 5,
+}
+
+## Introduction
+
+### About
+
+**Geist UI** is an elegant and beautiful React component library with Geek style,
+originating from [Vercel](https://vercel.com?utm_source=geist-ui&utm_campaign=oss) design system.
+
+With Geist's unique advantages in text layout, optimization of light and dark lines, and scale components,
+you can easily create clean and powerful personal sites, or quickly build modern web applications based on highly customizable design system.
+
+Get start on Geist with the [guide](/en-us/guide/installation),
+or view full [project examples](https://github.com/geist-org/geist-ui/tree/master/examples).
+
+<Note label="" type="warning">
+  <b>This is a COMMUNITY PROJECT, not associated with Vercel.</b>
+</Note>
+
+### Contact
+
+- [Report an issue](https://github.com/geist-org/geist-ui/issues/new)
+- [Chat on GitHub Discussions](https://github.com/geist-org/geist-ui/discussions)
+- Share your work on the [Slack](https://github.com/geist-org/geist-ui/discussions/572) channel
+- We welcome feedback and ideas. We also love PRs
+
+### Open Source
+
+- [Release Notes](https://github.com/geist-org/geist-ui/releases)
+- [Contribution Guide](https://github.com/geist-org/geist-ui/blob/master/.github/CONTRIBUTING.md)
+- [Code of Conduct](https://github.com/geist-org/geist-ui/blob/master/.github/CODE_OF_CONDUCT.md)
+- License: [MIT LICENSE](https://github.com/geist-org/geist-ui/blob/master/LICENSE)
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

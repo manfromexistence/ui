@@ -1,0 +1,19 @@
+{
+  "name": "custom-styles",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "dependencies": {
+    "@geist-ui/core": "latest",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.32",
+    "@types/react-dom": "^16.9.6",
+    "react-scripts": "^3.4.1"
+  }
+}

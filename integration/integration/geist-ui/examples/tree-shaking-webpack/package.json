@@ -1,0 +1,28 @@
+{
+  "name": "tree-shaking-webpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "build": "webpack --config ./webpack.config.js --mode production",
+    "analyze": "source-map-explorer 'dist/*.js' --gzip"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "html-webpack-plugin": "^5.5.0",
+    "source-map-explorer": "^2.5.2",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "dependencies": {
+    "@geist-ui/core": "^2.3.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

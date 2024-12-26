@@ -1,0 +1,34 @@
+---
+title: Setup
+description: How to install and set up Roadmap UI in your project
+---
+
+## Prerequisites
+
+Before installing Roadmap UI, make sure you have the following prerequisites:
+
+- [Node.js](https://nodejs.org/en/download/), version 18 or later
+- A [React](https://reactjs.org/docs/getting-started.html) project, version 18 or later
+- [shadcn/ui](https://ui.shadcn.com/) installed in your project (CSS Variables only)
+
+## Installation
+
+You can install Roadmap UI components using the `roadmap-ui` CLI, for example:
+
+```sh title="Terminal"
+npx roadmap-ui add gantt
+```
+
+Alternatively, you can use the `shadcn` CLI and target the component JSON file, like so:
+
+```sh title="Terminal"
+npx shadcn@latest add https://www.roadmap-ui.com/gantt.json
+```
+
+This will install the Roadmap UI components into your project at `@/components/roadmap-ui` (or the relevant folder you specified in the `components.json` file).
+
+## Usage
+
+After installing a Roadmap UI component, you can start using it in your React application.
+
+For example, check out the [Gantt Chart](/gantt) component.

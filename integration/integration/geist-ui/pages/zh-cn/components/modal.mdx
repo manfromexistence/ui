@@ -1,0 +1,214 @@
+import { Layout, Playground, Attributes } from 'lib/components'
+import { Modal, Button, Code, useModal } from 'components'
+import { useState } from 'react'
+
+export const meta = {
+  title: '对话框 Modal',
+  group: '反馈',
+}
+
+## Modal / 对话框
+
+弹出显示需要额外注意或重要的内容。如果你仅需要提示文本信息，请考虑 [Toast](/zh-cn/components/toast) 组件。
+
+对话框组件包含额外的 Hooks，详情请参阅 [useModal](/zh-cn/hooks/use-modal) 小节。
+
+<Playground
+  desc="使用 `visible` 属性控制何时显示对话框。"
+  scope={{ Modal, Button, useState, Code }}
+  code={`
+() => {
+  const [state, setState] = useState(false)
+  const handler = () => setState(true)
+  const closeHandler = (event) => {
+    setState(false)
+    console.log('closed')
+  }
+  return (
+    <div>
+      <Button auto onClick={handler}>显示对话框</Button>
+      <Modal visible={state} onClose={closeHandler}>
+        <Modal.Title>箭头函数</Modal.Title>
+        <Modal.Subtitle>它不能用作构造函数</Modal.Subtitle>
+        <Modal.Content>
+          <p> <Code>yield</Code> 关键字通常不能在箭头函数中使用（除非是嵌套在允许使用的函数内）。因此，箭头函数不能用作函数生成器。</p>
+        </Modal.Content>
+        <Modal.Action passive onClick={({ close }) => close()}>放弃使用</Modal.Action>
+        <Modal.Action onClick={({ close }) => close()}>明白了</Modal.Action>
+      </Modal>
+    </div>
+  )
+}
+`}
+/>
+
+<Playground
+  title="无按钮"
+  desc="隐藏指定的按钮。"
+  scope={{ Modal, Button, useState, Code }}
+  code={`
+() => {
+  const [state, setState] = useState(false)
+  const handler = () => setState(true)
+  const closeHandler = (event) => {
+    setState(false)
+    console.log('closed')
+  }
+  return (
+    <div>
+      <Button auto onClick={handler}>显示对话框</Button>
+      <Modal visible={state} onClose={closeHandler}>
+        <Modal.Title>箭头函数</Modal.Title>
+        <Modal.Subtitle>它不能用作构造函数</Modal.Subtitle>
+        <Modal.Content>
+          <p> <Code>yield</Code> 关键字通常不能在箭头函数中使用（除非是嵌套在允许使用的函数内）。因此，箭头函数不能用作函数生成器。</p>
+        </Modal.Content>
+      </Modal>
+    </div>
+  )
+}
+`}
+/>
+
+<Playground
+  title="禁用按钮"
+  desc="禁用指定的按钮。"
+  scope={{ Modal, Button, useState, Code }}
+  code={`
+() => {
+  const [state, setState] = useState(false)
+  const handler = () => setState(true)
+  const closeHandler = (event) => {
+    setState(false)
+    console.log('closed')
+  }
+  return (
+    <>
+      <Button auto onClick={handler}>Show Modal</Button>
+      <Modal visible={state} onClose={closeHandler}>
+        <Modal.Title>箭头函数</Modal.Title>
+        <Modal.Subtitle>它不能用作构造函数</Modal.Subtitle>
+        <Modal.Content>
+          <p> <Code>yield</Code> 关键字通常不能在箭头函数中使用（除非是嵌套在允许使用的函数内）。因此，箭头函数不能用作函数生成器。</p>
+        </Modal.Content>
+        <Modal.Action passive onClick={({ close }) => close()}>继续学习</Modal.Action>
+        <Modal.Action disabled onClick={close => close()}>尝试箭头函数</Modal.Action>
+      </Modal>
+    </>
+  )
+}
+`}
+/>
+
+<Playground
+  title="定制化"
+  desc="自定义 `width` 或是 `className`。"
+  scope={{ Modal, Button, useModal }}
+  code={`
+() => {
+  const { setVisible, bindings } = useModal()
+  return (
+    <div>
+      <Button auto onClick={() => setVisible(true)}>Show Modal</Button>
+      <Modal width="35rem" {...bindings}>
+        <Modal.Title>我的最爱</Modal.Title>
+        <Modal.Content>
+          <p>酷，这才是我想要的宽度。</p>
+        </Modal.Content>
+      </Modal>
+    </div>
+  )
+}
+`}
+/>
+
+<Playground
+  title="加载中"
+  scope={{ Modal, Button, useModal, Code }}
+  code={`
+() => {
+  const { visible, setVisible, bindings } = useModal()
+  return (
+    <>
+      <Button auto onClick={() => setVisible(true)}>Show Modal</Button>
+      <Modal {...bindings}>
+        <Modal.Title>箭头函数</Modal.Title>
+        <Modal.Subtitle>它不能用作构造函数</Modal.Subtitle>
+        <Modal.Content>
+          <p> <Code>yield</Code> 关键字通常不能在箭头函数中使用（除非是嵌套在允许使用的函数内）。因此，箭头函数不能用作函数生成器。</p>
+        </Modal.Content>
+        <Modal.Action passive onClick={() => setVisible(false)}>取消</Modal.Action>
+        <Modal.Action loading>提交</Modal.Action>
+      </Modal>
+    </>
+  )
+}
+`}
+/>
+
+<Attributes edit="/pages/zh-cn/components/modal.mdx">
+<Attributes.Title>Modal.Props</Attributes.Title>
+
+| 属性                     | 描述                       | 类型                      | 推荐值                                  | 默认    |
+| ------------------------ | -------------------------- | ------------------------- | --------------------------------------- | ------- |
+| **visible**              | 打开或关闭对话框           | `boolean`                 | -                                       | `false` |
+| **onClose**              | 关闭的事件                 | `() => void`              | -                                       | -       |
+| **onContentClick**       | 对话框内部点击事件         | `(e: MouseEvent) => void` | -                                       | -       |
+| **wrapClassName**        | 对话框的自定义样式类名     | `string`                  | -                                       | -       |
+| **keyboard**             | 按下 Esc 键关闭对话框      | `boolean`                 | -                                       | `true`  |
+| **disableBackdropClick** | 点击背景层时是否关闭对话框 | `boolean`                 | -                                       | `false` |
+| ...                      | 原生属性                   | `HTMLAttributes`          | `'autoFocus', 'name', 'className', ...` | -       |
+
+<Attributes.Title>Modal.Title.Props</Attributes.Title>
+
+| 属性 | 描述     | 类型             | 推荐值                   | 默认 |
+| ---- | -------- | ---------------- | ------------------------ | ---- |
+| ...  | 原生属性 | `HTMLAttributes` | `'id', 'className', ...` | -    |
+
+<Attributes.Title>Modal.Subtitle.Props</Attributes.Title>
+
+| 属性 | 描述     | 类型             | 推荐值                   | 默认 |
+| ---- | -------- | ---------------- | ------------------------ | ---- |
+| ...  | 原生属性 | `HTMLAttributes` | `'id', 'className', ...` | -    |
+
+<Attributes.Title>Modal.Content.Props</Attributes.Title>
+
+| 属性 | 描述     | 类型             | 推荐值                   | 默认 |
+| ---- | -------- | ---------------- | ------------------------ | ---- |
+| ...  | 原生属性 | `HTMLAttributes` | `'id', 'className', ...` | -    |
+
+<Attributes.Title>Modal.Action.Props</Attributes.Title>
+
+| 属性         | 描述                 | 类型                                                   | 推荐值                   | 默认    |
+| ------------ | -------------------- | ------------------------------------------------------ | ------------------------ | ------- |
+| **passive**  | 以消极的状态显示按钮 | `boolean`                                              | -                        | `false` |
+| **disabled** | 禁用按钮             | `boolean`                                              | -                        | `false` |
+| **onClick**  | 按钮的点击事件       | [(event: ModalActionEvent) => void](#modalactionevent) | -                        | -       |
+| **loading**  | 显示加载状态指示器   | `boolean`                                              | -                        | `false` |
+| ...          | 原生属性             | `ButtonHTMLAttributes`                                 | `'id', 'className', ...` | -       |
+
+<Attributes.Title>useModal</Attributes.Title>
+
+```ts
+type useModal = (initialVisible: boolean) => {
+  visible: boolean
+  setVisible: Dispatch<SetStateAction<boolean>>
+  currentRef: MutableRefObject<boolean>
+  bindings: {
+    visible: boolean
+    onClose: () => void
+  }
+}
+```
+
+<Attributes.Title>ModalActionEvent</Attributes.Title>
+
+```ts
+type ModalActionEvent = MouseEvent<HTMLButtonElement> & {
+  close: () => void
+}
+```
+
+</Attributes>
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

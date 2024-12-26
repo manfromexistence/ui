@@ -1,0 +1,26 @@
+{
+  "name": "@bubble-dev/eslint-config",
+  "version": "3.1.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "repository": "bubble-dev/_",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.13.0"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-react": "^7.23.2"
+  },
+  "fixdeps": {
+    "ignoredPackages": [
+      "@typescript-eslint/eslint-plugin",
+      "@typescript-eslint/parser",
+      "eslint-plugin-import",
+      "eslint-plugin-react"
+    ]
+  }
+}

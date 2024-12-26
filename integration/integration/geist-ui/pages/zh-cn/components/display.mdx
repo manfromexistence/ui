@@ -1,0 +1,78 @@
+import { Layout, Playground, Attributes } from 'lib/components'
+import { Display, Code, Snippet, Image } from 'components'
+
+export const meta = {
+  title: '陈列框 Display',
+  group: '数据展示',
+}
+
+## Display / 陈列框
+
+以居中对齐的方式展示重要的信息或图像。
+
+<Playground
+  desc="为一张图片添加描述文本。"
+  scope={{ Display, Image }}
+  code={`
+  <Display shadow caption="用于构建现代应用的开源设计系统。">
+    <Image width="435px" height="200px" src="/images/geist-banner.png" />
+  </Display>
+`}
+/>
+
+<Playground
+  title="与代码组件组合"
+  desc="展示多行的代码块。"
+  scope={{ Display, Code }}
+  code={`
+() => {
+  const codes = \`{
+  "build": {
+    "env": {
+      "VARIABLE_NAME": "@secret-name"
+    }
+  }
+}\`
+  return (
+    <Display width="500px" caption="为应用程序的构建定义环境变量。">
+      <Code block>{codes}</Code>
+    </Display>
+  )
+}
+`}
+/>
+
+<Playground
+  title="与片段组件组合"
+  desc="展示 Shell 代码片段。"
+  scope={{ Display, Snippet }}
+  code={`
+<Display width="500px" caption="运行此命令以下载库。">
+  <Snippet type="dark">yarn add @geist-ui/core</Snippet>
+</Display>
+`}
+/>
+
+<Playground
+  title="组件标题"
+  desc="在 `caption` 属性上使用组件表达更丰富的信息。"
+  scope={{ Display, Code, Image }}
+  code={`
+  <Display shadow caption={<p>访问地址 <Code>geist-ui.dev</Code> 获取更多的文档信息。</p>}>
+    <Image width="650px" height="297px" src="/images/geist-banner.png" />
+  </Display>
+`}
+/>
+
+<Attributes edit="/pages/zh-cn/components/display.mdx">
+<Attributes.Title>Display.Props</Attributes.Title>
+
+| 属性        | 描述                          | 类型                   | 推荐值 | 默认    |
+| ----------- | ----------------------------- | ---------------------- | ------ | ------- |
+| **caption** | description for display block | `ReactNode` / `string` | -      | -       |
+| **shadow**  | show shadow                   | `boolean`              | -      | `false` |
+| ...         | 原生属性                      | `HTMLAttributes`       | -      | -       |
+
+</Attributes>
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

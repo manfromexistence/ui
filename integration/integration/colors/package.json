@@ -1,0 +1,105 @@
+{
+  "private": true,
+  "description": "_",
+  "workspaces": [
+    "packages/bubble-dev/*",
+    "packages/colorido",
+    "packages/elegir",
+    "packages/fantasy-color/*",
+    "packages/lada/*",
+    "packages/math-playground",
+    "packages/msked",
+    "packages/primitives/*",
+    "packages/sandbox/*",
+    "packages/stili",
+    "packages/themeables/*"
+  ],
+  "devDependencies": {
+    "@bubble-dev/eslint-config": "*",
+    "@bubble-dev/start-preset": "*",
+    "@bubble-dev/typescript-config": "*",
+    "@revert/color": "^0.1.1",
+    "@revert/sandbox": "^0.3.4",
+    "@start/plugin": "^2.0.0",
+    "@types/node": "^14.14.41",
+    "colorido": "*",
+    "core-js": "^3.11.0",
+    "eslint": "^7.25.0",
+    "foreal": "^0.2.0",
+    "react": "17.0.1",
+    "react-native": "0.64.0",
+    "tsfn": "^2.0.0",
+    "typescript": "^4.2.4"
+  },
+  "scripts": {
+    "start": "packages/bubble-dev/start-preset/src/cli/index.js",
+    "postinstall": "perl -pi -e \"s/'React'/'React-Core'/g\" ./node_modules/react-native-svg/RNSVG.podspec ./node_modules/lottie-react-native/lottie-react-native.podspec ./node_modules/react-native-view-shot/react-native-view-shot.podspec"
+  },
+  "start": {
+    "file": "tasks/",
+    "auto": {
+      "shouldMakeGitTags": true,
+      "shouldWriteChangelogFiles": true
+    }
+  },
+  "auto": {
+    "bump": {
+      "initialType": "minor",
+      "zeroBreakingChangeType": "minor"
+    },
+    "npm": {
+      "publishSubDirectory": "build",
+      "access": "public"
+    },
+    "prefixes": {
+      "major": "💥",
+      "minor": "🌱",
+      "patch": "🐞",
+      "publish": "📦",
+      "dependencies": "♻️",
+      "initial": "🐣",
+      "lint": "🚷",
+      "test": "👾",
+      "docs": "📝",
+      "refactor": "🛠",
+      "wip": "🚧",
+      "screenshots": "📸"
+    },
+    "commit": {
+      "major": "Breaking Change",
+      "minor": "New feature",
+      "patch": "Bugfix",
+      "initial": "Initial",
+      "depepdencies": "Dependencies",
+      "lint": "Lint",
+      "test": "Test",
+      "docs": "Docs",
+      "refactor": "Refactor",
+      "wip": "WIP",
+      "screenshots": "Snapshots / Screenshots"
+    }
+  },
+  "eslintConfig": {
+    "extends": "@bubble-dev/eslint-config"
+  },
+  "eslintIgnore": [
+    "build/",
+    "coverage/",
+    "node_modules/"
+  ],
+  "renovate": {
+    "commitMessagePrefix": "♻️",
+    "commitMessageAction": "update",
+    "commitMessageTopic": "{{depName}}",
+    "ignoreDeps": [
+      "gradle",
+      "metro-react-native-babel-preset",
+      "react",
+      "react-dom",
+      "react-test-renderer"
+    ]
+  },
+  "engines": {
+    "node": ">=10.13.0"
+  }
+}

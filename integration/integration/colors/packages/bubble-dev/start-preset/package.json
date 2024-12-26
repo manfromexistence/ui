@@ -1,0 +1,97 @@
+{
+  "name": "@bubble-dev/start-preset",
+  "version": "9.0.0",
+  "description": "",
+  "keywords": [],
+  "bin": {
+    "start": "src/cli/index.js"
+  },
+  "main": "src/index.ts",
+  "buildAssets": {
+    "src/config/*.yml": "node/"
+  },
+  "repository": "bubble-dev/_",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.13.0"
+  },
+  "auto": {
+    "bump": {
+      "shouldIgnoreInitialDependencies": true
+    }
+  },
+  "dependencies": {
+    "@auto/changelog": "^0.2.0",
+    "@auto/commit-prompt": "^0.2.0",
+    "@auto/core": "^0.3.0",
+    "@auto/fs": "^1.0.0",
+    "@auto/github": "^0.2.0",
+    "@auto/slack": "^0.2.0",
+    "@auto/tag": "^0.2.0",
+    "@auto/telegram": "^0.2.0",
+    "@babel/core": "^7.13.16",
+    "@babel/register": "^7.13.16",
+    "@bubble-dev/babel-config": "^0.4.0",
+    "@rebox/android": "^5.0.0",
+    "@rebox/ios": "^7.0.0",
+    "@rebox/web": "^5.0.0",
+    "@start/plugin": "^2.0.0",
+    "@start/plugin-copy": "^2.0.0",
+    "@start/plugin-env": "^2.0.0",
+    "@start/plugin-find": "^2.0.0",
+    "@start/plugin-input-files": "^2.0.0",
+    "@start/plugin-lib-babel": "^3.0.0",
+    "@start/plugin-lib-eslint": "^3.0.0",
+    "@start/plugin-lib-istanbul": "^2.0.0",
+    "@start/plugin-lib-tape": "^3.0.0",
+    "@start/plugin-lib-typescript-check": "^3.0.1",
+    "@start/plugin-lib-typescript-generate": "^4.0.0",
+    "@start/plugin-overwrite": "^2.0.0",
+    "@start/plugin-parallel": "^2.0.0",
+    "@start/plugin-read": "^2.0.0",
+    "@start/plugin-remove": "^2.0.0",
+    "@start/plugin-rename": "^2.0.0",
+    "@start/plugin-sequence": "^2.0.0",
+    "@start/plugin-write": "^2.0.0",
+    "@start/reporter-verbose": "^2.0.0",
+    "copie": "^2.0.0",
+    "dleet": "^2.0.0",
+    "dotenv": "^8.0.0",
+    "escape-string-regexp": "^4.0.0",
+    "execa": "^4.1.0",
+    "fixdeps": "^2.0.0",
+    "globby": "^11.0.3",
+    "lottie-react-native": "^4.0.2",
+    "make-dir": "^3.0.0",
+    "move-path": "^2.0.0",
+    "nanomatch": "^1.2.13",
+    "node-fetch": "^2.6.0",
+    "pifs": "^2.0.0",
+    "prompts": "^2.4.1",
+    "react-native-exception-handler": "^2.10.10",
+    "react-native-svg": "^12.1.1",
+    "react-native-view-shot": "^3.1.1",
+    "rplace": "^0.3.0",
+    "stroki": "^0.2.0",
+    "tap-diff": "^0.1.1",
+    "tsfn": "^2.0.0",
+    "typeon": "^2.0.0",
+    "weslint": "^0.4.0",
+    "ws": "^7.4.5"
+  },
+  "devDependencies": {
+    "@types/babel__core": "^7.1.14",
+    "@types/node-fetch": "^2.5.10",
+    "@types/prompts": "^2.0.10",
+    "@types/ws": "^7.4.2"
+  },
+  "fixdeps": {
+    "ignoredPackages": [
+      "react-native-svg",
+      "react-native-exception-handler",
+      "react-native-view-shot",
+      "lottie-react-native",
+      "@babel/core"
+    ]
+  }
+}

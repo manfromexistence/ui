@@ -1,0 +1,169 @@
+import { Layout, Playground, Attributes } from 'lib/components'
+import { Card, Grid, Link, Spacer, Text, Image, Divider, Code } from 'components'
+
+export const meta = {
+  title: '卡片 Card',
+  group: '表面',
+}
+
+## Card / 卡片
+
+基础的组件容器。
+
+<Playground
+  scope={{ Card }}
+  code={`
+<Card>
+  <p>一个基础的卡片。</p>
+</Card>
+`}
+/>
+
+<Playground
+  title="可悬停的"
+  scope={{ Card }}
+  code={`
+<Card hoverable>
+  <p>可悬停的卡片。</p>
+</Card>
+`}
+/>
+
+<Playground
+  title="阴影"
+  scope={{ Card, Text }}
+  code={`
+<Card shadow>
+  <Text h4 my={0}>这是一个 React 组件。</Text>
+  <Text>阴影卡片组件。</Text>
+</Card>
+`}
+/>
+
+<Playground
+  title="类型"
+  desc="以各式色彩表达不同的类型或状态。"
+  scope={{ Card, Grid, Text }}
+  code={`
+() => {
+  const types = ['secondary', 'success', 'warning', 'error', 'dark', 'alert', 'purple', 'violet', 'cyan']
+  return (
+    <Grid.Container gap={1.5}>
+      {types.map(type => (
+        <Grid xs={8} key={type}>
+          <Card type={type} width="100%">
+            <Text h4 my={0} style={{ textTransform: 'capitalize' }}>{type}</Text>
+            <Text>{type}</Text>
+          </Card>
+        </Grid>
+      ))}
+    </Grid.Container>
+  )
+}
+`}
+/>
+
+<Playground
+  title="卡片页脚"
+  scope={{ Card, Link, Grid, Text }}
+  code={`
+<Grid.Container gap={1.5}>
+  <Grid xs={12} justify="center">
+    <Card width="100%">
+      <Text h4 my={0}>Geist UI React</Text>
+      <Text>Modern and minimalist React UI library.</Text>
+      <Card.Footer>
+        <Link color target="_blank" href="https://github.com/geist-org/geist-ui">Visit source code on GitHub.</Link>
+      </Card.Footer>
+    </Card>
+  </Grid>
+  <Grid xs={12} justify="center">
+    <Card width="100%" type="dark">
+      <Text h4 my={0}>Geist UI React</Text>
+      <Text>Modern and minimalist React UI library.</Text>
+      <Card.Footer>
+        <Link target="_blank" href="https://github.com/geist-org/geist-ui">Visit source code on GitHub.</Link>
+      </Card.Footer>
+    </Card>
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="组合图片"
+  scope={{ Card, Link, Spacer, Text, Image }}
+  code={`
+<Card width="400px">
+  <Image src="https://user-images.githubusercontent.com/11304944/76085431-fd036480-5fec-11ea-8412-9e581425344a.png"
+   height="200px" width="400px" draggable={false} />
+  <Text h4 mb={0}>Geist UI React</Text>
+  <Text type="secondary" small>Modern and minimalist React UI library.</Text>
+  <Card.Footer>
+    <Link block target="_blank" href="https://github.com/geist-org/geist-ui">Visit source code on GitHub.</Link>
+  </Card.Footer>
+</Card>
+`}
+/>
+
+<Playground
+  title="组合分割线"
+  desc="使用分割线展示不同类型的内容。"
+  scope={{ Card, Text, Divider, Code }}
+  code={`
+<Card width="400px">
+  <Card.Content>
+    <Text b my={0}>语法描述</Text>
+  </Card.Content>
+  <Divider my={0} />
+  <Card.Content>
+    <Text>Object 构造函数为给定值创建一个对象包装器，返回一个与给定值对应类型的对象。</Text>
+    <Text>当以非构造函数形式被调用时，Object 等同于 <Code>new Object()</Code>.</Text>
+  </Card.Content>
+</Card>
+`}
+/>
+
+<Attributes edit="/pages/zh-cn/components/card.mdx">
+<Attributes.Title>Card.Props</Attributes.Title>
+
+| 属性          | 描述                 | 类型                  | 推荐值                  | 默认      |
+| ------------- | -------------------- | --------------------- | ----------------------- | --------- |
+| **hoverable** | 是否在悬停时增加阴影 | `boolean`             | -                       | `false`   |
+| **shadow**    | 是否总是显示阴影     | `boolean`             | -                       | `false`   |
+| **type**      | 卡片的类型           | [CardType](#cardtype) | -                       | `default` |
+| ...           | 原生属性             | `HTMLAttributes`      | `'id', className', ...` | -         |
+
+<Attributes.Title alias="Card.Body">Card.Content.Props</Attributes.Title>
+
+| 属性 | 描述     | 类型             | 推荐值                  | 默认 |
+| ---- | -------- | ---------------- | ----------------------- | ---- |
+| ...  | 原生属性 | `HTMLAttributes` | `'id', className', ...` | -    |
+
+<Attributes.Title alias="Card.Actions">Card.Footer.Props</Attributes.Title>
+
+| 属性                  | 描述                     | 类型             | 推荐值                  | 默认    |
+| --------------------- | ------------------------ | ---------------- | ----------------------- | ------- |
+| **disableAutoMargin** | 取消自动设置的 Margin 值 | `boolean`        | -                       | `false` |
+| ...                   | 原生属性                 | `HTMLAttributes` | `'id', className', ...` | -       |
+
+<Attributes.Title>CardType</Attributes.Title>
+
+```ts
+type CardType =
+  | 'default'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'dark'
+  | 'lite'
+  | 'alert'
+  | 'purple'
+  | 'violet'
+  | 'cyan'
+```
+
+</Attributes>
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

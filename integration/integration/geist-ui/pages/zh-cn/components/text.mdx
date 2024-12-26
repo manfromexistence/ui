@@ -1,0 +1,134 @@
+import { Layout, Playground, Attributes } from 'lib/components'
+import { Text } from 'components'
+
+export const meta = {
+  title: '文本 Text',
+  group: '通用',
+  index: 10,
+}
+
+## Text / 文本
+
+使用预定义的排版样式显示文本。
+
+<Playground
+  title="标题"
+  scope={{ Text }}
+  code={`
+<Text h1>开始我们的 Geist 之旅。</Text>
+`}
+/>
+
+<Playground
+  title="段落"
+  desc="在 `Text` 组件上添加 `p` 与 `b` 以渲染不同元素。"
+  scope={{ Text }}
+  code={`
+<>
+  <Text p>
+  函数用来封装可复用的功能。如果没有函数，一段特定的操作过程用几次就要重复写几次，而使用函数则只需写下函数名和一些简短的信息。
+  </Text>
+  <Text p b>
+  函数用来封装可复用的功能。如果没有函数，一段特定的操作过程用几次就要重复写几次，而使用函数则只需写下函数名和一些简短的信息。
+  </Text>
+</>
+`}
+/>
+
+<Playground
+  title="较小的"
+  scope={{ Text }}
+  code={`
+<>
+  <Text small>
+  函数用来封装可复用的功能。如果没有函数，一段特定的操作过程用几次就要重复写几次，而使用函数则只需写下函数名和一些简短的信息。
+  </Text>
+  <Text small i>
+  函数用来封装可复用的功能。如果没有函数，一段特定的操作过程用几次就要重复写几次，而使用函数则只需写下函数名和一些简短的信息。
+  </Text>
+</>
+`}
+/>
+
+<Playground
+  title="引用"
+  scope={{ Text }}
+  code={`
+<Text blockquote my={0}>
+  事件能为网页添加真实的交互能力。
+</Text>
+`}
+/>
+
+<Playground
+  title="色彩"
+  desc="以不同的色彩区分文字的状态。"
+  scope={{ Text }}
+  code={`
+<Text b i style={{ letterSpacing: '0.6px' }}>
+  <Text span type="success">G</Text>
+  <Text span type="warning">e</Text>
+  <Text span type="secondary">i</Text>
+  <Text span type="error">s</Text>
+  <Text span style={{ color: '#ccc' }}>t</Text>
+  <Text span type="success" ml="5px">UI</Text>
+</Text>
+`}
+/>
+
+<Playground
+  title="组合"
+  desc="多个文本堆叠的效果。"
+  scope={{ Text }}
+  code={`
+<>
+  <Text p mt={0}>
+  函数用来封装可复用的功能。如果没有函数，一段特定的操作过程用几次就要重复写几次，而使用函数则只需写下函数名和一些简短的信息。
+  </Text>
+
+  <Text mb={0}>
+    <Text small del>函数用来封装可复用的功能。如果没有函数，一段特定的操作过程用几次就要重复写几次，而使用函数则只需写下函数名和一些简短的信息。</Text>
+    <Text small b>函数用来封装可复用的功能。如果没有函数，一段特定的操作过程用几次就要重复写几次，而使用函数则只需写下函数名和一些简短的信息。</Text>
+  </Text>
+</>
+`} />
+
+<Playground
+  title="字体大小"
+  scope={{ Text }}
+  code={`
+<>
+  <Text font="12px" mt={0}>Font Size: 12px;</Text>
+  <Text font="14px">Font Size: 14px;</Text>
+  <Text font="1rem">Font Size: 1rem;</Text>
+  <Text scale={1.25} mb={0}>Font Size Scale: 1.25;</Text>
+</>
+`}
+/>
+
+<Attributes edit="/pages/zh-cn/components/text.mdx">
+<Attributes.Title>Text.Props</Attributes.Title>
+
+| 属性           | 描述         | 类型             | 推荐值                   | 默认      |
+| -------------- | ------------ | ---------------- | ------------------------ | --------- |
+| **p**          | 渲染元素类型 | `boolean`        | -                        | `true`    |
+| **h1 - h6**    | 渲染元素类型 | `boolean`        | -                        | `false`   |
+| **small**      | 渲染元素类型 | `boolean`        | -                        | `false`   |
+| **span**       | 渲染元素类型 | `boolean`        | -                        | `false`   |
+| **del**        | 渲染元素类型 | `boolean`        | -                        | `false`   |
+| **i**          | 渲染元素类型 | `boolean`        | -                        | `false`   |
+| **em**         | 渲染元素类型 | `boolean`        | -                        | `false`   |
+| **b**          | 渲染元素类型 | `boolean`        | -                        | `false`   |
+| **blockquote** | 渲染元素类型 | `boolean`        | -                        | `false`   |
+| **type**       | 文字类型     | `TextTypes`      | [TextTypes](#texttypes)  | `default` |
+| ...            | 原生属性     | `HTMLAttributes` | `'id', 'className', ...` | -         |
+
+<Attributes.Title>TextTypes</Attributes.Title>
+
+```ts
+type TextTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+```
+
+</Attributes>
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

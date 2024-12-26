@@ -1,0 +1,163 @@
+import Layout from 'lib/components/layout'
+
+export const meta = {
+  title: '主题',
+  group: '定制化',
+  index: 10,
+}
+
+## 主题
+
+**Geist UI** 现在支持多种主题，并能以简单易用的方式随意切换或是创建新的主题，不需要任何配置与第三方库。
+作为基础的选项，Geist UI 内置了两种可用的基础主题，`light` 和 `dark` (亮色和暗色)。
+
+### 切换主题
+
+在默认主题之间切换只需要设置 `themeType` 的值即可，你可以参考以下步骤：
+
+1. 确保 `GeistProvider` 与 `CssBaseline` 已经添加至根节点。
+
+2. 更新 `themeType` 的值，所有的组件都会随之自动变化。
+
+```jsx
+// NAME:src/app.js
+import { CssBaseline, GeistProvider } from '@geist-ui/core'
+
+const App = () => {
+  const [themeType, setThemeType] = useState('light')
+  const switchThemes = () => {
+    setThemeType(last => (last === 'dark' ? 'light' : 'dark'))
+  }
+  return (
+    <GeistProvider themeType={themeType}>
+      <CssBaseline />
+      <YourComponent onClick={switchThemes} />
+    </GeistProvider>
+  )
+}
+```
+
+### 自定义主题
+
+自定义主题样式在 Geist UI 中非常简单，你只需要提供一个新的样式对象给 `GeistProvider`，所有的组件都会自然变化以适应你自定义的属性。
+这里有一个完整的 [示例项目](https://github.com/geist-org/geist-ui/tree/master/examples/custom-themes) 可供参考。
+
+```jsx
+import { CssBaseline, GeistProvider, Themes } from '@geist-ui/core'
+
+const myTheme1 = Themes.createFromLight({
+  type: 'coolTheme',
+  palette: {
+    success: '#000',
+  },
+})
+
+const App = () => (
+  <GeistProvider themes={[myTheme1]} themeType="coolTheme">
+    <CssBaseline />
+    <YourAppComponent onClick={switchThemes} />
+  </GeistProvider>
+)
+```
+
+方法 `Themes.createFromLight` 允许你在 `light` (亮色主题) 的基础上继承与创建一份新的主题，
+当然，你可以以 `dark` (暗色主题) 为基准创建主题：`Themes.createFromDark`，或是以你自己的、来自社区的主题为基础：
+
+```jsx
+const myBaseTheme = { ... }
+const myTheme2 = Themes.create(myBaseTheme, {
+  type: 'myTheme2',
+  palette: {
+    success: '#000',
+  },
+})
+```
+
+### 查看主题的类型
+
+当你修改主题内容时需要参考详细的类型定义，可以浏览已有的 [类型声明文件](https://github.com/geist-org/geist-ui/blob/master/components/themes/presets/index.ts),
+对于已经支持 TypeScript 的项目，可以直接在包内引入类型：
+
+```ts
+import {
+  GeistUIThemes,
+  GeistUIThemesFont,
+  GeistUIThemesPalette,
+  GeistUIThemesExpressiveness,
+  GeistUIThemesLayout,
+} from '@geist-ui/core'
+
+// 使用示例
+const myStyles: GeistUIThemes = {
+  /* ... */
+}
+const myPalette: Partial<GeistUIThemesPalette> = {
+  /* ... */
+}
+```
+
+### 定制化组件
+
+#### ClassName
+
+你可以通过组件上的 `className` 属性重写当前组件的样式。
+
+```jsx
+import { Button, Row } from '@geist-ui/core'
+
+const MyPage = () => (
+  <Row>
+    <Button className="page-button">Click me!</Button>
+  </Row>
+)
+
+// in css file:
+.page-button {
+  padding: 0;
+}
+```
+
+#### Inline style
+
+任何行内样式都可以在所有组件上正常的工作。
+
+```jsx
+const MyPage = () => (
+  <Row>
+    <Button style={{ margin: '20px' }}>Click me!</Button>
+  </Row>
+)
+```
+
+### 构建组件
+
+你可以使用 Geist 预置的 Hooks 获取主题的状态，用于创建属于你的组件。
+了解更多信息，请参考 [useTheme](/zh-cn/hooks/use-theme) 文档。
+
+```jsx
+import { useTheme } from '@geist-ui/core'
+
+const MyComponent = () => {
+  const theme = useTheme()
+  return (
+    <div style={{ color: theme.palette.success }}>
+      <span>hello world!</span>
+    </div>
+  )
+}
+```
+
+### Themes APIs
+
+`Themes` 包含了一些静态方法 (纯函数)，这在你自定义主题时会很有用：
+
+- `Themes.create` - 创建一个新主题。
+- `Themes.createFromDark` - 以暗色模式为基础创建新主题。
+- `Themes.createFromLight` - 以亮色模式为基础创建新主题。
+- `Themes.isPresetTheme` - 检查一个主题对象是否来自 Geist UI。
+- `Themes.isAvailableThemeType` - 检查一个主题名是否可用。(是否重复)
+- `Themes.hasUserCustomTheme` - 检查一组主题中是否包含自定义的主题。
+- `Themes.getPresets` - 获取一组由 Geist UI 内置的默认主题。
+- `Themes.getPresetStaticTheme` - 获取一个由 Geist UI 内置的默认主题 (默认加载的)。
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

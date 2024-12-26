@@ -1,0 +1,17 @@
+{
+  "title": "ui",
+  "root": true,
+  "pages": [
+    "---Introduction---",
+    "index",
+    "installation",
+    "schema",
+    "...",
+    "---Components---",
+    "gantt",
+    "kanban",
+    "calendar",
+    "list",
+    "table"
+  ]
+}

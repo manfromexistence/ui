@@ -1,0 +1,85 @@
+import { Layout, Playground, Attributes } from 'lib/components'
+import { Loading, Spacer, Grid } from 'components'
+
+export const meta = {
+  title: 'Loading',
+  group: 'Feedback',
+}
+
+## Loading
+
+Indicate an action running in the background.
+
+<Playground
+  scope={{ Loading, Spacer }}
+  code={`
+<Loading />
+`}
+/>
+
+<Playground
+  title="with text"
+  desc="Customize text next to icon."
+  scope={{ Loading }}
+  code={`
+<Loading>Loading</Loading>
+`}
+/>
+
+<Playground
+  title="types"
+  desc="Loading indicators in different states."
+  scope={{ Loading, Grid }}
+  code={`
+<Grid.Container gap={2.5}>
+  <Grid xs={24}>
+    <Loading type="success" />
+  </Grid>
+  <Grid xs={24}>
+    <Loading type="secondary" />
+  </Grid>
+  <Grid xs={24}>
+    <Loading type="warning" />
+  </Grid>
+   <Grid xs={24}>
+    <Loading type="error" />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Playground
+  title="spaces"
+  desc="Customize the space between points. (the ratio is relative to the current `size`)"
+  scope={{ Loading, Grid }}
+  code={`
+<Grid.Container gap={2.5}>
+  <Grid xs={24}>
+    <Loading spaceRatio={2.5} />
+  </Grid>
+  <Grid xs={24}>
+    <Loading spaceRatio={0.5} />
+  </Grid>
+</Grid.Container>
+`}
+/>
+
+<Attributes edit="/pages/en-us/components/loading.mdx">
+<Attributes.Title>Loading.Props</Attributes.Title>
+
+| Attribute      | Description                        | Type             | Accepted values                   | Default   |
+| -------------- | ---------------------------------- | ---------------- | --------------------------------- | --------- |
+| **type**       | bg-color type                      | `LoadingTypes`   | [LoadingTypes](#loadingtypes)     | `default` |
+| **color**      | custom bg color                    | `string`         | -                                 | -         |
+| **spaceRatio** | percentage of space between points | `number`         | -                                 | 1         |
+| ...            | native props                       | `HTMLAttributes` | `'id', 'title', 'className', ...` | -         |
+
+<Attributes.Title>LoadingTypes</Attributes.Title>
+
+```ts
+type LoadingTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error'
+```
+
+</Attributes>
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>
