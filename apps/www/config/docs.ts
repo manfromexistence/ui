@@ -754,7 +754,7 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
-      title: "shadcnui",
+      title: "Shadcnui",
       items: [
         {
           title: "Accordion",
