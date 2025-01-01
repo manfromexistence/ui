@@ -753,6 +753,261 @@ export const docsConfig: DocsConfig = {
         // },
       ],
     },
+    {
+      title: "shadcnui",
+      items: [
+        {
+          title: "Accordion",
+          href: "/docs/shadcnui/accordion",
+          items: [],
+        },
+        {
+          title: "Alert",
+          href: "/docs/shadcnui/alert",
+          items: [],
+        },
+        {
+          title: "Alert Dialog",
+          href: "/docs/shadcnui/alert-dialog",
+          items: [],
+        },
+        {
+          title: "Aspect Ratio",
+          href: "/docs/shadcnui/aspect-ratio",
+          items: [],
+        },
+        {
+          title: "Avatar",
+          href: "/docs/shadcnui/avatar",
+          items: [],
+        },
+        {
+          title: "Badge",
+          href: "/docs/shadcnui/badge",
+          items: [],
+        },
+        {
+          title: "Breadcrumb",
+          href: "/docs/shadcnui/breadcrumb",
+          items: [],
+        },
+        {
+          title: "Button",
+          href: "/docs/shadcnui/button",
+          items: [],
+        },
+        {
+          title: "Calendar",
+          href: "/docs/shadcnui/calendar",
+          items: [],
+        },
+        {
+          title: "Card",
+          href: "/docs/shadcnui/card",
+          items: [],
+        },
+        {
+          title: "Carousel",
+          href: "/docs/shadcnui/carousel",
+          items: [],
+        },
+        {
+          title: "Chart",
+          href: "/docs/shadcnui/chart",
+          items: [],
+        },
+        {
+          title: "Checkbox",
+          href: "/docs/shadcnui/checkbox",
+          items: [],
+        },
+        {
+          title: "Collapsible",
+          href: "/docs/shadcnui/collapsible",
+          items: [],
+        },
+        {
+          title: "Combobox",
+          href: "/docs/shadcnui/combobox",
+          items: [],
+        },
+        {
+          title: "Command",
+          href: "/docs/shadcnui/command",
+          items: [],
+        },
+        {
+          title: "Context Menu",
+          href: "/docs/shadcnui/context-menu",
+          items: [],
+        },
+        {
+          title: "Data Table",
+          href: "/docs/shadcnui/data-table",
+          items: [],
+        },
+        {
+          title: "Date Picker",
+          href: "/docs/shadcnui/date-picker",
+          items: [],
+        },
+        {
+          title: "Dialog",
+          href: "/docs/shadcnui/dialog",
+          items: [],
+        },
+        {
+          title: "Drawer",
+          href: "/docs/shadcnui/drawer",
+          items: [],
+        },
+        {
+          title: "Dropdown Menu",
+          href: "/docs/shadcnui/dropdown-menu",
+          items: [],
+        },
+        {
+          title: "Form",
+          href: "/docs/shadcnui/form",
+          items: [],
+        },
+        {
+          title: "Hover Card",
+          href: "/docs/shadcnui/hover-card",
+          items: [],
+        },
+        {
+          title: "Input",
+          href: "/docs/shadcnui/input",
+          items: [],
+        },
+        {
+          title: "Input OTP",
+          href: "/docs/shadcnui/input-otp",
+          items: [],
+        },
+        {
+          title: "Label",
+          href: "/docs/shadcnui/label",
+          items: [],
+        },
+        {
+          title: "Menubar",
+          href: "/docs/shadcnui/menubar",
+          items: [],
+        },
+        {
+          title: "Navigation Menu",
+          href: "/docs/shadcnui/navigation-menu",
+          items: [],
+        },
+        {
+          title: "Pagination",
+          href: "/docs/shadcnui/pagination",
+          items: [],
+        },
+        {
+          title: "Popover",
+          href: "/docs/shadcnui/popover",
+          items: [],
+        },
+        {
+          title: "Progress",
+          href: "/docs/shadcnui/progress",
+          items: [],
+        },
+        {
+          title: "Radio Group",
+          href: "/docs/shadcnui/radio-group",
+          items: [],
+        },
+        {
+          title: "Resizable",
+          href: "/docs/shadcnui/resizable",
+          items: [],
+        },
+        {
+          title: "Scroll Area",
+          href: "/docs/shadcnui/scroll-area",
+          items: [],
+        },
+        {
+          title: "Select",
+          href: "/docs/shadcnui/select",
+          items: [],
+        },
+        {
+          title: "Separator",
+          href: "/docs/shadcnui/separator",
+          items: [],
+        },
+        {
+          title: "Sheet",
+          href: "/docs/shadcnui/sheet",
+          items: [],
+        },
+        {
+          title: "Sidebar",
+          href: "/docs/shadcnui/sidebar",
+          items: [],
+        },
+        {
+          title: "Skeleton",
+          href: "/docs/shadcnui/skeleton",
+          items: [],
+        },
+        {
+          title: "Slider",
+          href: "/docs/shadcnui/slider",
+          items: [],
+        },
+        {
+          title: "Sonner",
+          href: "/docs/shadcnui/sonner",
+          items: [],
+        },
+        {
+          title: "Switch",
+          href: "/docs/shadcnui/switch",
+          items: [],
+        },
+        {
+          title: "Table",
+          href: "/docs/shadcnui/table",
+          items: [],
+        },
+        {
+          title: "Tabs",
+          href: "/docs/shadcnui/tabs",
+          items: [],
+        },
+        {
+          title: "Textarea",
+          href: "/docs/shadcnui/textarea",
+          items: [],
+        },
+        {
+          title: "Toast",
+          href: "/docs/shadcnui/toast",
+          items: [],
+        },
+        {
+          title: "Toggle",
+          href: "/docs/shadcnui/toggle",
+          items: [],
+        },
+        {
+          title: "Toggle Group",
+          href: "/docs/shadcnui/toggle-group",
+          items: [],
+        },
+        {
+          title: "Tooltip",
+          href: "/docs/shadcnui/tooltip",
+          items: [],
+        },
+      ],
+    },
   ],
   chartsNav: [
     {
