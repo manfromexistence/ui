@@ -94,7 +94,11 @@ Launch ngrok and add it's URL `https://${your_ngrok_url}/api/webhooks/clerk` to 
 Copy the webhook secret from Clerk to `.env.local`
 
 ```
-CLERK_WEBHOOK_SECRET=*****
+NEXT_PUBLIC_CDN_URL=https://*****
+R2_ACCESS_KEY_ID=*****
+R2_SECRET_ACCESS_KEY=*****
+# private R2 url used to upload to the bucket
+NEXT_PUBLIC_R2_ENDPOINT=https://*****
 ```
 
 7. Create a Cloudflare R2 bucket called `components-code`, update the `.env.local` to:
