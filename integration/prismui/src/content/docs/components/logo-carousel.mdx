@@ -1,0 +1,141 @@
+---
+title: Logo Carousel
+publishedAt: 2025-01-02
+summary: A smooth, animated logo carousel component with support for multiple columns and customizable transitions.
+author: codehagen
+slug: components/logo-carousel
+related: ["introduction"]
+---
+
+<ComponentPreview name="logo-carousel-basic" />
+
+<Note variant="info">
+  The Logo Carousel component provides a smooth, animated way to showcase logos in multiple columns. Perfect for partner showcases, client logos, and brand displays with automatic cycling and responsive design.
+</Note>
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <ComponentSource name="logo-carousel" isCli />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="logo-carousel" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Examples
+
+<ComponentPreview name="logo-carousel-demo" />
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import { LogoCarousel } from "@/components/prismui/logo-carousel"
+
+export default function Example() {
+  return <LogoCarousel />
+}
+```
+
+### Custom Column Count
+
+```tsx
+<LogoCarousel columns={3} />
+```
+
+### Custom Logos
+
+```tsx
+interface Logo {
+  id: number
+  name: string
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+}
+
+const customLogos: Logo[] = [
+  { 
+    id: 1, 
+    name: "CustomLogo", 
+    icon: YourCustomLogoComponent 
+  },
+  // Add more logos...
+]
+```
+
+## Customization
+
+<Steps>
+  <Step>Custom Animation Timing</Step>
+  ```tsx
+  // Adjust the CYCLE_DURATION constant in the component
+  const CYCLE_DURATION = 2000; // 2 seconds per logo
+  ```
+
+  <Step>Custom Styling</Step>
+  ```tsx
+  <motion.div
+    className="relative h-14 w-24 overflow-hidden md:h-24 md:w-48"
+    // Customize dimensions and responsive behavior
+  >
+    {/* ... */}
+  </motion.div>
+  ```
+
+  <Step>Custom Animation Settings</Step>
+  ```tsx
+  <motion.div
+    initial={{ y: "10%", opacity: 0 }}
+    animate={{
+      y: "0%",
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
+      },
+    }}
+  >
+    {/* ... */}
+  </motion.div>
+  ```
+</Steps>
+
+## Notes
+
+- Built with Framer Motion for smooth animations
+- Responsive design with mobile-first approach
+- Automatic logo cycling with configurable timing
+- Random logo distribution for variety
+- TypeScript support with proper types
+- SSR compatible with "use client" directive
+- Optimized performance with proper memoization
+- Supports reduced motion preferences
+- ARIA attributes for accessibility
+
+## Features
+
+- Smooth animations with spring physics
+- Automatic logo cycling
+- Responsive design
+- Random logo distribution
+- Multiple column support
+- TypeScript support
+- SSR compatibility
+- Accessibility features
+
+## Props
+
+| Prop | Type | Description | Default |
+| --- | --- | --- | --- |
+| columns | number | Number of columns to display | 2 |

@@ -1,0 +1,60 @@
+---
+title: Pricing Section
+publishedAt: 2025-01-02
+summary: A dynamic pricing section with animated cards, confetti effects, and monthly/yearly toggle.
+author: codehagen
+slug: sections/pricing
+---
+
+<SectionPreview name="pricing-basic" />
+
+<Note>
+  A modern pricing section with interactive features, smooth animations, and responsive design. Perfect for showcasing different pricing tiers with a dynamic monthly/yearly toggle.
+</Note>
+
+## Features
+
+- Animated pricing cards with Framer Motion
+- Interactive monthly/yearly pricing toggle with confetti effect
+- Responsive design with mobile-first approach
+- Dynamic price updates with NumberFlow animations
+- Popular plan highlighting
+- Dark mode compatible
+
+## Dependencies
+
+```json
+{
+  "dependencies": [
+    "@/components/section",
+    "@/components/ui/button",
+    "@/components/ui/label",
+    "@/components/ui/switch",
+    "framer-motion",
+    "canvas-confetti",
+    "@number-flow/react"
+  ]
+}
+```
+
+## Usage
+
+The Pricing section is designed to be used as a full-width section in your landing page or pricing page. It includes:
+
+- Animated price cards with popular plan highlighting
+- Interactive monthly/yearly toggle with confetti effects
+- Smooth price transitions using NumberFlow
+- Responsive layout that adapts to all screen sizes
+- Built-in dark mode support
+- Accessible toggle controls and pricing information
+
+## Customization
+
+The section can be customized through your global Tailwind theme:
+
+- Colors through `primary`, `secondary`, and `muted` color tokens
+- Typography through font family and size utilities
+- Spacing and layout through padding and margin utilities
+- Animations through Framer Motion configuration
+- Card styles through border and shadow utilities
+

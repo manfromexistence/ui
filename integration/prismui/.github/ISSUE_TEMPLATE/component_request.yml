@@ -1,0 +1,68 @@
+name: ✨ New Component
+description: Request a new component for PrismUI ✨
+title: "✨ Component: "
+labels: ["👀 Exploration Pending", "✨ component-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to request a new component! Please fill out the details below to help us understand your needs.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Component Description
+      description: Describe the component you'd like to see added to PrismUI
+      placeholder: |
+        Example: A carousel component that supports both images and custom content...
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Explain how and where you would use this component in your applications
+      placeholder: |
+        Example: This would be used in product galleries, testimonial sliders...
+    validations:
+      required: true
+
+  - type: textarea
+    id: similar-components
+    attributes:
+      label: Similar Components
+      description: Are there similar components in other UI libraries? Please provide links or examples
+      placeholder: |
+        Examples from other libraries:
+        - Radix UI Carousel: [link]
+        - MUI Carousel: [link]
+
+        Screenshots/mockups (if available):
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this component for your project?
+      options:
+        - "✨ Critical - Blocking my project"
+        - "✨ High - Need it soon"
+        - "✨ Medium - Would be nice to have"
+        - "✨ Low - Just an idea"
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: Additional References
+      description: Add any helpful links, documentation, or examples that illustrate your request
+      placeholder: |
+        - Design inspiration: [link]
+        - Similar implementation: [link]
+        - Documentation reference: [link]
+    validations:
+      required: false
