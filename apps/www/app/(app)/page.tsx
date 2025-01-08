@@ -100,7 +100,7 @@ export default function IndexPage() {
             </div>
           </Link>
           <Link href="/icons" className="flex h-full w-full flex-col justify-between border-b border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
-            <div className="grid h-24 w-full grid-cols-8 grid-rows-3 place-content-center items-center justify-center gap-8">
+            <div className="grid h-24 w-full grid-cols-8 grid-rows-3 place-content-center items-center justify-center gap-8 pt-[4px]">
               <PartyPopper />
               <PawPrint />
               <AlarmClock />
@@ -132,12 +132,12 @@ export default function IndexPage() {
             </div>
           </Link>
           <Link href="/animations" className="flex h-full w-full  flex-col justify-between border-b p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary md:border-r lg:border-r-0">
-            <div className="flex h-24 w-full justify-between space-x-1">
+            <div className="flex h-24 w-full justify-between space-x-0 sm:space-x-1">
               <div className="h-24 w-24 rounded-full border bg-secondary"></div>
               <div className="h-24 w-24 rounded-full border bg-secondary"></div>
               <div className="h-24 w-24 rounded-full border bg-secondary"></div>
-              <div className="h-24 w-24 rounded-full border bg-secondary md:hidden 2xl:block"></div>
-              <div className="h-24 w-24 rounded-full border bg-secondary lg:hidden"></div>
+              <div className="hidden h-24 w-24 rounded-full border bg-secondary sm:inline md:hidden 2xl:block"></div>
+              <div className="hidden h-24 w-24 rounded-full border bg-secondary sm:inline lg:hidden"></div>
             </div>
             <div className="mt-6 md:mt-4 lg:mt-0">
               <h1 className="text-primary">Animations</h1>
@@ -216,77 +216,8 @@ export default function IndexPage() {
               <span className="text-muted-foreground">Colors for everyone.</span>
             </div>
           </Link>
-
         </div>
       </div>
-
     </div>
   )
 }
-
-// import Image from "next/image"
-// import Link from "next/link"
-
-// import { Announcement } from "@/components/announcement"
-// import { CardsDemo } from "@/components/cards"
-// import { ExamplesNav } from "@/components/examples-nav"
-// import {
-//   PageActions,
-//   PageHeader,
-//   PageHeaderDescription,
-//   PageHeaderHeading,
-// } from "@/components/page-header"
-// import { Button } from "@/registry/new-york/ui/button"
-
-// export default function IndexPage() {
-//   return (
-//     <>
-//       <PageHeader>
-//         <Announcement />
-//         <PageHeaderHeading>Build your component library</PageHeaderHeading>
-//         <PageHeaderDescription>
-//           Beautifully designed components that you can copy and paste into your
-//           apps. Made with Tailwind CSS. Open source.
-//         </PageHeaderDescription>
-//         <PageActions>
-//           <Button asChild size="sm">
-//             <Link href="/docs">Get Started</Link>
-//           </Button>
-//           <Button asChild size="sm" variant="ghost">
-//             <Link href="/blocks">Browse Blocks</Link>
-//           </Button>
-//         </PageActions>
-//       </PageHeader>
-//       <div className="border-grid border-b">
-//         <div className="container-wrapper">
-//           <div className="container py-4">
-//             <ExamplesNav className="[&>a:first-child]:text-primary" />
-//           </div>
-//         </div>
-//       </div>
-//       <div className="container-wrapper">
-//         <div className="container py-6">
-//           <section className="overflow-hidden rounded-lg border bg-background shadow-md md:hidden md:shadow-xl">
-//             <Image
-//               src="/examples/cards-light.png"
-//               width={1280}
-//               height={1214}
-//               alt="Cards"
-//               className="block dark:hidden"
-//             />
-//             <Image
-//               src="/examples/cards-dark.png"
-//               width={1280}
-//               height={1214}
-//               alt="Cards"
-//               className="hidden dark:block"
-//             />
-//           </section>
-//           <section className="hidden md:block [&>div]:p-0">
-//             <CardsDemo />
-//           </section>
-//         </div>
-//       </div>
-//     </>
-//   )
-// }
