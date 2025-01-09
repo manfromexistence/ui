@@ -1,52 +1,75 @@
 "use client"
 
-import * as React from "react"
-import { Icons } from "@/__registry__/icons"
-
+import { Input } from "@/components/ui/input"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/registry/new-york/ui/resizable"
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/registry/new-york/ui/table"
-import { iconLibraries } from "@/registry/registry-icons"
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
+import { Plus } from "lucide-react"
 
-export default function IconsPage() {
-  return (
-    <div>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[240px]" align="left">
-              name
-            </TableHead>
-            {Object.keys(iconLibraries).map((library) => (
-              <TableHead key={library}>{library}</TableHead>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {Object.entries(Icons).map(([name, icon]) => (
-            <TableRow key={name}>
-              <TableCell align="left">
-                <code>{name}</code>
-              </TableCell>
-              {Object.entries(iconLibraries).map(([library, name]) => {
-                const IconComponent = icon[library as keyof typeof icon]
-                return (
-                  <TableCell key={library} className="[&_svg]:h-4 [&_svg]:w-4">
-                    <React.Suspense fallback={<div>Loading...</div>}>
-                      {IconComponent && <IconComponent />}
-                    </React.Suspense>
-                  </TableCell>
-                )
-              })}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
-  )
+export default function IconPage() {
+    return (
+        <div className="flex h-screen w-full">
+            <ResizablePanelGroup direction="horizontal">
+                <ResizablePanel defaultSize={20}>
+                    <ScrollArea className="h-full w-full p-4">
+                        <div className="flex w-full justify-between rounded-md p-3 hover:bg-primary-foreground">
+                            <span className="font-mono text-sm">Lucide Icons</span>
+                        </div>
+                    </ScrollArea>
+                </ResizablePanel>
+                <ResizableHandle />
+                <ResizablePanel defaultSize={80}>
+                    <div className="relative h-16 w-full border-b">
+                        <Input type="text" placeholder="Search Icons" className="h-full w-full rounded-none border-0 ring-0 placeholder:text-primary focus-visible:ring-0" />
+                        <div className="absolute right-3 top-1/2 flex translate-y-[-50%] space-x-2">
+                            <Select>
+                                <SelectTrigger className="w-20 text-sm">
+                                    <SelectValue placeholder="Svg" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Copy Method</SelectLabel>
+                                        <SelectItem value="react">React</SelectItem>
+                                        <SelectItem value="angular">Angular</SelectItem>
+                                        <SelectItem value="vue">Vue</SelectItem>
+                                        <SelectItem value="gastby">Gastby</SelectItem>
+                                        <SelectItem value="nue">Nue</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                            <Select>
+                                <SelectTrigger className="w-32 text-sm">
+                                    <SelectValue placeholder="Lucide Icons" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Search In</SelectLabel>
+                                        <SelectItem value="lucide-icons">Lucide Icons</SelectItem>
+                                        <SelectItem value="angular">Angular</SelectItem>
+                                        <SelectItem value="vue">Vue</SelectItem>
+                                        <SelectItem value="gastby">Gastby</SelectItem>
+                                        <SelectItem value="nue">Nue</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        </div>
+
+                    </div>
+                    <ScrollArea className="h-full w-full p-4">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-md border">
+                            <Plus className="h-5 w-5" />
+                        </div>
+                    </ScrollArea>
+                </ResizablePanel>
+            </ResizablePanelGroup>
+        </div>
+    )
 }

@@ -24,10 +24,10 @@ export const docsConfig: DocsConfig = {
       title: "Blocks",
       href: "/blocks",
     },
-    {
-      title: "Visualizations",
-      href: "/visualizations",
-    },
+    // {
+    //   title: "Visualizations",
+    //   href: "/visualizations",
+    // },
     {
       title: "Themes",
       href: "/themes",
