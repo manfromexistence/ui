@@ -1,0 +1,132 @@
+---
+title: Getting Started with Prism UI
+publishedAt: 2025-01-02
+summary: Learn how to set up and start using Prism UI in your React project. This guide covers installation, configuration, and basic usage.
+image: https://imagedelivery.net/r-6-yk-gGPtjfbIST9-8uA/db18cfaf-6011-4c51-5e5f-8d7e743f2a00/public
+author: codehagen
+categories:
+  - overview
+related:
+  - components-overview
+  - introducing-prismui
+slug: getting-started
+---
+
+This guide will help you get started with Prism UI in your React project. We'll cover everything from installation to basic usage.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- Node.js 18.0 or later
+- React project using Next.js 13/14 with App Router
+- TypeScript (recommended)
+
+## Installation
+
+1. Create a new Next.js project or set up an existing one using the shadcn CLI:
+
+```bash
+npx shadcn@latest init
+```
+
+You can use the `-d` flag for defaults (New York style, Zinc color, and CSS variables):
+
+```bash
+npx shadcn@latest init -d
+```
+
+2. During setup, you'll be asked a few questions to configure `components.json`:
+
+```txt
+Which style would you like to use? › New York
+Which color would you like to use as base color? › Zinc
+Do you want to use CSS variables for colors? › yes
+```
+
+3. Start adding components to your project:
+
+```bash
+npx shadcn@latest add button
+```
+
+## Basic Usage
+
+Import and use components in your project:
+
+```tsx
+import { Button } from "@/components/ui/button"
+ 
+export default function Home() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  )
+}
+```
+
+## Using Pre-built Sections
+
+Prism UI provides several pre-built sections that you can use in your application. Here's how to use the Hero section:
+
+```tsx
+import { Hero } from "@/components/prismui/sections/hero"
+
+export default function Page() {
+  return (
+    <main>
+      <Hero />
+    </main>
+  )
+}
+```
+
+## Creating a Basic Layout
+
+Here's an example of how to create a basic page layout using Prism UI components:
+
+```tsx
+import { Header } from "@/components/prismui/sections/header"
+import { Hero } from "@/components/prismui/sections/hero"
+import { Features } from "@/components/prismui/sections/features"
+import { MainFeatures } from "@/components/prismui/sections/main-features"
+import { Footer } from "@/components/prismui/sections/footer"
+
+export default function Home() {
+  return (
+    <main>
+      <Header />
+      <Hero />
+      <Features />
+      <MainFeatures />
+      <Footer />
+    </main>
+  )
+}
+```
+
+## Dark Mode Support
+
+Prism UI includes built-in dark mode support. To enable it:
+
+1. Add the `dark` class to your root layout when dark mode is active
+2. Use the included dark mode variants in your Tailwind classes
+
+```tsx
+<html className={theme === "dark" ? "dark" : ""}>
+  {/* Your app */}
+</html>
+```
+
+<Note>
+  Remember to check out our components overview guide for a detailed look at all available components and sections.
+</Note>
+
+## Next Steps
+
+- Explore our [Components Overview](/blog/components-overview)
+- Check out the [shadcn/ui documentation](https://ui.shadcn.com) for base component details
+- Join our [Discord community](https://discord.gg/prismui) for support
+
+[View Components Overview](/blog/components-overview) 

@@ -1,0 +1,192 @@
+---
+title: Components Overview
+publishedAt: 2025-01-02
+summary: Explore the complete collection of components and pre-built sections available in Prism UI, from basic UI elements to complex page sections.
+image: https://imagedelivery.net/r-6-yk-gGPtjfbIST9-8uA/4e846b9b-e608-4c5a-7204-9ca03d05ed00/public
+author: codehagen
+categories:
+  - overview
+related:
+  - getting-started
+  - introducing-prismui
+slug: components-overview
+---
+
+This guide provides an overview of all the components and pre-built sections available in Prism UI. Our components are built on top of shadcn/ui, extending its functionality with additional features and pre-built sections.
+
+## Page Sections
+
+### Hero Section
+
+The Hero section is a key component for landing pages. It comes with several variants:
+
+```tsx
+import Hero from "@/components/sections/hero";
+
+// Default hero with gradient background
+<Hero />
+
+// Hero with custom background
+<Hero className="bg-gradient-to-r from-blue-500 to-purple-500" />
+```
+
+Key features:
+- Responsive design
+- Customizable background
+- Optional image placement
+- Call-to-action buttons
+- Animated elements
+
+### Features Grid
+
+The Features section displays your product's features in a grid layout:
+
+```tsx
+import { Features } from "@/components/sections/features";
+
+// Default features grid
+<Features />
+
+// Features with custom styling
+<Features className="bg-muted py-20" />
+```
+
+Key features:
+- Responsive grid layout
+- Icon support
+- Hover animations
+- Customizable content
+
+### Main Features
+
+The MainFeatures section showcases your primary features with more detail:
+
+```tsx
+import { MainFeatures } from "@/components/sections/main-features";
+
+<MainFeatures />
+```
+
+Key features:
+- Large feature cards
+- Image support
+- Detailed descriptions
+- Interactive elements
+
+## Navigation Components
+
+### Header
+
+The Header component provides navigation and branding:
+
+```tsx
+import Header from "@/components/sections/header";
+
+<Header />
+```
+
+Features:
+- Responsive mobile menu
+- Logo placement
+- Navigation links
+- Optional call-to-action button
+- Dark mode toggle
+
+### Footer
+
+The Footer component includes site navigation and information:
+
+```tsx
+import Footer from "@/components/sections/footer";
+
+<Footer />
+```
+
+Features:
+- Multi-column layout
+- Social media links
+- Newsletter signup
+- Copyright information
+- Responsive design
+
+## Customization
+
+All components can be customized using:
+
+1. **Tailwind Classes**
+```tsx
+<Hero className="bg-gradient-to-r from-blue-500 to-purple-500" />
+```
+
+2. **Props**
+```tsx
+<Features 
+  title="Custom Title"
+  description="Custom description text"
+  items={customFeatures}
+/>
+```
+
+3. **Theme Variables**
+```css
+:root {
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+}
+```
+
+## Component Architecture
+
+Our components follow these principles:
+
+1. **Server Components First**
+   - Most components are React Server Components
+   - Client components are marked with 'use client'
+   - Optimized for Next.js App Router
+
+2. **Accessibility**
+   - ARIA labels
+   - Keyboard navigation
+   - Screen reader support
+
+3. **Performance**
+   - Lazy loading where appropriate
+   - Optimized images
+   - Minimal client-side JavaScript
+
+<Note>
+  All components are built on top of shadcn/ui, which means they inherit its accessibility and customization features.
+</Note>
+
+## Best Practices
+
+When using Prism UI components:
+
+1. **Layout Structure**
+```tsx
+<main>
+  <Header />
+  <Hero />
+  <Features />
+  <MainFeatures />
+  <Footer />
+</main>
+```
+
+2. **Responsive Design**
+- All components are mobile-first
+- Use responsive variants for optimal display
+- Test on multiple screen sizes
+
+3. **Performance**
+- Use Image component for images
+- Implement proper loading strategies
+- Consider component splitting for large pages
+
+## Next Steps
+
+- Check out our [Getting Started](/blog/getting-started) guide
+- Explore the [shadcn/ui documentation](https://ui.shadcn.com)
+- Join our [Discord community](https://discord.gg/prismui) for support
+
+[Get Started Now](/blog/getting-started) 

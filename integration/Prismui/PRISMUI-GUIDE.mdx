@@ -1,0 +1,264 @@
+---
+title: PrismUI Registry Guide
+description: A comprehensive guide for managing PrismUI components and registry
+---
+
+# PrismUI Registry Guide
+
+This guide explains the workflow for adding and managing components in the PrismUI registry system.
+
+## Quick Start
+
+To add a new component to PrismUI, follow these steps:
+
+1. Create your component in `src/components/prismui/`
+2. Create basic and demo examples in `src/registry/example/`
+3. Add the component to `src/registry/registry-components.ts`
+4. Add the examples to `src/registry/registry-examples.ts`
+5. Create documentation in `src/content/docs/components/`
+6. Run `pnpm build:registry`
+
+## Directory Structure
+
+```
+src/
+├── components/
+│   └── prismui/           # Your component files
+│       ├── button.tsx     # e.g., button.tsx
+│       └── [component].tsx
+├── registry/
+│   ├── example/          # Component examples
+│   │   ├── button-basic.tsx
+│   │   └── button-demo.tsx
+│   ├── registry-components.ts  # Component registry
+│   └── registry-examples.ts    # Examples registry
+└── content/
+    └── docs/
+        └── components/    # Component documentation
+            └── button.mdx
+```
+
+## Step-by-Step Workflow
+
+### 1. Create Your Component
+
+Create your component in `src/components/prismui/[component-name].tsx`:
+
+```tsx
+"use client";
+
+import { cn } from "@/lib/utils";
+
+interface MyComponentProps {
+  // Define your props here
+}
+
+export default function MyComponent({ ...props }: MyComponentProps) {
+  return (
+    // Your component JSX
+  );
+}
+```
+
+### 2. Create Examples
+
+Create two example files in `src/registry/example/`:
+
+1. **Basic Example** (`[component]-basic.tsx`):
+```tsx
+"use client";
+
+export default function MyComponentBasic() {
+  return (
+    <div className="flex min-h-[200px] w-full items-center justify-center">
+      <MyComponent>Basic Example</MyComponent>
+    </div>
+  );
+}
+
+export const demoSource = `...` // Copy the same code here
+```
+
+2. **Demo Example** (`[component]-demo.tsx`):
+```tsx
+"use client";
+
+export default function MyComponentDemo() {
+  return (
+    <div className="flex min-h-[400px] w-full items-center justify-center p-4">
+      <Card className="w-full max-w-3xl p-6">
+        {/* Show different variants/use cases */}
+      </Card>
+    </div>
+  );
+}
+
+export const demoSource = `...` // Copy the same code here
+```
+
+### 3. Register Your Component
+
+Add to `src/registry/registry-components.ts`:
+
+```typescript
+{
+  name: "my-component",
+  type: "registry:ui",
+  category: "components",
+  subcategory: "display", // Choose appropriate category
+  code: `...your component code...`,
+  files: [
+    {
+      path: "components/prismui/my-component.tsx",
+      type: "registry:ui",
+    },
+  ],
+  cli: {
+    npm: "npx prismui@latest add my-component",
+    pnpm: "pnpm dlx prismui@latest add my-component",
+    yarn: "yarn dlx prismui@latest add my-component",
+    bun: "bunx prismui@latest add my-component",
+  },
+  dependencies: ["@/lib/utils", ...other-deps],
+}
+```
+
+### 4. Register Examples
+
+Add to `src/registry/registry-examples.ts`:
+
+```typescript
+{
+  name: "my-component-basic",
+  type: "examples",
+  component: MyComponentBasic,
+  code: MyComponentBasicSource,
+  dependencies: ["@/components/prismui/my-component"],
+},
+{
+  name: "my-component-demo",
+  type: "examples",
+  component: MyComponentDemo,
+  code: MyComponentDemoSource,
+  dependencies: [
+    "@/components/prismui/my-component",
+    "@/components/ui/card",
+  ],
+}
+```
+
+### 5. Create Documentation
+
+Create `src/content/docs/components/my-component.mdx`:
+
+```mdx
+---
+title: MyComponent
+publishedAt: 2025-01-02
+summary: Brief description of your component
+author: your-name
+slug: components/my-component
+related: ["introduction"]
+---
+
+<ComponentPreview name="my-component-basic" />
+
+<Note variant="info">
+  Detailed description of your component and its use cases
+</Note>
+
+## Examples
+
+<ComponentPreview name="my-component-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+  {/* Installation instructions */}
+</Tabs>
+
+## Props
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| prop | type | description |
+
+## Usage
+
+{/* Usage examples */}
+
+## Customization
+
+<Steps>
+  {/* Customization examples */}
+</Steps>
+
+## Notes
+
+- Key features
+- Important notes
+
+## Features
+
+- List of features
+```
+
+### 6. Build the Registry
+
+Run:
+```bash
+pnpm build:registry
+```
+
+## Best Practices
+
+1. **Component Design**:
+   - Use TypeScript for all components
+   - Follow the mobile-first approach
+   - Ensure proper accessibility
+   - Include proper prop types and defaults
+
+2. **Examples**:
+   - Basic example should be simple and centered
+   - Demo should showcase all variants/features
+   - Use consistent styling and spacing
+   - Include proper error handling
+
+3. **Documentation**:
+   - Start with a clear component description
+   - Include all possible props and types
+   - Show common use cases
+   - Add customization examples
+
+4. **Testing**:
+   - Preview your component in the docs
+   - Test all variants and props
+   - Check mobile responsiveness
+   - Verify accessibility
+
+## Common Issues
+
+1. **Component Not Showing**:
+   - Check component registration in registry files
+   - Verify example names match in MDX files
+   - Ensure all dependencies are listed
+   - Run `pnpm build:registry`
+
+2. **Styling Issues**:
+   - Check Tailwind classes
+   - Verify dark mode support
+   - Test responsive breakpoints
+   - Check for CSS conflicts
+
+3. **Type Errors**:
+   - Ensure proper prop types
+   - Check dependency imports
+   - Verify component exports
+   - Update type definitions
+
+## Need Help?
+
+- Check existing components for reference
+- Follow the naming conventions
+- Use the component templates
+- Test thoroughly before committing 

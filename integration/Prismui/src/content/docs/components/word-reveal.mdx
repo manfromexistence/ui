@@ -1,0 +1,120 @@
+---
+title: WordReveal
+publishedAt: 2025-01-02
+summary: A text animation component that reveals words with a staggered motion effect.
+author: codehagen
+slug: components/word-reveal
+related: ["introduction"]
+---
+
+<ComponentPreview name="word-reveal-demo" />
+
+<Note variant="info">
+  The WordReveal component provides a beautiful text animation that reveals words one by one with a staggered motion effect.
+  Perfect for hero sections, headings, and attention-grabbing text elements.
+</Note>
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <ComponentSource name="word-reveal" isCli />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="word-reveal" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Examples
+
+<ComponentPreview name="word-reveal-hero" />
+
+<ComponentPreview name="word-reveal-custom" />
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import WordReveal from "@/components/prismui/word-reveal"
+
+export default function Example() {
+  return (
+    <WordReveal text="Animate text with style" />
+  )
+}
+```
+
+### Custom Delay
+
+You can adjust the animation timing by modifying the delay:
+
+```tsx
+<WordReveal 
+  text="Slower animation with custom delay" 
+  delay={0.3}
+/>
+```
+
+### Custom Styling
+
+The component accepts custom classes for styling:
+
+```tsx
+<WordReveal 
+  text="Custom styled animation" 
+  className="text-2xl md:text-4xl font-light text-emerald-100"
+/>
+```
+
+## Customization
+
+<Steps>
+  <Step>Custom Text Size and Color</Step>
+  ```tsx
+  <WordReveal 
+    text="Custom size and color" 
+    className="text-3xl text-blue-500"
+  />
+  ```
+
+  <Step>Custom Animation Timing</Step>
+  ```tsx
+  <WordReveal 
+    text="Slower reveal effect" 
+    delay={0.5}
+  />
+  ```
+
+  <Step>Custom Font Style</Step>
+  ```tsx
+  <WordReveal 
+    text="Different font style" 
+    className="font-serif italic"
+  />
+  ```
+</Steps>
+
+## Notes
+
+- The component uses Framer Motion for animations
+- Each word is animated independently
+- The animation includes opacity, blur, and vertical movement
+- The component is responsive and adjusts text size based on screen width
+- Custom styling can be applied through the className prop 
+
+## Props
+
+| Prop      | Type    | Description                                     | Default |
+| --------- | ------- | ----------------------------------------------- | ------- |
+| text      | string  | The text content to animate                     | -       |
+| delay     | number  | Delay between each word animation (in seconds)  | 0.15    |
+| className | string  | Additional CSS classes                          | -       |

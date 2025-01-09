@@ -1,0 +1,58 @@
+{
+  "name": "react-icons_builders",
+  "private": true,
+  "version": "5.4.1-snapshot.0",
+  "description": "SVG React icons of popular icon packs using ES6 imports",
+  "author": "Goran Gajic",
+  "contributors": [
+    "kamijin_fanta <kamijin@live.jp>"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
+  "types": "lib/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:react-icons/react-icons.git"
+  },
+  "bugs": {
+    "url": "https://github.com/react-icons/react-icons/issues"
+  },
+  "homepage": "https://github.com/react-icons/react-icons#readme",
+  "peerDependencies": {
+    "react": "*"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.5",
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-react": "^7.24.1",
+    "@babel/preset-typescript": "^7.24.1",
+    "@primer/octicons": "^18.3.0",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.3.1",
+    "babel-plugin-add-import-extension": "^1.6.0",
+    "camelcase": "^8.0.0",
+    "cheerio": "^1.0.0-rc.12",
+    "esbuild": "^0.20.2",
+    "esbuild-register": "^3.5.0",
+    "feather-icons": "^4.29.2",
+    "find-package": "^1.0.0",
+    "glob": "^8.1.0",
+    "glob-promise": "^6.0.5",
+    "ionicons": "^4.6.3",
+    "ionicons-5": "npm:ionicons@5",
+    "lucide-static": "^0.462.0",
+    "p-queue": "^8.0.1",
+    "svgo": "^3.0.3",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "ts": "node -r esbuild-register",
+    "build": "yarn ts ./scripts/build.ts",
+    "fetch": "yarn ts ./scripts/fetcher.ts",
+    "check": "yarn ts ./scripts/check.ts",
+    "type-check": "yarn tsc -p ./scripts/tsconfig.json"
+  }
+}

@@ -1,0 +1,231 @@
+---
+title: Floating Action Panel
+publishedAt: 2025-01-02
+summary: A versatile floating action panel component with support for multiple triggers and modes.
+author: codehagen
+slug: components/floating-action-panel
+related: ["introduction"]
+---
+
+<ComponentPreview name="floating-action-panel-basic" />
+
+<Note variant="info">
+  The Floating Action Panel component provides a flexible way to create floating action menus and forms. Perfect for contextual actions, quick access menus, and note-taking interfaces.
+</Note>
+
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <ComponentSource name="floating-action-panel" isCli />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="floating-action-panel" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+<div className="space-y-8">
+## Examples
+
+<ComponentPreview name="floating-action-panel-demo" />
+</div>
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import { Plus } from "lucide-react"
+import {
+  FloatingActionPanelRoot,
+  FloatingActionPanelTrigger,
+  FloatingActionPanelContent,
+  FloatingActionPanelButton,
+} from "@/components/prismui/floating-action-panel"
+
+export default function Example() {
+  return (
+    <FloatingActionPanelRoot>
+      {({ mode }) => (
+        <>
+          <FloatingActionPanelTrigger title="Quick Actions" mode="actions">
+            Actions
+          </FloatingActionPanelTrigger>
+          <FloatingActionPanelContent>
+            <div className="space-y-1 p-2">
+              <FloatingActionPanelButton onClick={() => console.log("New")}>
+                <Plus className="h-4 w-4" />
+                New Item
+              </FloatingActionPanelButton>
+            </div>
+          </FloatingActionPanelContent>
+        </>
+      )}
+    </FloatingActionPanelRoot>
+  )
+}
+```
+
+### Multiple Modes
+
+```tsx
+<FloatingActionPanelRoot>
+  {({ mode }) => (
+    <>
+      <FloatingActionPanelTrigger title="Actions" mode="actions">
+        Actions
+      </FloatingActionPanelTrigger>
+      <FloatingActionPanelTrigger title="Add Note" mode="note">
+        Add Note
+      </FloatingActionPanelTrigger>
+      <FloatingActionPanelContent>
+        {mode === "actions" ? (
+          <div className="space-y-1 p-2">
+            {/* Action buttons */}
+          </div>
+        ) : (
+          <FloatingActionPanelForm onSubmit={handleNoteSubmit}>
+            <FloatingActionPanelTextarea className="h-24" />
+            {/* Submit button */}
+          </FloatingActionPanelForm>
+        )}
+      </FloatingActionPanelContent>
+    </>
+  )}
+</FloatingActionPanelRoot>
+```
+
+## Components
+
+### FloatingActionPanelRoot
+
+The root component that manages the state and context for the floating panel.
+
+```tsx
+<FloatingActionPanelRoot>
+  {({ mode }) => (
+    // Children components
+  )}
+</FloatingActionPanelRoot>
+```
+
+### FloatingActionPanelTrigger
+
+The button that triggers the floating panel.
+
+```tsx
+<FloatingActionPanelTrigger title="Quick Actions" mode="actions">
+  Actions
+</FloatingActionPanelTrigger>
+```
+
+### FloatingActionPanelContent
+
+The content container for the floating panel.
+
+```tsx
+<FloatingActionPanelContent>
+  {/* Panel content */}
+</FloatingActionPanelContent>
+```
+
+### FloatingActionPanelButton
+
+A styled button for use within the panel.
+
+```tsx
+<FloatingActionPanelButton onClick={() => console.log("Clicked")}>
+  <Icon className="h-4 w-4" />
+  Button Text
+</FloatingActionPanelButton>
+```
+
+### FloatingActionPanelForm
+
+A form component for note-taking mode.
+
+```tsx
+<FloatingActionPanelForm onSubmit={handleSubmit}>
+  {/* Form content */}
+</FloatingActionPanelForm>
+```
+
+### FloatingActionPanelTextarea
+
+A textarea component for use within the form.
+
+```tsx
+<FloatingActionPanelTextarea className="h-24" id="note" />
+```
+
+## Props
+
+### FloatingActionPanelRoot
+
+| Prop      | Type                                | Description                                     |
+| --------- | ----------------------------------- | ----------------------------------------------- |
+| children  | (context: PanelContext) => ReactNode| Render function with panel context             |
+| className | string                              | Additional CSS classes                          |
+
+### FloatingActionPanelTrigger
+
+| Prop      | Type                | Description                                     |
+| --------- | ------------------- | ----------------------------------------------- |
+| title     | string              | Title displayed in the panel header             |
+| mode      | "actions" \| "note" | Panel mode to activate                          |
+| children  | ReactNode           | Trigger button content                          |
+| className | string              | Additional CSS classes                          |
+
+### FloatingActionPanelContent
+
+| Prop      | Type      | Description                                     |
+| --------- | --------- | ----------------------------------------------- |
+| children  | ReactNode | Panel content                                   |
+| className | string    | Additional CSS classes                          |
+
+### FloatingActionPanelButton
+
+| Prop      | Type         | Description                                     |
+| --------- | ------------ | ----------------------------------------------- |
+| onClick   | () => void   | Click handler                                   |
+| children  | ReactNode    | Button content                                  |
+| className | string       | Additional CSS classes                          |
+
+### FloatingActionPanelForm
+
+| Prop      | Type                    | Description                                     |
+| --------- | ----------------------- | ----------------------------------------------- |
+| onSubmit  | (note: string) => void  | Form submit handler                             |
+| children  | ReactNode               | Form content                                    |
+| className | string                  | Additional CSS classes                          |
+
+## Features
+
+- Multiple trigger buttons with different modes
+- Smooth animations with Framer Motion
+- Backdrop blur effect
+- Keyboard navigation and accessibility
+- Dark mode support
+- Responsive design
+- Form handling for note-taking
+- TypeScript support
+
+## Notes
+
+- Built with Framer Motion for smooth animations
+- Uses Lucide React for consistent iconography
+- Supports multiple panel modes (actions, notes)
+- Includes keyboard navigation (Escape to close)
+- Click outside to close functionality
+- Fully typed with TypeScript
+- Customizable styling with Tailwind CSS
+- Mobile-friendly design
