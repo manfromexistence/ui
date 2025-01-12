@@ -99,7 +99,7 @@ export default function IndexPage() {
               <span className="text-muted-foreground">Building Blocks for your software.</span>
             </div>
           </Link>
-          <Link href="/icons" className="flex h-full w-full flex-col justify-between border-b border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
+          <Link href="/https://manfromexistence-icons.vercel.app/" className="flex h-full w-full flex-col justify-between border-b border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
             <div className="grid h-24 w-full grid-cols-8 grid-rows-3 place-content-center items-center justify-center gap-8 pt-[4px]">
               <PartyPopper />
               <PawPrint />
