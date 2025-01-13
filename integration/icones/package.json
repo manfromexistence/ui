@@ -40,6 +40,7 @@
     "vue-chemistry": "^0.2.2",
     "vue-router": "^4.5.0"
   },
+  
   "devDependencies": {
     "@antfu/eslint-config": "^3.12.0",
     "@iconify/json": "^2.2.284",
