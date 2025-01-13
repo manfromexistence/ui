@@ -16,7 +16,7 @@ import { Plus } from "lucide-react"
 
 export default function IconPage() {
     return (
-        <div className="flex h-screen w-full">
+        <div className="flex h-[90vh] w-full">
             <ResizablePanelGroup direction="horizontal">
                 <ResizablePanel defaultSize={20}>
                     <ScrollArea className="h-full w-full p-4">

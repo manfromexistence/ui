@@ -1,0 +1,135 @@
+body {
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.dark {
+  background: #181818;
+  color-scheme: dark;
+}
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark);
+}
+html:not(.dark) .shiki,
+html:not(.dark) .shiki span {
+  color: var(--shiki-light);
+}
+
+.btn {
+  --uno: border border-base rounded shadow-sm outline-none px-4 py-1 text-gray-600 text-sm transition-all bg-base
+    hover-(bg-gray-50 shadow) dark-(border-dark-200 text-gray-300) dark-hover-(border-primary bg-dark-100 text-primary)
+    focus-(shadow outline-none);
+}
+
+.btn.small {
+  --uno: px-2 py-1 text-sm;
+}
+
+.dragging {
+  -webkit-app-region: drag;
+}
+
+.non-dragging {
+  -webkit-app-region: no-drag;
+}
+
+.overflow-overlay {
+  overflow: auto;
+  overflow: overlay;
+}
+
+.overflow-y-overlay {
+  overflow-y: auto;
+  overflow-y: overlay;
+}
+
+.overflow-x-overlay {
+  overflow-x: auto;
+  overflow-x: overlay;
+}
+
+/* Scrollbar */
+* {
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  scrollbar-width: 6px;
+  scrollbar-color: transparent;
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(128, 128, 128, 0.5);
+  border-radius: 3px;
+}
+
+/* Tootip */
+.v-popper--theme-tooltip .v-popper__inner,
+.v-popper--theme-menu .v-popper__inner {
+  --uno: important-bg-base;
+}
+
+.v-popper--theme-tooltip .v-popper__arrow-outer,
+.v-popper--theme-menu .v-popper__arrow-outer {
+  --uno: important-border-none;
+}
+
+.v-popper--theme-tooltip .v-popper__inner,
+.v-popper--theme-menu .v-popper__inner {
+  --uno: border border-base shadow-lg;
+}
+
+.v-popper--theme-menu .v-popper__arrow-outer {
+  visibility: hidden;
+}
+
+.v-popper--theme-menu .v-popper__arrow-inner {
+  visibility: hidden;
+}
+
+/* fallback black svg in dark mode */
+.icons-item svg,
+.dark .icons-item [fill='#000'],
+.dark .icons-item [fill='#000000'],
+.dark .icons-item [fill='black'] {
+  fill: currentColor;
+}
+
+.dark .icons-item [stroke='#000'],
+.dark .icons-item [stroke='#000000'],
+.dark .icons-item [stroke='black'] {
+  stroke: currentColor;
+}
+
+/* Color Mode transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2147483646;
+}
+.dark::view-transition-old(root) {
+  z-index: 2147483646;
+}
+.dark::view-transition-new(root) {
+  z-index: 1;
+}
