@@ -137,97 +137,97 @@ importers:
         version: 6.1.14
       '@antv/g-canvas':
         specifier: latest
-        version: 2.0.32
+        version: 2.0.37
       '@antv/g-canvaskit':
         specifier: latest
-        version: 1.0.31
+        version: 1.0.36
       '@antv/g-components':
         specifier: latest
-        version: 2.0.25
+        version: 2.0.30
       '@antv/g-device-api':
         specifier: latest
         version: 1.6.13
       '@antv/g-image-exporter':
         specifier: latest
-        version: 1.0.25
+        version: 1.0.30
       '@antv/g-lite':
         specifier: latest
-        version: 2.2.9
+        version: 2.2.14
       '@antv/g-lottie-player':
         specifier: latest
-        version: 1.0.25
+        version: 1.0.30
       '@antv/g-pattern':
         specifier: latest
-        version: 2.0.25
+        version: 2.0.30
       '@antv/g-plugin-3d':
         specifier: ^2.0.34
         version: 2.0.34
       '@antv/g-plugin-a11y':
         specifier: latest
-        version: 1.1.14
+        version: 1.1.19
       '@antv/g-plugin-annotation':
         specifier: latest
-        version: 1.0.25
+        version: 1.0.30
       '@antv/g-plugin-box2d':
         specifier: latest
-        version: 2.0.25
+        version: 2.0.30
       '@antv/g-plugin-control':
         specifier: ^2.0.25
         version: 2.0.25
       '@antv/g-plugin-css-select':
         specifier: latest
-        version: 2.0.25
+        version: 2.0.30
       '@antv/g-plugin-device-renderer':
         specifier: latest
-        version: 2.2.11
+        version: 2.2.16
       '@antv/g-plugin-dragndrop':
         specifier: latest
-        version: 2.0.25
+        version: 2.0.30
       '@antv/g-plugin-gesture':
         specifier: latest
-        version: 2.0.25
+        version: 2.0.30
       '@antv/g-plugin-gpgpu':
         specifier: latest
         version: 1.9.20
       '@antv/g-plugin-image-loader':
         specifier: latest
-        version: 2.1.11
+        version: 2.1.16
       '@antv/g-plugin-matterjs':
         specifier: latest
-        version: 2.0.25
+        version: 2.0.30
       '@antv/g-plugin-physx':
         specifier: latest
-        version: 2.0.25
+        version: 2.0.30
       '@antv/g-plugin-rough-canvas-renderer':
         specifier: ^1.7.36
         version: 1.9.29
       '@antv/g-plugin-rough-svg-renderer':
         specifier: latest
-        version: 2.0.28
+        version: 2.0.33
       '@antv/g-plugin-svg-renderer':
         specifier: latest
-        version: 2.2.9
+        version: 2.2.14
       '@antv/g-plugin-yoga':
         specifier: latest
-        version: 2.0.25
+        version: 2.0.30
       '@antv/g-plugin-zdog-canvas-renderer':
         specifier: latest
-        version: 2.0.31
+        version: 2.0.36
       '@antv/g-plugin-zdog-svg-renderer':
         specifier: latest
-        version: 2.0.27
+        version: 2.0.32
       '@antv/g-svg':
         specifier: latest
-        version: 2.0.27
+        version: 2.0.32
       '@antv/g-web-components':
         specifier: latest
-        version: 2.0.37
+        version: 2.0.42
       '@antv/g-webgl':
         specifier: ^2.0.36
         version: 2.0.36
       '@antv/g-webgpu':
         specifier: latest
-        version: 2.0.36
+        version: 2.0.41
       '@antv/g2':
         specifier: ^5.2.7
         version: 5.2.10
@@ -236,7 +236,7 @@ importers:
         version: 5.0.35(workerize-loader@2.0.2(webpack@4.47.0))
       '@antv/g6-extension-3d':
         specifier: ^0.1.7
-        version: 0.1.9(@antv/g-canvas@2.0.32)(@antv/g6@5.0.35(workerize-loader@2.0.2(webpack@4.47.0)))(@antv/g@6.1.14)(workerize-loader@2.0.2(webpack@4.47.0))
+        version: 0.1.9(@antv/g-canvas@2.0.37)(@antv/g6@5.0.35(workerize-loader@2.0.2(webpack@4.47.0)))(@antv/g@6.1.14)(workerize-loader@2.0.2(webpack@4.47.0))
       '@antv/layout':
         specifier: 1.2.14-beta.8
         version: 1.2.14-beta.8(workerize-loader@2.0.2(webpack@4.47.0))
@@ -248,7 +248,7 @@ importers:
         version: 1.4.2(workerize-loader@2.0.2(webpack@4.47.0))
       '@antv/react-g':
         specifier: latest
-        version: 2.0.30(react@18.2.0)
+        version: 2.0.35(react@18.2.0)
       '@antv/s2':
         specifier: ^2.1.0
         version: 2.1.4(@antv/g2@5.2.10)
@@ -547,7 +547,7 @@ importers:
         specifier: ^3.13.9
         version: 3.13.9
       iconify-icon:
-        specifier: ^2.2.0
+        specifier: ^2.3.0
         version: 2.3.0
       input-otp:
         specifier: ^1.2.2
@@ -1170,7 +1170,7 @@ importers:
         version: 5.12.0(rollup@3.29.4)
       shadcn-ui:
         specifier: github:shadcn-ui/ui
-        version: ui@https://codeload.github.com/shadcn-ui/ui/tar.gz/2f869a2590e90f79890e6fa00cbfcbf8a241b034(@swc/core@1.10.1(@swc/helpers@0.5.11))(@types/node@17.0.45)(@vue/compiler-sfc@3.5.13)(encoding@0.1.13)(jsdom@25.0.1)(less@4.1.3)(lightningcss@1.22.1)(sass@1.83.0)(stylus@0.54.8)(sugarss@2.0.0)(terser@5.37.0)(ts-node@10.9.2(@swc/core@1.10.1(@swc/helpers@0.5.11))(@types/node@17.0.45)(typescript@5.5.3))(typescript@5.5.3)
+        version: ui@https://codeload.github.com/shadcn-ui/ui/tar.gz/1081536246b44b6664f4c99bc3f1b3614e632841(@swc/core@1.10.1(@swc/helpers@0.5.11))(@types/node@17.0.45)(@vue/compiler-sfc@3.5.13)(encoding@0.1.13)(jsdom@25.0.1)(less@4.1.3)(lightningcss@1.22.1)(sass@1.83.0)(stylus@0.54.8)(sugarss@2.0.0)(terser@5.37.0)(ts-node@10.9.2(@swc/core@1.10.1(@swc/helpers@0.5.11))(@types/node@17.0.45)(typescript@5.5.3))(typescript@5.5.3)
       sinon:
         specifier: ^11.1.2
         version: 11.1.2
@@ -1686,17 +1686,20 @@ packages:
   '@antv/g-camera-api@2.0.28':
     resolution: {integrity: sha512-1CYMOUy6PWp+iJoSEPFSEniJaokcRurz1i0Jz2ev/6X7ZdrQfoauTTsHjFFvpnyxM4HbcR7/09vP4vWExzii3A==}
 
+  '@antv/g-camera-api@2.0.33':
+    resolution: {integrity: sha512-ANetXo7FPscqflz+xlmx9yB/M3fN9j7Lymc0SfDMGqgOrurQJWvK0ZQHfkDO7a430ykatvmh9t+4V4ZZNsoyJw==}
+
   '@antv/g-canvas@1.11.29':
     resolution: {integrity: sha512-CEAAqMgGlqOY2pCXpD+peOfhcpdSCKt9HQpmxPN2crsoDHk7wD1yiYVSpc0+iX1S8SNCa9TrnjZX+oQyMkFY0A==}
 
-  '@antv/g-canvas@2.0.32':
-    resolution: {integrity: sha512-WanqnjHziCbFYgewFxqW4KgQOREaVSopqMYC+/C42TZkCJ0ZqQlFe1Cpb3MipkiV05/nLWoRhhJTsWZSF6jHbw==}
+  '@antv/g-canvas@2.0.37':
+    resolution: {integrity: sha512-6LtBG+U+vk6IwOLTbeDhDglezGDZKSPv6dB7nio0ahqfVtUqSkEWKbNqtzzihCmg9Du9HII7fbaT2VehFRbj4A==}
 
-  '@antv/g-canvaskit@1.0.31':
-    resolution: {integrity: sha512-NspBYojf8irh90XGVvdV4fzA57Ny6JCZ93OIK7uKJckFbp3JuL4xv9vSKehCROLi8B18Oty5aGvfdsW7YVG4xg==}
+  '@antv/g-canvaskit@1.0.36':
+    resolution: {integrity: sha512-OjnZV5ffbu2jABioOcyiNMCKMYphJFRh2E3zKuyRFNBwHHBMuNfy8qsMP5bqBsXyO4FBvtud0u7cLnv/Fa3D4g==}
 
-  '@antv/g-components@2.0.25':
-    resolution: {integrity: sha512-yJNbmZ93dGw8wBVkLU+ufCs0hE1o1TR2w+/x87f3HGaQBwlBQ0SMG/jhvMnwDUhdLMp7Y4Cjl6VhVg0q5CEqsA==}
+  '@antv/g-components@2.0.30':
+    resolution: {integrity: sha512-VOYsRdUdw6CKYJvTO9D14LSecdXo5uQEk4cKp424o6jLKEK6FuaUIGzrrLvjsPKEtX29YAcstkADTMk3IWqf7Q==}
 
   '@antv/g-device-api@1.6.13':
     resolution: {integrity: sha512-lTvlSHYDZyWJnAR1W8DOQLwUo32VpRopbS/BPQqStcOV6FqaC+u5YjT50KbJ+oBWcorpzfknhICRwEA3Xm8t9Q==}
@@ -1707,6 +1710,9 @@ packages:
   '@antv/g-dom-mutation-observer-api@2.0.25':
     resolution: {integrity: sha512-uMRcvAPAMCBHPnPwEl2dkmIABWSFdgEbqbkDI6TSSNwLdbMHqqyJaaMnZxSE6n+Qn5UaXgpCFe2LjttsHxQ8AQ==}
 
+  '@antv/g-dom-mutation-observer-api@2.0.30':
+    resolution: {integrity: sha512-xwFOvVjZM6stXUlBl851I3tLgUDJzSadI7m820OKQghVBx2qCSV6IvY2DfLTsURBl/FgRqIpDpBz/hr6eVWjkQ==}
+
   '@antv/g-gesture@0.0.83':
     resolution: {integrity: sha512-626KQrcE7zlbsUlahLYAGJ6JRPu48EC5dlRNJ6tviRK8itCAVpK4AX7GW4FTodPbPf/zSO3OYnt0AHiEAZ5QOg==}
     peerDependencies:
@@ -1715,8 +1721,8 @@ packages:
   '@antv/g-gesture@2.2.27':
     resolution: {integrity: sha512-IgZkA0gbMiGKG7V+RnYusmP9kMWKs2Uis6kRCfSBQIeiYYALHx/MdzBhdYZ88+Rcd62TGzbLsRkxz3gOZkUIvA==}
 
-  '@antv/g-image-exporter@1.0.25':
-    resolution: {integrity: sha512-zJhSNOU2gJeQWet5728nOom9JiiD07wwM+gLUf2hsmAJL2HIV34L0pw0xBm3WgrhFLS+3VJKyArEdYs/fh9aRA==}
+  '@antv/g-image-exporter@1.0.30':
+    resolution: {integrity: sha512-V6zMLDQr2ogrSO8PhkmaRV3hVxzR+4ziCP32QwWjfLKhD5T4uHkyqdnp3CN+0/R6A8TPyxoYgfHBnk3x6hODGg==}
 
   '@antv/g-lite@1.0.70':
     resolution: {integrity: sha512-/ACSlRJXzC84+szMMKeV9AbvuJclnSMCdSyghqMVzeuYr5YE6mtWwLk+dOWAHgX/F0nJCpjQkIvcMdXGqakLzw==}
@@ -1727,14 +1733,17 @@ packages:
   '@antv/g-lite@1.2.24':
     resolution: {integrity: sha512-7FfySdANOtn2zKq41gbRj30KJ0TpnWDfyvAENVQ6Hbfqmst3/LP14rKwBmFTavjl3POdruf/dh4w6JX2gR/rUA==}
 
+  '@antv/g-lite@2.2.14':
+    resolution: {integrity: sha512-R38qz8dk6fs9L6Ko3n3sv+eOeFZsGKS+NHcr7Jpuawj9jVrA676b//1aeZuzxmRqv7rNxVD+cPzl0iScZdBroQ==}
+
   '@antv/g-lite@2.2.9':
     resolution: {integrity: sha512-6yfrDT0WSDuFMivESOuaRYLTdzvo3sfwQBoaE4fZSSyrixY5P9uHIZV4o/r2XNUR5KAYFEDpJfgH2jM6AoedRw==}
 
   '@antv/g-lottie-player@0.2.24':
     resolution: {integrity: sha512-6kVjBWMj7KMx1C1uMH4PlEMkJ7cjHp6iGYdYLah4Fg/xiOuIXpyxt0KykG/jnxn2VJ45vp1O8j8ZduYpevD6FA==}
 
-  '@antv/g-lottie-player@1.0.25':
-    resolution: {integrity: sha512-iSEjzQymNvKEmIMNuHeekkkWNwsp0Fs0Z1EpFIPblPp3fUhwuSld/eWfewGfS+5JwbGnO+DYzEO2EtuPPvaFtQ==}
+  '@antv/g-lottie-player@1.0.30':
+    resolution: {integrity: sha512-yc53t5QRYgGTJWogOs8UP2OD88aLrftC2lg5rfmbr3oCKXpa2j9eB2TMaGRNpDMGejVnz86rxALBvnj2nEO1hA==}
 
   '@antv/g-math@1.7.49':
     resolution: {integrity: sha512-6eVtmtkmPAjqQrg1TZ6MICtHmBUv2jCDbgRpHl3VmX48KPPOaBlbkZlhh0ZEAEMN1ex075W8kYr/+xDHnhCvKg==}
@@ -1777,47 +1786,47 @@ packages:
   '@antv/g-mobile-webgl@0.9.40':
     resolution: {integrity: sha512-TrnTL0zGdYk65tcJulGKYNdHUgv/wcuN1IzT4xCysZUYQaW8Lio5sHXPp+8hMsHUODLEC6vM8BcwYnDgARzPnA==}
 
-  '@antv/g-pattern@2.0.25':
-    resolution: {integrity: sha512-Ofakm3tNI8Nma9gaycXGRlLbcAp3U7pB6X2nyEOfTmWuI6vIhuiJ9/vbpSSoSehwN/v4Najlp0ybabNBqTZwlA==}
+  '@antv/g-pattern@2.0.30':
+    resolution: {integrity: sha512-kWdcucFM3BMRNW3gquRcEocg+oJETg6xQiH7hkQ85pk95T/5zFZDwC2FlWlfF5F+pcQT2hi8EupQhs4LKqJNBw==}
 
   '@antv/g-plugin-3d@2.0.34':
     resolution: {integrity: sha512-9bVMRl0RosDHrFJM8MOMIwM+EhlUHti4RO6kBTKFr438HP3azV1qjF4+z+3XLvKBIezn9P9PFe7naY/slfx+ag==}
 
-  '@antv/g-plugin-a11y@1.1.14':
-    resolution: {integrity: sha512-Lly+edpGEODXTHR9i4agvrOtmE8qHj1+CskIAmzhyL3IhRU9aG6XMamernnidqAssAx6GvqrXJAMfR2wZnJ81g==}
+  '@antv/g-plugin-a11y@1.1.19':
+    resolution: {integrity: sha512-+P5decXakW9Mdj+sCb9oKBfwxR+Sed/MYEiGBJABTfqiWjCyvSFjljL34x2Itux2xXrdvvP8T9ZoZ2OexPQsGw==}
 
-  '@antv/g-plugin-annotation@1.0.25':
-    resolution: {integrity: sha512-ofeSHghq6ijLq2FVnzCieiDMN+UBZb4p2408ozBgn5kXyuKqMgmexrUc8ClR6lwLg5K1D+baQuapv1BdPfE+iQ==}
+  '@antv/g-plugin-annotation@1.0.30':
+    resolution: {integrity: sha512-gi1tawdBbt8xl0DfshtR3itiuAKr9mSj+YMWLzmJGD4jkxdfvLKxg6VZGhx02qrBM/4dmb/QOpdPc03h/TA24w==}
 
-  '@antv/g-plugin-box2d@2.0.25':
-    resolution: {integrity: sha512-zgiPGI5sst8ruUU2jdax4+Mja6V3sB+YXSJxVwhmRo3SMJMxPO/GPvjNtzbSRy0pU31y9Qcsphe6oU0Y+iaR4g==}
+  '@antv/g-plugin-box2d@2.0.30':
+    resolution: {integrity: sha512-JM0cWFgTio3/+6W8AYQXMCKlrHT2ijAbtE6706cOTG6FG6GcFJvAQWnCMxtxaPNwxDGOvv/4oXVshhXqcq0uOQ==}
 
   '@antv/g-plugin-canvas-path-generator@1.3.24':
     resolution: {integrity: sha512-+85VyXQCdR/8uo3TEk95GyxT2tiyEmnPHtPETVTCVgzuSeN/NQzLgByse65VQSejJG7a5SXygOaTHOBLmqbWCA==}
 
-  '@antv/g-plugin-canvas-path-generator@2.1.9':
-    resolution: {integrity: sha512-IPKIFyQgIKM//vPA/Xf/VyoxYukzTkoBMygHhf/86pWAlE4VVLJqdMnLUEUEDD6Wc3gXaNOeYCz1vv7pTUD0Jg==}
+  '@antv/g-plugin-canvas-path-generator@2.1.14':
+    resolution: {integrity: sha512-c8IoFaQ/xZ43DS9uWwF9uZxgMRomqQ/d6DZVgK4hw7kdmv0OQKm0HfZIisMrQIV353poa0dEYpGrH2Kq3syzBg==}
 
   '@antv/g-plugin-canvas-picker@1.10.26':
     resolution: {integrity: sha512-xP71wHNuGknzI20B6Tk2qCsNsEb/DtpQTtIkBqsRiG+hT+IVBFp5yQ1KE+4dkZQ4/6UqQlKDLb1eIVm7I8fyWg==}
 
-  '@antv/g-plugin-canvas-picker@2.1.11':
-    resolution: {integrity: sha512-QcvYirnCX1cU6AWeYTWI8J/9zmr54dWM/lFX3Ynntuwbl+6onywXsQp8Avi+JZULMLjDyaji0iLg/+i/1MOPog==}
+  '@antv/g-plugin-canvas-picker@2.1.16':
+    resolution: {integrity: sha512-W19ryBxUl/jkg4MjsBbh+9GIiA1aj7Xq4C3i4enEat1O+SNQQwDbyQmryDQQZmeFygqRRA5yARLIg8oHlaMD/Q==}
 
   '@antv/g-plugin-canvas-renderer@1.9.26':
     resolution: {integrity: sha512-0rz1+7746MhQSJ/NJ7bbuxURv0A5/OvbM1SPXFh6w5geFJoU89uPK2dVG4IFz6x4kgcCkcjFdhXg7Oti3LOjNg==}
 
-  '@antv/g-plugin-canvas-renderer@2.2.11':
-    resolution: {integrity: sha512-LDz3hEn1sIpU/o67kn+NnScIjuzjBwEGwQS8PJOkxnQGfUQ7WyVWdw7QLy90ZHX6sb+Iya4H8Ys8CuQ3qYiDpg==}
+  '@antv/g-plugin-canvas-renderer@2.2.16':
+    resolution: {integrity: sha512-VumeakqQ2pGcb/w8NGgM2Gy9YHP5lcB76Dvsv6qnP71FUIz2YLLZ7O77WBUT3ePQRQjiQt8GYOLaXZpOntc3SQ==}
 
-  '@antv/g-plugin-canvaskit-renderer@2.1.11':
-    resolution: {integrity: sha512-BfqzCsIFyOdMyVMj/T8nBbd+Qx+MFZqspbwVWs/EopeIJ6+NWSJ/ZqUHYy8Kp1tJzzy9O6D6oAB7KRZyRA7PIQ==}
+  '@antv/g-plugin-canvaskit-renderer@2.1.16':
+    resolution: {integrity: sha512-IzqlCtIAZr/xL+Qv0ZfcQiROviWfZIprarp564ZUprIu56wOmgqTugIMX+tMdItTuelrEVD1JBXqNCqkS3x58g==}
 
   '@antv/g-plugin-control@2.0.25':
     resolution: {integrity: sha512-VCzox4Z2ohLc0kFD1rB0Q2mrGQEm0dtSdl0vbTrJX8OTqmPWD92MlMmki1IQ6ycRuALmUrAtEDBqErMID9y0Cw==}
 
-  '@antv/g-plugin-css-select@2.0.25':
-    resolution: {integrity: sha512-G2lWCicUdjFV4b5L4w0ts1PhOFt8ocDcuAP9N9YN7nBDwjzFNmvN9rwyJYlu7Ntvc7XMRovkHyMqB4WoIfpvBQ==}
+  '@antv/g-plugin-css-select@2.0.30':
+    resolution: {integrity: sha512-OPBMoQLWGXRgM4acv2mXZv6AvwHrbPipp7C0ScobCx5Y5p+XEydrd2EnHDXMi0Ynt+CA96RwNKVgXuQEO9uzQg==}
 
   '@antv/g-plugin-device-renderer@1.9.17':
     resolution: {integrity: sha512-X5RVUPxR/M71xfhUK+GHwKaXuGT1GSMOS/C3HNRH5KL/6AwlHi4sG9C2NQCuiu1J8QGHkWO6opqQL1k6V1LNWQ==}
@@ -1828,6 +1837,9 @@ packages:
   '@antv/g-plugin-device-renderer@2.2.11':
     resolution: {integrity: sha512-qAR8bmCoAQjKOZO10GgUO9jlJA1l4o2bPl9VsKEgDaa3L+eTQ4rZismwmITH1m05tfRytCJs78tElSlIUbHsRQ==}
 
+  '@antv/g-plugin-device-renderer@2.2.16':
+    resolution: {integrity: sha512-gFuy4y+V9viZGu06Z8rw2BD9EDQ96wOt1O31BJTNv9HwVp2hOLLKzFl/lq4An1+xB5bWzVB5IPUv7gcieOnB2A==}
+
   '@antv/g-plugin-dom-interaction@1.9.13':
     resolution: {integrity: sha512-StGNQv8wCWlRrQ8tYfTggHCSCmEgAhqDGhgkujYrgT0PqTH7nIbTlnVFvMq4afYiuW+2r5Yh1veTY7hunRJ7+w==}
 
@@ -1837,17 +1849,20 @@ packages:
   '@antv/g-plugin-dom-interaction@2.1.14':
     resolution: {integrity: sha512-uKm3f5RoUaUy63vSWbZltThsL5OWTz3C9Dt3ERnwcM1IY6U3Wz4lXGGjjZKU3nFETavRITIWRlIsaLAtTak1kg==}
 
+  '@antv/g-plugin-dom-interaction@2.1.19':
+    resolution: {integrity: sha512-xuhK/WEn4Luu+3qT6JvxqKRc6Sd3Z9Wx4eTfq6LMiPtZWKhuXOARGcYElMQ82xgmmv8t04/GXXPhcbtRbQ+yRw==}
+
   '@antv/g-plugin-dragndrop@1.8.24':
     resolution: {integrity: sha512-muk2juDPnafWS6xYDVjQRnI+bOlG4k4jWOb8Fk6hKjDRxmXXiP1fz4lo8kn5QvsCKra9Gu08JlU7UNONFFBspQ==}
 
-  '@antv/g-plugin-dragndrop@2.0.25':
-    resolution: {integrity: sha512-nzDrO/9ycQRJELEVn+XtQS6u8uRabQkFt5RMnDBas9fGJABG6HwCsQKSYbQV5j9XHHr5s9JOCY8X9N1YQtIfvg==}
+  '@antv/g-plugin-dragndrop@2.0.30':
+    resolution: {integrity: sha512-Etcnnv+6hyyk9XPdX4XQBoZ++NqW7zh4VDY0nttrDSAQwmE1+DGkG62x6uE0iCSJs1FRXZUZNpQrDqFj0Ca6Ew==}
 
   '@antv/g-plugin-gesture@1.2.12':
     resolution: {integrity: sha512-xk01etWP7Q6+JhSJ0Cvtoe+aRw7gncXkQLI5k4U50boCpxf0EjtDJHVxpsCVW2uBEWPNfLTpof9MF+zCC1VtWQ==}
 
-  '@antv/g-plugin-gesture@2.0.25':
-    resolution: {integrity: sha512-GC/+O1bcUpE0ii0s/o30gKzKR8OaeCFXOzGl3eo1vDFFbmdkhw5TrqCSlHZNP8hqzAbD0rIh2zRP4BbHUguDfw==}
+  '@antv/g-plugin-gesture@2.0.30':
+    resolution: {integrity: sha512-Z0GHMgDJyMnhe0qqHG/sMJG9gMSm5A9iBJyyt8jldhYK96s5GEl99ePHTj+Uch6tAiLbaui8Ba1qjeQ3VUB1gg==}
 
   '@antv/g-plugin-gpgpu@1.9.20':
     resolution: {integrity: sha512-5Pu90bX5cTF8b72oynpvXVoyrtv72CZ8mjgGqGf2PuMk2PYXcoWioeGb97E/Piiiqj/3t4ObpdF1Oxtg1OgSoQ==}
@@ -1861,6 +1876,9 @@ packages:
   '@antv/g-plugin-html-renderer@2.1.14':
     resolution: {integrity: sha512-SdT6NeZuvSyYX6EcqMXiZZu33y8NWtNAtdVgpOdOF9iHQ8xgykDK2KEU2qAIbwSlFP3dwxzu5zhgqllGUpHpXQ==}
 
+  '@antv/g-plugin-html-renderer@2.1.19':
+    resolution: {integrity: sha512-x/a/uuLcczoVfz6WqwxwIggtzM0JXSgIlJMV3etGRGerovsb3skh56b/E5XoVWPI8dfS8xAoDsssMA/9FalR1g==}
+
   '@antv/g-plugin-image-loader@1.3.13':
     resolution: {integrity: sha512-JIT+bADisGoaAmwa9Zq3S4HgkcyYjdiE8uiVGvjWif6uVplOuzxmLaXycIk7v/QevDhypfy0PhsW7n2D7Rh9BQ==}
 
@@ -1870,8 +1888,11 @@ packages:
   '@antv/g-plugin-image-loader@2.1.11':
     resolution: {integrity: sha512-YB1SfCcg9iGBEpnYvji9qyZsY1rMP5rDFAGTV1S9FxR0Fh1xGpNRjTWdcBpIXcgNPjr19B2rl5jVtvAHLPWKhQ==}
 
-  '@antv/g-plugin-matterjs@2.0.25':
-    resolution: {integrity: sha512-lYcaEnshMRvH6gxHmH2Bhz4/mGFv+3oxue2lWdb2TAdGUUX/zoLb0k1dlxs2gc0e12qJGBuL1IByexEMGFu6+Q==}
+  '@antv/g-plugin-image-loader@2.1.16':
+    resolution: {integrity: sha512-0NoyILV3shPWlnQvVRJFfqZAFUkYOGZWnrhwPFLYqKylVlV44tsOlCB9jxvG9u9ieOtY4kOmfgU5a8xnYahwMQ==}
+
+  '@antv/g-plugin-matterjs@2.0.30':
+    resolution: {integrity: sha512-sS4Z21tYnP0ySG9mFemSNv8VamhH+jENiUOeZyTdxDpkMmicwnzpMY9VQXS9gcvKchJm43HGasSsBRAVexrpgw==}
 
   '@antv/g-plugin-mobile-interaction@0.7.51':
     resolution: {integrity: sha512-91zhFauzwuziSMISteRj8MuGVOF6VsLCSv0X5j35P3yKmmZ6PLVFSDxdx3kzS7rvdzF7I0ZQpHzDgWTIvxYD0g==}
@@ -1881,26 +1902,26 @@ packages:
   '@antv/g-plugin-mobile-interaction@0.9.24':
     resolution: {integrity: sha512-fyG0QvwnkNlQh8/ZlB7AiS5EZ3QOdXOB9T5ChEp8ymZADjXj91LagEHnJlAitz63uy6qvsMpg1r7ELWWnXHyvg==}
 
-  '@antv/g-plugin-physx@2.0.25':
-    resolution: {integrity: sha512-AENgez+Qv5OTzFmN6yf2a7Khmm9QOwpzbzfLGEjfiXmvKKDtrvZ9MBju7gNMHlwbHm2OAFSLcc3Ccki5Y9mIeQ==}
+  '@antv/g-plugin-physx@2.0.30':
+    resolution: {integrity: sha512-RFf4KaF/PnV/nOsqIwO7OYu11GOJs5End4lrrASNjihuWG49//G5eeLflmKF6kFSNLvAHtF+mkQFFjd0mnrx/Q==}
 
   '@antv/g-plugin-rough-canvas-renderer@1.9.29':
     resolution: {integrity: sha512-+TMlFOCPDlGLJ9DpGopQp5ar3lGidNkC6DDZUEQwW9B9SP8Yjmdsfi5BKv3nMmZND8vVkaCxyWkeQdUYFIfL3A==}
 
-  '@antv/g-plugin-rough-svg-renderer@2.0.28':
-    resolution: {integrity: sha512-I2vZnLfr+SqtP/TPJ62nEJLIi3etqkQmWy96r8ymk/0oZMIwYBe6YNhQNpISmDaqfyPLHLTSx9t+Z7udbZGLrg==}
+  '@antv/g-plugin-rough-svg-renderer@2.0.33':
+    resolution: {integrity: sha512-nYdeVMp3J1Y78QfpzVLBfMthQACB9iCqcL65aLWCa3pz8SQaqRUgcrwv+NXUzumoqV4UD+ShOLUtYaumovOQrw==}
 
   '@antv/g-plugin-svg-picker@1.9.28':
     resolution: {integrity: sha512-nr+UW48r4VTNJtuhqtNUw/I/RGIzqHclDKVdcJuvygqNoTEKSSSeErnSVEWnKC/69IpOp8hZDa07WqPZPUC0Vg==}
 
-  '@antv/g-plugin-svg-picker@2.0.27':
-    resolution: {integrity: sha512-wMkVwazwwydcDhNhZ3klGFZaXQeH46D94R2hVcPsmrMuupp5iT0zhemF7DiGr2zL7GvDllL+3g5zIPYQxx+nMg==}
+  '@antv/g-plugin-svg-picker@2.0.32':
+    resolution: {integrity: sha512-EhDVvzorXAOmPNls/RkrgK3qw1TjBgzBesREZcZhV3evCju5G+Ue9EkqgDwIG4lpn8r2Rs8wqyrJr6K1JSDFsg==}
 
   '@antv/g-plugin-svg-renderer@1.10.28':
     resolution: {integrity: sha512-9W3yXsxE+73sWGORCINIeT88xu9Gh5LZh49RdFLxC6kvhJNA5c4zHUoduTSFecMGpCgG4U/GaABCxgwk9osFbg==}
 
-  '@antv/g-plugin-svg-renderer@2.2.9':
-    resolution: {integrity: sha512-Q5XiNZic+ju1wep9ZA6ghcD36BJO5rApciKd2OohYaWDgyv3VC7k2+cf/K6mMuUF9T4FAsPUBF8HZtc32mDIRA==}
+  '@antv/g-plugin-svg-renderer@2.2.14':
+    resolution: {integrity: sha512-TelILGNJbZLqJgsmMX1VI9v/UAeUVySsssI0l/OR9C0tmEBWzCmReCx+byBnPV+GqD6rIpZRLwUGd+rURsC0dw==}
 
   '@antv/g-plugin-webgl-device@1.9.17':
     resolution: {integrity: sha512-GVDbj9B92eiD82i4MfM738G3H9nyYBWDlLAHNAPeUTTLlJpEVwlUXO3X7udgFUnaZBVmBUIX9uY9e5edsPIJLA==}
@@ -1908,14 +1929,14 @@ packages:
   '@antv/g-plugin-webgpu-device@1.9.17':
     resolution: {integrity: sha512-iK/xOactLqZph+iaGb/vyrSB2u213qC3EE6oDKyFo4TfCmK+5kObLjIbfPzbCwuqy+ILq6U+JYetHZbCKrcisA==}
 
-  '@antv/g-plugin-yoga@2.0.25':
-    resolution: {integrity: sha512-RZv+YsaMW0Ly/45UpOS0qZ5xTfKcWHr0F6S9gxBAFX2YQLp5veOsVtOCF0MAue18UmdT3Kh2OcOR7/qnvvi0bg==}
+  '@antv/g-plugin-yoga@2.0.30':
+    resolution: {integrity: sha512-5H5WF+6ckDZdUA1WHBvEC0P3+d8qqdwbTwFDh8mJ3U14i/nFi5F9cXdcgUgl3mIEqC1eupsRoW1njgu/WgHzgA==}
 
-  '@antv/g-plugin-zdog-canvas-renderer@2.0.31':
-    resolution: {integrity: sha512-gZwbIxaNWw5lmWmyXJfk6w2yInVRzoGXKfDXS3N9goga5IeuA8eCPOFjTXFb0Cyeo+hJAXmUPie6e0LrAFU8jQ==}
+  '@antv/g-plugin-zdog-canvas-renderer@2.0.36':
+    resolution: {integrity: sha512-ibbz7rx8TQCGtRwj3Lwvc3jV/xB3lYIA2E+mXIJpkDbD4sPr0FvWOQi6mHNchgUWa4EVXKMjtM9mBecq2QzeMw==}
 
-  '@antv/g-plugin-zdog-svg-renderer@2.0.27':
-    resolution: {integrity: sha512-i5TFX1Pk5v7l+yJ4l0M0YOwq/M/Jzz4bbSwCkqUA1ie/O3ZooSc0fr083ZG6YIBUCiTxsczHXe/iC7lP97OfXA==}
+  '@antv/g-plugin-zdog-svg-renderer@2.0.32':
+    resolution: {integrity: sha512-BN5ltsL89/toGiiyiB9vqcHoe9wq3+tiTPmMyeSIrbuF8cLqFD2rZ84A7TqsHGcw4JKBtbAZ95zNDdHCJgnyww==}
 
   '@antv/g-shader-components@1.8.5':
     resolution: {integrity: sha512-MkVkTQBfA9mJ5jR75XA8yI96jcq4WC+p3VqxMNiiJ4mP7Oqb+oNqKJzxyX7Hfuu6IQ6PC2AOonE27OhR0z/5zg==}
@@ -1926,8 +1947,8 @@ packages:
   '@antv/g-shader-components@2.0.0':
     resolution: {integrity: sha512-qdUAz0ZZSrAFrBKxne7kUMWt2v+kncnpWwdDD7SGa7OCtcnWADl6lUUiL0r29gBMcoDtPXJijsjS/e/w9cVWuQ==}
 
-  '@antv/g-svg@2.0.27':
-    resolution: {integrity: sha512-y1bZ4taGoMiNWM+GGPx6GFjq5cdVP6ajC4vlF5NfWIvQ9uS2V93ksQYEYV2Cmhnin2fC5ZVlZg6F26g0LAHg0Q==}
+  '@antv/g-svg@2.0.32':
+    resolution: {integrity: sha512-q6M44VkyM3cp3fCaAxfv2bdgTPT4cDJ4gO4qguh3z74S2XaKdJntan+52jwm2lTTM2bnJmbrhPvnv47fJ42r4g==}
 
   '@antv/g-web-animations-api@1.0.39':
     resolution: {integrity: sha512-0QXVzjk8kKrVokxHLLphkJsMPvbhLgcQN8/eVUdPaj+A0Yf6Cpg/hquYaGBBuqzwoMVB0ROUsIvwXgRtoXQONA==}
@@ -1940,14 +1961,20 @@ packages:
   '@antv/g-web-animations-api@2.1.14':
     resolution: {integrity: sha512-ZQNpUbeoxzGm4h5uJvoXIpdahWZ3qhVxpeiSeczGh1sYk3re7W0xkGK+fNeVP8qv+2dWdGNmOUooikdbXx2BHA==}
 
-  '@antv/g-web-components@2.0.37':
-    resolution: {integrity: sha512-kD/xg0ZQof8fL92FHnvu1TpUugmsJaxckjstuCKusYrmIglmQjZE0r198XixodQn7vY2sMY6drKrCqCG0LDZKw==}
+  '@antv/g-web-animations-api@2.1.19':
+    resolution: {integrity: sha512-izzAgAxhIV3cZnyv8pqeOSmkMoV1hw7XzBBywbDbMd58d5208RSCBXHrQ68D/hLqzCgrooas5n+usxXWvKhD2A==}
+
+  '@antv/g-web-components@2.0.42':
+    resolution: {integrity: sha512-XIbmRTiIoiOvsNAToDg/wPRc+uaGMCc8JX1LQYuG5Vz0ZZrgDAiiDAVtv8FNXPOw0SzwNypYTAmS26EVCg5zWg==}
 
   '@antv/g-webgl@1.9.39':
     resolution: {integrity: sha512-DnOtichateWslBSSP631KeY3QrTGcyfUB4XKVFMksXVIHz7pVXJrLOA3Ynd1EeAWQH9GroA7q0GKvH2jpkrIFw==}
 
   '@antv/g-webgl@2.0.36':
     resolution: {integrity: sha512-Jfnqd1uPeCsnA0/ZXlsoZE2AzP8KuV9PROz9ZlX6FqayFFreO6AENu1NdeRNHm8xTHhS6ADmdx7hZWq/a34sxg==}
+
+  '@antv/g-webgl@2.0.41':
+    resolution: {integrity: sha512-Jucj0qAipacQusMnVkPCGEJ8bzgC91uc35njTudJbpbc0l29ORvfEqbYE2pNCJVrmXHTMjv2uRFQObLTN+iGPg==}
 
   '@antv/g-webgpu-core@0.7.2':
     resolution: {integrity: sha512-xUMmop7f3Rs34zFYKXLqHhDR1CQTeDl/7vI7Sn3X/73BqJc3X3HIIRvm83Fg2CjVACaOzw4WeLRXNaOCp9fz9w==}
@@ -1961,8 +1988,8 @@ packages:
   '@antv/g-webgpu@1.9.20':
     resolution: {integrity: sha512-WU6C0L5nPnOQFAOP30hhbWvXBYLINNL+FWbD6H9PQRU1R84PoXc8YmvHTMnCPtyCT0+aJBbqYIxr/5japeKlkg==}
 
-  '@antv/g-webgpu@2.0.36':
-    resolution: {integrity: sha512-zTDRRt8ZnFom01Qch8OCXSTVOvT6wWlG/0pAkM924si+VdvBYr9TZcVxwQ+6y70RUeXOUHgnR8obV+GfOPpAnA==}
+  '@antv/g-webgpu@2.0.41':
+    resolution: {integrity: sha512-3ZjgikEARPCEptPjJdSFtiqm3PeyHGWzdjGXeUjlr6ORLQ82zcns0w28lscKW1VGJgJwchh6FYUTRCTcqr4UHw==}
 
   '@antv/g2@5.2.10':
     resolution: {integrity: sha512-ewJx9eeDuiMYRq+iy6jKnTJuxfmzHPKDQ+EHWLc+F0GhPs2UrGY+A27p2Wb3jbdZI42agnkwtvI6WgDGC3ZXlw==}
@@ -1982,6 +2009,9 @@ packages:
 
   '@antv/g@6.1.14':
     resolution: {integrity: sha512-57kCuT5gutH4aSaBahaJ6OE9ZSkC02L+gdSFMRU+nWWDrFwXsEEgsJ2Mtg08L+zlhoiQCLu12HND65iPe53nKQ==}
+
+  '@antv/g@6.1.19':
+    resolution: {integrity: sha512-lCLLmaXh5G7J4yKcz4UzUTbC+yHHieyvPdy/r2MXHkM0IiFWalfw+sd2reSwKOolgXPy4gHO1DxwpQTXoBt0hA==}
 
   '@antv/graphlib@2.0.4':
     resolution: {integrity: sha512-zc/5oQlsdk42Z0ib1mGklwzhJ5vczLFiPa1v7DgJkTbgJ2YxRh9xdarf86zI49sKVJmgbweRpJs7Nu5bIiwv4w==}
@@ -2004,8 +2034,8 @@ packages:
   '@antv/layout@1.2.14-beta.9':
     resolution: {integrity: sha512-wPlwBFMtq2lWZFc89/7Lzb8fjHnyKVZZ9zBb2h+zZIP0YWmVmHRE8+dqCiPKOyOGUXEdDtn813f1g107dCHZlg==}
 
-  '@antv/react-g@2.0.30':
-    resolution: {integrity: sha512-T7Yu0dUiDQrkyKVsOmrPMOr2d4OfARzXhF0oJXqZBlQgxHcQRbdzMnpQr+Nt6KmYxs2wGeGnKiY8yy70lbGAdg==}
+  '@antv/react-g@2.0.35':
+    resolution: {integrity: sha512-rmmix3491JVijLRFWYmjjr2YZaUYnq4sVNHuYmOHPlyUTeMJ2tQ56vE9/ctB1zm/y86UgNt7Pw/T9+TsTgbEYA==}
     peerDependencies:
       react: ^16.13.1
 
@@ -26894,8 +26924,8 @@ packages:
   uglify-to-browserify@1.0.2:
     resolution: {integrity: sha512-vb2s1lYx2xBtUgy+ta+b2J/GLVUR+wmpINwHePmPRhOsIVCG2wDzKJ0n14GslH1BifsqVzSOwQhRaCAsZ/nI4Q==}
 
-  ui@https://codeload.github.com/shadcn-ui/ui/tar.gz/2f869a2590e90f79890e6fa00cbfcbf8a241b034:
-    resolution: {tarball: https://codeload.github.com/shadcn-ui/ui/tar.gz/2f869a2590e90f79890e6fa00cbfcbf8a241b034}
+  ui@https://codeload.github.com/shadcn-ui/ui/tar.gz/1081536246b44b6664f4c99bc3f1b3614e632841:
+    resolution: {tarball: https://codeload.github.com/shadcn-ui/ui/tar.gz/1081536246b44b6664f4c99bc3f1b3614e632841}
     version: 0.0.1
 
   uid-number@0.0.6:
@@ -28557,7 +28587,7 @@ snapshots:
 
   '@ant-design/react-slick@1.0.2(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       json2mq: 0.2.0
       react: 18.2.0
@@ -28793,6 +28823,14 @@ snapshots:
       gl-matrix: 3.4.3
       tslib: 2.8.1
 
+  '@antv/g-camera-api@2.0.33':
+    dependencies:
+      '@antv/g-lite': 2.2.14
+      '@antv/util': 3.3.10
+      '@babel/runtime': 7.26.0
+      gl-matrix: 3.4.3
+      tslib: 2.8.1
+
   '@antv/g-canvas@1.11.29':
     dependencies:
       '@antv/g-lite': 1.2.24
@@ -28805,36 +28843,36 @@ snapshots:
       '@antv/util': 3.3.10
       tslib: 2.8.1
 
-  '@antv/g-canvas@2.0.32':
+  '@antv/g-canvas@2.0.37':
     dependencies:
-      '@antv/g-lite': 2.2.9
-      '@antv/g-plugin-canvas-path-generator': 2.1.9
-      '@antv/g-plugin-canvas-picker': 2.1.11
-      '@antv/g-plugin-canvas-renderer': 2.2.11
-      '@antv/g-plugin-dom-interaction': 2.1.14
-      '@antv/g-plugin-html-renderer': 2.1.14
-      '@antv/g-plugin-image-loader': 2.1.11
+      '@antv/g-lite': 2.2.14
+      '@antv/g-plugin-canvas-path-generator': 2.1.14
+      '@antv/g-plugin-canvas-picker': 2.1.16
+      '@antv/g-plugin-canvas-renderer': 2.2.16
+      '@antv/g-plugin-dom-interaction': 2.1.19
+      '@antv/g-plugin-html-renderer': 2.1.19
+      '@antv/g-plugin-image-loader': 2.1.16
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       tslib: 2.8.1
 
-  '@antv/g-canvaskit@1.0.31':
+  '@antv/g-canvaskit@1.0.36':
     dependencies:
-      '@antv/g-lite': 2.2.9
-      '@antv/g-plugin-canvas-path-generator': 2.1.9
-      '@antv/g-plugin-canvas-picker': 2.1.11
-      '@antv/g-plugin-canvaskit-renderer': 2.1.11
-      '@antv/g-plugin-dom-interaction': 2.1.14
-      '@antv/g-plugin-html-renderer': 2.1.14
-      '@antv/g-plugin-image-loader': 2.1.11
+      '@antv/g-lite': 2.2.14
+      '@antv/g-plugin-canvas-path-generator': 2.1.14
+      '@antv/g-plugin-canvas-picker': 2.1.16
+      '@antv/g-plugin-canvaskit-renderer': 2.1.16
+      '@antv/g-plugin-dom-interaction': 2.1.19
+      '@antv/g-plugin-html-renderer': 2.1.19
+      '@antv/g-plugin-image-loader': 2.1.16
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       canvaskit-wasm: 0.34.1
       tslib: 2.8.1
 
-  '@antv/g-components@2.0.25':
+  '@antv/g-components@2.0.30':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       gl-matrix: 3.4.3
@@ -28857,6 +28895,11 @@ snapshots:
       '@antv/g-lite': 2.2.9
       '@babel/runtime': 7.26.0
 
+  '@antv/g-dom-mutation-observer-api@2.0.30':
+    dependencies:
+      '@antv/g-lite': 2.2.14
+      '@babel/runtime': 7.26.0
+
   '@antv/g-gesture@0.0.83(@antv/g-lite@1.0.70)':
     dependencies:
       '@antv/g-lite': 1.0.70
@@ -28868,9 +28911,9 @@ snapshots:
       eventemitter3: 5.0.1
       tslib: 2.8.1
 
-  '@antv/g-image-exporter@1.0.25':
+  '@antv/g-image-exporter@1.0.30':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@babel/runtime': 7.26.0
       html2canvas: 1.4.1
       tslib: 2.8.1
@@ -28906,6 +28949,17 @@ snapshots:
       rbush: 3.0.1
       tslib: 2.8.1
 
+  '@antv/g-lite@2.2.14':
+    dependencies:
+      '@antv/g-math': 3.0.0
+      '@antv/util': 3.3.10
+      '@babel/runtime': 7.26.0
+      d3-color: 3.1.0
+      eventemitter3: 5.0.1
+      gl-matrix: 3.4.3
+      rbush: 3.0.1
+      tslib: 2.8.1
+
   '@antv/g-lite@2.2.9':
     dependencies:
       '@antv/g-math': 3.0.0
@@ -28923,9 +28977,9 @@ snapshots:
       '@antv/util': 3.3.10
       tslib: 2.8.1
 
-  '@antv/g-lottie-player@1.0.25':
+  '@antv/g-lottie-player@1.0.30':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       tslib: 2.8.1
@@ -29027,9 +29081,9 @@ snapshots:
       '@antv/util': 3.3.10
       tslib: 2.8.1
 
-  '@antv/g-pattern@2.0.25':
+  '@antv/g-pattern@2.0.30':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       tslib: 2.8.1
@@ -29044,23 +29098,23 @@ snapshots:
       gl-matrix: 3.4.3
       tslib: 2.8.1
 
-  '@antv/g-plugin-a11y@1.1.14':
+  '@antv/g-plugin-a11y@1.1.19':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@babel/runtime': 7.26.0
       tslib: 2.8.1
 
-  '@antv/g-plugin-annotation@1.0.25':
+  '@antv/g-plugin-annotation@1.0.30':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@babel/runtime': 7.26.0
       eventemitter3: 5.0.1
       gl-matrix: 3.4.3
       tslib: 2.8.1
 
-  '@antv/g-plugin-box2d@2.0.25':
+  '@antv/g-plugin-box2d@2.0.30':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@babel/runtime': 7.26.0
       box2d-wasm: 7.0.0
       tslib: 2.8.1
@@ -29072,9 +29126,9 @@ snapshots:
       '@antv/util': 3.3.10
       tslib: 2.8.1
 
-  '@antv/g-plugin-canvas-path-generator@2.1.9':
+  '@antv/g-plugin-canvas-path-generator@2.1.14':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@antv/g-math': 3.0.0
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
@@ -29090,12 +29144,12 @@ snapshots:
       gl-matrix: 3.4.3
       tslib: 2.8.1
 
-  '@antv/g-plugin-canvas-picker@2.1.11':
+  '@antv/g-plugin-canvas-picker@2.1.16':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@antv/g-math': 3.0.0
-      '@antv/g-plugin-canvas-path-generator': 2.1.9
-      '@antv/g-plugin-canvas-renderer': 2.2.11
+      '@antv/g-plugin-canvas-path-generator': 2.1.14
+      '@antv/g-plugin-canvas-renderer': 2.2.16
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       gl-matrix: 3.4.3
@@ -29111,22 +29165,22 @@ snapshots:
       gl-matrix: 3.4.3
       tslib: 2.8.1
 
-  '@antv/g-plugin-canvas-renderer@2.2.11':
+  '@antv/g-plugin-canvas-renderer@2.2.16':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@antv/g-math': 3.0.0
-      '@antv/g-plugin-canvas-path-generator': 2.1.9
-      '@antv/g-plugin-image-loader': 2.1.11
+      '@antv/g-plugin-canvas-path-generator': 2.1.14
+      '@antv/g-plugin-image-loader': 2.1.16
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       gl-matrix: 3.4.3
       tslib: 2.8.1
 
-  '@antv/g-plugin-canvaskit-renderer@2.1.11':
+  '@antv/g-plugin-canvaskit-renderer@2.1.16':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@antv/g-math': 3.0.0
-      '@antv/g-plugin-image-loader': 2.1.11
+      '@antv/g-plugin-image-loader': 2.1.16
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       canvaskit-wasm: 0.34.1
@@ -29140,9 +29194,9 @@ snapshots:
       hammerjs: 2.0.8
       tslib: 2.8.1
 
-  '@antv/g-plugin-css-select@2.0.25':
+  '@antv/g-plugin-css-select@2.0.30':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@babel/runtime': 7.26.0
       css-select: 3.1.2
       tslib: 2.8.1
@@ -29189,6 +29243,21 @@ snapshots:
       gl-matrix: 3.4.3
       tslib: 2.8.1
 
+  '@antv/g-plugin-device-renderer@2.2.16':
+    dependencies:
+      '@antv/g-device-api': 1.6.13
+      '@antv/g-lite': 2.2.14
+      '@antv/g-math': 3.0.0
+      '@antv/g-plugin-image-loader': 2.1.16
+      '@antv/g-shader-components': 2.0.0
+      '@antv/util': 3.3.10
+      '@babel/runtime': 7.26.0
+      '@webgpu/types': 0.1.51
+      earcut: 2.2.4
+      eventemitter3: 5.0.1
+      gl-matrix: 3.4.3
+      tslib: 2.8.1
+
   '@antv/g-plugin-dom-interaction@1.9.13':
     dependencies:
       '@antv/g-lite': 1.2.13
@@ -29205,15 +29274,21 @@ snapshots:
       '@babel/runtime': 7.26.0
       tslib: 2.8.1
 
+  '@antv/g-plugin-dom-interaction@2.1.19':
+    dependencies:
+      '@antv/g-lite': 2.2.14
+      '@babel/runtime': 7.26.0
+      tslib: 2.8.1
+
   '@antv/g-plugin-dragndrop@1.8.24':
     dependencies:
       '@antv/g-lite': 1.2.24
       '@antv/util': 3.3.10
       tslib: 2.8.1
 
-  '@antv/g-plugin-dragndrop@2.0.25':
+  '@antv/g-plugin-dragndrop@2.0.30':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       tslib: 2.8.1
@@ -29223,9 +29298,9 @@ snapshots:
       '@antv/g-lite': 1.2.24
       tslib: 2.8.1
 
-  '@antv/g-plugin-gesture@2.0.25':
+  '@antv/g-plugin-gesture@2.0.30':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@babel/runtime': 7.26.0
       tslib: 2.8.1
 
@@ -29257,6 +29332,14 @@ snapshots:
       gl-matrix: 3.4.3
       tslib: 2.8.1
 
+  '@antv/g-plugin-html-renderer@2.1.19':
+    dependencies:
+      '@antv/g-lite': 2.2.14
+      '@antv/util': 3.3.10
+      '@babel/runtime': 7.26.0
+      gl-matrix: 3.4.3
+      tslib: 2.8.1
+
   '@antv/g-plugin-image-loader@1.3.13':
     dependencies:
       '@antv/g-lite': 1.2.13
@@ -29279,9 +29362,17 @@ snapshots:
       gl-matrix: 3.4.3
       tslib: 2.8.1
 
-  '@antv/g-plugin-matterjs@2.0.25':
+  '@antv/g-plugin-image-loader@2.1.16':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
+      '@antv/util': 3.3.10
+      '@babel/runtime': 7.26.0
+      gl-matrix: 3.4.3
+      tslib: 2.8.1
+
+  '@antv/g-plugin-matterjs@2.0.30':
+    dependencies:
+      '@antv/g-lite': 2.2.14
       '@babel/runtime': 7.26.0
       gl-matrix: 3.4.3
       matter-js: 0.18.0
@@ -29297,9 +29388,9 @@ snapshots:
       '@antv/g-lite': 1.2.24
       tslib: 2.8.1
 
-  '@antv/g-plugin-physx@2.0.25':
+  '@antv/g-plugin-physx@2.0.30':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@babel/runtime': 7.26.0
       gl-matrix: 3.4.3
       tslib: 2.8.1
@@ -29312,10 +29403,10 @@ snapshots:
       roughjs: 4.6.6
       tslib: 2.8.1
 
-  '@antv/g-plugin-rough-svg-renderer@2.0.28':
+  '@antv/g-plugin-rough-svg-renderer@2.0.33':
     dependencies:
-      '@antv/g-lite': 2.2.9
-      '@antv/g-svg': 2.0.27
+      '@antv/g-lite': 2.2.14
+      '@antv/g-svg': 2.0.32
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       roughjs: 4.6.6
@@ -29327,10 +29418,10 @@ snapshots:
       '@antv/g-plugin-svg-renderer': 1.10.28
       tslib: 2.8.1
 
-  '@antv/g-plugin-svg-picker@2.0.27':
+  '@antv/g-plugin-svg-picker@2.0.32':
     dependencies:
-      '@antv/g-lite': 2.2.9
-      '@antv/g-plugin-svg-renderer': 2.2.9
+      '@antv/g-lite': 2.2.14
+      '@antv/g-plugin-svg-renderer': 2.2.14
       '@babel/runtime': 7.26.0
       tslib: 2.8.1
 
@@ -29341,9 +29432,9 @@ snapshots:
       gl-matrix: 3.4.3
       tslib: 2.8.1
 
-  '@antv/g-plugin-svg-renderer@2.2.9':
+  '@antv/g-plugin-svg-renderer@2.2.14':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       gl-matrix: 3.4.3
@@ -29366,27 +29457,27 @@ snapshots:
       eventemitter3: 5.0.1
       tslib: 2.8.1
 
-  '@antv/g-plugin-yoga@2.0.25':
+  '@antv/g-plugin-yoga@2.0.30':
     dependencies:
-      '@antv/g-lite': 2.2.9
+      '@antv/g-lite': 2.2.14
       '@babel/runtime': 7.26.0
       tslib: 2.8.1
       yoga-layout-prebuilt: 1.10.0
 
-  '@antv/g-plugin-zdog-canvas-renderer@2.0.31':
+  '@antv/g-plugin-zdog-canvas-renderer@2.0.36':
     dependencies:
-      '@antv/g-canvas': 2.0.32
-      '@antv/g-lite': 2.2.9
+      '@antv/g-canvas': 2.0.37
+      '@antv/g-lite': 2.2.14
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       tslib: 2.8.1
       zdog: 1.1.3
 
-  '@antv/g-plugin-zdog-svg-renderer@2.0.27':
+  '@antv/g-plugin-zdog-svg-renderer@2.0.32':
     dependencies:
-      '@antv/g-lite': 2.2.9
-      '@antv/g-plugin-svg-renderer': 2.2.9
-      '@antv/g-svg': 2.0.27
+      '@antv/g-lite': 2.2.14
+      '@antv/g-plugin-svg-renderer': 2.2.14
+      '@antv/g-svg': 2.0.32
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       tslib: 2.8.1
@@ -29398,12 +29489,12 @@ snapshots:
 
   '@antv/g-shader-components@2.0.0': {}
 
-  '@antv/g-svg@2.0.27':
+  '@antv/g-svg@2.0.32':
     dependencies:
-      '@antv/g-lite': 2.2.9
-      '@antv/g-plugin-dom-interaction': 2.1.14
-      '@antv/g-plugin-svg-picker': 2.0.27
-      '@antv/g-plugin-svg-renderer': 2.2.9
+      '@antv/g-lite': 2.2.14
+      '@antv/g-plugin-dom-interaction': 2.1.19
+      '@antv/g-plugin-svg-picker': 2.0.32
+      '@antv/g-plugin-svg-renderer': 2.2.14
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       tslib: 2.8.1
@@ -29426,11 +29517,18 @@ snapshots:
       '@babel/runtime': 7.26.0
       tslib: 2.8.1
 
-  '@antv/g-web-components@2.0.37':
+  '@antv/g-web-animations-api@2.1.19':
     dependencies:
-      '@antv/g-canvas': 2.0.32
-      '@antv/g-lite': 2.2.9
-      '@antv/g-webgl': 2.0.36
+      '@antv/g-lite': 2.2.14
+      '@antv/util': 3.3.10
+      '@babel/runtime': 7.26.0
+      tslib: 2.8.1
+
+  '@antv/g-web-components@2.0.42':
+    dependencies:
+      '@antv/g-canvas': 2.0.37
+      '@antv/g-lite': 2.2.14
+      '@antv/g-webgl': 2.0.41
       '@babel/runtime': 7.26.0
       '@webcomponents/webcomponentsjs': 2.8.0
       tslib: 2.8.1
@@ -29454,6 +29552,19 @@ snapshots:
       '@antv/g-plugin-dom-interaction': 2.1.14
       '@antv/g-plugin-html-renderer': 2.1.14
       '@antv/g-plugin-image-loader': 2.1.11
+      '@antv/util': 3.3.10
+      '@babel/runtime': 7.26.0
+      gl-matrix: 3.4.3
+      tslib: 2.8.1
+
+  '@antv/g-webgl@2.0.41':
+    dependencies:
+      '@antv/g-device-api': 1.6.13
+      '@antv/g-lite': 2.2.14
+      '@antv/g-plugin-device-renderer': 2.2.16
+      '@antv/g-plugin-dom-interaction': 2.1.19
+      '@antv/g-plugin-html-renderer': 2.1.19
+      '@antv/g-plugin-image-loader': 2.1.16
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       gl-matrix: 3.4.3
@@ -29493,14 +29604,14 @@ snapshots:
       '@webgpu/types': 0.1.51
       tslib: 2.8.1
 
-  '@antv/g-webgpu@2.0.36':
+  '@antv/g-webgpu@2.0.41':
     dependencies:
       '@antv/g-device-api': 1.6.13
-      '@antv/g-lite': 2.2.9
-      '@antv/g-plugin-device-renderer': 2.2.11
-      '@antv/g-plugin-dom-interaction': 2.1.14
-      '@antv/g-plugin-html-renderer': 2.1.14
-      '@antv/g-plugin-image-loader': 2.1.11
+      '@antv/g-lite': 2.2.14
+      '@antv/g-plugin-device-renderer': 2.2.16
+      '@antv/g-plugin-dom-interaction': 2.1.19
+      '@antv/g-plugin-html-renderer': 2.1.19
+      '@antv/g-plugin-image-loader': 2.1.16
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       '@webgpu/types': 0.1.51
@@ -29512,8 +29623,8 @@ snapshots:
       '@antv/coord': 0.4.7
       '@antv/event-emitter': 0.1.3
       '@antv/g': 6.1.14
-      '@antv/g-canvas': 2.0.32
-      '@antv/g-plugin-dragndrop': 2.0.25
+      '@antv/g-canvas': 2.0.37
+      '@antv/g-plugin-dragndrop': 2.0.30
       '@antv/scale': 0.4.16
       '@antv/util': 3.3.10
       d3-array: 3.2.4
@@ -29529,14 +29640,14 @@ snapshots:
       fmin: 0.0.2
       pdfast: 0.2.0
 
-  '@antv/g6-extension-3d@0.1.9(@antv/g-canvas@2.0.32)(@antv/g6@5.0.35(workerize-loader@2.0.2(webpack@4.47.0)))(@antv/g@6.1.14)(workerize-loader@2.0.2(webpack@4.47.0))':
+  '@antv/g6-extension-3d@0.1.9(@antv/g-canvas@2.0.37)(@antv/g6@5.0.35(workerize-loader@2.0.2(webpack@4.47.0)))(@antv/g@6.1.14)(workerize-loader@2.0.2(webpack@4.47.0))':
     dependencies:
       '@antv/g': 6.1.14
-      '@antv/g-canvas': 2.0.32
+      '@antv/g-canvas': 2.0.37
       '@antv/g-device-api': 1.6.13
       '@antv/g-plugin-3d': 2.0.34
-      '@antv/g-plugin-device-renderer': 2.2.11
-      '@antv/g-plugin-dragndrop': 2.0.25
+      '@antv/g-plugin-device-renderer': 2.2.16
+      '@antv/g-plugin-dragndrop': 2.0.30
       '@antv/g-webgl': 2.0.36
       '@antv/g6': 5.0.35(workerize-loader@2.0.2(webpack@4.47.0))
       '@antv/layout': 1.2.14-beta.8(workerize-loader@2.0.2(webpack@4.47.0))
@@ -29550,8 +29661,8 @@ snapshots:
       '@antv/component': 2.1.2
       '@antv/event-emitter': 0.1.3
       '@antv/g': 6.1.14
-      '@antv/g-canvas': 2.0.32
-      '@antv/g-plugin-dragndrop': 2.0.25
+      '@antv/g-canvas': 2.0.37
+      '@antv/g-plugin-dragndrop': 2.0.30
       '@antv/graphlib': 2.0.4
       '@antv/hierarchy': 0.6.14
       '@antv/layout': 1.2.14-beta.9(workerize-loader@2.0.2(webpack@4.47.0))
@@ -29574,6 +29685,14 @@ snapshots:
       '@antv/g-dom-mutation-observer-api': 2.0.25
       '@antv/g-lite': 2.2.9
       '@antv/g-web-animations-api': 2.1.14
+      '@babel/runtime': 7.26.0
+
+  '@antv/g@6.1.19':
+    dependencies:
+      '@antv/g-camera-api': 2.0.33
+      '@antv/g-dom-mutation-observer-api': 2.0.30
+      '@antv/g-lite': 2.2.14
+      '@antv/g-web-animations-api': 2.1.19
       '@babel/runtime': 7.26.0
 
   '@antv/graphlib@2.0.4':
@@ -29652,9 +29771,9 @@ snapshots:
     transitivePeerDependencies:
       - workerize-loader
 
-  '@antv/react-g@2.0.30(react@18.2.0)':
+  '@antv/react-g@2.0.35(react@18.2.0)':
     dependencies:
-      '@antv/g': 6.1.14
+      '@antv/g': 6.1.19
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       gl-matrix: 3.4.3
@@ -29676,8 +29795,8 @@ snapshots:
     dependencies:
       '@antv/event-emitter': 0.1.3
       '@antv/g': 6.1.14
-      '@antv/g-canvas': 2.0.32
-      '@antv/g-lite': 2.2.9
+      '@antv/g-canvas': 2.0.37
+      '@antv/g-lite': 2.2.14
       d3-ease: 3.0.1
       d3-interpolate: 1.4.0
       d3-timer: 1.0.10
@@ -34915,7 +35034,7 @@ snapshots:
 
   '@emotion/core@10.3.1(react@16.14.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@emotion/cache': 10.0.29
       '@emotion/css': 10.0.27
       '@emotion/serialize': 0.11.16
@@ -34925,7 +35044,7 @@ snapshots:
 
   '@emotion/core@10.3.1(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@emotion/cache': 10.0.29
       '@emotion/css': 10.0.27
       '@emotion/serialize': 0.11.16
@@ -34971,8 +35090,8 @@ snapshots:
 
   '@emotion/styled-base@10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@16.14.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
-      '@emotion/core': 10.3.1(react@18.2.0)
+      '@babel/runtime': 7.26.0
+      '@emotion/core': 10.3.1(react@16.14.0)
       '@emotion/is-prop-valid': 0.8.8
       '@emotion/serialize': 0.11.16
       '@emotion/utils': 0.11.3
@@ -34980,8 +35099,8 @@ snapshots:
 
   '@emotion/styled-base@10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
-      '@emotion/core': 10.3.1(react@18.2.0)
+      '@babel/runtime': 7.26.0
+      '@emotion/core': 10.3.1(react@16.14.0)
       '@emotion/is-prop-valid': 0.8.8
       '@emotion/serialize': 0.11.16
       '@emotion/utils': 0.11.3
@@ -34989,14 +35108,14 @@ snapshots:
 
   '@emotion/styled@10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@16.14.0)':
     dependencies:
-      '@emotion/core': 10.3.1(react@18.2.0)
+      '@emotion/core': 10.3.1(react@16.14.0)
       '@emotion/styled-base': 10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@16.14.0)
       babel-plugin-emotion: 10.2.2
       react: 16.14.0
 
   '@emotion/styled@10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@emotion/core': 10.3.1(react@18.2.0)
+      '@emotion/core': 10.3.1(react@16.14.0)
       '@emotion/styled-base': 10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@18.2.0)
       babel-plugin-emotion: 10.2.2
       react: 18.2.0
@@ -36437,21 +36556,21 @@ snapshots:
 
   '@loadable/component@5.15.2(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
       react-is: 16.13.1
 
   '@loadable/component@5.15.2(react@18.3.1)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       hoist-non-react-statics: 3.3.2
       react: 18.3.1
       react-is: 16.13.1
 
   '@loadable/component@5.16.4(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
       react-is: 16.13.1
@@ -36478,7 +36597,7 @@ snapshots:
 
   '@manypkg/find-root@1.1.0':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@types/node': 12.20.55
       find-up: 4.1.0
       fs-extra: 8.1.0
@@ -37625,16 +37744,16 @@ snapshots:
 
   '@probe.gl/env@3.6.0':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
 
   '@probe.gl/log@3.6.0':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@probe.gl/env': 3.6.0
 
   '@probe.gl/stats@3.6.0':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
 
   '@protobufjs/aspromise@1.1.2': {}
 
@@ -37680,7 +37799,7 @@ snapshots:
 
   '@radix-ui/primitive@1.0.0':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
 
   '@radix-ui/primitive@1.0.1':
     dependencies:
@@ -37752,7 +37871,7 @@ snapshots:
 
   '@radix-ui/react-arrow@1.0.3(@types/react-dom@18.2.22)(@types/react@18.2.67)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.22)(@types/react@18.2.67)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -37869,7 +37988,7 @@ snapshots:
 
   '@radix-ui/react-compose-refs@1.0.0(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       react: 18.2.0
 
   '@radix-ui/react-compose-refs@1.0.1(@types/react@18.2.67)(react@18.2.0)':
@@ -37908,7 +38027,7 @@ snapshots:
 
   '@radix-ui/react-context@1.0.0(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       react: 18.2.0
 
   '@radix-ui/react-context@1.0.1(@types/react@18.2.67)(react@18.2.0)':
@@ -37932,7 +38051,7 @@ snapshots:
 
   '@radix-ui/react-dialog@1.0.0(@types/react@18.2.67)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@radix-ui/primitive': 1.0.0
       '@radix-ui/react-compose-refs': 1.0.0(react@18.2.0)
       '@radix-ui/react-context': 1.0.0(react@18.2.0)
@@ -38057,7 +38176,7 @@ snapshots:
 
   '@radix-ui/react-dismissable-layer@1.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@radix-ui/primitive': 1.0.0
       '@radix-ui/react-compose-refs': 1.0.0(react@18.2.0)
       '@radix-ui/react-primitive': 1.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -38138,7 +38257,7 @@ snapshots:
 
   '@radix-ui/react-focus-guards@1.0.0(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       react: 18.2.0
 
   '@radix-ui/react-focus-guards@1.0.1(@types/react@18.2.67)(react@18.2.0)':
@@ -38162,7 +38281,7 @@ snapshots:
 
   '@radix-ui/react-focus-scope@1.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@radix-ui/react-compose-refs': 1.0.0(react@18.2.0)
       '@radix-ui/react-primitive': 1.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@radix-ui/react-use-callback-ref': 1.0.0(react@18.2.0)
@@ -38239,7 +38358,7 @@ snapshots:
 
   '@radix-ui/react-id@1.0.0(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@radix-ui/react-use-layout-effect': 1.0.0(react@18.2.0)
       react: 18.2.0
 
@@ -38464,7 +38583,7 @@ snapshots:
 
   '@radix-ui/react-portal@1.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@radix-ui/react-primitive': 1.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -38511,7 +38630,7 @@ snapshots:
 
   '@radix-ui/react-presence@1.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@radix-ui/react-compose-refs': 1.0.0(react@18.2.0)
       '@radix-ui/react-use-layout-effect': 1.0.0(react@18.2.0)
       react: 18.2.0
@@ -38550,7 +38669,7 @@ snapshots:
 
   '@radix-ui/react-primitive@1.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@radix-ui/react-slot': 1.0.0(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -38745,7 +38864,7 @@ snapshots:
 
   '@radix-ui/react-slot@1.0.0(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@radix-ui/react-compose-refs': 1.0.0(react@18.2.0)
       react: 18.2.0
 
@@ -38892,7 +39011,7 @@ snapshots:
 
   '@radix-ui/react-use-callback-ref@1.0.0(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       react: 18.2.0
 
   '@radix-ui/react-use-callback-ref@1.0.1(@types/react@18.2.67)(react@18.2.0)':
@@ -38910,7 +39029,7 @@ snapshots:
 
   '@radix-ui/react-use-controllable-state@1.0.0(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@radix-ui/react-use-callback-ref': 1.0.0(react@18.2.0)
       react: 18.2.0
 
@@ -38931,13 +39050,13 @@ snapshots:
 
   '@radix-ui/react-use-escape-keydown@1.0.0(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@radix-ui/react-use-callback-ref': 1.0.0(react@18.2.0)
       react: 18.2.0
 
   '@radix-ui/react-use-escape-keydown@1.0.3(@types/react@18.2.67)(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.2.67)(react@18.2.0)
       react: 18.2.0
     optionalDependencies:
@@ -38952,7 +39071,7 @@ snapshots:
 
   '@radix-ui/react-use-layout-effect@1.0.0(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       react: 18.2.0
 
   '@radix-ui/react-use-layout-effect@1.0.1(@types/react@18.2.67)(react@18.2.0)':
@@ -38983,7 +39102,7 @@ snapshots:
 
   '@radix-ui/react-use-rect@1.0.1(@types/react@18.2.67)(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@radix-ui/rect': 1.0.1
       react: 18.2.0
     optionalDependencies:
@@ -39032,7 +39151,7 @@ snapshots:
 
   '@radix-ui/rect@1.0.1':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
 
   '@radix-ui/rect@1.1.0': {}
 
@@ -39096,7 +39215,7 @@ snapshots:
 
   '@rc-component/trigger@1.18.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@rc-component/portal': 1.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       classnames: 2.3.2
       rc-motion: 2.9.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -39308,7 +39427,7 @@ snapshots:
       '@react-aria/utils': 3.26.0(react@18.2.0)
       '@react-types/shared': 3.26.0(react@18.2.0)
       '@swc/helpers': 0.5.11
-      clsx: 2.0.0
+      clsx: 2.1.1
       react: 18.2.0
 
   '@react-aria/form@3.0.11(react@18.2.0)':
@@ -39691,7 +39810,7 @@ snapshots:
       '@react-stately/utils': 3.10.5(react@18.2.0)
       '@react-types/shared': 3.26.0(react@18.2.0)
       '@swc/helpers': 0.5.11
-      clsx: 2.0.0
+      clsx: 2.1.1
       react: 18.2.0
 
   '@react-aria/virtualizer@4.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
@@ -43003,7 +43122,7 @@ snapshots:
 
   '@umijs/history@5.3.1':
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       query-string: 6.14.1
 
   '@umijs/lint@4.3.36(eslint@8.44.0)(jest@29.7.0(@types/node@17.0.45)(ts-node@10.9.2(@swc/core@1.10.1(@swc/helpers@0.5.11))(@types/node@17.0.45)(typescript@5.5.3)))(stylelint@13.13.1)(typescript@5.5.3)':
@@ -43506,7 +43625,7 @@ snapshots:
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
 
   '@vue/compiler-dom@3.5.13':
     dependencies:
@@ -43521,9 +43640,9 @@ snapshots:
       '@vue/compiler-ssr': 3.5.13
       '@vue/shared': 3.5.13
       estree-walker: 2.0.2
-      magic-string: 0.30.15
+      magic-string: 0.30.17
       postcss: 8.4.49
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.5.13':
     dependencies:
@@ -44799,13 +44918,13 @@ snapshots:
 
   babel-plugin-macros@2.6.1:
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       cosmiconfig: 5.2.1
       resolve: 1.22.8
 
   babel-plugin-macros@2.8.0:
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       cosmiconfig: 6.0.0
       resolve: 1.22.8
 
@@ -48051,7 +48170,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.2.2
       '@babel/polyfill': 7.2.5
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@mdx-js/loader': 0.16.8(react@18.2.0)
       '@mdx-js/mdx': 0.16.8
       '@mdx-js/mdxast': 0.16.8
@@ -48366,7 +48485,7 @@ snapshots:
 
   dom-helpers@5.2.1:
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       csstype: 3.1.3
 
   dom-iterator@1.0.0:
@@ -48748,16 +48867,16 @@ snapshots:
 
   emotion-theming@10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@16.14.0):
     dependencies:
-      '@babel/runtime': 7.24.6
-      '@emotion/core': 10.3.1(react@18.2.0)
+      '@babel/runtime': 7.26.0
+      '@emotion/core': 10.3.1(react@16.14.0)
       '@emotion/weak-memoize': 0.2.5
       hoist-non-react-statics: 3.3.2
       react: 16.14.0
 
   emotion-theming@10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
-      '@emotion/core': 10.3.1(react@18.2.0)
+      '@babel/runtime': 7.26.0
+      '@emotion/core': 10.3.1(react@16.14.0)
       '@emotion/weak-memoize': 0.2.5
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
@@ -49196,7 +49315,7 @@ snapshots:
 
   esbuild-register@3.6.0(esbuild@0.24.0):
     dependencies:
-      debug: 4.3.7(supports-color@6.1.0)
+      debug: 4.4.0
       esbuild: 0.24.0
     transitivePeerDependencies:
       - supports-color
@@ -52643,7 +52762,7 @@ snapshots:
 
   history@5.3.0:
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
 
   hmac-drbg@1.0.1:
     dependencies:
@@ -55230,7 +55349,7 @@ snapshots:
 
   lazy-universal-dotenv@3.0.1:
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       app-root-dir: 1.0.2
       core-js: 3.39.0
       dotenv: 8.6.0
@@ -56662,7 +56781,7 @@ snapshots:
 
   mdx-bundler@10.0.2(esbuild@0.17.19):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@esbuild-plugins/node-resolve': 0.2.2(esbuild@0.17.19)
       '@fal-works/esbuild-plugin-global-externals': 2.1.2
       '@mdx-js/esbuild': 3.0.1(esbuild@0.17.19)
@@ -56677,7 +56796,7 @@ snapshots:
 
   mdx-bundler@9.2.1(esbuild@0.17.19):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@esbuild-plugins/node-resolve': 0.1.4(esbuild@0.17.19)
       '@fal-works/esbuild-plugin-global-externals': 2.1.2
       '@mdx-js/esbuild': 2.3.0(esbuild@0.17.19)
@@ -59454,7 +59573,7 @@ snapshots:
 
   polished@3.7.2:
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
 
   popper.js@1.16.1: {}
 
@@ -60024,7 +60143,7 @@ snapshots:
       postcss-value-parser: 3.3.1
       svgo: 1.3.2
 
-  postcss-syntax@0.36.2(postcss-html@0.36.0)(postcss-less@3.1.4)(postcss-scss@2.1.1)(postcss@7.0.39):
+  postcss-syntax@0.36.2(postcss-html@0.36.0(postcss-syntax@0.36.2(postcss@8.4.41))(postcss@7.0.39))(postcss-less@3.1.4)(postcss-scss@2.1.1)(postcss@7.0.39):
     dependencies:
       postcss: 7.0.39
     optionalDependencies:
@@ -60279,7 +60398,7 @@ snapshots:
 
   probe.gl@3.6.0:
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@probe.gl/env': 3.6.0
       '@probe.gl/log': 3.6.0
       '@probe.gl/stats': 3.6.0
@@ -60633,7 +60752,7 @@ snapshots:
 
   rc-align@4.0.15(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       dom-align: 1.12.4
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -60700,7 +60819,7 @@ snapshots:
 
   rc-cascader@3.7.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       array-tree-filter: 2.1.0
       classnames: 2.5.1
       rc-select: 14.1.18(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -60718,7 +60837,7 @@ snapshots:
 
   rc-checkbox@3.0.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -60747,7 +60866,7 @@ snapshots:
 
   rc-collapse@3.4.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-motion: 2.9.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -60775,7 +60894,7 @@ snapshots:
 
   rc-dialog@9.0.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@rc-component/portal': 1.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       classnames: 2.5.1
       rc-motion: 2.9.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -60810,7 +60929,7 @@ snapshots:
 
   rc-drawer@6.3.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@rc-component/portal': 1.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       classnames: 2.5.1
       rc-motion: 2.9.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -60841,7 +60960,7 @@ snapshots:
 
   rc-dropdown@4.0.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-trigger: 5.3.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -60850,7 +60969,7 @@ snapshots:
 
   rc-dropdown@4.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@rc-component/trigger': 1.18.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       classnames: 2.3.2
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -60893,7 +61012,7 @@ snapshots:
 
   rc-field-form@1.38.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       async-validator: 4.2.5
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -60935,7 +61054,7 @@ snapshots:
 
   rc-image@5.13.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@rc-component/portal': 1.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       classnames: 2.5.1
       rc-dialog: 9.0.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -60965,7 +61084,7 @@ snapshots:
 
   rc-input-number@7.3.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -60983,7 +61102,7 @@ snapshots:
 
   rc-input@0.1.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -61012,7 +61131,7 @@ snapshots:
 
   rc-mentions@1.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-menu: 9.8.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-textarea: 0.4.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -61049,7 +61168,7 @@ snapshots:
 
   rc-menu@9.12.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@rc-component/trigger': 1.18.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       classnames: 2.3.2
       rc-motion: 2.9.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -61071,7 +61190,7 @@ snapshots:
 
   rc-menu@9.8.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-motion: 2.9.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-overflow: 1.3.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -61101,7 +61220,7 @@ snapshots:
 
   rc-notification@4.6.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-motion: 2.9.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -61135,7 +61254,7 @@ snapshots:
 
   rc-pagination@3.2.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -61150,7 +61269,7 @@ snapshots:
 
   rc-picker@2.7.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       date-fns: 2.30.0
       dayjs: 1.11.13
@@ -61183,7 +61302,7 @@ snapshots:
 
   rc-progress@3.4.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -61214,7 +61333,7 @@ snapshots:
 
   rc-rate@2.9.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -61239,7 +61358,7 @@ snapshots:
 
   rc-segmented@2.3.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-motion: 2.9.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -61257,7 +61376,7 @@ snapshots:
 
   rc-select@14.1.18(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-motion: 2.9.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-overflow: 1.3.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -61299,7 +61418,7 @@ snapshots:
 
   rc-slider@10.0.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -61342,7 +61461,7 @@ snapshots:
 
   rc-steps@5.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -61366,7 +61485,7 @@ snapshots:
 
   rc-switch@3.2.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -61395,7 +61514,7 @@ snapshots:
 
   rc-table@7.26.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-resize-observer: 1.4.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -61428,7 +61547,7 @@ snapshots:
 
   rc-tabs@12.5.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-dropdown: 4.0.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-menu: 9.8.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -61467,7 +61586,7 @@ snapshots:
 
   rc-textarea@0.4.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-resize-observer: 1.4.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -61508,7 +61627,7 @@ snapshots:
 
   rc-tooltip@5.2.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-trigger: 5.3.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -61559,7 +61678,7 @@ snapshots:
 
   rc-tree-select@5.5.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-select: 14.1.18(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-tree: 5.7.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -61601,7 +61720,7 @@ snapshots:
 
   rc-tree@5.7.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-motion: 2.9.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -61637,7 +61756,7 @@ snapshots:
 
   rc-trigger@5.3.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-align: 4.0.15(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-motion: 2.9.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -61654,7 +61773,7 @@ snapshots:
 
   rc-upload@4.3.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       classnames: 2.5.1
       rc-util: 5.44.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -61784,12 +61903,12 @@ snapshots:
 
   react-clientside-effect@1.2.7(react@16.14.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       react: 16.14.0
 
   react-clientside-effect@1.2.7(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       react: 18.2.0
 
   react-codemirror2@5.1.0(codemirror@5.65.18)(react@18.2.0):
@@ -61955,7 +62074,7 @@ snapshots:
   react-docgen@3.0.0:
     dependencies:
       '@babel/parser': 7.24.6
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       async: 2.6.4
       commander: 2.20.3
       doctrine: 2.1.0
@@ -61965,7 +62084,7 @@ snapshots:
   react-docgen@4.1.1:
     dependencies:
       '@babel/core': 7.26.0
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       async: 2.6.4
       commander: 2.20.3
       doctrine: 3.0.0
@@ -61978,7 +62097,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.26.0
       '@babel/generator': 7.24.6
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       ast-types: 0.14.2
       commander: 2.20.3
       doctrine: 3.0.0
@@ -62062,7 +62181,7 @@ snapshots:
 
   react-focus-lock@2.13.5(@types/react@18.2.67)(react@16.14.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       focus-lock: 1.3.5
       prop-types: 15.8.1
       react: 16.14.0
@@ -62074,7 +62193,7 @@ snapshots:
 
   react-focus-lock@2.13.5(@types/react@18.2.67)(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       focus-lock: 1.3.5
       prop-types: 15.8.1
       react: 18.2.0
@@ -62101,7 +62220,7 @@ snapshots:
 
   react-helmet-async@1.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       invariant: 2.2.4
       prop-types: 15.8.1
       react: 16.14.0
@@ -62111,7 +62230,7 @@ snapshots:
 
   react-helmet-async@1.3.0(react-dom@18.2.0(react@18.2.0))(react@16.14.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       invariant: 2.2.4
       prop-types: 15.8.1
       react: 16.14.0
@@ -62121,7 +62240,7 @@ snapshots:
 
   react-helmet-async@1.3.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       invariant: 2.2.4
       prop-types: 15.8.1
       react: 18.2.0
@@ -62131,7 +62250,7 @@ snapshots:
 
   react-helmet-async@1.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       invariant: 2.2.4
       prop-types: 15.8.1
       react: 18.3.1
@@ -62191,7 +62310,7 @@ snapshots:
 
   react-inspector@4.0.1(react@16.14.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       is-dom: 1.1.0
       prop-types: 15.8.1
       react: 16.14.0
@@ -62312,28 +62431,28 @@ snapshots:
 
   react-popper-tooltip@2.11.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
       react-popper: 1.3.11(react@16.14.0)
 
   react-popper-tooltip@2.11.1(react-dom@18.2.0(react@18.2.0))(react@16.14.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       react: 16.14.0
       react-dom: 18.2.0(react@18.2.0)
       react-popper: 1.3.11(react@16.14.0)
 
   react-popper-tooltip@2.11.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-popper: 1.3.11(react@18.2.0)
 
   react-popper@1.3.11(react@16.14.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@hypnosphi/create-react-context': 0.3.1(prop-types@15.8.1)(react@16.14.0)
       deep-equal: 1.1.2
       popper.js: 1.16.1
@@ -62344,7 +62463,7 @@ snapshots:
 
   react-popper@1.3.11(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@hypnosphi/create-react-context': 0.3.1(prop-types@15.8.1)(react@18.2.0)
       deep-equal: 1.1.2
       popper.js: 1.16.1
@@ -62366,7 +62485,7 @@ snapshots:
 
   react-redux@7.2.9(react-dom@18.2.0(react@18.2.0))(react@16.14.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@types/react-redux': 7.1.34
       hoist-non-react-statics: 3.3.2
       loose-envify: 1.4.0
@@ -62502,7 +62621,7 @@ snapshots:
 
   react-select@3.2.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       '@emotion/cache': 10.0.29
       '@emotion/core': 10.3.1(react@18.2.0)
       '@emotion/css': 10.0.27
@@ -62628,7 +62747,7 @@ snapshots:
 
   react-syntax-highlighter@10.3.5(react@16.14.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       highlight.js: 9.13.1
       lowlight: 1.11.0
       prismjs: 1.29.0
@@ -62637,7 +62756,7 @@ snapshots:
 
   react-syntax-highlighter@11.0.3(react@16.14.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       highlight.js: 9.18.5
       lowlight: 1.11.0
       prismjs: 1.29.0
@@ -62646,7 +62765,7 @@ snapshots:
 
   react-syntax-highlighter@11.0.3(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       highlight.js: 9.18.5
       lowlight: 1.11.0
       prismjs: 1.29.0
@@ -62663,19 +62782,19 @@ snapshots:
 
   react-textarea-autosize@7.1.2(react@16.14.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       prop-types: 15.8.1
       react: 16.14.0
 
   react-textarea-autosize@7.1.2(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       prop-types: 15.8.1
       react: 18.2.0
 
   react-transition-group@4.4.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
       dom-helpers: 5.2.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
@@ -62982,7 +63101,7 @@ snapshots:
 
   redux@4.2.1:
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
 
   refa@0.12.1:
     dependencies:
@@ -63940,7 +64059,7 @@ snapshots:
 
   rtl-css-js@1.16.1:
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
 
   run-applescript@5.0.0:
     dependencies:
@@ -65415,7 +65534,7 @@ snapshots:
       postcss-sass: 0.4.4
       postcss-scss: 2.1.1
       postcss-selector-parser: 6.1.0
-      postcss-syntax: 0.36.2(postcss-html@0.36.0)(postcss-less@3.1.4)(postcss-scss@2.1.1)(postcss@7.0.39)
+      postcss-syntax: 0.36.2(postcss-html@0.36.0(postcss-syntax@0.36.2(postcss@8.4.41))(postcss@7.0.39))(postcss-less@3.1.4)(postcss-scss@2.1.1)(postcss@7.0.39)
       postcss-value-parser: 4.2.0
       resolve-from: 5.0.0
       slash: 3.0.0
@@ -66757,7 +66876,7 @@ snapshots:
   uglify-to-browserify@1.0.2:
     optional: true
 
-  ui@https://codeload.github.com/shadcn-ui/ui/tar.gz/2f869a2590e90f79890e6fa00cbfcbf8a241b034(@swc/core@1.10.1(@swc/helpers@0.5.11))(@types/node@17.0.45)(@vue/compiler-sfc@3.5.13)(encoding@0.1.13)(jsdom@25.0.1)(less@4.1.3)(lightningcss@1.22.1)(sass@1.83.0)(stylus@0.54.8)(sugarss@2.0.0)(terser@5.37.0)(ts-node@10.9.2(@swc/core@1.10.1(@swc/helpers@0.5.11))(@types/node@17.0.45)(typescript@5.5.3))(typescript@5.5.3):
+  ui@https://codeload.github.com/shadcn-ui/ui/tar.gz/1081536246b44b6664f4c99bc3f1b3614e632841(@swc/core@1.10.1(@swc/helpers@0.5.11))(@types/node@17.0.45)(@vue/compiler-sfc@3.5.13)(encoding@0.1.13)(jsdom@25.0.1)(less@4.1.3)(lightningcss@1.22.1)(sass@1.83.0)(stylus@0.54.8)(sugarss@2.0.0)(terser@5.37.0)(ts-node@10.9.2(@swc/core@1.10.1(@swc/helpers@0.5.11))(@types/node@17.0.45)(typescript@5.5.3))(typescript@5.5.3):
     dependencies:
       '@babel/core': 7.26.0
       '@changesets/changelog-github': 0.4.8(encoding@0.1.13)
