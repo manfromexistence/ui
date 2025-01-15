@@ -12,7 +12,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { Plus, RotateCcw, Settings2 } from "lucide-react"
+import { Plus, RotateCcw, Search, Settings2 } from "lucide-react"
 import { Button } from "@/registry/default/ui/button"
 import { Slider } from "@/components/ui/slider"
 import { cn } from "@/lib/utils"
@@ -767,7 +767,8 @@ export default function IconPage() {
                 <ResizableHandle />
                 <ResizablePanel defaultSize={80}>
                     <div className="relative h-16 w-full border-b">
-                        <Input type="text" placeholder="Search Icons" className="h-full w-full rounded-none border-0 ring-0 placeholder:text-primary focus-visible:ring-0" />
+                        <Search className="absolute left-3 top-1/2 h-4 w-4 translate-y-[-50%]" />
+                        <Input type="text" placeholder="Search Icons" className="ml-6 h-full w-full rounded-none border-0 ring-0 placeholder:text-primary focus-visible:ring-0" />
                         <div className="absolute right-3 top-1/2 flex translate-y-[-50%] space-x-2">
                             <Select>
                                 <SelectTrigger className="w-20 text-sm">
@@ -784,7 +785,7 @@ export default function IconPage() {
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>
-                            <Select>
+                            {/* <Select>
                                 <SelectTrigger className="w-32 text-sm">
                                     <SelectValue placeholder="Lucide Icons" />
                                 </SelectTrigger>
@@ -798,7 +799,7 @@ export default function IconPage() {
                                         <SelectItem value="nue">Nue</SelectItem>
                                     </SelectGroup>
                                 </SelectContent>
-                            </Select>
+                            </Select> */}
                             <Button variant="outline" className="h-9"><Settings2 className="h-4 w-4" /></Button>
                         </div>
 
