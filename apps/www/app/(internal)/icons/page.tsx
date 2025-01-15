@@ -12,15 +12,60 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { Plus } from "lucide-react"
+import { Plus, RotateCcw, Settings2 } from "lucide-react"
+import { Button } from "@/registry/default/ui/button"
+import { Slider } from "@/components/ui/slider"
+import { cn } from "@/lib/utils"
+import { useState } from "react"
 
 export default function IconPage() {
+
+    const [sizeValue, setSizeValue] = useState([24]);
+    const [strokeWidthValue, setStrokeWidthValue] = useState([2]);
+
     return (
-        <div className="flex h-[90vh] w-full">
+        <div className="flex h-screen w-full">
             <ResizablePanelGroup direction="horizontal">
                 <ResizablePanel defaultSize={20}>
                     <ScrollArea className="h-full w-full p-4">
-                        <div className="flex w-full justify-between rounded-md p-3 hover:bg-primary-foreground">
+                        <div className="flex w-full flex-col space-y-4 rounded-md border p-4">
+                            <div className="flex w-full items-center justify-between">
+                                <span className="font-mono text-xl font-bold">Customize</span>
+                                <RotateCcw className="h-4 w-4" />
+                            </div>
+                            <div className="flex flex-col space-y-2">
+                                <div className="flex w-full items-center justify-between font-mono text-sm">
+                                    <span>Size</span>
+                                    <span>{sizeValue}px</span>
+                                </div>
+                                <Slider
+                                    defaultValue={sizeValue}
+                                    max={100}
+                                    step={1}
+                                    className={cn("w-full")}
+                                    onValueChange={(value) => {
+                                        setSizeValue(value);
+                                    }}
+                                />
+                            </div>
+                            <div className="flex flex-col space-y-2">
+                                <div className="flex w-full items-center justify-between font-mono text-sm">
+                                    <span>Stroke Width</span>
+                                    <span>{strokeWidthValue}px</span>
+                                </div>
+                                <Slider
+                                    defaultValue={strokeWidthValue}
+                                    max={100}
+                                    step={1}
+                                    className={cn("w-full")}
+                                    onValueChange={(value) => {
+                                        setStrokeWidthValue(value);
+                                    }}
+                                />
+                            </div>
+                            
+                        </div>
+                        <div className="flex w-full items-center justify-between rounded-md p-3 hover:bg-primary-foreground">
                             <span className="font-mono text-sm">Lucide Icons</span>
                         </div>
                     </ScrollArea>
@@ -60,6 +105,7 @@ export default function IconPage() {
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>
+                            <Button variant="outline" className="h-9"><Settings2 className="h-4 w-4" /></Button>
                         </div>
 
                     </div>
