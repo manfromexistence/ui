@@ -19,7 +19,11 @@ import { cn } from "@/lib/utils"
 import { useState } from "react"
 import Link from "next/link"
 
-export default function IconPage() {
+export default function IconsLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
 
   const [sizeValue, setSizeValue] = useState([24]);
   const [strokeWidthValue, setStrokeWidthValue] = useState([2]);
@@ -877,9 +881,10 @@ export default function IconPage() {
 
           </div>
           <ScrollArea className="h-full w-full p-4">
-            <div className="flex h-16 w-16 items-center justify-center rounded-md border">
-              <Plus className="h-5 w-5" />
-            </div>
+            {/* <div className="flex h-16 w-16 items-center justify-center rounded-md border">
+         <Plus className="h-5 w-5" />
+        </div> */}
+            {children}
           </ScrollArea>
         </ResizablePanel>
       </ResizablePanelGroup>
