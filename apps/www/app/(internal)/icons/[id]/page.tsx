@@ -48,7 +48,7 @@ async function getIconsData(filePath: string): Promise<IconsJson | null> {
 
 async function iconSetExists(filename: string): Promise<boolean> {
   try {
-    const iconsDir = path.join(process.cwd(), 'public', 'icons');
+    const iconsDir = path.join(process.cwd(), 'data', 'icons');
     const files = await fs.readdir(iconsDir);
     return files.includes(`${filename}.json`);
   } catch (error) {
