@@ -15,3 +15,7 @@ Please read the [contributing guide](/CONTRIBUTING.md).
 ## License
 
 Licensed under the [MIT license](https://github.com/manfromexistence/ui/blob/main/LICENSE.md).
+
+```
+I am react Nextjs developer. So, please explain this vuejs code to me and guide me how to do in nextjs typescript ```
+```
