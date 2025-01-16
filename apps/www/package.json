@@ -77,6 +77,7 @@
     "@faker-js/faker": "^8.2.0",
     "@geist-ui/core": "^2.3.8",
     "@hookform/resolvers": "^3.1.0",
+    "@iconify/utils": "^2.2.1",
     "@internationalized/date": "^3.5.6",
     "@motionone/utils": "^10.15.1",
     "@naoak/workerize-transferable": "^0.1.0",
