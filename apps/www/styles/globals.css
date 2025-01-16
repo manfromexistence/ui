@@ -158,3 +158,7 @@
     @apply mx-auto max-w-[1536px];
   }
 }
+
+.grid-cols-17{
+  grid-template-columns: repeat(24, 1fr);
+}
