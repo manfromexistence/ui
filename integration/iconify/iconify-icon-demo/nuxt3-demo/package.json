@@ -1,0 +1,16 @@
+{
+	"name": "@iconify-icon/nuxt3-demo",
+	"private": true,
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare"
+	},
+	"devDependencies": {
+		"nuxt": "^3.15.0",
+		"typescript": "^5.7.2",
+		"vite": "^5.4.11"
+	}
+}

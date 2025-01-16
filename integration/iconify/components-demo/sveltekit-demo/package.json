@@ -1,0 +1,28 @@
+{
+	"name": "@iconify-demo/sveltekit",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+	},
+	"devDependencies": {
+		"@iconify/svelte": "workspace:*",
+		"@sveltejs/adapter-auto": "^3.3.1",
+		"@sveltejs/kit": "^2.15.1",
+		"@sveltejs/vite-plugin-svelte": "^4.0.4",
+		"@types/cookie": "^1.0.0",
+		"svelte": "^5.16.1",
+		"svelte-check": "^4.1.1",
+		"svelte-preprocess": "^6.0.3",
+		"tslib": "^2.8.1",
+		"typescript": "^5.7.2",
+		"vite": "^5.4.11"
+	},
+	"type": "module",
+	"dependencies": {
+		"@fontsource/fira-mono": "^5.1.1"
+	}
+}

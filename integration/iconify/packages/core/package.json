@@ -1,0 +1,114 @@
+{
+	"name": "@iconify/core",
+	"type": "module",
+	"description": "Reusable files used by multiple Iconify packages",
+	"author": "Vjacheslav Trushkin <cyberalien@gmail.com> (https://iconify.design)",
+	"version": "3.1.0",
+	"license": "MIT",
+	"bugs": "https://github.com/iconify/iconify/issues",
+	"homepage": "https://iconify.design/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iconify/iconify.git",
+		"directory": "packages/core"
+	},
+	"scripts": {
+		"clean": "rimraf lib tsconfig.tsbuildinfo",
+		"lint": "eslint --fix src/**/*.ts",
+		"prebuild": "pnpm run lint && pnpm run clean",
+		"build": "unbuild",
+		"test": "vitest"
+	},
+	"sideEffects": false,
+	"exports": {
+		"./*": "./*",
+		"./lib/api/callbacks": {
+			"require": "./lib/api/callbacks.cjs",
+			"import": "./lib/api/callbacks.mjs"
+		},
+		"./lib/api/config": {
+			"require": "./lib/api/config.cjs",
+			"import": "./lib/api/config.mjs"
+		},
+		"./lib/api/functions": {
+			"require": "./lib/api/functions.cjs",
+			"import": "./lib/api/functions.mjs"
+		},
+		"./lib/api/icons": {
+			"require": "./lib/api/icons.cjs",
+			"import": "./lib/api/icons.mjs"
+		},
+		"./lib/api/loaders": {
+			"require": "./lib/api/loaders.cjs",
+			"import": "./lib/api/loaders.mjs"
+		},
+		"./lib/api/modules": {
+			"require": "./lib/api/modules.cjs",
+			"import": "./lib/api/modules.mjs"
+		},
+		"./lib/api/modules/fetch": {
+			"require": "./lib/api/modules/fetch.cjs",
+			"import": "./lib/api/modules/fetch.mjs"
+		},
+		"./lib/api/modules/mock": {
+			"require": "./lib/api/modules/mock.cjs",
+			"import": "./lib/api/modules/mock.mjs"
+		},
+		"./lib/api/query": {
+			"require": "./lib/api/query.cjs",
+			"import": "./lib/api/query.mjs"
+		},
+		"./lib/api/types": {
+			"require": "./lib/api/types.cjs",
+			"import": "./lib/api/types.mjs"
+		},
+		"./lib/browser-storage/functions": {
+			"require": "./lib/browser-storage/functions.cjs",
+			"import": "./lib/browser-storage/functions.mjs"
+		},
+		"./lib/browser-storage/types": {
+			"require": "./lib/browser-storage/types.cjs",
+			"import": "./lib/browser-storage/types.mjs"
+		},
+		"./lib/builder/functions": {
+			"require": "./lib/builder/functions.cjs",
+			"import": "./lib/builder/functions.mjs"
+		},
+		"./lib/icon/list": {
+			"require": "./lib/icon/list.cjs",
+			"import": "./lib/icon/list.mjs"
+		},
+		"./lib/icon/sort": {
+			"require": "./lib/icon/sort.cjs",
+			"import": "./lib/icon/sort.mjs"
+		},
+		"./lib/storage/functions": {
+			"require": "./lib/storage/functions.cjs",
+			"import": "./lib/storage/functions.mjs"
+		},
+		"./lib/storage/storage": {
+			"require": "./lib/storage/storage.cjs",
+			"import": "./lib/storage/storage.mjs"
+		}
+	},
+	"dependencies": {
+		"@iconify/api-redundancy": "workspace:^",
+		"@iconify/types": "workspace:^",
+		"@iconify/utils": "workspace:^"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3.2.0",
+		"@eslint/js": "^9.17.0",
+		"@types/jest": "^29.5.14",
+		"@types/node": "^18.19.69",
+		"@typescript-eslint/eslint-plugin": "^8.19.0",
+		"eslint": "^9.17.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-prettier": "^5.2.1",
+		"globals": "^15.14.0",
+		"rimraf": "^6.0.1",
+		"typescript": "^5.7.2",
+		"unbuild": "^2.0.0",
+		"vitest": "^2.1.8"
+	}
+}

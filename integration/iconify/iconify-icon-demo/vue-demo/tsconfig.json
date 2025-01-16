@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"declaration": false,
+		"sourceMap": false,
+		"strict": false,
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true
+	},
+	"include": ["./src"]
+}

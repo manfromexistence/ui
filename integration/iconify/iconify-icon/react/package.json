@@ -1,0 +1,55 @@
+{
+	"name": "@iconify-icon/react",
+	"description": "React wrapper for Iconify Icon web component",
+	"author": "Vjacheslav Trushkin",
+	"version": "2.3.0",
+	"license": "MIT",
+	"bugs": "https://github.com/iconify/iconify/issues",
+	"homepage": "https://iconify.design/",
+	"funding": "https://github.com/sponsors/cyberalien",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iconify/iconify.git",
+		"directory": "iconify-icon/react"
+	},
+	"scripts": {
+		"clean": "rimraf lib dist tsconfig.tsbuildinfo",
+		"prebuild": "pnpm run clean",
+		"build": "tsup",
+		"test": "vitest --config vitest.config.mjs"
+	},
+	"main": "dist/iconify.js",
+	"module": "dist/iconify.mjs",
+	"types": "dist/iconify.d.ts",
+	"exports": {
+		"./*": "./*",
+		".": {
+			"import": "./dist/iconify.mjs",
+			"types": "./dist/iconify.d.ts",
+			"default": "./dist/iconify.js"
+		},
+		"./lib/iconify": {
+			"import": "./dist/iconify.mjs",
+			"types": "./dist/iconify.d.ts",
+			"require": "./dist/iconify.js"
+		}
+	},
+	"dependencies": {
+		"iconify-icon": "workspace:^"
+	},
+	"devDependencies": {
+		"@types/react": "^18.3.18",
+		"@types/react-test-renderer": "^18.3.1",
+		"@vitejs/plugin-react": "^4.3.4",
+		"jest": "^29.7.0",
+		"react": "^18.3.1",
+		"react-test-renderer": "^18.3.1",
+		"rimraf": "^6.0.1",
+		"tsup": "^8.3.5",
+		"typescript": "^5.7.2",
+		"vitest": "^2.1.8"
+	},
+	"peerDependencies": {
+		"react": ">=16"
+	}
+}

@@ -1,0 +1,45 @@
+{
+	"name": "@iconify/api-redundancy",
+	"description": "Reusable redundancy library for API queries",
+	"version": "1.1.1",
+	"author": "Vjacheslav Trushkin",
+	"license": "MIT",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"exports": {
+		"./*": "./*",
+		".": {
+			"require": "./dist/index.js",
+			"import": "./dist/index.mjs"
+		}
+	},
+	"scripts": {
+		"lint": "eslint src/*.ts",
+		"prebuild": "pnpm run lint",
+		"build": "tsup src/index.ts --dts --format esm,cjs",
+		"test": "vitest --config vitest.config.mjs"
+	},
+	"bugs": "https://github.com/iconify/iconify/issues",
+	"homepage": "https://iconify.design/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iconify/iconify.git",
+		"directory": "packages/api-redundancy"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3.2.0",
+		"@eslint/js": "^9.17.0",
+		"@types/jest": "^29.5.14",
+		"@types/node": "^22.10.5",
+		"@typescript-eslint/eslint-plugin": "^8.19.0",
+		"@typescript-eslint/parser": "^8.19.0",
+		"cross-env": "^7.0.3",
+		"eslint": "^9.17.0",
+		"tsup": "^8.3.5",
+		"vitest": "^2.1.8"
+	},
+	"dependencies": {
+		"globals": "^15.14.0"
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"include": ["./src/*.ts", "./tests/*.ts", ".eslintrc.js"],
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "CommonJS",
+		"declaration": true,
+		"declarationMap": false,
+		"sourceMap": false,
+		"strict": true,
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true
+	}
+}

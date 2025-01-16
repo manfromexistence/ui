@@ -1,0 +1,34 @@
+{
+	"name": "iconify",
+	"private": true,
+	"description": "The most versatile icon framework",
+	"author": "Vjacheslav Trushkin <cyberalien@gmail.com> (https://iconify.design)",
+	"license": "MIT",
+	"bugs": "https://github.com/iconify/iconify/issues",
+	"homepage": "https://iconify.design/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iconify/iconify.git"
+	},
+	"packageManager": "pnpm@9.15.2",
+	"scripts": {
+		"clean": "rm -rf */*/node_modules",
+		"build": "pnpm recursive --workspace-concurrency=1 --filter \"./(packages|iconify-icon|components)/**\" run build",
+		"test": "pnpm recursive --workspace-concurrency=1 --filter \"./(packages|iconify-icon|components)/**\" run test"
+	},
+	"devDependencies": {},
+	"pnpm": {
+		"packageExtensions": {
+			"vue-template-compiler": {
+				"peerDependencies": {
+					"vue": "^2.*"
+				}
+			},
+			"tsutils": {
+				"peerDependencies": {
+					"typescript": "*"
+				}
+			}
+		}
+	}
+}

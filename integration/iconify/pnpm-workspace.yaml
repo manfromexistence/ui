@@ -1,0 +1,13 @@
+packages:
+    - 'packages/types'
+    - 'packages/api-redundancy'
+    - 'packages/utils'
+    - 'packages/core'
+    - 'iconify-icon/icon'
+    - 'iconify-icon/*'
+    - 'components/*'
+    - 'plugins/*'
+    - 'components-demo/*'
+    - 'iconify-icon-demo/*'
+    - 'plugins-demo/*'
+    # - 'debug/*'
