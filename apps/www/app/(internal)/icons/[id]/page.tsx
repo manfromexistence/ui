@@ -1,10 +1,9 @@
-// app/icons/[id]/page.tsx
-import fs from 'fs/promises';
-import path from 'path';
+/* eslint-disable turbo/no-undeclared-env-vars */
 import { notFound } from 'next/navigation';
-import IconGrid from './icons-grid';
-import LoadMoreButton from './laod-more';
 import Link from 'next/link';
+
+import IconGrid from './icons-grid'; // Make sure this component exists
+import LoadMoreButton from './laod-more'; // Make sure this component exists
 
 interface IconData {
   body: string;
@@ -40,36 +39,34 @@ interface PageProps {
   };
 }
 
-async function getIconsData(filePath: string): Promise<IconsJson | null> {
+async function fetchIconsData(url: string): Promise<IconsJson | null> {
   try {
-    const fileContent = await fs.readFile(filePath, 'utf-8');
-    const jsonData: IconsJson = JSON.parse(fileContent);
-
-    if (!jsonData || !jsonData.icons) {
-      console.error('Invalid JSON data or missing "icons" property.');
+    const response = await fetch(url);
+    if (!response.ok) {
+      console.error(`Failed to fetch icons data: ${response.status} ${response.statusText}`);
       return null;
     }
-
-    return jsonData;
+    return await response.json();
   } catch (error) {
-    console.error('Error getting icon data:', error);
+    console.error('Error fetching icons data:', error);
     return null;
   }
 }
 
-async function iconSetExists(filename: string): Promise<boolean> {
+async function iconSetExists(id: string, baseUrl: string = process.env.ICONS_BASE_URL || 'https://raw.githubusercontent.com/manfromexistence/ui/main/data/icons/'): Promise<boolean> {
   try {
-    const iconsDir = path.join(process.cwd(), 'data', 'icons');
-    const files = await fs.readdir(iconsDir);
-    return files.includes(`${filename}.json`);
+    const url = `${baseUrl}${id}.json`;
+    const response = await fetch(url, { method: 'HEAD' });
+    return response.ok;
   } catch (error) {
     return false;
   }
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const iconsFilePath = path.join(process.cwd(), 'data', 'icons', `${params.id}.json`);
-  const iconData = await getIconsData(iconsFilePath);
+  const baseUrl = process.env.ICONS_BASE_URL || 'https://raw.githubusercontent.com/manfromexistence/ui/main/data/icons/';
+  const url = `${baseUrl}${params.id}.json`;
+  const iconData = await fetchIconsData(url);
 
   if (!iconData) {
     return {
@@ -84,15 +81,14 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function IconsPage({ params }: PageProps) {
-  // Check if icon set exists
-  const exists = await iconSetExists(params.id);
+  const baseUrl = process.env.ICONS_BASE_URL || 'https://raw.githubusercontent.com/manfromexistence/ui/main/data/icons/';
+  const exists = await iconSetExists(params.id, baseUrl);
   if (!exists) {
     notFound();
   }
 
-  // Get icon data
-  const iconsFilePath = path.join(process.cwd(), 'data', 'icons', `${params.id}.json`);
-  const iconData = await getIconsData(iconsFilePath);
+  const url = `${baseUrl}${params.id}.json`;
+  const iconData = await fetchIconsData(url);
 
   if (!iconData) {
     return (
@@ -102,7 +98,6 @@ export default async function IconsPage({ params }: PageProps) {
     );
   }
 
-  // Get initial icons (first 1000)
   const allIcons = Object.entries(iconData.icons);
   const initialIcons = Object.fromEntries(allIcons.slice(0, 1000));
   const totalIcons = Object.keys(iconData.icons).length;

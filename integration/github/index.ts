@@ -1,3 +1,4 @@
+/* eslint-disable turbo/no-undeclared-env-vars */
 import fetch from 'node-fetch';
 
 interface IconData {
@@ -8,15 +9,9 @@ interface IconData {
   };
 }
 
-// Replace with your actual personal access token.
+// Replace with your actual personal access token (optional, but recommended for higher rate limits)
 // IMPORTANT: Never commit your token to version control!
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN; // Get from environment variable
-
-if (!GITHUB_TOKEN) {
-  console.error('GITHUB_TOKEN environment variable is not set.');
-  process.exit(1); // Exit with error code
-}
-
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || ''; // Optional
 
 const url = 'https://raw.githubusercontent.com/manfromexistence/ui/main/data/icons/academicons.json';
 
@@ -24,7 +19,7 @@ async function fetchAndLogJson(): Promise<void> {
   try {
     const response = await fetch(url, {
       headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
+        Authorization: GITHUB_TOKEN ? `token ${GITHUB_TOKEN}` : '',
       },
     });
 

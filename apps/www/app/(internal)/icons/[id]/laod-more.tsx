@@ -1,4 +1,3 @@
-// app/components/load-more-button.tsx
 "use client";
 
 import { useState } from "react";
@@ -9,19 +8,6 @@ interface LoadMoreButtonProps {
   iconSetId: string;
   totalIcons: number;
   initialLoadedCount: number;
-}
-
-interface ApiResponse {
-  icons: {
-    [key: string]: {
-      body: string;
-    };
-  };
-  metadata: {
-    total: number;
-    remaining: number;
-    hasMore: boolean;
-  };
 }
 
 export default function LoadMoreButton({
@@ -44,17 +30,17 @@ export default function LoadMoreButton({
         throw new Error("Failed to fetch icons");
       }
 
-      const data: ApiResponse = await response.json();
+      const data = await response.json();
 
-      // Dispatch the custom event with the new icons
+      // Update state based on API response
+      setLoadedCount((prev) => prev + Object.keys(data.icons).length);
+      setHasMore(data.metadata.hasMore);
+
+      // Dispatch the custom event with the new icons (assuming a listener exists)
       const event = new CustomEvent("loadMoreIcons", {
         detail: data.icons,
       });
       window.dispatchEvent(event);
-
-      // Update state
-      setLoadedCount((prev) => prev + Object.keys(data.icons).length);
-      setHasMore(data.metadata.hasMore);
 
       // Show success toast
       toast.success("Icons loaded successfully", {

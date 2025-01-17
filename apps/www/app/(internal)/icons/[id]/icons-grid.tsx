@@ -1,14 +1,13 @@
-// app/components/icons-grid.tsx
-"use client"
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { toast } from 'sonner';
+} from "@/components/ui/tooltip";
+import { toast } from "sonner";
 
 interface IconData {
   body: string;
@@ -23,39 +22,39 @@ interface IconsGridProps {
 export default function IconGrid({
   icons: initialIcons,
   width = 24,
-  height = 24
+  height = 24,
 }: IconsGridProps) {
   const [icons, setIcons] = useState<{ [key: string]: IconData }>(initialIcons);
 
   useEffect(() => {
     const handleLoadMore = (event: CustomEvent<{ [key: string]: IconData }>) => {
-      setIcons(prevIcons => ({
+      setIcons((prevIcons) => ({
         ...prevIcons,
         ...event.detail,
       }));
     };
 
-    window.addEventListener('loadMoreIcons', handleLoadMore as EventListener);
+    window.addEventListener("loadMoreIcons", handleLoadMore as EventListener);
 
     return () => {
-      window.removeEventListener('loadMoreIcons', handleLoadMore as EventListener);
+      window.removeEventListener("loadMoreIcons", handleLoadMore as EventListener);
     };
   }, []);
 
   const handleCopyClick = async (iconName: string, icon: IconData) => {
     try {
       const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
-        ${icon.body}
-      </svg>`;
+              ${icon.body}
+            </svg>`;
 
       await navigator.clipboard.writeText(svgContent);
       toast.success("Copied!", {
-        description: `${iconName} SVG copied to clipboard`
+        description: `${iconName} SVG copied to clipboard`,
       });
     } catch (err) {
-      console.error('Failed to copy:', err);
+      console.error("Failed to copy:", err);
       toast.error("Failed to copy", {
-        description: "Could not copy SVG to clipboard"
+        description: "Could not copy SVG to clipboard",
       });
     }
   };
@@ -80,9 +79,9 @@ export default function IconGrid({
                     viewBox={`0 0 ${width} ${height}`}
                     className="h-5 w-5 text-foreground"
                     style={{
-                      fill: hasFill ? 'currentColor' : 'none',
-                      stroke: hasStroke ? 'currentColor' : 'none',
-                      strokeWidth: hasStroke ? '2' : undefined,
+                      fill: hasFill ? "currentColor" : "none",
+                      stroke: hasStroke ? "currentColor" : "none",
+                      strokeWidth: hasStroke ? "2" : undefined,
                     }}
                     dangerouslySetInnerHTML={{ __html: icon.body }}
                   />

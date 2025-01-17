@@ -615,6 +615,9 @@ importers:
       nextjs-toploader:
         specifier: ^3.6.15
         version: 3.7.15(next@14.3.0-canary.43(@babel/core@7.26.0)(@opentelemetry/api@1.8.0)(@playwright/test@1.49.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.83.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      node-fetch:
+        specifier: ^3.3.0
+        version: 3.3.0
       open-google-translator:
         specifier: ^1.0.5
         version: 1.0.5
@@ -34636,7 +34639,7 @@ snapshots:
   '@emotion/styled-base@10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@16.14.0)':
     dependencies:
       '@babel/runtime': 7.26.0
-      '@emotion/core': 10.3.1(react@16.14.0)
+      '@emotion/core': 10.3.1(react@18.2.0)
       '@emotion/is-prop-valid': 0.8.8
       '@emotion/serialize': 0.11.16
       '@emotion/utils': 0.11.3
@@ -34645,7 +34648,7 @@ snapshots:
   '@emotion/styled-base@10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@babel/runtime': 7.26.0
-      '@emotion/core': 10.3.1(react@16.14.0)
+      '@emotion/core': 10.3.1(react@18.2.0)
       '@emotion/is-prop-valid': 0.8.8
       '@emotion/serialize': 0.11.16
       '@emotion/utils': 0.11.3
@@ -34653,14 +34656,14 @@ snapshots:
 
   '@emotion/styled@10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@16.14.0)':
     dependencies:
-      '@emotion/core': 10.3.1(react@16.14.0)
+      '@emotion/core': 10.3.1(react@18.2.0)
       '@emotion/styled-base': 10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@16.14.0)
       babel-plugin-emotion: 10.2.2
       react: 16.14.0
 
   '@emotion/styled@10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@emotion/core': 10.3.1(react@16.14.0)
+      '@emotion/core': 10.3.1(react@18.2.0)
       '@emotion/styled-base': 10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@18.2.0)
       babel-plugin-emotion: 10.2.2
       react: 18.2.0
@@ -35782,7 +35785,9 @@ snapshots:
       jest-runner: 24.9.0
       jest-runtime: 24.9.0
     transitivePeerDependencies:
+      - bufferutil
       - supports-color
+      - utf-8-validate
 
   '@jest/test-sequencer@29.7.0':
     dependencies:
@@ -48273,7 +48278,7 @@ snapshots:
   emotion-theming@10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@16.14.0):
     dependencies:
       '@babel/runtime': 7.26.0
-      '@emotion/core': 10.3.1(react@16.14.0)
+      '@emotion/core': 10.3.1(react@18.2.0)
       '@emotion/weak-memoize': 0.2.5
       hoist-non-react-statics: 3.3.2
       react: 16.14.0
@@ -48281,7 +48286,7 @@ snapshots:
   emotion-theming@10.3.0(@emotion/core@10.3.1(react@18.2.0))(react@18.2.0):
     dependencies:
       '@babel/runtime': 7.26.0
-      '@emotion/core': 10.3.1(react@16.14.0)
+      '@emotion/core': 10.3.1(react@18.2.0)
       '@emotion/weak-memoize': 0.2.5
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
@@ -53597,7 +53602,9 @@ snapshots:
       throat: 5.0.0
       tslib: 1.14.1
     transitivePeerDependencies:
+      - bufferutil
       - supports-color
+      - utf-8-validate
 
   jest-environment-jsdom@24.9.0:
     dependencies:
