@@ -1,0 +1,17 @@
+{
+  "name": "github",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev":"bun index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
