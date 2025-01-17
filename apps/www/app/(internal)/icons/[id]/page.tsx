@@ -4,6 +4,7 @@ import path from 'path';
 import { notFound } from 'next/navigation';
 import IconGrid from './icons-grid';
 import LoadMoreButton from './laod-more';
+import Link from 'next/link';
 
 interface IconData {
   body: string;
@@ -18,6 +19,14 @@ interface IconsJson {
     total: number;
     version: string;
     category: string;
+    author: {
+      name: string;
+      url: string;
+    };
+    license: {
+      url: string;
+      spdx: string;
+    };
     tags: string[];
   };
   icons: {
@@ -100,48 +109,25 @@ export default async function IconsPage({ params }: PageProps) {
 
   return (
     <div className="container mx-auto mb-32 px-4 pb-8 pt-4">
-      {/* Header */}
-      <div className="mb-8">
+      <div className="mb-4">
         <div className="flex items-baseline justify-between">
           <h1 className="mb-2 text-3xl font-bold">{iconData.info.name}</h1>
-          <p className="text-sm text-muted-foreground">
-            Version {iconData.info.version}
-          </p>
         </div>
-        
         <div className="flex flex-wrap gap-4">
-          <p className="text-muted-foreground">
-            {Object.keys(initialIcons).length} of {totalIcons} icons loaded
-          </p>
-          {iconData.info.category && (
-            <p className="text-muted-foreground">
-              Category: {iconData.info.category}
-            </p>
-          )}
+          <Link href={iconData.info.author.url || ""} className="text-muted-foreground hover:underline">
+            {iconData.info.author.name}
+          </Link>
+          <Link href={iconData.info.license.url || ""} className="text-muted-foreground hover:underline">
+            {iconData.info.license.spdx}
+          </Link>
         </div>
-
-        {iconData.info.tags && iconData.info.tags.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-2">
-            {iconData.info.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
       </div>
-
-      {/* Main content */}
-      <div className="space-y-8">
+      <div className="space-y-4">
         <IconGrid
           icons={initialIcons}
           width={iconData.width || 24}
           height={iconData.height || 24}
         />
-
         {totalIcons > 1000 && (
           <LoadMoreButton
             iconSetId={params.id}

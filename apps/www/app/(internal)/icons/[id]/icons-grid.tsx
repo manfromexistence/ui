@@ -71,17 +71,14 @@ export default function IconGrid({
             <Tooltip>
               <TooltipTrigger asChild>
                 <button
-                  className="group flex h-10 w-10 flex-col items-center justify-center rounded-lg transition-colors hover:bg-primary-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="group relative flex h-10 w-10 flex-col items-center justify-center rounded-lg transition-colors hover:bg-primary-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                   onClick={() => handleCopyClick(iconName, icon)}
                   aria-label={`Copy ${iconName} icon`}
                 >
-                  {/* <div className="flex items-center justify-center">
-
-                  </div> */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox={`0 0 ${width} ${height}`}
-                    className="flex h-5 w-5 text-foreground"
+                    className="h-5 w-5 text-foreground"
                     style={{
                       fill: hasFill ? 'currentColor' : 'none',
                       stroke: hasStroke ? 'currentColor' : 'none',
