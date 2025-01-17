@@ -1,7 +1,9 @@
+// app/icons/[id]/page.tsx
 import fs from 'fs/promises';
 import path from 'path';
-import * as React from 'react';
 import { notFound } from 'next/navigation';
+import IconGrid from './icons-grid';
+import LoadMoreButton from './laod-more';
 
 interface IconData {
   body: string;
@@ -56,77 +58,98 @@ async function iconSetExists(filename: string): Promise<boolean> {
   }
 }
 
-function IconGrid({ 
-  icons, 
-  width = 24,
-  height = 24
-}: { 
-  icons: { [key: string]: IconData }; 
-  width: number;
-  height: number;
-}) {
-  return (
-    <div className="grid-cols-17 grid gap-2">
-      {Object.entries(icons).map(([iconName, icon]) => {
-        const hasFill = !icon.body.includes('fill="none"');
-        const hasStroke = icon.body.includes('stroke=');
+export async function generateMetadata({ params }: PageProps) {
+  const iconsFilePath = path.join(process.cwd(), 'data', 'icons', `${params.id}.json`);
+  const iconData = await getIconsData(iconsFilePath);
 
-        return (
-          <div
-            key={iconName}
-            className="group flex h-10 w-10 flex-col items-center justify-center rounded-lg transition-colors hover:bg-primary-foreground"
-          >
-            <div className="flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox={`0 0 ${width} ${height}`}
-                className="flex h-5 w-5 items-center justify-center text-foreground"
-                style={{
-                  fill: hasFill ? 'currentColor' : 'none',
-                  stroke: hasStroke ? 'currentColor' : 'none',
-                  strokeWidth: hasStroke ? '2' : undefined,
-                }}
-                dangerouslySetInnerHTML={{ __html: icon.body }}
-              />
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
+  if (!iconData) {
+    return {
+      title: 'Icons - Not Found',
+    };
+  }
+
+  return {
+    title: `${iconData.info.name} - Icons`,
+    description: `${iconData.info.name} icon set containing ${Object.keys(iconData.icons).length} icons.`,
+  };
 }
 
 export default async function IconsPage({ params }: PageProps) {
+  // Check if icon set exists
   const exists = await iconSetExists(params.id);
   if (!exists) {
     notFound();
   }
 
+  // Get icon data
   const iconsFilePath = path.join(process.cwd(), 'data', 'icons', `${params.id}.json`);
   const iconData = await getIconsData(iconsFilePath);
 
   if (!iconData) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p className="text-red-500">Error loading icons.</p>
+      <div className="flex min-h-[400px] items-center justify-center">
+        <p className="text-lg text-red-500">Error loading icons.</p>
       </div>
     );
   }
 
+  // Get initial icons (first 1000)
+  const allIcons = Object.entries(iconData.icons);
+  const initialIcons = Object.fromEntries(allIcons.slice(0, 1000));
+  const totalIcons = Object.keys(iconData.icons).length;
+
   return (
     <div className="container mx-auto mb-32 px-4 pb-8 pt-4">
+      {/* Header */}
       <div className="mb-8">
-        <h1 className="mb-2 text-3xl font-bold">{iconData.info.name}</h1>
-        <p className="text-muted-foreground">
-          Version {iconData.info.version} • {Object.keys(iconData.icons).length} icons loaded
-        </p>
+        <div className="flex items-baseline justify-between">
+          <h1 className="mb-2 text-3xl font-bold">{iconData.info.name}</h1>
+          <p className="text-sm text-muted-foreground">
+            Version {iconData.info.version}
+          </p>
+        </div>
+        
+        <div className="flex flex-wrap gap-4">
+          <p className="text-muted-foreground">
+            {Object.keys(initialIcons).length} of {totalIcons} icons loaded
+          </p>
+          {iconData.info.category && (
+            <p className="text-muted-foreground">
+              Category: {iconData.info.category}
+            </p>
+          )}
+        </div>
+
+        {iconData.info.tags && iconData.info.tags.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {iconData.info.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
-      <IconGrid
-        icons={iconData.icons}
-        width={iconData.width || 24}
-        height={iconData.height || 24}
-      />
+      {/* Main content */}
+      <div className="space-y-8">
+        <IconGrid
+          icons={initialIcons}
+          width={iconData.width || 24}
+          height={iconData.height || 24}
+        />
+
+        {totalIcons > 1000 && (
+          <LoadMoreButton
+            iconSetId={params.id}
+            totalIcons={totalIcons}
+            initialLoadedCount={1000}
+          />
+        )}
+      </div>
     </div>
   );
 }
