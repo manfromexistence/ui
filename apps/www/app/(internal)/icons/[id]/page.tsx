@@ -74,9 +74,9 @@ function IconGrid({
         return (
           <div
             key={iconName}
-            className="group flex flex-col items-center justify-center rounded-lg py-1.5 transition-colors hover:bg-primary-foreground"
+            className="group flex h-10 w-10 flex-col items-center justify-center rounded-lg transition-colors hover:bg-primary-foreground"
           >
-            <div className="flex h-8 w-8 items-center justify-center">
+            <div className="flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox={`0 0 ${width} ${height}`}
@@ -102,7 +102,7 @@ export default async function IconsPage({ params }: PageProps) {
     notFound();
   }
 
-  const iconsFilePath = path.join(process.cwd(), 'public', 'icons', `${params.id}.json`);
+  const iconsFilePath = path.join(process.cwd(), 'data', 'icons', `${params.id}.json`);
   const iconData = await getIconsData(iconsFilePath);
 
   if (!iconData) {
