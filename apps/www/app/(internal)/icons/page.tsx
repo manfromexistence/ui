@@ -1,6 +1,6 @@
 export default function IconsPage() {
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center">
+    <div className="flex h-[90vh] w-full flex-col items-center justify-center">
       <span className="text-2xl font-bold">
         Icons
       </span>
