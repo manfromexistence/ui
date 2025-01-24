@@ -59,8 +59,8 @@ export default function IndexPage() {
         </PageActions>
       </PageHeader>
       <div className="container-wrapper h-full w-full">
-        <div className="homepage-container grid w-full sm:grid-cols-1 md:grid-cols-2 lg:h-[500px] lg:grid-cols-3">
-          <Link href="/docs/components/dock" className="flex h-full w-full flex-col items-start justify-between border-b border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
+        <div className="homepage-container grid sm:grid-cols-1 md:grid-cols-2 lg:h-[500px] lg:grid-cols-3">
+          <Link href="/docs/components/dock" className="flex h-full w-full flex-col items-start justify-between border-b border-r p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9">
             <div className="h-24 w-full space-y-2">
               <div className="flex items-center space-x-2">
                 <div className="flex w-full items-center justify-between rounded-md border bg-primary-foreground p-3">
@@ -99,7 +99,7 @@ export default function IndexPage() {
               <span className="text-muted-foreground">Building Blocks for your software.</span>
             </div>
           </Link>
-          <Link href="/icons" className="flex h-full w-full flex-col justify-between border-b border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
+          <Link href="/icons" className="flex h-full w-full flex-col justify-between border-b border-r p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9">
             <div className="grid h-24 w-full grid-cols-8 grid-rows-3 place-content-center items-center justify-center gap-8 pt-[4px]">
               <PartyPopper />
               <PawPrint />
@@ -131,7 +131,7 @@ export default function IndexPage() {
               <span className="text-muted-foreground">Icons for everyone.</span>
             </div>
           </Link>
-          <Link href="/animations" className="flex h-full w-full  flex-col justify-between border-b p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary md:border-r lg:border-r-0">
+          <Link href="/animations" className="flex h-full w-full  flex-col justify-between border-b p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9 md:border-r lg:border-r-0">
             <div className="flex h-24 w-full justify-between space-x-0 sm:space-x-1">
               <div className="h-24 w-24 rounded-full border bg-secondary"></div>
               <div className="h-24 w-24 rounded-full border bg-secondary"></div>
@@ -144,7 +144,7 @@ export default function IndexPage() {
               <span className="text-muted-foreground">Animations for everyone.</span>
             </div>
           </Link>
-          <Link href="/docs/systems/grid" className="flex h-full w-full flex-col items-start justify-between border-b p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary md:border-r-0 lg:border-b-0 lg:border-r">
+          <Link href="/docs/systems/grid" className="flex h-full w-full flex-col items-start justify-between border-b p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9 md:border-r-0 lg:border-b-0 lg:border-r">
             <div className="relative grid h-24 w-full grid-cols-9 border">
               <PlusIcon className="absolute -left-5 -top-5 h-10 w-10" />
               <PlusIcon className="absolute -bottom-5 -right-5 h-10 w-10" />
@@ -174,7 +174,7 @@ export default function IndexPage() {
               <span className="text-muted-foreground">Make it yours.</span>
             </div>
           </Link>
-          <Link href="/fonts" className="flex h-full w-full flex-col justify-between border-b border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary md:border-b-0">
+          <Link href="/fonts" className="flex h-full w-full flex-col justify-between border-b border-r p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9 md:border-b-0">
             <div className="flex h-24 w-full rounded-md border border-dashed">
               <span className="flex h-full w-full items-center justify-center border-r border-dashed text-2xl font-bold italic">Fonts Sans</span>
               <span className="flex h-full w-full items-center justify-center text-2xl font-bold">Fonts Mono</span>
@@ -184,7 +184,7 @@ export default function IndexPage() {
               <span className="text-muted-foreground">Fonts for everyone.</span>
             </div>
           </Link>
-          <Link href="/colors" className="flex h-full w-full flex-col justify-between p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
+          <Link href="/colors" className="flex h-full w-full flex-col justify-between p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9">
             <div className="flex h-24 w-full justify-between">
               <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
                 <div className="h-full w-2 rounded-full bg-red-500" />
