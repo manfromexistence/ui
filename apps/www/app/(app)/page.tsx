@@ -132,10 +132,10 @@ export default function IndexPage() {
             </div>
           </Link> */}
           <Link href="/animations" className="flex h-full w-full  flex-col justify-between border-b p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9 md:border-r lg:border-r-0">
-            <div className="flex h-24 w-full justify-between space-x-0 sm:space-x-1">
-              <div className="h-[33%] w-[33%] rounded-full border bg-secondary sm:h-24 sm:w-24"></div>
-              <div className="h-[33%] w-[33%] rounded-full border bg-secondary sm:h-24 sm:w-24"></div>
-              <div className="h-[33%] w-[33%] rounded-full border bg-secondary sm:h-24 sm:w-24"></div>
+            <div className="flex sm:h-24 w-full justify-center items-center sm:justify-between space-x-0 gap-2 flex-col sm:flex-row ">
+              <div className="h-24 w-24 rounded-full border bg-secondary"></div>
+              <div className="h-24 w-24 rounded-full border bg-secondary"></div>
+              <div className="h-24 w-24 rounded-full border bg-secondary"></div>
               <div className="hidden h-24 w-24 rounded-full border bg-secondary sm:inline md:hidden 2xl:block"></div>
               <div className="hidden h-24 w-24 rounded-full border bg-secondary sm:inline lg:hidden"></div>
             </div>
