@@ -100,7 +100,7 @@ export default function IndexPage() {
             </div>
           </Link>
           <Link href="/icons" className="flex h-full w-full flex-col justify-between border-b p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:border-r sm:p-9">
-            <div className="grid w-full grid-cols-4 grid-rows-5 place-content-center items-center justify-center gap-8 pt-[4px] sm:h-24 sm:grid-cols-8 sm:grid-rows-3">
+            <div className="grid w-full grid-cols-4 grid-rows-5 place-content-center place-items-center items-center justify-center gap-8 pt-[4px] text-sm sm:h-24 sm:grid-cols-8 sm:grid-rows-3">
               <PartyPopper />
               <PawPrint />
               <AlarmClock />
