@@ -60,7 +60,7 @@ export default function IndexPage() {
       </PageHeader>
       <div className="container-wrapper h-full w-full">
         <div className="homepage-container grid sm:grid-cols-1 md:grid-cols-2 lg:h-[500px] lg:grid-cols-3">
-          <Link href="/docs/components/dock" className="flex h-full w-full flex-col items-start justify-between border-b border-r p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9">
+          {/* <Link href="/docs/components/dock" className="flex h-full w-full flex-col items-start justify-between border-b border-r p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9">
             <div className="h-24 w-full space-y-2">
               <div className="flex items-center space-x-2">
                 <div className="flex w-full items-center justify-between rounded-md border bg-primary-foreground p-3">
@@ -130,12 +130,12 @@ export default function IndexPage() {
               <h1 className="text-primary">Icons</h1>
               <span className="text-muted-foreground">Icons for everyone.</span>
             </div>
-          </Link>
+          </Link> */}
           <Link href="/animations" className="flex h-full w-full  flex-col justify-between border-b p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9 md:border-r lg:border-r-0">
             <div className="flex h-24 w-full justify-between space-x-0 sm:space-x-1">
-              <div className="h-24 w-24 rounded-full border bg-secondary"></div>
-              <div className="h-24 w-24 rounded-full border bg-secondary"></div>
-              <div className="h-24 w-24 rounded-full border bg-secondary"></div>
+              <div className="h-[33%] w-[33%] rounded-full border bg-secondary sm:h-24 sm:w-24"></div>
+              <div className="h-[33%] w-[33%] rounded-full border bg-secondary sm:h-24 sm:w-24"></div>
+              <div className="h-[33%] w-[33%] rounded-full border bg-secondary sm:h-24 sm:w-24"></div>
               <div className="hidden h-24 w-24 rounded-full border bg-secondary sm:inline md:hidden 2xl:block"></div>
               <div className="hidden h-24 w-24 rounded-full border bg-secondary sm:inline lg:hidden"></div>
             </div>
@@ -145,7 +145,7 @@ export default function IndexPage() {
             </div>
           </Link>
           <Link href="/docs/systems/grid" className="flex h-full w-full flex-col items-start justify-between border-b p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9 md:border-r-0 lg:border-b-0 lg:border-r">
-            <div className="relative grid h-24 w-full grid-cols-9 border">
+            <div className="relative grid h-24 w-full grid-cols-9 border ">
               <PlusIcon className="absolute -left-5 -top-5 h-10 w-10" />
               <PlusIcon className="absolute -bottom-5 -right-5 h-10 w-10" />
 
@@ -174,10 +174,10 @@ export default function IndexPage() {
               <span className="text-muted-foreground">Make it yours.</span>
             </div>
           </Link>
-          <Link href="/fonts" className="flex h-full w-full flex-col justify-between border-b border-r p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9 md:border-b-0">
-            <div className="flex h-24 w-full rounded-md border border-dashed">
-              <span className="flex h-full w-full items-center justify-center border-r border-dashed text-2xl font-bold italic">Fonts Sans</span>
-              <span className="flex h-full w-full items-center justify-center text-2xl font-bold">Fonts Mono</span>
+          <Link href="/fonts" className="flex h-full w-full flex-col justify-between border-b p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:border-r sm:p-9 md:border-b-0">
+            <div className="flex w-full flex-col rounded-md border border-dashed sm:h-24 sm:flex-row">
+              <span className="flex h-24 w-full items-center justify-center border-b border-dashed text-2xl font-bold italic sm:border-r">Fonts Sans</span>
+              <span className="flex h-24 w-full items-center justify-center text-2xl font-bold">Fonts Mono</span>
             </div>
             <div className="mt-6 md:mt-4 lg:mt-0">
               <h1 className="text-primary">Fonts</h1>
@@ -185,30 +185,31 @@ export default function IndexPage() {
             </div>
           </Link>
           <Link href="/colors" className="flex h-full w-full flex-col justify-between p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9">
-            <div className="flex h-24 w-full justify-between">
-              <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
-                <div className="h-full w-2 rounded-full bg-red-500" />
+            <div className="flex w-full flex-col justify-between space-y-2 sm:h-24 sm:flex-row sm:space-y-0">
+              <div className="flex h-full w-full items-center justify-center rounded-full border p-3 sm:w-8">
+
+                <div className="h-2 w-full rounded-full bg-red-500 sm:h-full sm:w-2" />
               </div>
-              <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
-                <div className="h-full w-2 rounded-full bg-green-500" />
+              <div className="flex h-full w-full items-center justify-center rounded-full border p-3 sm:w-8">
+                <div className="h-2 w-full rounded-full bg-green-500 sm:h-full sm:w-2" />
               </div>
-              <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
-                <div className="h-full w-2 rounded-full bg-yellow-500" />
+              <div className="flex h-full w-full items-center justify-center rounded-full border p-3 sm:w-8">
+                <div className="h-2 w-full rounded-full bg-yellow-500 sm:h-full sm:w-2" />
               </div>
-              <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
-                <div className="h-full w-2 rounded-full bg-teal-500" />
+              <div className="flex h-full w-full items-center justify-center rounded-full border p-3 sm:w-8">
+                <div className="h-2 w-full rounded-full bg-teal-500 sm:h-full sm:w-2" />
               </div>
-              <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
-                <div className="h-full w-2 rounded-full bg-purple-500" />
+              <div className="flex h-full w-full items-center justify-center rounded-full border p-3 sm:w-8">
+                <div className="h-2 w-full rounded-full bg-purple-500 sm:h-full sm:w-2" />
               </div>
-              <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
-                <div className="h-full w-2 rounded-full bg-fuchsia-500" />
+              <div className="flex h-full w-full items-center justify-center rounded-full border p-3 sm:w-8">
+                <div className="h-2 w-full rounded-full bg-fuchsia-500 sm:h-full sm:w-2" />
               </div>
-              <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
-                <div className="h-full w-2 rounded-full bg-blue-500" />
+              <div className="flex h-full w-full items-center justify-center rounded-full border p-3 sm:w-8">
+                <div className="h-2 w-full rounded-full bg-blue-500 sm:h-full sm:w-2" />
               </div>
-              <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
-                <div className="h-full w-2 rounded-full bg-orange-500" />
+              <div className="flex h-full w-full items-center justify-center rounded-full border p-3 sm:w-8">
+                <div className="h-2 w-full rounded-full bg-orange-500 sm:h-full sm:w-2" />
               </div>
             </div>
             <div className="mt-6 md:mt-4 lg:mt-0">
