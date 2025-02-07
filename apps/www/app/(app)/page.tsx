@@ -60,19 +60,19 @@ export default function IndexPage() {
       </PageHeader>
       <div className="container-wrapper h-full w-full">
         <div className="homepage-container grid sm:grid-cols-1 md:grid-cols-2 lg:h-[500px] lg:grid-cols-3">
-          {/* <Link href="/docs/components/dock" className="flex h-full w-full flex-col items-start justify-between border-b border-r p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9">
-            <div className="h-24 w-full space-y-2">
-              <div className="flex items-center space-x-2">
+          <Link href="/docs/components/dock" className="flex h-full w-full flex-col items-start justify-between border-b p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:border-r sm:p-9">
+            <div className="w-full space-y-2 sm:h-24">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-0 sm:space-x-2">
                 <div className="flex w-full items-center justify-between rounded-md border bg-primary-foreground p-3">
-                  <span className="truncate text-sm md:w-32 lg:w-24 xl:w-48 2xl:w-full">$ npx manfromexistence-ui init</span>
+                  <span className="w-24 truncate text-sm md:w-32 lg:w-24 xl:w-48 2xl:w-full">$ npx manfromexistence-ui init</span>
                   <Copy className="h-4 w-4" />
                 </div>
-                <div className="flex w-32 flex-1 items-center justify-center rounded-md border bg-primary-foreground p-3 text-sm">
+                <div className="flex w-full flex-1 items-center justify-center rounded-md border bg-primary-foreground p-3 text-sm">
                   <UserPlus className="mr-2 h-4 w-4" />
                   Collabrators
                 </div>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-0 sm:space-x-2">
                 <div className="flex rounded-md border bg-primary-foreground p-3">
                   <ShieldEllipsis className="h-5 w-5" />
                 </div>
@@ -99,8 +99,8 @@ export default function IndexPage() {
               <span className="text-muted-foreground">Building Blocks for your software.</span>
             </div>
           </Link>
-          <Link href="/icons" className="flex h-full w-full flex-col justify-between border-b border-r p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9">
-            <div className="grid h-24 w-full grid-cols-8 grid-rows-3 place-content-center items-center justify-center gap-8 pt-[4px]">
+          <Link href="/icons" className="flex h-full w-full flex-col justify-between border-b p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:border-r sm:p-9">
+            <div className="grid w-full grid-cols-4 grid-rows-5 place-content-center items-center justify-center gap-8 pt-[4px] sm:h-24 sm:grid-cols-8 sm:grid-rows-3">
               <PartyPopper />
               <PawPrint />
               <AlarmClock />
@@ -130,9 +130,9 @@ export default function IndexPage() {
               <h1 className="text-primary">Icons</h1>
               <span className="text-muted-foreground">Icons for everyone.</span>
             </div>
-          </Link> */}
+          </Link>
           <Link href="/animations" className="flex h-full w-full  flex-col justify-between border-b p-4 text-muted-foreground hover:bg-primary-foreground hover:text-primary sm:p-9 md:border-r lg:border-r-0">
-            <div className="flex sm:h-24 w-full justify-center items-center sm:justify-between space-x-0 gap-2 flex-col sm:flex-row ">
+            <div className="flex w-full flex-col items-center justify-center gap-2 space-x-0 sm:h-24 sm:flex-row sm:justify-between ">
               <div className="h-24 w-24 rounded-full border bg-secondary"></div>
               <div className="h-24 w-24 rounded-full border bg-secondary"></div>
               <div className="h-24 w-24 rounded-full border bg-secondary"></div>
