@@ -1,5 +1,5 @@
 import { blocks } from "@/registry/registry-blocks"
-import { charts } from "@/registry/registry-charts"
+// import { charts } from "@/registry/registry-charts"
 import { examples } from "@/registry/registry-examples"
 import { hooks } from "@/registry/registry-hooks"
 import { internal } from "@/registry/registry-internal"
@@ -11,7 +11,7 @@ import { Registry } from "@/registry/schema"
 export const registry: Registry = [
   ...ui,
   ...blocks,
-  ...charts,
+  // ...charts,
   ...lib,
   ...hooks,
   ...themes,
