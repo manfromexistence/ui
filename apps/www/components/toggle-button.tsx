@@ -59,12 +59,11 @@ export function ThemeToggleButton({
             setTheme(theme === "light" ? "dark" : "light")
         }
 
-        if (!document.startViewTransition) {
+        if (typeof document !== 'undefined' && (document as any).startViewTransition) {
+            (document as any).startViewTransition(switchTheme)
+        } else {
             switchTheme()
-            return
         }
-
-        document.startViewTransition(switchTheme)
     }, [variant, start, url, updateStyles, setTheme, theme])
 
     return (
@@ -78,18 +77,6 @@ export function ThemeToggleButton({
             <SunIcon className="size-[1rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
             <MoonIcon className="absolute size-[1rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             <span className="sr-only">Theme Toggle </span>
-            {/* {showLabel && (
-        <>
-          <span className="absolute -top-10 hidden rounded-full border px-2 group-hover:block">
-            {" "}
-            variant = {variant}
-          </span>
-          <span className="absolute -bottom-10 hidden rounded-full border px-2 group-hover:block">
-            {" "}
-            start = {start}
-          </span>
-        </>
-      )} */}
         </Button>
     )
 }
