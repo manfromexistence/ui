@@ -7,6 +7,7 @@ import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
 import { Button } from "@/registry/new-york/ui/button"
+import { ThemeToggleButton } from "./toggle-button"
 
 export function SiteHeader() {
   return (
@@ -30,7 +31,8 @@ export function SiteHeader() {
                   <span className="sr-only">GitHub</span>
                 </Link>
               </Button>
-              <ModeSwitcher />
+              {/* <ModeSwitcher /> */}
+              <ThemeToggleButton variant="circle" start="top-right" />
             </nav>
           </div>
         </div>

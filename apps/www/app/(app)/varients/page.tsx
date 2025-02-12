@@ -206,7 +206,7 @@ export default function IndexPage() {
             <div className="grid">
               <VarientsNav className="[&>a:first-child]:bg-muted [&>a:first-child]:font-medium [&>a:first-child]:text-primary" />
               <div id="switchers" className="relative mt-3 flex h-[500px] w-full items-center justify-center rounded-md border">
-                <Switchers />
+                <Switchers variant="gif" start="top-left" url="https://media.giphy.com/media/5PncuvcXbBuIZcSiQo/giphy.gif?cid=ecf05e47j7vdjtytp3fu84rslaivdun4zvfhej6wlvl6qqsz&ep=v1_stickers_search&rid=giphy.gif&ct=s" />
               </div>
               <ShowMore componentName="Switchers" componentHref="switchers" />
 

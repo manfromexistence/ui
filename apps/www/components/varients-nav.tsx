@@ -68,7 +68,7 @@ export function VarientsNav({
   const pathname = usePathname()
 
   return (
-    <ScrollArea className="max-w-[600px] lg:max-w-none">
+    <ScrollArea className="mt-3 max-w-[600px] lg:max-w-none">
       <div className={cn("flex items-center", className)} {...props}>
         {links.map((example, index) => (
           <Link
