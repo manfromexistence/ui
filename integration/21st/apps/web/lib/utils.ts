@@ -37,3 +37,27 @@ export function appendQueryParam(url: string, param: string, value: string) {
     return url
   }
 }
+
+export function replaceSpacesWithPlus(str: string) {
+  return str?.trim()?.replace(/\s+/g, "+")
+}
+
+export function makeSlugFromName(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+}
+
+export const isMac =
+  typeof window !== "undefined" &&
+  /Mac|iPod|iPhone|iPad/.test(window.navigator.platform)
+
+export function formatPrice(price: number) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }).format(price)
+}

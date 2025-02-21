@@ -293,6 +293,7 @@ const server = serve({
         const file = formData.get("video") as File
 
         if (!file) {
+          console.log("No video file found in request")
           return Response.json(
             { error: "No video file provided" },
             { status: 400, headers },
@@ -302,10 +303,13 @@ const server = serve({
         const tempDir = path.join(os.tmpdir(), "video-conversions")
         await fs.mkdir(tempDir, { recursive: true })
 
-        const tempInputPath = path.join(tempDir, file.name)
+        // Sanitize the filename
+        const sanitizedFilename = file.name.replace(/[^a-zA-Z0-9.-]/g, '_')
+        
+        const tempInputPath = path.join(tempDir, sanitizedFilename)
         const tempOutputPath = path.join(
           tempDir,
-          file.name.replace(/\.[^/.]+$/, "") + ".mp4",
+          sanitizedFilename.replace(/\.[^/.]+$/, "") + `_converted_${Date.now()}.mp4`,
         )
 
         const bytes = await file.arrayBuffer()
@@ -317,11 +321,16 @@ const server = serve({
 
         await Promise.all([fs.unlink(tempInputPath), fs.unlink(tempOutputPath)])
 
+        // Encode the filename for the Content-Disposition header
+        const encodedFilename = encodeURIComponent(path.basename(tempOutputPath))
+
+        console.log("successfuly converted video")
+        
         return new Response(processedVideo, {
           headers: {
             ...headers,
             "Content-Type": "video/mp4",
-            "Content-Disposition": `attachment; filename="${path.basename(tempOutputPath)}"`,
+            "Content-Disposition": `attachment; filename="${encodedFilename}"`,
           },
         })
       } catch (error) {

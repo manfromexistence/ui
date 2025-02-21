@@ -1,69 +1,47 @@
 "use client"
 
 import { useAtom } from "jotai"
-import { useClerkSupabaseClient } from "@/lib/clerk"
-import { useQuery } from "@tanstack/react-query"
-
-import { ComponentsList } from "@/components/ComponentsList"
-import {
-  ComponentsHeader,
-  quickFilterAtom,
-  sortByAtom,
-} from "@/components/ComponentsHeader"
-import { searchQueryAtom } from "@/components/Header"
-import { sortComponents, filterComponents } from "@/lib/filters.client"
-import { Component, User } from "@/types/global"
-import { TagComponentsHeader } from "@/components/TagComponentsHeader"
+import { ComponentsList } from "@/components/ui/items-list"
+import { sortByAtom } from "@/components/features/main-page/main-page-header"
+import { SortOption } from "@/types/global"
+import { TagComponentsHeader } from "@/components/features/tag-page/tag-page-header"
+import { useLayoutEffect } from "react"
+import { motion } from "motion/react"
 
 export function TagPageContent({
-  components,
   tagName,
+  tagSlug,
+  initialSortBy,
 }: {
-  components: (Component & { user: User })[]
   tagName: string
+  tagSlug: string
+  initialSortBy: SortOption
 }) {
-  const [sortBy] = useAtom(sortByAtom)
-  const [quickFilter] = useAtom(quickFilterAtom)
-  const [searchQuery] = useAtom(searchQueryAtom)
-  const supabase = useClerkSupabaseClient()
+  const [sortBy, setSortBy] = useAtom(sortByAtom)
 
-  const { data: filteredComponents, isLoading } = useQuery<
-    (Component & { user: User })[]
-  >({
-    queryKey: ["tag-components", tagName, sortBy, quickFilter, searchQuery],
-    queryFn: async () => {
-      let filtered = components
-
-      if (searchQuery) {
-        filtered = filtered.filter(
-          (component) =>
-            component.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            component.description
-              ?.toLowerCase()
-              .includes(searchQuery.toLowerCase()),
-        )
-      }
-
-      if (!sortBy || !quickFilter) return filtered
-      return sortComponents(filterComponents(filtered, quickFilter), sortBy)
-    },
-    initialData: undefined,
-  })
+  useLayoutEffect(() => {
+    if (sortBy === undefined) setSortBy(initialSortBy)
+  }, [])
 
   return (
-    <>
+    <div className="container mx-auto my-20 px-[var(--container-x-padding)] max-w-[3680px] [--container-x-padding:20px] min-720:[--container-x-padding:24px] min-1280:[--container-x-padding:32px] min-1536:[--container-x-padding:80px]">
       <div className="flex flex-col">
-        <TagComponentsHeader
-          filtersDisabled={!!searchQuery}
-          components={components}
-          currentSection={`${tagName} components`}
-        />
+        <TagComponentsHeader tagName={tagName} currentSection={tagName} />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.3,
+            ease: "easeOut",
+          }}
+        >
+          <ComponentsList
+            type="tag"
+            tagSlug={tagSlug}
+            sortBy={sortBy || initialSortBy}
+          />
+        </motion.div>
       </div>
-      <ComponentsList
-        components={filteredComponents}
-        isLoading={isLoading}
-        className="mt-6"
-      />
-    </>
+    </div>
   )
 }

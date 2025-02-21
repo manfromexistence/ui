@@ -4,7 +4,7 @@
 
 html,
 body {
-  width: 100vw;
+  width: 100%;
 }
 
 * {
@@ -95,6 +95,10 @@ iframe {
   overflow: auto;
 }
 
+.cm-content {
+  margin-bottom: 100px !important;
+}
+
 .sp-preview-iframe {
   border: none;
   height: 100% !important;
@@ -169,6 +173,32 @@ iframe {
   border-radius: 50%;
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.loading-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.5rem;
+  padding: 1px;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255),
+      rgba(0, 0, 0, 0.5),
+      rgba(255, 255, 255));
+  background-size: 200% 100%;
+  animation: shimmer 4.5s ease-in-out infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -190,6 +220,7 @@ iframe {
     --border: 240 5.9% 90%;
     --input: 240 4.9% 83.9%;
     --ring: 240 5% 64.9%;
+    --alpha-300: 240 5% 84%;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
@@ -204,7 +235,11 @@ iframe {
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --border-gradient-start: rgba(255, 255, 255, 0.01);
+    --border-gradient-mid: rgba(0, 0, 0, 0.5);
+    --border-gradient-end: rgba(255, 255, 255, 0.01);
   }
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 240 4.8% 95.9%;
@@ -225,6 +260,7 @@ iframe {
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 3.8% 46.1%;
+    --alpha-300: 240 3.7% 15.9%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -238,6 +274,25 @@ iframe {
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --border-gradient-mid: rgba(255, 255, 255, 0.8);
+  }
+
+  @media (min-width: 720px) {
+    .min-720\: {
+      --container-x-padding: 24px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .min-1280\: {
+      --container-x-padding: 32px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .min-1536\: {
+      --container-x-padding: 80px;
+    }
   }
 }
 
@@ -245,6 +300,7 @@ iframe {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -263,4 +319,46 @@ iframe {
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
+  .bg-grid-purple\/\[0\.02\] {
+    background-size: 30px 30px;
+    background-image: linear-gradient(to right, rgb(29 31 211 / 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(29 31 211 / 0.02) 1px, transparent 1px);
+  }
+}
+
+[data-vaul-drawer-close-button] {
+  display: none;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-appear {
+  animation: appear 0.6s cubic-bezier(0.2, 0.85, 0.45, 1) forwards;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
 }

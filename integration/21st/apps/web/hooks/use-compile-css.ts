@@ -11,9 +11,11 @@ export const useCompileCss = (
   registryDependencies: Record<string, string>,
   component: Component & { user: User } & { tags: Tag[] },
   shellCode: string[],
+  demoId: number,
+  demoSlug: string,
   tailwindConfig?: string,
   globalCss?: string,
-  compiledCss?: string,
+  compiledCss?: string | null,
 ) => {
   const client = useClerkSupabaseClient()
   const [css, setCss] = useState<string | null>(compiledCss ?? null)
@@ -45,8 +47,17 @@ export const useCompileCss = (
         }
       })
       .then(async (compiledCss) => {
-        if (component.id) {
-          const fileName = `${component.component_slug}.compiled.css`
+        if (component.id && demoId) {
+          const { data: existingDemo, error: checkError } = await client
+            .from("demos")
+            .select("id, component_id")
+            .eq("id", demoId)
+
+          if (checkError || !existingDemo || existingDemo.length === 0) {
+            return
+          }
+          const timestamp = new Date().toISOString()
+          const fileName = `${component.component_slug}/${demoSlug}/compiled.${timestamp}.css`
           const url = await uploadToR2({
             file: {
               name: fileName,
@@ -56,11 +67,26 @@ export const useCompileCss = (
             fileKey: `${component.user_id}/${fileName}`,
             bucketName: "components-code",
           })
-          await client
-            .from("components")
-            .update({ compiled_css: url })
-            .eq("id", component.id)
+
+          const { error: updateError } = await client
+            .from("demos")
+            .update({
+              compiled_css: url,
+              updated_at: new Date().toISOString(),
+            })
+            .eq("id", demoId)
+            .eq("component_id", component.id)
+
+          if (updateError) {
+            console.error(
+              "Failed to update demo with compiled CSS:",
+              updateError,
+            )
+          }
         }
+      })
+      .catch((error) => {
+        console.error("Error in CSS compilation or upload:", error)
       })
   }, [
     code,
@@ -70,6 +96,7 @@ export const useCompileCss = (
     globalCss,
     component,
     shellCode,
+    demoId,
   ])
 
   return css

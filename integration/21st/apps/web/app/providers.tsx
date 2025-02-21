@@ -1,16 +1,19 @@
 "use client"
 
 import { useEffect } from "react"
-import { usePathname } from "next/navigation"
 
 import { ClerkProvider } from "@clerk/nextjs"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/AppSidebar"
-import { CommandMenu } from "@/components/CommandMenu"
+import { CommandMenu } from "@/components/ui/command-menu"
+import { SidebarProvider } from "@/components/ui/sidebar"
+import { MainSidebar } from "@/components/features/main-page/sidebar-layout"
+import { MainLayout } from "@/components/features/main-page/main-layout"
+import { useSidebarVisibility } from "@/hooks/use-sidebar-visibility"
 
 import { initAmplitude } from "@/lib/amplitude"
+import { useAtom } from "jotai"
+import { sidebarOpenAtom } from "@/components/features/main-page/main-layout"
 
 const queryClient = new QueryClient()
 
@@ -19,11 +22,8 @@ export function AppProviders({
 }: {
   children: React.ReactNode
 }): JSX.Element {
-  const pathname = usePathname()
-  const isHomePage = pathname === "/"
-  const isTagPage = pathname.startsWith("/s/")
-  const isProPage = pathname.startsWith("/pro")
-  const showSidebar = isHomePage || isTagPage || isProPage
+  const [open, setOpen] = useAtom(sidebarOpenAtom)
+  const shouldShowSidebar = useSidebarVisibility()
 
   useEffect(() => {
     initAmplitude()
@@ -32,15 +32,13 @@ export function AppProviders({
   return (
     <QueryClientProvider client={queryClient}>
       <ClerkProvider>
-        <CommandMenu />
-        {showSidebar ? (
-          <SidebarProvider>
-            <AppSidebar />
-            <SidebarInset>{children}</SidebarInset>
-          </SidebarProvider>
-        ) : (
-          children
-        )}
+        <SidebarProvider defaultOpen={open} open={open} onOpenChange={setOpen}>
+          {shouldShowSidebar && <MainSidebar />}
+          <MainLayout>
+            <CommandMenu />
+            {children}
+          </MainLayout>
+        </SidebarProvider>
       </ClerkProvider>
     </QueryClientProvider>
   )

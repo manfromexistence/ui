@@ -1,19 +1,20 @@
 import React from "react"
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs"
-import PublishComponentForm from "@/components/publish/PublishComponentForm"
+import PublishComponentForm from "@/components/features/publish/publish-layout"
+import { Metadata } from "next"
 
-import Head from "next/head"
-import { Header } from "@/components/Header"
+import { Header } from "@/components/ui/header.client"
+
+export const metadata: Metadata = {
+  title: "Publish New Component | 21st.dev",
+}
 
 export default function PublishPage() {
   return (
     <>
-      <Head>
-        <title>Publish New Component | Component Library</title>
-      </Head>
       <SignedIn>
-        <Header page="publish" />
-        <div className="flex flex-row items-center h-screen w-full py-4">
+        <Header variant="publish" />
+        <div className="flex flex-row items-center h-screen w-full">
           <PublishComponentForm />
         </div>
       </SignedIn>

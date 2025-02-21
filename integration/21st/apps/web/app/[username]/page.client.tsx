@@ -1,52 +1,75 @@
 "use client"
 
 import Link from "next/link"
+import { useAtom } from "jotai"
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
-import { Header } from "@/components/Header"
+import { Header } from "@/components/ui/header.client"
 import { Icons } from "@/components/icons"
-import { UserAvatar } from "@/components/UserAvatar"
-import { UserProfileAnalytics } from "@/components/UserProfileAnalytics"
-import { UserComponentsHeader } from "@/components/UserComponentsHeader"
-import { UserComponentsList } from "@/components/UserComponentsList"
-import { Component, User } from "@/types/global"
+import { UserAvatar } from "@/components/ui/user-avatar"
+import { UserComponentsHeader } from "@/components/features/user-page/user-page-header"
+import { UserItemsList } from "@/components/features/user-page/user-items-list"
 import { appendQueryParam } from "@/lib/utils"
 import { Globe, SquareArrowOutUpRight } from "lucide-react"
+import { trackEvent } from "@/lib/amplitude"
+import { useEffect } from "react"
+import { AMPLITUDE_EVENTS } from "@/lib/amplitude"
+import { userTabAtom } from "@/components/features/user-page/user-page-header"
+import { User } from "@/types/global"
 
-interface UserProfileClientProps {
-  user: User
-  publishedComponents: (Component & { user: User })[]
-  huntedComponents: (Component & { user: User })[]
+const useProfileAnalytics = ({
+  username,
+  isManuallyAdded,
+}: {
+  username: string | null
+  isManuallyAdded: boolean
+}) => {
+  useEffect(() => {
+    trackEvent(AMPLITUDE_EVENTS.VIEW_USER_PROFILE, {
+      username,
+      isManuallyAdded,
+    })
+  }, [username, isManuallyAdded])
 }
 
-export function UserProfileClient({
-  user,
-  publishedComponents,
-  huntedComponents,
-}: UserProfileClientProps) {
+interface UserPageClientProps {
+  user: User
+  initialTab: "components" | "demos" | "bookmarks"
+}
+
+export function UserPageClient({ user, initialTab }: UserPageClientProps) {
+  const [tab, setTab] = useAtom(userTabAtom)
+
+  useEffect(() => {
+    setTab(initialTab)
+  }, [initialTab, setTab])
+
+  useProfileAnalytics({
+    username: user.display_username || user.username || "",
+    isManuallyAdded: user.manually_added,
+  })
+
   return (
-    <>
-      <Header page="profile" />
-      <UserProfileAnalytics
-        username={user.username || ""}
-        isManuallyAdded={user.manually_added}
-      />
+    <div key={user.id}>
+      <Header />
       <div className="flex mx-auto px-2 sm:px-4 md:px-16 py-8 mt-20">
         <div className="flex flex-col md:flex-row gap-6 md:gap-16 w-full">
           <div className="flex md:w-[20%] md:min-w-[300px] flex-col items-center w-full">
             <div className="flex flex-col items-center md:items-start space-y-6">
               <UserAvatar
-                src={user.image_url || "/placeholder.svg"}
-                alt={user.name}
+                src={
+                  user.display_image_url || user.image_url || "/placeholder.svg"
+                }
+                alt={user.display_name || user.name || ""}
                 size={120}
                 className="cursor-default"
               />
               <div className="space-y-2 text-center md:text-left">
                 <h1 className="text-3xl font-semibold tracking-tight">
-                  {user.name}
+                  {user.display_name || user.name || ""}
                 </h1>
                 <p className="text-lg text-muted-foreground">
-                  @{user.username}
+                  @{user.display_username || user.username || ""}
                 </p>
                 {user.bio && (
                   <p className="text-sm text-muted-foreground max-w-md leading-normal">
@@ -69,8 +92,8 @@ export function UserProfileClient({
                     href={
                       user.manually_added
                         ? user.github_url ||
-                          `https://github.com/${user.username}`
-                        : `https://github.com/${user.username}`
+                          `https://github.com/${user.display_username || user.username || ""}`
+                        : `https://github.com/${user.display_username || user.username || ""}`
                     }
                     target="_blank"
                     rel="noopener noreferrer"
@@ -126,14 +149,14 @@ export function UserProfileClient({
                     </AlertTitle>
                     <AlertDescription>
                       To claim this profile, please contact{" "}
-                      <a
+                      <Link
                         href="https://x.com/serafimcloud"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:underline"
                       >
                         @serafimcloud
-                      </a>
+                      </Link>
                     </AlertDescription>
                   </Alert>
                 </div>
@@ -142,17 +165,13 @@ export function UserProfileClient({
           </div>
           <div className="w-full md:w-[80%]">
             <UserComponentsHeader
-              publishedComponents={publishedComponents}
-              huntedComponents={huntedComponents}
-              username={user.username ?? ''}
+              username={user.display_username || user.username || ""}
+              userId={user.id}
             />
-            <UserComponentsList
-              publishedComponents={publishedComponents}
-              huntedComponents={huntedComponents}
-            />
+            <UserItemsList userId={user.id} tab={tab || initialTab} />
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }

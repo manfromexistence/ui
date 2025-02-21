@@ -107,6 +107,9 @@ import PopoverProject, {
 import PricingBasic, {
   demoSource as PricingBasicSource,
 } from "./example/pricing-basic";
+import TimelineBasic from "./example/timeline-basic";
+import TimelineModern from "./example/timeline-modern";
+import TimelineMinimal from "./example/timeline-minimal";
 
 export const examples: RegistryItem[] = [
   {
@@ -399,5 +402,20 @@ export const examples: RegistryItem[] = [
       "canvas-confetti",
       "@number-flow/react",
     ],
+  },
+  {
+    name: "timeline-basic",
+    type: "examples",
+    component: TimelineBasic,
+  },
+  {
+    name: "timeline-modern",
+    type: "examples",
+    component: TimelineModern,
+  },
+  {
+    name: "timeline-minimal",
+    type: "examples",
+    component: TimelineMinimal,
   },
 ];

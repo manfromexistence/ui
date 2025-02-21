@@ -1,151 +1,289 @@
-# 21st.dev
+# 🚀 Welcome to 21st.dev!
 
-[21st.dev](https://21st.dev) is an open source community registry of React UI components where anyone can publish minimal Tailwind & Radix UI components and install any component via `npx shadcn`.
+**[21st.dev](https://21st.dev)** is your go-to open-source community registry for **React UI components**! Whether you're a developer, designer, or just someone who loves building beautiful interfaces, 21st.dev is the place to **publish, discover, and install** minimal, modern, and reusable React components powered by **Tailwind CSS** and **Radix UI**.
 
-Inspired by [shadcn/ui](https://ui.shadcn.com/).
+Inspired by the amazing [shadcn/ui](https://ui.shadcn.com/), we're here to make building UIs faster, easier, and more fun. 🎉
 
-Built by RorkAI team and Claude 3.5 Sonnet.
+[![Discord](https://img.shields.io/badge/Discord-Join%20Us-7289da?logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/Qx4rFunHfm)
 
-## Publish your component
+---
 
-It takes 1 min to publish via our [publish page](https://21st.dev). To publish, you just need two files: `component.tsx` and `component.demo.tsx`.
+## 👥 Community
 
-We support:
+We're building more than just a component registry – we're building a community of developers who love creating beautiful UIs. Here's how you can get involved:
 
-- Pure React components
-- Next.js client components (currently, we polyfill Next-specific libraries in CodeSandbox, but will switch to server-side rendering)
-- TypeScript
-- Tailwind themes with custom configuration
-- Custom global CSS styles
-- RadixUI
-- Any other npm dependencies (via [Sandpack](https://sandpack.codesandbox.io/))
-- Internal dependencies (you use any component of our registry as a dependency)
+- **Join our [Discord](https://discord.gg/Qx4rFunHfm)** – Get help, share your work, and chat with other developers
+- **Follow us on [X/Twitter](https://x.com/serafimcloud)** – Stay updated with the latest features and components
+- **Star us on [GitHub](https://github.com/serafimcloud/21st)** – Support the project and follow our progress
+- **Share your components** – Help others by contributing your UI components
+- **Give feedback** – Your input shapes the future of 21st.dev
 
-We encourage everyone to post TypeScript components, JS support is currently untested.
+---
 
-## Install a component
+## 🌟 Why 21st.dev?
 
-Pick a component from [21st.dev](https://21st.dev), copy the `npx shadcn` command, and run in your project's root folder.
+- **Open Source & Community-Driven**: Built by developers, for developers. Everyone is welcome to contribute!
+- **Minimal & Modern**: Components are lightweight, customizable, and designed with Tailwind and Radix UI.
+- **Easy to Use**: Install any component with a single `npx shadcn` command.
+- **Multiple Demos**: Each component can have multiple demos with previews and videos.
+- **Extensible**: Add your own components, themes, and dependencies effortlessly.
+- **TypeScript First**: Full type support out of the box.
 
-For instance, for `shadcn/ui/accordion` you'll run:
+---
+
+## 🛠️ Publish Your Component in 1 Minute!
+
+Yes, you read that right—**1 minute**! 🕒  
+Publishing your React component is as easy as pie. Just head over to our [publish page](https://21st.dev) and share your creation with the world.
+
+### Review Process
+
+When you publish a component, it follows this journey:
+
+1. **Initial State** (`on_review`) - Component is available via direct link and awaiting review
+2. **Posted State** (`posted`) - Component has passed review and is available on your profile and via direct link
+3. **Featured State** (`featured`) - Component is featured on the homepage and in public listings
+
+I ([Serafim](https://x.com/serafimcloud)) personally review each component to ensure it meets our quality standards before featuring it.
+
+### Quality Guidelines
+
+To get your component featured, ensure it follows these key principles:
+
+1. **Visual Quality**
+
+   - Component should be visually polished and provide real value to the community
+   - Follow modern UI/UX practices
+
+2. **Code Structure**
+
+   - Follow the shadcn/ui pattern of separating component logic from demo content
+   - Component file should contain only the reusable functionality
+   - Demo file should showcase the component through props, not hardcoded content
+
+3. **Theming**
+   - Use CSS variables from shadcn's theme system (see `globals.css`)
+   - Support both light and dark modes out of the box
+   - Use the proper color variables (e.g., `hsl(var(--background))`)
+
+Remember: Quality over quantity! We prioritize well-crafted, reusable components that follow these guidelines.
+
+### File Structure:
+
+```
+your-component/                # How to organize your files
+├── code.tsx                  # Main component
+├── tailwind.config.js        # Optional Tailwind config
+├── globals.css              # Optional global styles
+└── demos/                    # Each component can have multiple demos
+    ├── default/             # Primary demo (required)
+    │   ├── code.demo.tsx    # Demo implementation
+    │   ├── preview.png      # Static preview image
+    │   └── video.mp4        # Optional demo video
+    └── advanced/            # Additional demos (optional)
+        ├── code.demo.tsx
+        ├── preview.png
+        └── video.mp4
+
+# Files are stored in Cloudflare R2 under:
+# components-code/{user_id}/{component_slug}/...
+```
+
+### What We Support:
+
+- **Pure React Components** – Build with React, no fuss.
+- **Next.js Client Components** – We've got you covered (server-side rendering coming soon!).
+- **TypeScript** – Because type safety is ❤️.
+- **Tailwind Themes** – Customize to your heart's content.
+- **Global CSS Styles** – Add your own flair.
+- **Radix UI** – Accessible and unstyled primitives.
+- **Any npm Dependencies** – Thanks to [Sandpack](https://sandpack.codesandbox.io/).
+- **Internal Dependencies** – Use any component from our registry as a dependency.
+- **Multiple Demos** – Showcase different use cases and variations.
+- **Preview Images & Videos** – Make your component shine.
+
+**Pro Tip**: We encourage TypeScript components. JavaScript is cool too, but untested for now. 😉
+
+---
+
+## ⚡ Install a Component in Seconds!
+
+Found a component you love on [21st.dev](https://21st.dev)? Installing it is a breeze. Just copy the `npx shadcn` command and run it in your project's root folder.
+
+For example, to install the `shadcn/ui/accordion` component, run:
 
 ```bash
 npx shadcn@latest add "https://21st.dev/r/shadcn/accordion"
 ```
 
-The command will create all the necessary files for the component and its dependencies (excluding the `.demo.tsx` file), and extend your Tailwind theme.
+This command will:
 
-You can also copy the code directly from the website, but note that you’ll need to copy and paste all the files for the component and its dependencies, so using the `npx shadcn` command is the recommended way.
+- Create all necessary files for the component and its dependencies.
+- Extend your Tailwind theme automatically.
+- Set up any required global styles.
 
-## Contributing to 21st
+**Why use the command?**  
+While you can copy-paste code directly from the website, using `npx shadcn` ensures you get all the files and dependencies without missing a beat. It's the recommended way to go! 🚀
 
-### Prerequisites
+---
 
-- Supabase account
-- Clerk account
-- ngrok or other tunneling software
-- Cloudflare R2 account
+## 🏗 Architecture
 
-### Setup
+The project uses a modern stack:
 
-1. Fork the GitHub repo, clone to your local editor (we recommend Cursor if you're non-technical)
+- **Frontend**: Next.js 14
+- **Database**: Supabase for metadata and user data
+- **Authentication**: Clerk
+- **File Storage**: Cloudflare R2
+- **Analytics**: Amplitude
 
-2. Install dependencies (we love `pnpm`)
+---
+
+## 🛠️ Contributing to 21st.dev
+
+We're thrilled you want to contribute! Whether you're a seasoned developer or just starting out, there's a place for you here. Let's get you set up:
+
+### 🛠️ Prerequisites
+
+Before diving in, make sure you have:
+
+- A **Supabase** account
+- A **Clerk** account
+- A **Cloudflare R2** account
+
+### 🚀 Setup Guide
+
+1. **Fork & Clone**: Fork the repository and clone it locally. We recommend using [Cursor](https://cursor.com) if you're non-technical.
+
+2. **Install Dependencies**: We're big fans of `pnpm`! Run:
 
    ```bash
    pnpm install
    ```
 
-3. Create a `.env.local` file in the `apps/web` directory
+3. **Environment Setup**: Create a `.env.local` in `apps/web` with:
 
-4. Create a [Supabase](https://supabase.com) project and open Project Settings -> Configuration -> API.
+   ```
+   # Supabase
+   NEXT_PUBLIC_SUPABASE_URL=https://*****
+   NEXT_PUBLIC_SUPABASE_KEY=*****
+   SUPABASE_SERVICE_ROLE_KEY=*****
 
-Copy "Project URL" and "Project API Keys variables to your `.env.local`:
+   # Clerk
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=*****
+   CLERK_SECRET_KEY=*****
+   CLERK_WEBHOOK_SECRET=*****
 
-```
-NEXT_PUBLIC_SUPABASE_URL=https://*****
-NEXT_PUBLIC_SUPABASE_KEY=*****
-SUPABASE_SERVICE_ROLE_KEY=*****
-```
+   # Cloudflare R2
+   NEXT_PUBLIC_CDN_URL=https://*****
+   R2_ACCESS_KEY_ID=*****
+   R2_SECRET_ACCESS_KEY=*****
+   NEXT_PUBLIC_R2_ENDPOINT=https://*****
 
-5. Install [Supabase CLI](https://supabase.com/docs/guides/local-development) and apply DB migrations:
+   # Other
+   NEXT_PUBLIC_APP_URL=https://21st.dev
+   NEXT_PUBLIC_AMPLITUDE_API_KEY=*****
+   ```
 
-```
-supabase init
-cp db/migrations/*.sql supabase/migrations
-# link local db to your remote project
-supabase link
-supabase start
-supabase db push
-```
-
-6. Create a [Clerk](https://clerk.com) project
-
-Add these variables to `.env.local`:
-
-```
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=*****
-CLERK_SECRET_KEY=***
-```
-
-In Clerk dashboard add the [Supabase JWT integration](https://clerk.com/docs/integrations/databases/supabase).
-
-Launch ngrok and add it's URL `https://${your_ngrok_url}/api/webhooks/clerk` to Clerk dashboard.
-Copy the webhook secret from Clerk to `.env.local`
-
-```
-CLERK_WEBHOOK_SECRET=*****
-```
-
-7. Create a Cloudflare R2 bucket called `components-code`, update the `.env.local` to:
-
-```
-# public R2 CDN url
-NEXT_PUBLIC_CDN_URL=https://*****
-R2_ACCESS_KEY_ID=*****
-R2_SECRET_ACCESS_KEY=*****
-# private R2 url used to upload to the bucket
-NEXT_PUBLIC_R2_ENDPOINT=https://*****
-```
-
-8. Run the development server:
+4. **Start Development**:
 
    ```bash
    pnpm dev
    ```
 
-   This will start the development server for all apps and packages in the monorepo.
+5. **Open a PR**: Once you're done, open a PR to the `main` branch. We can't wait to see what you've built! 🎉
 
-   This project uses Vercel turborepo. For more information on working with Turborepo, refer to the [Turborepo documentation](https://turbo.build/repo/docs).
+---
 
-9. Open a PR to `main` branch
+## 👥 Team
 
-## Other ways to contribute
+The project was developed by [@serafimcloud](https://x.com/serafimcloud), with significant contributions from [@daniel_dhawan](https://x.com/daniel_dhawan) and [@garrrikkotua](https://x.com/garrrikkotua).
 
-You can also contribute by:
+---
 
-- Opening a GitHub issue to report bugs or suggest new features
-- DM us on X (Twitter) with your feedback or ideas
+## 🙏 Acknowledgments
 
-**Our team on X**
-
-- AI design engineer [@serafimcloud](https://x.com/serafimcloud)
-- fullstack engineer [@daniel_dhawan](https://x.com/daniel_dhawan)
-- fullstack engineer [@garrrikkotua](https://x.com/garrrikkotua)
-
-## Acknowledgments
-
-This project wouldn't be possible without
+This project wouldn't be possible without the incredible work of:
 
 - [shadcn/ui](https://ui.shadcn.com/)
-- [Tailwind](https://tailwindui.com/)
+- [Tailwind CSS](https://tailwindui.com/)
 - [Sandpack by CodeSandbox](https://sandpack.codesandbox.io/)
 - [Supabase](https://supabase.com)
 - [Vercel](https://vercel.com)
-- [Clerk Auth](https://clerk.com)
-- [Cloudflare](https://cloudlfare.com)
+- [Clerk](https://clerk.com)
+- [Cloudflare](https://cloudflare.com)
 - [Cursor](https://cursor.com)
 - [Claude 3.5 Sonnet by Anthropic](https://anthropic.com/)
 - [MagicUI](https://magicui.design)
 
-And, of course, our open source contributors ❤️
+And, of course, **YOU**—our amazing open-source contributors! ❤️
+
+---
+
+## 🚀 Let's Build the Future Together!
+
+Ready to dive in? Start exploring, publishing, and contributing today. Let's make 21st.dev the best place for React UI components on the web. Happy coding! 🎉
+
+## 📋 Component Guidelines
+
+We maintain high quality standards for components that appear on the homepage and in public listings. While all published components are immediately available via direct links, they go through a review process before being featured publicly.
+
+### Review Process
+
+When you publish a component, it follows this journey:
+
+1. **Initial State** (`on_review`) - Component is available via direct link and awaiting review
+2. **Posted State** (`posted`) - Component has passed review and is available on your profile and via direct link
+3. **Featured State** (`featured`) - Component is featured on the homepage and in public listings
+
+I ([Serafim](https://x.com/serafimcloud)) personally review each component to ensure it meets our quality standards before featuring it. This helps maintain a high-quality collection of components that truly benefit the community.
+
+### Quality Standards
+
+To ensure your component gets featured, follow these guidelines:
+
+1. **Visual Design**
+
+   - Component should be visually polished and provide value to the community
+   - Follow modern UI/UX practices
+   - Support both light and dark themes
+   - Use consistent spacing and sizing
+
+2. **Code Structure**
+
+   - Follow the shadcn/ui pattern of separating component logic from demo content
+   - Component file should contain only the reusable functionality
+   - Demo file should showcase the component with realistic content
+   - Use props for customization and content injection
+
+3. **Theming**
+
+   - Use CSS variables from shadcn's theme system (see `globals.css`)
+   - Support both light and dark modes out of the box
+   - Use `hsl` variables for colors (e.g., `hsl(var(--background))`)
+   - Follow the naming convention for CSS variables
+
+4. **Accessibility**
+
+   - Include proper ARIA attributes
+   - Support keyboard navigation
+   - Maintain sufficient color contrast
+   - Test with screen readers
+
+5. **Documentation**
+
+   - Provide clear prop documentation
+   - Include usage examples
+   - Document any required dependencies
+   - Add helpful comments for complex logic
+
+6. **Best Practices**
+   - Keep components focused and single-purpose
+   - Minimize external dependencies
+   - Ensure responsive behavior
+   - Follow TypeScript best practices
+   - Include meaningful default props
+
+Remember: Quality over quantity! We'd rather have fewer, well-crafted components than many that don't meet our standards.
+
+---

@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useState } from "react";
 
 type UseSliderWithInputProps = {
@@ -16,6 +18,10 @@ export function useSliderWithInput({
   const [sliderValue, setSliderValue] = useState(initialValue);
   const [inputValues, setInputValues] = useState(initialValue.map((v) => v.toString()));
 
+  const showReset =
+    sliderValue.length === defaultValue.length &&
+    !sliderValue.every((value, index) => value === defaultValue[index]);
+
   const validateAndUpdateValue = useCallback(
     (rawValue: string, index: number) => {
       if (rawValue === "" || rawValue === "-") {
@@ -33,7 +39,7 @@ export function useSliderWithInput({
 
       if (isNaN(numValue)) {
         const newInputValues = [...inputValues];
-        newInputValues[index] = sliderValue[index].toString();
+        newInputValues[index] = sliderValue[index]!.toString();
         setInputValues(newInputValues);
         return;
       }
@@ -42,9 +48,9 @@ export function useSliderWithInput({
 
       if (sliderValue.length > 1) {
         if (index === 0) {
-          clampedValue = Math.min(clampedValue, sliderValue[1]);
+          clampedValue = Math.min(clampedValue, sliderValue[1]!);
         } else {
-          clampedValue = Math.max(clampedValue, sliderValue[0]);
+          clampedValue = Math.max(clampedValue, sliderValue[0]!);
         }
       }
 
@@ -88,5 +94,6 @@ export function useSliderWithInput({
     handleInputChange,
     handleSliderChange,
     resetToDefault,
+    showReset,
   };
 }

@@ -72,6 +72,14 @@ export function extractDemoComponentNames(code: string): string[] {
     }
   }
 
+  // Match const exports: export const ComponentName = ...
+  const constExportMatches = code.matchAll(/export\s+const\s+(\w+)/g)
+  for (const match of constExportMatches) {
+    if (match[1]) {
+      componentNames.push(match[1])
+    }
+  }
+
   // Match named exports: export { ComponentName }
   const namedExportBraceMatches = code.matchAll(/export\s*{\s*([^}]+)\s*}/g)
   for (const match of namedExportBraceMatches) {
@@ -101,6 +109,8 @@ export function extractNPMDependencies(code: string): Record<string, string> {
         "objectRestSpread",
         "dynamicImport",
       ],
+      errorRecovery: true,
+      tokens: true,
     })
 
     const defaultDependencies = ["react", "react-dom", "tailwindcss"]
@@ -182,13 +192,24 @@ export function extractAmbigiousRegistryDependencies(code: string) {
           const source = node.source.value
           if (
             typeof source === "string" &&
-            source.match(/^@\/components\/[^/]+\//)
+            (source.match(/^@\/components\/[^/]+\//) ||
+              source.match(/^@\/hooks\//))
           ) {
-            const registry = source.match(/^@\/components\/([^/]+)\//)?.[1]
+            let registry: string
+            let slug: string
+
+            if (source.startsWith("@/hooks/")) {
+              registry = "hooks"
+              slug = source.replace(/^@\/hooks\//, "")
+            } else {
+              registry = source.match(/^@\/components\/([^/]+)\//)?.[1] ?? ""
+              slug = source.replace(/^@\/components\/[^/]+\//, "")
+            }
+
             registryDeps[source] = {
               importPath: source,
-              slug: source.replace(/^@\/components\/[^/]+\//, ""),
-              registry: registry ?? "",
+              slug,
+              registry,
             }
           }
         },
@@ -204,7 +225,7 @@ export function extractAmbigiousRegistryDependencies(code: string) {
 }
 
 export function extractRegistryDependenciesFromImports(code: string): string[] {
-  const registryDeps = []
+  const registryDeps = new Set<string>()
 
   const importRegex =
     /import\s+(?:{\s*[\w\s,]+\s*}|\*\s+as\s+\w+|\w+)\s+from\s+['"](\+@[\w-]+\/[\w-]+)['"]/g
@@ -213,10 +234,10 @@ export function extractRegistryDependenciesFromImports(code: string): string[] {
   while ((match = importRegex.exec(code)) !== null) {
     const importPath = match[1]!
     const [, author, slug] = importPath.match(/\+@([\w-]+)\/([\w-]+)/)!
-    registryDeps.push(`${author}/${slug}`)
+    registryDeps.add(`${author}/${slug}`)
   }
 
-  return registryDeps
+  return [...registryDeps]
 }
 
 // export function replaceRegistryImports(code: string): string {

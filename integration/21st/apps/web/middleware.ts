@@ -1,7 +1,35 @@
-import { clerkMiddleware } from "@clerk/nextjs/server"
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server"
+import { NextResponse } from "next/server"
 
-// Make sure that the `/api/webhooks(.*)` route is not protected here
-export default clerkMiddleware()
+const isProtectedRoute = createRouteMatcher(["/publish(.*)"])
+
+export default clerkMiddleware(async (auth, request) => {
+  if (process.env.MAINTENANCE_MODE === "true") {
+    return NextResponse.rewrite(new URL("/maintenance", request.url))
+  }
+
+  if (request.nextUrl.pathname.startsWith("/api/")) {
+    const requestHeaders = new Headers(request.headers)
+    requestHeaders.set("x-internal-token", process.env.INTERNAL_API_SECRET!)
+
+    return NextResponse.next({
+      request: {
+        headers: requestHeaders,
+      },
+    })
+  }
+
+  if (isProtectedRoute(request)) {
+    const { userId } = await auth()
+    if (!userId) {
+      return NextResponse.redirect(
+        new URL("https://accounts.21st.dev/sign-in", request.url),
+      )
+    }
+  }
+
+  return NextResponse.next()
+})
 
 export const config = {
   matcher: [

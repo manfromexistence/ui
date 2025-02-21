@@ -2,7 +2,7 @@ import endent from "endent"
 import { PROMPT_TYPES } from "@/types/global"
 import { PromptType } from "@/types/global"
 import { uniq } from "lodash"
-import { Brain, Sparkles } from "lucide-react"
+import { Brain, Sparkles, Terminal } from "lucide-react"
 import { Icons } from "@/components/icons"
 
 interface PromptOptionBase {
@@ -54,6 +54,26 @@ export const promptOptions: PromptOption[] = [
   },
   {
     type: "option",
+    id: PROMPT_TYPES.REPLIT,
+    label: "Replit",
+    description: "Optimized for Replit Agent",
+    action: "copy",
+    icon: (
+      <Icons.replit className="min-h-[22px] min-w-[22px] max-h-[22px] max-w-[22px]" />
+    ),
+  },
+  {
+    type: "option",
+    id: PROMPT_TYPES.MAGIC_PATTERNS,
+    label: "Magic Patterns",
+    description: "Optimized for Magic Patterns",
+    action: "copy",
+    icon: (
+      <Icons.magicPatterns className="min-h-[18px] min-w-[18px] max-h-[18px] max-w-[18px]" />
+    ),
+  },
+  {
+    type: "option",
     id: PROMPT_TYPES.V0,
     label: "v0 by Vercel",
     description: "Optimized for v0.dev",
@@ -80,6 +100,16 @@ export const promptOptions: PromptOption[] = [
     action: "copy",
     icon: (
       <Icons.boltLogo className="min-h-[22px] min-w-[22px] max-h-[22px] max-w-[22px]" />
+    ),
+  },
+  {
+    type: "option",
+    id: PROMPT_TYPES.SITEBREW,
+    label: "sitebrew.ai",
+    description: "Optimized for sitebrew.ai",
+    action: "copy",
+    icon: (
+      <Icons.sitebrewLogo className="min-h-[18px] min-w-[18px] max-h-[18px] max-w-[18px]" />
     ),
   },
   {
@@ -127,7 +157,120 @@ export const getComponentInstallPrompt = ({
   const componentDemoFileName = demoCodeFileName.split("/").slice(-1)[0]
 
   let prompt = ""
-  if (promptType === PROMPT_TYPES.EXTENDED) {
+
+  if (promptType === PROMPT_TYPES.MAGIC_PATTERNS) {
+    prompt =
+      "Take the following code of a React component and add it to the design.\n" +
+      endent`        
+        ${componentFileName}
+        ${code}
+      ` +
+      "\n Here is an example of how to use the component:\n" +
+      endent`
+        ${componentDemoFileName}
+        ${demoCode}
+      ` +
+      "\n"
+
+    if (tailwindConfig) {
+      prompt +=
+        "\n" +
+        endent`
+        Extend the existing tailwind.config.js (or create a new one if non-existent) with this code:
+        \`\`\`js
+        ${tailwindConfig}
+        \`\`\`
+      ` +
+        "\n"
+    }
+
+    if (globalCss) {
+      prompt +=
+        "\n" +
+        endent`
+        Extend the existing index.css (or create a new one if non-existent) with this code:
+        \`\`\`css
+        ${globalCss}
+        \`\`\`
+      ` +
+        "\n"
+    }
+
+    if (Object.keys(registryDependencies || {}).length > 0) {
+      prompt +=
+        "\n" +
+        endent`
+        Copy-paste these files for dependencies:
+        ${Object.entries(registryDependencies)
+          .map(
+            ([fileName, fileContent]) => endent`
+            \`\`\`tsx
+            ${fileName}
+            ${fileContent}
+            \`\`\`
+          `,
+          )
+          .join("\n")}
+      ` +
+        "\n"
+    }
+
+    prompt +=
+      "\n" +
+      endent`
+        IMPORTANT:
+          - Modify the component as needed to fit the existing codebase + design
+          - Extend the tailwind.config.js and index.css if needed to include additional variables or styles
+          - You MUST create all mentioned files in full, without abbreviations. Do not use placeholders like "insert the rest of the code here"
+      `
+
+    return prompt
+  }
+
+  if (promptType === PROMPT_TYPES.REPLIT) {
+    prompt += "Build this as my initial prototype\n\n"
+  }
+
+  if (promptType === PROMPT_TYPES.SITEBREW) {
+    prompt +=
+      "Take the following code of a react component and add it to the artifact.\n" +
+      endent`        
+        ${componentFileName}
+        ${code}
+        ${componentDemoFileName}
+        ${demoCode}
+      ` +
+      "\n"
+
+    if (Object.keys(registryDependencies || {}).length > 0) {
+      prompt +=
+        "\n" +
+        endent`
+        ${Object.entries(registryDependencies)
+          .map(
+            ([fileName, fileContent]) => endent`
+            -------
+            ${fileName}
+            ${fileContent}
+          `,
+          )
+          .join("\n")}
+      ` +
+        "\n"
+    }
+    prompt +=
+      "\n" +
+      endent`
+        REMEMBER TO KEEP THE DESIGN AND FUNCTIONALITY OF THE COMPONENT AS IS AND IN FULL 
+      ` +
+      "\n"
+    return prompt
+  }
+
+  if (
+    promptType === PROMPT_TYPES.EXTENDED ||
+    promptType === PROMPT_TYPES.BOLT
+  ) {
     prompt +=
       endent`
         You are given a task to integrate an existing React component in the codebase
@@ -181,10 +324,15 @@ export const getComponentInstallPrompt = ({
     ...Object.keys(npmDependenciesOfRegistryDependencies),
   ])
   if (allDependencies.length) {
+    const dependenciesPrompt =
+      promptType === PROMPT_TYPES.REPLIT
+        ? "Install these NPM dependencies:"
+        : "Install NPM dependencies:"
+
     prompt +=
       "\n" +
       endent`
-        Install NPM dependencies:
+        ${dependenciesPrompt}
         \`\`\`bash
         ${allDependencies.join(", ")}
         \`\`\`
@@ -216,12 +364,10 @@ export const getComponentInstallPrompt = ({
       "\n"
   }
 
-  // Comment out Bolt-specific logic for now
-  /*if (promptType === PROMPT_TYPES.BOLT) {
-      // Bolt-specific prompt logic here
-    }*/
-
-  if (promptType === PROMPT_TYPES.EXTENDED) {
+  if (
+    promptType === PROMPT_TYPES.EXTENDED ||
+    promptType === PROMPT_TYPES.BOLT
+  ) {
     prompt +=
       "\n" +
       endent`
@@ -246,12 +392,21 @@ export const getComponentInstallPrompt = ({
       "\n"
   }
 
-  prompt +=
-    "\n" +
-    endent`
-      Remember: Do not change the component's code unless it's required to integrate or the user asks you to.
-      IMPORTANT: Create all mentioned files in full, without abbreviations. Do not use placeholders like “insert the rest of the code here” – output every line of code exactly as it is, so it can be copied and pasted directly into the project.
-    `
+  if (promptType === PROMPT_TYPES.REPLIT) {
+    prompt +=
+      "\n" +
+      endent`
+        Remember: For the code above, not change the component's code unless it's required to integrate or the user asks you to.
+        IMPORTANT: The code above contains the initial prototype desired by the user. Create all mentioned files in full, without abbreviations. Do not use placeholders like "insert the rest of the code here" – output every line of code exactly as it is, so it can be copied and pasted directly into the project.
+      `
+  } else {
+    prompt +=
+      "\n" +
+      endent`
+        Remember: Do not change the component's code unless it's required to integrate or the user asks you to.
+        IMPORTANT: Create all mentioned files in full, without abbreviations. Do not use placeholders like "insert the rest of the code here" – output every line of code exactly as it is, so it can be copied and pasted directly into the project.
+      `
+  }
 
   return prompt
 }
@@ -259,8 +414,7 @@ export const getComponentInstallPrompt = ({
 export const formatV0Prompt = (componentName: string, code: string) => {
   const escapedCode = code.replace(/`/g, "\\`")
 
-  return endent
-    `Create a new project that uses this ${componentName} component:
+  return endent`Create a new project that uses this ${componentName} component:
 
     \`\`\`tsx
     ${escapedCode}
