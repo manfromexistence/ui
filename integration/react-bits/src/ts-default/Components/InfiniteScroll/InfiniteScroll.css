@@ -1,0 +1,54 @@
+.infinite-scroll-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.infinite-scroll-wrapper::before,
+.infinite-scroll-wrapper::after {
+  content: "";
+  position: absolute;
+  background: linear-gradient(var(--dir, to bottom), black, transparent);
+  height: 25%;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.infinite-scroll-wrapper::before {
+  top: 0;
+}
+
+.infinite-scroll-wrapper::after {
+  --dir: to top;
+  bottom: 0;
+}
+
+.infinite-scroll-container {
+  display: flex;
+  flex-direction: column;
+  overscroll-behavior: contain;
+  padding-inline: 1rem;
+  cursor: grab;
+  transform-origin: center center;
+}
+
+.infinite-scroll-item {
+  --accent-color: #ffffff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  border: 2px solid var(--accent-color);
+  user-select: none;
+  box-sizing: border-box;
+  position: relative;
+}

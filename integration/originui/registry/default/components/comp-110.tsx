@@ -8,7 +8,6 @@ export default function Component() {
 
   return (
     <ToggleGroup
-      className="flex gap-0 -space-x-px rounded-lg shadow-xs rtl:space-x-reverse"
       type="single"
       variant="outline"
       value={value}
@@ -17,19 +16,19 @@ export default function Component() {
       }}
     >
       <ToggleGroupItem
-        className="flex-1 rounded-none shadow-none first:rounded-s-lg last:rounded-e-lg focus-visible:z-10"
+        className="flex-1"
         value="left"
       >
         Left
       </ToggleGroupItem>
       <ToggleGroupItem
-        className="flex-1 rounded-none shadow-none first:rounded-s-lg last:rounded-e-lg focus-visible:z-10"
+        className="flex-1"
         value="center"
       >
         Center
       </ToggleGroupItem>
       <ToggleGroupItem
-        className="flex-1 rounded-none shadow-none first:rounded-s-lg last:rounded-e-lg focus-visible:z-10"
+        className="flex-1"
         value="right"
       >
         Right

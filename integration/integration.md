@@ -1,6 +1,6 @@
 # Remove old codebase
 ```
-rm -rf 21st material-color-utilities Prismui ui react-icons originui
+rm -rf 21st material-color-utilities Prismui ui react-icons originui react-bits
 ```
 
 # Add new codebase
@@ -11,4 +11,5 @@ git clone https://github.com/material-foundation/material-color-utilities && cd 
 git clone https://github.com/shadcn-ui/ui && cd ui && rm -rf .git && cd ..
 git clone https://github.com/Codehagen/Prismui && cd Prismui && rm -rf .git && cd ..
 git clone https://github.com/origin-space/originui && cd originui && rm -rf .git && cd ..
+git clone https://github.com/DavidHDev/react-bits.git && cd react-bits && rm -rf .git && cd ..
 ```

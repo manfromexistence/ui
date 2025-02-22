@@ -1,0 +1,26 @@
+name: 💡 Feature Request
+description: Suggest something for React Bits.
+labels: ["enhancement"]
+title: "[FEAT]: "
+body:
+    - type: markdown
+      attributes:
+          value: |
+              ## Thanks for trying to improve React Bits!
+              Before continuing make sure you have checked other issues to see if your idea has already been discussed / addressed.
+    - type: textarea
+      id: desc
+      attributes:
+          label: Share your suggestion
+          description: What would you like to see in React Bits?
+          placeholder: I want flying pigs in a component please
+      validations:
+          required: true
+    - type: checkboxes
+      id: terms
+      attributes:
+          label: Validations
+          description: Please make sure you have checked all of the following.
+          options:
+              - label: I have checked other issues to see if my issue was already discussed or addressed
+                required: true

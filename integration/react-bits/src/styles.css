@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@import "./css/misc.css";
+@import "./css/sidebar.css";
+@import "./css/category.css";
+@import "./css/landing.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+input[type="color"] {
+  border: 2px solid #999;
+  border-radius: 15px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 0;
+  width: 60px;
+  height: 30px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+
+input[type="color"]::-moz-color-swatch {
+  border: none;
+}
+
+.chakra-select:focus-visible {
+  border-color: #00d8ff !important;
+  box-shadow: 0 0 0 1px rgba(0, 216, 255, 0.5) !important;
+}
+
+a {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+  min-width: 100%;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  padding: 0 2em;
+}
+
+.back-to-top {
+  background: #060606 !important;
+  border: 1px solid #222;
+}

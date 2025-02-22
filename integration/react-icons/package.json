@@ -1,0 +1,30 @@
+{
+  "name": "react-icons-root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.1.1",
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "@typescript-eslint/parser": "^7.8.0",
+    "eslint": "^9.1.1",
+    "eslint-plugin-react": "^7.34.1",
+    "globals": "^15.1.0",
+    "lerna": "^8.1.2",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "typescript-eslint": "^7.8.0"
+  },
+  "scripts": {
+    "lint": "yarn eslint",
+    "format": "prettier --write --ignore-unknown '**/*.{js,ts,mjs,cjs,json,astro}'",
+    "format:ci": "prettier --check --ignore-unknown '**/*.{js,ts,mjs,cjs,json,astro}'",
+    "version-up": "lerna version",
+    "version-snapshot": "lerna version --no-push --no-git-tag-version --yes --preid snapshot prepatch --force-publish",
+    "version": "yarn install && git add .",
+    "lerna": "lerna"
+  },
+  "packageManager": "yarn@3.2.4"
+}
