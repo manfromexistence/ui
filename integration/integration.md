@@ -1,6 +1,6 @@
 # Remove old codebase
 ```
-rm -rf 21st material-color-utilities Prismui ui originui react-bits shadcn-builder fumadocs kibo blocks animate-ui tailwindcss-motion shadcn-table tweakcn cult-ui
+rm -rf 21st material-color-utilities Prismui ui originui react-bits shadcn-builder fumadocs kibo blocks animate-ui tailwindcss-motion shadcn-table tweakcn cult-ui magicui
 ```
 
 # Add new codebase
@@ -19,6 +19,7 @@ git clone https://github.com/romboHQ/tailwindcss-motion && cd shadcn-builder && 
 git clone https://github.com/sadmann7/shadcn-table.git && cd shadcn-builder && rm -rf .git
 git clone https://github.com/jnsahaj/tweakcn && cd shadcn-builder && rm -rf .git
 git clone https://github.com/nolly-studio/cult-ui && cd shadcn-builder && rm -rf .git
+git clone https://github.com/magicuidesign/magicui.git && cd shadcn-builder && rm -rf .git
 ```
 
 <!-- git clone https://github.com/shadcn-ui/ui && cd ui && rm -rf .git && cd .. -->
