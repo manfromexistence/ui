@@ -24,10 +24,12 @@ export const registryTags = [
   "radio",
   "select",
   "slider",
+  "sonner",
   "stepper",
   "table",
   "tabs",
   "textarea",
+  "timeline",
   "switch",
   "tooltip",
   // Generic tags
@@ -126,10 +128,11 @@ export const registryTags = [
   "vertical stepper",
   "vertical table",
   "vertical tabs",
+  "vertical timeline",
   "volume",
   "vote",
   "warning",
   "week",
-] as const;
+] as const
 
-export type RegistryTag = (typeof registryTags)[number];
+export type RegistryTag = (typeof registryTags)[number]

@@ -109,7 +109,7 @@ const CarouselDemo = () => {
           <PreviewSwitch title="Autoplay" isChecked={autoplay} onChange={(e) => { setAutoplay(e.target.checked); forceRerender() }} />
 
           <PreviewSlider
-            title="Width"
+            title="Delay"
             min={1000}
             max={4000}
             step={1000}

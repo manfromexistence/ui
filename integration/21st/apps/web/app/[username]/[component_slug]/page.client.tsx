@@ -5,7 +5,6 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
 import Link from "next/link"
 import { useTheme } from "next-themes"
 import { atom, useAtom } from "jotai"
-import { useQuery } from "@tanstack/react-query"
 import { SignedIn, SignedOut, SignInButton, useUser } from "@clerk/nextjs"
 
 import {
@@ -18,7 +17,11 @@ import {
 } from "@/types/global"
 import { PromptType, PROMPT_TYPES } from "@/types/global"
 import { useClerkSupabaseClient } from "@/lib/clerk"
-import { addTagsToDemo, useUpdateComponentWithTags } from "@/lib/queries"
+import {
+  addTagsToDemo,
+  useUpdateComponentWithTags,
+  useHasUserBookmarkedDemo,
+} from "@/lib/queries"
 import {
   identifyUser,
   trackPageProperties,
@@ -26,7 +29,6 @@ import {
   AMPLITUDE_EVENTS,
 } from "@/lib/amplitude"
 import {
-  getComponentInstallPrompt,
   formatV0Prompt,
   promptOptions,
   type PromptOptionBase,
@@ -46,17 +48,15 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-  DropdownMenuSeparator,
-  DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu"
 import { UserAvatar } from "../../../components/ui/user-avatar"
-import { LikeButton } from "../../../components/ui/bookmark-button"
+import { BookmarkButton } from "@/components/ui/bookmark-button"
 import { ThemeToggle } from "../../../components/ui/theme-toggle"
 import { ComponentPagePreview } from "../../../components/features/component-page/component-preview"
 import { EditComponentDialog } from "../../../components/ui/edit-component-dialog"
 import { usePublishAs } from "../../../components/features/publish/hooks/use-publish-as"
 import { Icons } from "@/components/icons"
-import Image from "next/image"
+import { CopyPromptDialog } from "@/components/ui/copy-prompt-dialog"
 
 import {
   CodeXml,
@@ -86,11 +86,12 @@ import {
 import { cn } from "@/lib/utils"
 import { addVersionToUrl } from "@/lib/utils/url"
 import { isEditingCodeAtom } from "@/components/ui/edit-component-dialog"
+import { useComponentAccess } from "@/hooks/use-component-access"
 
 export const isShowCodeAtom = atom(true)
 const selectedPromptTypeAtom = atomWithStorage<PromptType | "v0-open">(
   "selectedPromptType",
-  PROMPT_TYPES.BASIC,
+  PROMPT_TYPES.EXTENDED,
 )
 export const isFullScreenAtom = atom(false)
 const addNoCacheParam = (url: string | null | undefined) => {
@@ -133,7 +134,6 @@ const useAnalytics = ({
     }
   }, [user])
 }
-
 const useKeyboardShortcuts = ({
   component,
   setIsShowCode,
@@ -150,6 +150,7 @@ const useKeyboardShortcuts = ({
   handlePromptAction: () => void
 }) => {
   const [, setIsFullScreen] = useAtom(isFullScreenAtom)
+  const [isEditingCode] = useAtom(isEditingCodeAtom)
 
   const handleShareClick = async () => {
     if (typeof window === "undefined") return
@@ -170,12 +171,23 @@ const useKeyboardShortcuts = ({
     }
   }
 
-  const [isEditingCode] = useAtom(isEditingCodeAtom)
-
+  // Toggle code view with [ and ]
   useEffect(() => {
     const keyDownHandler = (e: KeyboardEvent) => {
+      // Check if we're not in an input/editing mode
+      if (
+        isEditingCode ||
+        (e.target instanceof Element && e.target.matches("input, textarea"))
+      ) {
+        return
+      }
+
+      // Check for modifiers
+      if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) {
+        return
+      }
+
       if (e.code === "BracketRight" || e.code === "BracketLeft") {
-        if (isEditingCode) return
         e.preventDefault()
         if (e.code === "BracketRight") {
           setIsShowCode(false)
@@ -197,34 +209,42 @@ const useKeyboardShortcuts = ({
     return () => window.removeEventListener("keydown", keyDownHandler)
   }, [isEditingCode, component.id, setIsShowCode])
 
+  // Edit component with E
   useEffect(() => {
     const keyDownHandler = (e: KeyboardEvent) => {
-      if (
-        e.code === "KeyE" &&
-        !e.metaKey &&
-        !e.ctrlKey &&
-        !e.altKey &&
-        !e.shiftKey &&
-        !isEditDialogOpen &&
-        canEdit &&
-        e.target instanceof Element &&
-        !e.target.matches("input, textarea")
-      ) {
+      // Only if user can edit and dialog not already open
+      if (!canEdit || isEditDialogOpen) return
+
+      // Check if we're not in an input
+      if (e.target instanceof Element && e.target.matches("input, textarea")) {
+        return
+      }
+
+      // Check for no modifiers
+      if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) {
+        return
+      }
+
+      if (e.code === "KeyE") {
         e.preventDefault()
         setIsEditDialogOpen(true)
       }
     }
 
     window.addEventListener("keydown", keyDownHandler)
-
-    return () => {
-      window.removeEventListener("keydown", keyDownHandler)
-    }
+    return () => window.removeEventListener("keydown", keyDownHandler)
   }, [isEditDialogOpen, setIsEditDialogOpen, canEdit])
 
+  // Prompt action with Cmd/Ctrl + X
   useEffect(() => {
     const keyDownHandler = (e: KeyboardEvent) => {
-      if (e.code === "KeyX" && (e.metaKey || e.ctrlKey)) {
+      // Only with Cmd/Ctrl modifier
+      if (!e.metaKey && !e.ctrlKey) return
+
+      // No other modifiers
+      if (e.altKey || e.shiftKey) return
+
+      if (e.code === "KeyX") {
         e.preventDefault()
         handlePromptAction()
       }
@@ -234,9 +254,16 @@ const useKeyboardShortcuts = ({
     return () => document.removeEventListener("keydown", keyDownHandler)
   }, [handlePromptAction])
 
+  // Share with Cmd/Ctrl + Shift + C
   useEffect(() => {
     const keyDownHandler = (e: KeyboardEvent) => {
-      if (e.code === "KeyC" && e.shiftKey && (e.metaKey || e.ctrlKey)) {
+      // Must have Cmd/Ctrl + Shift
+      if ((!e.metaKey && !e.ctrlKey) || !e.shiftKey) return
+
+      // No alt modifier
+      if (e.altKey) return
+
+      if (e.code === "KeyC") {
         e.preventDefault()
         handleShareClick()
       }
@@ -246,21 +273,25 @@ const useKeyboardShortcuts = ({
     return () => window.removeEventListener("keydown", keyDownHandler)
   }, [])
 
+  // Toggle fullscreen with F
   useEffect(() => {
     const keyDownHandler = (e: KeyboardEvent) => {
-      if (
-        e.code === "KeyF" &&
-        !e.metaKey &&
-        !e.ctrlKey &&
-        !e.altKey &&
-        !e.shiftKey &&
-        e.target instanceof Element &&
-        !e.target.matches("input, textarea")
-      ) {
+      // Check if we're not in an input
+      if (e.target instanceof Element && e.target.matches("input, textarea")) {
+        return
+      }
+
+      // Check for no modifiers
+      if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) {
+        return
+      }
+
+      if (e.code === "KeyF") {
         e.preventDefault()
         setIsFullScreen((prev) => !prev)
       }
 
+      // Exit fullscreen with Escape
       if (e.code === "Escape") {
         e.preventDefault()
         setIsFullScreen(false)
@@ -270,43 +301,6 @@ const useKeyboardShortcuts = ({
     window.addEventListener("keydown", keyDownHandler)
     return () => window.removeEventListener("keydown", keyDownHandler)
   }, [setIsFullScreen])
-}
-
-const copyToClipboard = async (text: string) => {
-  if (typeof window === "undefined") {
-    return // Skip execution on server
-  }
-
-  try {
-    if (navigator?.clipboard?.writeText) {
-      await navigator.clipboard.writeText(text)
-      return
-    }
-
-    // Fallback for Safari
-    const type = "text/plain"
-    const blob = new Blob([text], { type })
-    const data = [new ClipboardItem({ [type]: blob })]
-
-    if (navigator?.clipboard?.write) {
-      await navigator.clipboard.write(data)
-      return
-    }
-
-    // Fallback using document
-    const textarea = document.createElement("textarea")
-    textarea.value = text
-    textarea.style.position = "fixed"
-    textarea.style.opacity = "0"
-    textarea.style.whiteSpace = "pre"
-    document.body.appendChild(textarea)
-    textarea.focus()
-    textarea.select()
-    document.execCommand("copy")
-    document.body.removeChild(textarea)
-  } catch (err) {
-    throw new Error("Failed to copy text")
-  }
 }
 
 async function purgeCacheForDemo(
@@ -350,6 +344,7 @@ type ComponentPageProps = {
   globalCss?: string
   compiledCss?: string
   submission?: Submission
+  hasPurchased?: boolean
 }
 
 export default function ComponentPage({
@@ -357,19 +352,20 @@ export default function ComponentPage({
   demo: initialDemo,
   code,
   demoCode,
-  dependencies,
-  demoDependencies,
-  demoComponentNames,
-  registryDependencies,
-  npmDependenciesOfRegistryDependencies,
+  dependencies = {},
+  demoDependencies = {},
+  demoComponentNames = [],
+  registryDependencies = {},
+  npmDependenciesOfRegistryDependencies = {},
   tailwindConfig,
   globalCss,
   compiledCss,
-  componentDemos,
+  componentDemos = [],
   submission,
+  hasPurchased = false,
 }: ComponentPageProps) {
   const [component, setComponent] = useState(initialComponent)
-  const demo = initialDemo
+  const demo = initialDemo ?? null
   const { user } = useUser()
   const supabase = useClerkSupabaseClient()
   const { theme } = useTheme()
@@ -379,22 +375,14 @@ export default function ComponentPage({
   const canEdit = user?.id === component.user_id || isAdmin
   const router = useRouter()
 
-  const { data: liked } = useQuery({
-    queryKey: ["hasUserLikedComponent", component.id, user?.id],
-    queryFn: async () => {
-      if (!user || !supabase) return null
-      const { data, error } = await supabase
-        .from("component_likes")
-        .select("*")
-        .eq("component_id", component.id)
-        .eq("user_id", user?.id)
-      if (error) {
-        console.error("Error checking if user liked component:", error)
-        throw error
-      }
-      return data.length > 0
-    },
-  })
+  const accessState = useComponentAccess(component, hasPurchased)
+  const showPaywall = component.is_paid && accessState !== "UNLOCKED"
+
+  const { data: bookmarked } = useHasUserBookmarkedDemo(
+    supabase,
+    demo?.id,
+    user?.id,
+  )
 
   const [isShowCode, setIsShowCode] = useAtom(isShowCodeAtom)
 
@@ -403,6 +391,8 @@ export default function ComponentPage({
   )
 
   const { mutate: updateComponent } = useUpdateComponentWithTags(supabase)
+
+  const [isCopyPromptDialogOpen, setIsCopyPromptDialogOpen] = useState(false)
 
   const handleUpdate = async (
     updatedData: Partial<Component>,
@@ -568,11 +558,7 @@ export default function ComponentPage({
   }
 
   const handlePromptAction = async () => {
-    const selectedOption = promptOptions.find(
-      (opt) => opt.id === selectedPromptType || opt.id === "v0-open",
-    )
-
-    if (selectedOption?.id === "v0-open") {
+    if (selectedPromptType === "v0-open") {
       const formattedPrompt = formatV0Prompt(component.name, code)
       const encodedPrompt = encodeURIComponent(formattedPrompt)
       window.open(`https://v0.dev/?q=${encodedPrompt}`, "_blank")
@@ -580,7 +566,7 @@ export default function ComponentPage({
       trackEvent(AMPLITUDE_EVENTS.COPY_AI_PROMPT, {
         componentId: component.id,
         componentName: component.name,
-        promptType: selectedOption.id,
+        promptType: selectedPromptType,
         action: "open",
         destination: "v0.dev",
       })
@@ -592,22 +578,51 @@ export default function ComponentPage({
       return
     }
 
+    // Open dialog for non-v0 prompt types
+    setIsCopyPromptDialogOpen(true)
+  }
+
+  const handleCopyPrompt = async (ruleId?: number, context?: string) => {
     try {
-      const prompt = getComponentInstallPrompt({
-        promptType: selectedPromptType as PromptType,
-        codeFileName: component.code.split("/").slice(-1)[0]!,
-        demoCodeFileName: demo.demo_code.split("/").slice(-1)[0]!,
-        code,
-        demoCode,
-        registryDependencies,
-        npmDependencies: dependencies,
-        npmDependenciesOfRegistryDependencies,
-        tailwindConfig,
-        globalCss,
+      // Get the selected rule from the dialog
+      const response = await fetch("/api/prompts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt_type: selectedPromptType,
+          demo_id: demo.id,
+          rule_id: ruleId,
+          additional_context: context,
+        }),
       })
 
-      await copyToClipboard(prompt)
-      toast.success("AI prompt copied to clipboard")
+      if (!response.ok) {
+        const errorData = await response.json()
+        console.error("Error response:", errorData)
+        throw new Error(errorData.error || "Failed to generate prompt")
+      }
+
+      const data = await response.json()
+      console.log("Response data:", data)
+
+      if (!data.prompt) {
+        throw new Error("No prompt received in response")
+      }
+
+      await navigator.clipboard.writeText(data.prompt)
+
+      if (data.debug) {
+        const debugMessage = []
+        if (data.debug.ruleApplied) debugMessage.push("rule applied")
+        if (data.debug.contextApplied) debugMessage.push("context added")
+
+        toast.success(`Prompt copied to clipboard`)
+      } else {
+        toast.success("AI prompt copied to clipboard")
+      }
+
       capture(
         component.id,
         AnalyticsActivityType.COMPONENT_PROMPT_COPY,
@@ -620,17 +635,19 @@ export default function ComponentPage({
         promptType: selectedPromptType as PromptType,
         action: "copy",
         destination:
-          selectedOption?.id === PROMPT_TYPES.V0
+          selectedPromptType === PROMPT_TYPES.V0
             ? "v0"
-            : selectedOption?.id === PROMPT_TYPES.LOVABLE
+            : selectedPromptType === PROMPT_TYPES.LOVABLE
               ? "lovable"
-              : selectedOption?.id === PROMPT_TYPES.BOLT
+              : selectedPromptType === PROMPT_TYPES.BOLT
                 ? "bolt"
                 : "other",
       })
-    } catch (err) {
-      console.error("Failed to copy AI prompt:", err)
-      toast.error("Failed to generate AI prompt")
+    } catch (error) {
+      console.error("Error in handleCopy:", error)
+      toast.error(
+        error instanceof Error ? error.message : "Error generating prompt",
+      )
     }
   }
 
@@ -703,6 +720,7 @@ export default function ComponentPage({
                   size={22}
                   isClickable={true}
                   user={component.user}
+                  skipLink={true}
                 />
               </Link>
               <p className="text-[14px] font-medium whitespace-nowrap">
@@ -753,7 +771,7 @@ export default function ComponentPage({
                       <CommandList className="flex-1 overflow-y-auto">
                         <CommandEmpty>No demos found.</CommandEmpty>
                         <CommandGroup>
-                          {componentDemos?.map((d) => (
+                          {(componentDemos ?? []).map((d) => (
                             <CommandItem
                               key={d.id}
                               value={`${d.id}-${d.demo_slug}`}
@@ -766,11 +784,10 @@ export default function ComponentPage({
                               className="flex items-center gap-2"
                             >
                               <div className="relative w-[80px] h-[60px] flex-shrink-0">
-                                <Image
+                                <img
                                   src={d.preview_url || "/placeholder.svg"}
                                   alt={d.name || ""}
-                                  fill
-                                  className="rounded-sm object-cover"
+                                  className="rounded-sm object-cover absolute inset-0 w-full h-full"
                                 />
                               </div>
                               <div className="flex flex-col min-w-0">
@@ -942,21 +959,21 @@ export default function ComponentPage({
             </Tooltip>
           )}
           <SignedIn>
-            <LikeButton
-              componentId={component.id}
-              componentLikesCount={component.likes_count}
+            <BookmarkButton
+              demoId={demo.id}
+              bookmarksCount={demo.bookmarks_count || 0}
               size={18}
               showTooltip={true}
-              liked={liked ?? false}
+              bookmarked={bookmarked ?? false}
             />
           </SignedIn>
           <SignedOut>
             <SignInButton>
-              <LikeButton
-                componentId={component.id}
-                componentLikesCount={component.likes_count}
+              <BookmarkButton
+                demoId={demo.id}
+                bookmarksCount={demo.bookmarks_count || 0}
                 size={18}
-                liked={false}
+                bookmarked={false}
               />
             </SignInButton>
           </SignedOut>
@@ -1014,60 +1031,43 @@ export default function ComponentPage({
               </Tooltip>
             </div>
             <div className="inline-flex -space-x-px divide-x divide-primary-foreground/30 rounded-lg shadow-sm">
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    onClick={handlePromptAction}
-                    className="rounded-none shadow-none first:rounded-s-lg focus-visible:z-10"
-                  >
-                    {selectedPromptType === "v0-open" ? (
-                      <>
-                        <span className="mr-2">Open in</span>
-                        <div className="flex items-center justify-center w-[18px] h-[18px]">
-                          <Icons.v0Logo className="min-h-[18px] min-w-[18px] max-h-[18px] max-w-[18px]" />
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <div className="flex items-center gap-2">
-                          <div className="flex items-center justify-center w-[22px] h-[22px]">
-                            {
-                              promptOptions.find(
-                                (opt): opt is PromptOptionBase =>
-                                  opt.type === "option" &&
-                                  opt.id === selectedPromptType,
-                              )?.icon
-                            }
-                          </div>
-                          <span>Copy prompt</span>
-                        </div>
-                      </>
-                    )}
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent className="z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2">
-                  <p className="flex items-center gap-1.5">
-                    {selectedPromptType === "v0-open"
-                      ? "Open in v0"
-                      : "Copy AI prompt"}
-                    <kbd className="pointer-events-none h-5 text-muted-foreground select-none items-center gap-1 rounded border bg-muted px-1.5 font-sans text-[11px] leading-none opacity-100 flex">
-                      <span className="text-[11px] leading-none font-sans text-muted-foreground">
-                        {navigator?.platform?.toLowerCase()?.includes("mac")
-                          ? "⌘"
-                          : "Ctrl"}
-                      </span>
-                      <span className="text-[11px] leading-none font-sans text-muted-foreground">
-                        X
-                      </span>
-                    </kbd>
-                  </p>
-                </TooltipContent>
-              </Tooltip>
+              <Button
+                onClick={!showPaywall ? handlePromptAction : undefined}
+                className="rounded-none shadow-none first:rounded-s-lg focus-visible:z-10"
+                disabled={showPaywall}
+                variant={showPaywall ? "secondary" : "default"}
+              >
+                {showPaywall ? (
+                  "Unlock to copy prompt"
+                ) : selectedPromptType === "v0-open" ? (
+                  <>
+                    <span className="mr-2">Open in</span>
+                    <div className="flex items-center justify-center w-[18px] h-[18px]">
+                      <Icons.v0Logo className="min-h-[18px] min-w-[18px] max-h-[18px] max-w-[18px]" />
+                    </div>
+                  </>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-center w-[22px] h-[22px]">
+                      {
+                        promptOptions.find(
+                          (opt): opt is PromptOptionBase =>
+                            opt.type === "option" &&
+                            opt.id === selectedPromptType,
+                        )?.icon
+                      }
+                    </div>
+                    <span>Copy prompt</span>
+                  </div>
+                )}
+              </Button>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     className="rounded-none shadow-none last:rounded-e-lg focus-visible:z-10"
                     size="icon"
+                    disabled={showPaywall}
+                    variant={showPaywall ? "secondary" : "default"}
                   >
                     <ChevronDown size={16} strokeWidth={2} />
                   </Button>
@@ -1085,43 +1085,57 @@ export default function ComponentPage({
                     }
                     key={selectedPromptType}
                   >
-                    <DropdownMenuLabel>Copy prompt</DropdownMenuLabel>
-                    {promptOptions.map((option) => {
-                      if (option.type === "separator") {
-                        return (
-                          <>
-                            <DropdownMenuSeparator key={option.id} />
-                            <DropdownMenuLabel>
-                              {option.id === "separator1"
-                                ? "Copy optimized prompt"
-                                : "Open in AI editor"}
-                            </DropdownMenuLabel>
-                          </>
-                        )
-                      }
+                    {(() => {
+                      const options = []
 
-                      return (
-                        <DropdownMenuRadioItem
-                          key={option.id}
-                          value={option.id}
-                          className="items-start [&>span]:pt-1"
-                        >
-                          <div className="flex items-start gap-3">
-                            <div className="flex items-center justify-center w-[22px] h-[22px]">
-                              {option.icon}
-                            </div>
-                            <div className="flex flex-col gap-0.5">
-                              <span className="text-sm font-medium">
-                                {option.label}
-                              </span>
-                              <span className="text-xs text-muted-foreground">
-                                {option.description}
-                              </span>
-                            </div>
-                          </div>
-                        </DropdownMenuRadioItem>
+                      // Add Copy prompt option
+                      const copyOption = promptOptions.find(
+                        (opt) =>
+                          opt.type === "option" &&
+                          opt.id === PROMPT_TYPES.EXTENDED,
                       )
-                    })}
+                      if (copyOption)
+                        options.push({
+                          ...copyOption,
+                          label: "Copy prompt", // Override label for EXTENDED type
+                        })
+
+                      // Always add v0-open option
+                      const v0Option = promptOptions.find(
+                        (opt) => opt.id === "v0-open",
+                      )
+                      if (v0Option) options.push(v0Option)
+
+                      return options.map((option) => {
+                        if (option.type === "separator") return null
+                        return (
+                          <DropdownMenuRadioItem
+                            key={option.id}
+                            value={option.id}
+                            className="items-start [&>span]:pt-1"
+                            onSelect={() => {
+                              if (option.id === PROMPT_TYPES.EXTENDED) {
+                                setIsCopyPromptDialogOpen(true)
+                              }
+                            }}
+                          >
+                            <div className="flex items-start gap-3">
+                              <div className="flex items-center justify-center w-[22px] h-[22px]">
+                                {option.icon}
+                              </div>
+                              <div className="flex flex-col gap-0.5">
+                                <span className="text-sm font-medium">
+                                  {option.label}
+                                </span>
+                                <span className="text-xs text-muted-foreground">
+                                  {option.description}
+                                </span>
+                              </div>
+                            </div>
+                          </DropdownMenuRadioItem>
+                        )
+                      })
+                    })()}
                   </DropdownMenuRadioGroup>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -1148,6 +1162,8 @@ export default function ComponentPage({
           canEdit={canEdit}
           setIsEditDialogOpen={setIsEditDialogOpen}
           demo={demo}
+          showPaywall={showPaywall}
+          accessState={accessState}
         />
       </div>
       <EditComponentDialog
@@ -1156,6 +1172,14 @@ export default function ComponentPage({
         isOpen={isEditDialogOpen}
         setIsOpen={setIsEditDialogOpen}
         onUpdate={handleUpdate}
+      />
+      <CopyPromptDialog
+        isOpen={isCopyPromptDialogOpen}
+        onClose={() => setIsCopyPromptDialogOpen(false)}
+        selectedPromptType={selectedPromptType}
+        onPromptTypeChange={setSelectedPromptType}
+        onCopyPrompt={handleCopyPrompt}
+        demoId={demo.id.toString()}
       />
     </div>
   )

@@ -26,15 +26,20 @@ import { useUser } from "@clerk/nextjs"
 import { useClerkSupabaseClient } from "@/lib/clerk"
 import { AMPLITUDE_EVENTS, trackEvent } from "@/lib/amplitude"
 import { Button } from "@/components/ui/button"
+import { bookmarkDemo } from "@/lib/queries"
 
 export function ComponentCard({
   demo,
   isLoading,
   hideUser,
+  onClick,
+  onCtrlClick,
 }: {
   demo?: DemoWithComponent | (Component & { user: User })
   isLoading?: boolean
   hideUser?: boolean
+  onClick?: () => void
+  onCtrlClick?: (url: string) => void
 }) {
   if (isLoading || !demo) {
     return <ComponentCardSkeleton />
@@ -66,9 +71,7 @@ export function ComponentCard({
 
   const videoUrl = isDemo ? demo.video_url : null
 
-  const likesCount = isDemo
-    ? demo.component?.likes_count || 0
-    : demo.likes_count || 0
+  const bookmarksCount = isDemo ? demo.bookmarks_count || 0 : 0
 
   const viewCount = isDemo ? demo.view_count || 0 : 0
 
@@ -113,7 +116,7 @@ export function ComponentCard({
     }
   }
 
-  const handleLike = async () => {
+  const handleBookmark = async () => {
     if (!user) {
       toast(
         <div className="flex items-center justify-between gap-4">
@@ -137,26 +140,24 @@ export function ComponentCard({
     }
 
     try {
-      if (isDemo) {
-        await supabase.rpc("like_component_by_demo", {
-          p_user_id: user.id,
-          p_demo_id: demo.id,
-          p_liked: false,
-        })
-      } else {
-        await supabase.from("component_likes").insert({
-          user_id: user.id,
-          component_id: demo.id,
-        })
+      const demoId = isDemo ? demo.id : null
+
+      if (!demoId) {
+        throw new Error("Cannot bookmark: missing demo ID")
       }
+
+      await bookmarkDemo(supabase, user.id, demoId)
+
       toast.success(
         <div className="flex items-center gap-2">
           <Bookmark size={16} className="shrink-0" fill="currentColor" />
           <span>Component bookmarked!</span>
         </div>,
       )
+
       trackEvent(AMPLITUDE_EVENTS.LIKE_COMPONENT, {
-        componentId: isDemo ? demo.component_id : demo.id,
+        componentId: isDemo && demo.component_id ? demo.component_id : demo.id,
+        demoId: demoId,
         userId: user.id,
         source: "context_menu",
       })
@@ -171,7 +172,22 @@ export function ComponentCard({
       <ContextMenuTrigger className="block p-[1px]">
         <div
           className="block"
-          onClick={() => (window.location.href = componentUrl)}
+          onClick={(e) => {
+            if (e.metaKey || e.ctrlKey) {
+              e.preventDefault()
+              if (onCtrlClick) {
+                onCtrlClick(componentUrl)
+              } else {
+                window.open(componentUrl, "_blank")
+                toast.success(`${componentName} was opened in a new tab`)
+              }
+            } else if (onClick) {
+              e.preventDefault()
+              onClick()
+            } else {
+              window.location.href = componentUrl
+            }
+          }}
         >
           <div className="relative aspect-[4/3] mb-3 group">
             <div className="absolute inset-0">
@@ -193,12 +209,21 @@ export function ComponentCard({
                 )}
               </div>
             </div>
-            {videoUrl && (
-              <div
-                className="absolute top-2 left-2 z-20 bg-background/90 backdrop-blur rounded-sm px-2 py-1 pointer-events-none"
-                data-video-icon={`${demo.id}`}
-              >
-                <Video size={16} className="text-foreground" />
+            <div className="absolute top-2 left-2 z-20 flex gap-2">
+              {videoUrl && (
+                <div
+                  className="bg-background/90 backdrop-blur rounded-sm px-2 py-1 pointer-events-none"
+                  data-video-icon={`${demo.id}`}
+                >
+                  <Video size={16} className="text-foreground" />
+                </div>
+              )}
+            </div>
+            {isDemo && demo.component?.is_paid && (
+              <div className="absolute top-2 right-2 z-20">
+                <span className="inline-block text-xs font-medium bg-blue-100 text-blue-600 px-2 py-1 rounded-md">
+                  PRO
+                </span>
               </div>
             )}
           </div>
@@ -238,10 +263,10 @@ export function ComponentCard({
                     <span>{formatNumber(viewCount)}</span>
                   </div>
                 )}
-                {likesCount > 0 && (
+                {bookmarksCount > 0 && (
                   <div className="flex items-center text-xs text-muted-foreground whitespace-nowrap shrink-0 gap-1">
                     <Bookmark size={14} className="text-muted-foreground" />
-                    <span>{formatNumber(likesCount)}</span>
+                    <span>{formatNumber(bookmarksCount)}</span>
                   </div>
                 )}
               </div>
@@ -254,7 +279,9 @@ export function ComponentCard({
           Open in new tab
         </ContextMenuItem>
         <ContextMenuItem onSelect={handleCopyLink}>Copy link</ContextMenuItem>
-        <ContextMenuItem onSelect={handleLike}>Save for later</ContextMenuItem>
+        <ContextMenuItem onSelect={handleBookmark}>
+          Save for later
+        </ContextMenuItem>
         <ContextMenuSub>
           <ContextMenuSubTrigger>Copy prompt</ContextMenuSubTrigger>
           <ContextMenuSubContent className="w-64">

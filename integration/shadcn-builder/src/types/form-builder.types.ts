@@ -19,6 +19,7 @@ export type DesignPropertiesViews = {
   input: React.ReactNode;
   button: React.ReactNode;
   options: React.ReactNode;
+  validation: React.ReactNode;
 };
 
 export type ReactCode = {

@@ -5,6 +5,7 @@ import {
   FormComponentAttributes,
   FormComponentModelInput,
   FormComponentStyles,
+  FormComponentValidationTypes,
 } from "@/types/FormComponent.types";
 import * as Icons from "lucide-react";
 
@@ -24,6 +25,7 @@ export const DEFAULT_PROPERTIES: FormComponentProperties = {
 export class FormComponentModel {
   id: string;
   label: string;
+  label_info: string;
   label_description?: string;
   type: string;
   value?: string | number;
@@ -36,10 +38,12 @@ export class FormComponentModel {
   properties?: FormComponentProperties;
   attributes?: FormComponentAttributes;
   overrides?: Partial<Record<Viewports, any>>;
+  validations?: FormComponentValidationTypes;
 
   constructor(input: FormComponentModelInput) {
     this.id = input.id;
     this.label = input.label;
+    this.label_info = input.label_info;
     this.label_description = input.label_description;
     this.type = input.type;
     this.value = input.value;
@@ -55,9 +59,9 @@ export class FormComponentModel {
     this.content = input.content;
     this.description = input.description;
     this.options = input.options;
-    this.required = input.required;
     this.attributes = input.attributes;
     this.overrides = input.overrides;
+    this.validations = input.validations;
   }
 
   getField(field: string, viewport?: Viewports, escapeHtml?: boolean): any {

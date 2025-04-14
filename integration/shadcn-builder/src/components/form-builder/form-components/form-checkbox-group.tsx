@@ -73,4 +73,5 @@ export const CheckboxGroupDesignProperties: DesignPropertiesViews = {
   input: <InputGroup whitelist={["description", "asCard"]} />,
   options: <OptionsGroup />,
   button: null,
+  validation: null,
 }; 

@@ -53,12 +53,24 @@ export function SidebarLeft() {
         <SidebarContent className="gap-0">
           <SidebarGroup>
             <SidebarGroupLabel>Typography</SidebarGroupLabel>
-            <SidebarMenu>
+            <SidebarMenu className="gap-2">
               {typographyComponents.map((component) => (
                 <SidebarMenuItem key={component.id}>
-                  <SidebarMenuButton onClick={() => addRow(component)}>
-                    <ComponentIcon icon={component.icon} />
-                    <span>{component.label}</span>
+                  <SidebarMenuButton onClick={() => addRow(component)} className="h-12 hover:bg-slate-100 cursor-pointer">
+                    <div className="bg-slate-100 p-2 rounded-md text-slate-500">
+                      <ComponentIcon
+                        icon={component.icon}
+                        className="w-5 h-5"
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-sm font-medium text-slate-800">
+                        {component.label}
+                      </span>
+                      <span className="text-xs text-gray-500">
+                        {component.label_info}
+                      </span>
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -67,12 +79,24 @@ export function SidebarLeft() {
 
           <SidebarGroup>
             <SidebarGroupLabel>Input Fields</SidebarGroupLabel>
-            <SidebarMenu>
+            <SidebarMenu className="gap-2">
               {inputComponents.map((component) => (
                 <SidebarMenuItem key={component.id}>
-                  <SidebarMenuButton onClick={() => addRow(component)}>
-                    <ComponentIcon icon={component.icon} />
-                    <span>{component.label}</span>
+                  <SidebarMenuButton onClick={() => addRow(component)} className="h-12 hover:bg-slate-100 cursor-pointer">
+                    <div className="bg-slate-100 p-2 rounded-md text-slate-500">
+                      <ComponentIcon
+                        icon={component.icon}
+                        className="w-5 h-5"
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-sm font-medium text-slate-800">
+                        {component.label}
+                      </span>
+                      <span className="text-xs text-gray-500">
+                        {component.label_info}
+                      </span>
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -81,12 +105,24 @@ export function SidebarLeft() {
 
           <SidebarGroup>
             <SidebarGroupLabel>Selection Fields</SidebarGroupLabel>
-            <SidebarMenu>
+            <SidebarMenu className="gap-2">
               {selectionComponents.map((component) => (
                 <SidebarMenuItem key={component.id}>
-                  <SidebarMenuButton onClick={() => addRow(component)}>
-                    <ComponentIcon icon={component.icon} />
-                    <span>{component.label}</span>
+                  <SidebarMenuButton onClick={() => addRow(component)} className="h-12 hover:bg-slate-100 cursor-pointer  ">
+                    <div className="bg-slate-100 p-2 rounded-md text-slate-500">
+                      <ComponentIcon
+                        icon={component.icon}
+                        className="w-5 h-5"
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-sm font-medium text-slate-800">
+                        {component.label}
+                      </span>
+                      <span className="text-xs text-gray-500">
+                        {component.label_info}
+                      </span>
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -95,12 +131,24 @@ export function SidebarLeft() {
 
           <SidebarGroup>
             <SidebarGroupLabel>Date & Time</SidebarGroupLabel>
-            <SidebarMenu>
+            <SidebarMenu className="gap-2">
               {dateComponents.map((component) => (
                 <SidebarMenuItem key={component.id}>
-                  <SidebarMenuButton onClick={() => addRow(component)}>
-                    <ComponentIcon icon={component.icon} />
-                    <span>{component.label}</span>
+                  <SidebarMenuButton onClick={() => addRow(component)} className="h-12 hover:bg-slate-100 cursor-pointer">
+                    <div className="bg-slate-100 p-2 rounded-md text-slate-500">
+                      <ComponentIcon
+                        icon={component.icon}
+                        className="w-5 h-5"
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-sm font-medium text-slate-800">
+                        {component.label}
+                      </span>
+                      <span className="text-xs text-gray-500">
+                        {component.label_info}
+                      </span>
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -109,12 +157,24 @@ export function SidebarLeft() {
 
           <SidebarGroup>
             <SidebarGroupLabel>Buttons</SidebarGroupLabel>
-            <SidebarMenu>
+            <SidebarMenu className="gap-2">
               {buttonComponents.map((component) => (
                 <SidebarMenuItem key={component.id}>
-                  <SidebarMenuButton onClick={() => addRow(component)}>
-                    <ComponentIcon icon={component.icon} />
-                    <span>{component.label}</span>
+                  <SidebarMenuButton onClick={() => addRow(component)} className="h-12 hover:bg-slate-100 cursor-pointer">
+                    <div className="bg-slate-100 p-2 rounded-md text-slate-500">
+                      <ComponentIcon
+                        icon={component.icon}
+                        className="w-5 h-5"
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-sm font-medium text-slate-800">
+                        {component.label}
+                      </span>
+                      <span className="text-xs text-gray-500">
+                        {component.label_info}
+                      </span>
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

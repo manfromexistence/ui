@@ -540,6 +540,7 @@ export default function PublishComponentForm({
             user_id: user?.id || "",
             fts: null,
             demo_slug: demo.demo_slug,
+            bookmarks_count: null,
           }
 
           const [demoCodeUrl, previewImageR2Url, videoR2Url] =
@@ -668,6 +669,8 @@ export default function PublishComponentForm({
           license: data.license,
           website_url: data.website_url,
           is_public: data.is_public,
+          is_paid: data.is_paid,
+          price: data.is_paid ? 5 : 0,
         } as Tables<"components">
 
         const { data: insertedComponent, error } = await client
@@ -727,6 +730,7 @@ export default function PublishComponentForm({
             user_id: publishAsUser.id,
             fts: null,
             demo_slug: demoSlug,
+            bookmarks_count: null,
           }
 
           const { data: insertedDemo, error: demoError } = await client
@@ -1085,12 +1089,6 @@ export default function PublishComponentForm({
   }, [form.getValues().demos?.length, formStep])
 
   const [isAddingNewDemo, setIsAddingNewDemo] = useState(false)
-
-  const handleEditClick = (index: number) => {
-    setCurrentDemoIndex(index)
-    setIsEditingFromCard(true)
-    handleStepChange("demoCode")
-  }
 
   return (
     <>

@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Pre } from "@/components/ui/pre";
-import { Download, Copy, Check } from "lucide-react";
+import { Copy, Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import * as prettier from "prettier/standalone";
 import * as parserTypescript from "prettier/parser-typescript";
@@ -42,7 +42,9 @@ export function GenerateCodeDialog({
 }: GenerateCodeDialogProps) {
   const [formattedCode, setFormattedCode] = useState(generatedCode.code);
   const [copied, setCopied] = useState(false);
-  const formTitle = useFormBuilderStore.getState().formTitle.replace(/\s+/g, "");
+  const formTitle = useFormBuilderStore
+    .getState()
+    .formTitle.replace(/\s+/g, "");
 
   useEffect(() => {
     prettier
@@ -79,67 +81,78 @@ export function GenerateCodeDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="md:max-w-4xl h-[80vh]">
+      <DialogContent className="md:max-w-4xl h-[95vh] xl:h-[80vh] max-h-[1024px]">
         <DialogHeader>
           <DialogTitle>Generated Form Code</DialogTitle>
         </DialogHeader>
-        <div>
-          <h2 className="text-lg font-semibold mb-0">
-            1. Required shadcn/ui components:
-          </h2>
-          <h3 className="text-sm text-muted-foreground">
-            Run the following commands to add the required components:
-          </h3>
-        </div>
-        <div className="relative overflow-x-auto rounded-md">
-          <Pre language="bash" code={installationInstructions} />
-          <Button
-            variant="ghost"
-            size="sm"
-            className="absolute top-2 right-2 text-muted-foreground"
-            onClick={() => handleCopy(installationInstructions)}
-          >
-            {copied ? (
-              <Check className="h-4 w-4" />
-            ) : (
-              <Copy className="h-4 w-4" />
-            )}
-          </Button>
-        </div>
-        <div>
-          <h2 className="text-lg font-semibold mb-0">2. React Code</h2>
-          <h3 className="text-sm text-muted-foreground">
-            Copy and paste the following code into your project or <a href="#" onClick={handleDownload} className="underline font-bold">download the file</a>.
-          </h3>
-        </div>
-        <div className="relative overflow-auto rounded-md">
-          <Pre language="typescript" code={formattedCode} />
-          <Button
-            variant="ghost"
-            size="sm"
-            className="absolute top-2 right-2 text-muted-foreground"
-            onClick={() => handleCopy(formattedCode)}
-          >
-            {copied ? (
-              <Check className="h-4 w-4" />
-            ) : (
-              <Copy className="h-4 w-4" />
-            )}
-          </Button>
-        </div>
-        <div>
-          <h2 className="text-lg font-semibold mb-0">3. Usage</h2>
-          <h3 className="text-sm text-muted-foreground">
-            Import the form component and use it in your project.
-          </h3>
-        </div>
-        <div className="relative overflow-auto rounded-md">
-          <Pre
-            language="typescript"
-            code={`import ${formTitle} from "./${formTitle}";
+        <div className="min-h-[500px] w-full overflow-y-auto flex flex-col gap-4">
+          <div>
+            <h2 className="text-lg font-semibold mb-0">
+              1. Required shadcn/ui components:
+            </h2>
+            <h3 className="text-sm text-muted-foreground">
+              Run the following commands to add the required components:
+            </h3>
+          </div>
+          <div className="relative overflow-x-auto rounded-md min-h-20">
+            <Pre language="bash" code={installationInstructions} />
+            <Button
+              variant="ghost"
+              size="sm"
+              className="absolute top-2 right-2 text-muted-foreground"
+              onClick={() => handleCopy(installationInstructions)}
+            >
+              {copied ? (
+                <Check className="h-4 w-4" />
+              ) : (
+                <Copy className="h-4 w-4" />
+              )}
+            </Button>
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold mb-0">2. React Code</h2>
+            <h3 className="text-sm text-muted-foreground">
+              Copy and paste the following code into your project or{" "}
+              <a
+                href="#"
+                onClick={handleDownload}
+                className="underline font-bold"
+              >
+                download the file
+              </a>
+              .
+            </h3>
+          </div>
+          <div className="relative overflow-auto rounded-md min-h-20">
+            <Pre language="typescript" code={formattedCode} />
+            <Button
+              variant="ghost"
+              size="sm"
+              className="absolute top-2 right-2 text-muted-foreground"
+              onClick={() => handleCopy(formattedCode)}
+            >
+              {copied ? (
+                <Check className="h-4 w-4" />
+              ) : (
+                <Copy className="h-4 w-4" />
+              )}
+            </Button>
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold mb-0">3. Usage</h2>
+            <h3 className="text-sm text-muted-foreground">
+              Import the form component and use it in your project.
+            </h3>
+          </div>
+          <div className="relative overflow-auto rounded-md min-h-20">
+            <Pre
+              language="typescript"
+              code={`import ${formTitle} from "./${formTitle}";
 <${formTitle} />`}
-          />
+            />
+          </div>
         </div>
+
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
             Close

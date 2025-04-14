@@ -22,6 +22,12 @@ export type DemoWithComponent = Demo & {
   fts: unknown | null
   pro_preview_image_url: string | null
   view_count: number | null
+  bookmarks_count: number | null
+  bundle_url?: {
+    html: string
+    js?: string
+    css?: string
+  }
 }
 
 export type DemoWithTags = Demo & {
@@ -38,7 +44,12 @@ export type DemoTag = Database["public"]["Tables"]["demo_tags"]["Row"]
 
 export type ComponentTag = Database["public"]["Tables"]["component_tags"]["Row"]
 
-export type SortOption = "downloads" | "likes" | "date" | "recommended"
+export type SortOption =
+  | "downloads"
+  | "likes"
+  | "date"
+  | "recommended"
+  | "bookmarks"
 
 export type QuickFilterOption = "all" | "last_released" | "most_downloaded"
 
@@ -51,12 +62,11 @@ export const QUICK_FILTER_OPTIONS = {
 export const SORT_OPTIONS = {
   recommended: "Recommended",
   downloads: "Most downloaded",
-  likes: "Most liked",
+  bookmarks: "Most bookmarked",
   date: "Newest",
 } as const
 
 export const PROMPT_TYPES = {
-  BASIC: "basic",
   SITEBREW: "sitebrew",
   V0: "v0",
   LOVABLE: "lovable",
@@ -168,6 +178,45 @@ export type ThemeOptions = {
   light: string
 }
 
+export type PlanType = "free" | "pro" | "pro_plus"
+
+export interface PlanPrice {
+  monthly: number
+  yearly: number
+}
+
+export interface PlanFeature {
+  name: string
+  included: PlanType
+  category?: string
+  valueByPlan: Record<PlanType, string>
+}
+
+export interface PricingPlan {
+  name: string
+  level: PlanType
+  price: PlanPrice
+  popular?: boolean
+}
+
+export interface PlanLimits {
+  generationsPerMonth: number
+  displayName: string
+  name: string
+  description: string
+  features: string[]
+  monthlyPrice?: number
+  yearlyPrice?: number
+  tokenPricing: {
+    pricePerToken: {
+      monthly: number
+      yearly: number
+    }
+    componentCost: number
+    generationCost: number
+  }
+}
+
 export interface SVGLogo {
   id?: number
   title: string
@@ -181,4 +230,18 @@ export interface SVGLogo {
 export interface SVGCategory {
   category: string
   total: number
+}
+
+export interface CollectionWithUser {
+  id: string
+  name: string
+  description: string | null
+  cover_url: string | null
+  user_id: string
+  created_at: string
+  updated_at: string
+  is_public: boolean
+  slug: string
+  components_count: number
+  user_data: User
 }

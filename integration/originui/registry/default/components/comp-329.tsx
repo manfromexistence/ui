@@ -1,7 +1,12 @@
-"use client";
+"use client"
 
-import { Badge } from "@/registry/default/ui/badge";
-import { Button } from "@/registry/default/ui/button";
+import { useEffect, useId, useRef, useState } from "react"
+import { CreditCardIcon, StoreIcon } from "lucide-react"
+import { usePaymentInputs } from "react-payment-inputs"
+import images, { type CardImages } from "react-payment-inputs/images"
+
+import { Badge } from "@/registry/default/ui/badge"
+import { Button } from "@/registry/default/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -9,29 +14,30 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/default/ui/dialog";
-import { Input } from "@/registry/default/ui/input";
-import { Label } from "@/registry/default/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group";
-import { CreditCardIcon, StoreIcon } from "lucide-react";
-import { useEffect, useId, useRef, useState } from "react";
-import { usePaymentInputs } from "react-payment-inputs";
-import images, { type CardImages } from "react-payment-inputs/images";
+} from "@/registry/default/ui/dialog"
+import { Input } from "@/registry/default/ui/input"
+import { Label } from "@/registry/default/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
 
 export default function Component() {
-  const id = useId();
-  const { meta, getCardNumberProps, getExpiryDateProps, getCVCProps, getCardImageProps } =
-    usePaymentInputs();
-  const couponInputRef = useRef<HTMLInputElement>(null);
-  const [showCouponInput, setShowCouponInput] = useState(false);
-  const [couponCode, setCouponCode] = useState("");
+  const id = useId()
+  const {
+    meta,
+    getCardNumberProps,
+    getExpiryDateProps,
+    getCVCProps,
+    getCardImageProps,
+  } = usePaymentInputs()
+  const couponInputRef = useRef<HTMLInputElement>(null)
+  const [showCouponInput, setShowCouponInput] = useState(false)
+  const [couponCode, setCouponCode] = useState("")
 
   // Auto-focus the coupon input when it's shown
   useEffect(() => {
     if (showCouponInput && couponInputRef.current) {
-      couponInputRef.current.focus();
+      couponInputRef.current.focus()
     }
-  }, [showCouponInput]);
+  }, [showCouponInput])
 
   return (
     <Dialog>
@@ -58,7 +64,7 @@ export default function Component() {
           <div className="space-y-4">
             <RadioGroup className="grid-cols-2" defaultValue="yearly">
               {/* Monthly */}
-              <label className="border-input has-data-[state=checked]:border-ring focus-within:border-ring focus-within:ring-ring/50 relative flex cursor-pointer flex-col gap-1 rounded-md border px-4 py-3 shadow-xs transition-[color,box-shadow] outline-none focus-within:ring-[3px]">
+              <label className="border-input has-data-[state=checked]:border-primary/50 has-focus-visible:border-ring has-focus-visible:ring-ring/50 relative flex cursor-pointer flex-col gap-1 rounded-md border px-4 py-3 shadow-xs transition-[color,box-shadow] outline-none has-focus-visible:ring-[3px]">
                 <RadioGroupItem
                   id="radio-monthly"
                   value="monthly"
@@ -68,7 +74,7 @@ export default function Component() {
                 <p className="text-muted-foreground text-sm">$32/month</p>
               </label>
               {/* Yearly */}
-              <label className="border-input has-data-[state=checked]:border-ring focus-within:border-ring focus-within:ring-ring/50 relative flex cursor-pointer flex-col gap-1 rounded-md border px-4 py-3 shadow-xs transition-[color,box-shadow] outline-none focus-within:ring-[3px]">
+              <label className="border-input has-data-[state=checked]:border-primary/50 has-focus-visible:border-ring has-focus-visible:ring-ring/50 relative flex cursor-pointer flex-col gap-1 rounded-md border px-4 py-3 shadow-xs transition-[color,box-shadow] outline-none has-focus-visible:ring-[3px]">
                 <RadioGroupItem
                   id="radio-yearly"
                   value="yearly"
@@ -86,7 +92,9 @@ export default function Component() {
               <Input id={`name-${id}`} type="text" required />
             </div>
             <div className="*:not-first:mt-2">
-              <legend className="text-foreground text-sm font-medium">Card Details</legend>
+              <legend className="text-foreground text-sm font-medium">
+                Card Details
+              </legend>
               <div className="rounded-md shadow-xs">
                 <div className="relative focus-within:z-10">
                   <Input
@@ -97,7 +105,9 @@ export default function Component() {
                     {meta.cardType ? (
                       <svg
                         className="overflow-hidden rounded-sm"
-                        {...getCardImageProps({ images: images as unknown as CardImages })}
+                        {...getCardImageProps({
+                          images: images as unknown as CardImages,
+                        })}
                         width={20}
                       />
                     ) : (
@@ -152,5 +162,5 @@ export default function Component() {
         </p>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

@@ -43,7 +43,8 @@ import {
 const typographyComponents: FormComponentModel[] = [
   new FormComponentModel({
     id: "text",
-    label: "Text",
+    label: "Text block",
+    label_info: "WYSIWYG Editor",
     type: "text",
     category: "content",
     icon: "Text",
@@ -54,7 +55,8 @@ const typographyComponents: FormComponentModel[] = [
 const formComponents: FormComponentModel[] = [
   new FormComponentModel({
     id: "text-input",
-    label: "Text Input",
+    label: "Text",
+    label_info: "Single line text input",
     type: "input",
     category: "form",
     icon: "TextCursorInput",
@@ -63,13 +65,15 @@ const formComponents: FormComponentModel[] = [
   new FormComponentModel({
     id: "textarea",
     label: "Text Area",
+    label_info: "Multi-line text input",
     type: "textarea",
     category: "form",
     icon: "AlignLeftIcon",
   }),
   new FormComponentModel({
     id: "number-input",
-    label: "Number Input",
+    label: "Number",
+    label_info: "Input field for numeric values",
     type: "number",
     category: "form",
     icon: "HashIcon",
@@ -77,7 +81,8 @@ const formComponents: FormComponentModel[] = [
   }),
   new FormComponentModel({
     id: "email-input",
-    label: "Email Input",
+    label: "Email",
+    label_info: "Input field for email addresses",
     type: "email",
     category: "form",
     icon: "MailIcon",
@@ -85,7 +90,8 @@ const formComponents: FormComponentModel[] = [
   }),
   new FormComponentModel({
     id: "password-input",
-    label: "Password Input",
+    label: "Password",
+    label_info: "Input field for passwords",
     type: "password",
     category: "form",
     icon: "LockIcon",
@@ -93,7 +99,8 @@ const formComponents: FormComponentModel[] = [
   }),
   new FormComponentModel({
     id: "file-input",
-    label: "File Input",
+    label: "File upload",
+    label_info: "Input field for file uploads",
     type: "file",
     category: "form",
     icon: "UploadIcon",
@@ -101,7 +108,8 @@ const formComponents: FormComponentModel[] = [
   }),
   new FormComponentModel({
     id: "tel-input",
-    label: "Tel Input",
+    label: "Telephone",
+    label_info: "Input field for telephone numbers",
     type: "tel",
     category: "form",
     icon: "PhoneIcon",
@@ -109,7 +117,8 @@ const formComponents: FormComponentModel[] = [
   }),
   new FormComponentModel({
     id: "url-input",
-    label: "Url Input",
+    label: "URL",
+    label_info: "Input field for URLs",
     type: "url",
     category: "form",
     icon: "LinkIcon",
@@ -118,6 +127,7 @@ const formComponents: FormComponentModel[] = [
   new FormComponentModel({
     id: "select",
     label: "Select",
+    label_info: "Dropdown select",
     type: "select",
     category: "form",
     icon: "ListIcon",
@@ -129,6 +139,7 @@ const formComponents: FormComponentModel[] = [
   new FormComponentModel({
     id: "checkbox",
     label: "Checkbox",
+    label_info: "Checkbox input",
     label_description: "Checkbox Description",
     type: "checkbox",
     category: "form",
@@ -142,6 +153,7 @@ const formComponents: FormComponentModel[] = [
   new FormComponentModel({
     id: "checkbox-group",
     label: "Checkbox Group",
+    label_info: "Group of checkboxes",
     type: "checkbox-group",
     category: "form",
     icon: "ListChecksIcon",
@@ -153,6 +165,7 @@ const formComponents: FormComponentModel[] = [
   new FormComponentModel({
     id: "radio",
     label: "Radio Group",
+    label_info: "Group of radio buttons",
     type: "radio",
     category: "form",
     icon: "CircleDotIcon",
@@ -164,6 +177,7 @@ const formComponents: FormComponentModel[] = [
   new FormComponentModel({
     id: "date",
     label: "Date Picker",
+    label_info: "Date picker input",
     type: "date",
     category: "form",
     icon: "CalendarIcon",
@@ -172,6 +186,7 @@ const formComponents: FormComponentModel[] = [
   new FormComponentModel({
     id: "switch",
     label: "Switch",
+    label_info: "Toggle switch",
     label_description: "Switch Description",
     type: "switch",
     category: "form",
@@ -184,8 +199,20 @@ const formComponents: FormComponentModel[] = [
   }),
   new FormComponentModel({
     id: "button",
-    label: "Button",
-    content: "Button",
+    label: "Submit",
+    label_info: "Submit form",
+    content: "Submit",
+    type: "button",
+    category: "form",
+    icon: "SquareMousePointer",
+    properties: { style: { showLabel: "no" } },
+    attributes: { type: "button" }
+  }),
+  new FormComponentModel({
+    id: "reset-button",
+    label: "Reset Button",
+    label_info: "Reset form input values",
+    content: "Clear Form",
     type: "button",
     category: "form",
     icon: "SquareMousePointer",

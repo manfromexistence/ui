@@ -36,6 +36,7 @@ import {
 import { toast } from "sonner"
 import { Badge } from "@/components/ui/badge"
 import { useSidebarVisibility } from "@/hooks/use-sidebar-visibility"
+import { Logo } from "@/components/ui/logo"
 
 import { categories } from "@/lib/navigation"
 import { trackEvent, AMPLITUDE_EVENTS } from "@/lib/amplitude"
@@ -312,7 +313,7 @@ export function CommandMenu() {
       )
 
       const prompt = getComponentInstallPrompt({
-        promptType: PROMPT_TYPES.BASIC,
+        promptType: PROMPT_TYPES.EXTENDED,
         codeFileName: selectedComponent.component.code.split("/").slice(-1)[0]!,
         demoCodeFileName: selectedComponent.demo_code.split("/").slice(-1)[0]!,
         code: codeResult.data as string,
@@ -333,7 +334,7 @@ export function CommandMenu() {
       trackEvent(AMPLITUDE_EVENTS.COPY_AI_PROMPT, {
         componentId: selectedComponent.id,
         componentName: selectedComponent.name,
-        promptType: PROMPT_TYPES.BASIC,
+        promptType: PROMPT_TYPES.EXTENDED,
       })
     } catch (err) {
       console.error("Failed to copy AI prompt:", err)
@@ -505,6 +506,7 @@ export function CommandMenu() {
                   "api docs keys",
                   "terms service",
                   "toggle theme",
+                  "subscription",
                   ...(shouldShowSidebar ? ["toggle sidebar"] : []),
                 ].some((text) => text.includes(searchQuery.toLowerCase()))) && (
                 <>
@@ -618,6 +620,22 @@ export function CommandMenu() {
                         <Icons.sun className="h-4 w-4 dark:hidden" />
                         <Icons.moon className="h-4 w-4 hidden dark:block" />
                         <span>Toggle Theme</span>
+                      </CommandItem>
+                    )}
+                    {(!searchQuery ||
+                      "subscription".includes(searchQuery.toLowerCase())) && (
+                      <CommandItem
+                        value="action-subscription"
+                        onSelect={() => {
+                          router.push("/subscription")
+                          setSearchQuery("")
+                          setValue("")
+                          setOpen(false)
+                        }}
+                        className="flex items-center gap-2"
+                      >
+                        <Icons.creditCard className="h-4 w-4" />
+                        <span>Subscription</span>
                       </CommandItem>
                     )}
                     {(!searchQuery ||
@@ -850,9 +868,11 @@ export function CommandMenu() {
             <div className="flex items-center gap-2 group hover:cursor-pointer">
               <div className="relative w-3 h-3">
                 <div
-                  className="absolute inset-0 rounded-full bg-foreground/80 transition-all duration-500 
+                  className="absolute inset-0 transition-all duration-500 
                   group-hover:opacity-0 group-hover:scale-90"
-                />
+                >
+                  <Logo position="flex" className="w-3 h-3 !left-0 !top-0" />
+                </div>
                 <div
                   className="absolute inset-0 opacity-0 transition-all duration-500 transform
                   group-hover:opacity-100 group-hover:scale-100 origin-center"

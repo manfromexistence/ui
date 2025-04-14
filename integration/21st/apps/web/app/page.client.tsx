@@ -10,6 +10,12 @@ import { cn } from "@/lib/utils"
 import { SortOption, SORT_OPTIONS } from "@/types/global"
 import { sortByAtom } from "@/components/features/main-page/main-page-header"
 import { sidebarOpenAtom } from "@/components/features/main-page/main-layout"
+import {
+  tabChangeHandlerAtom,
+  currentSectionAtom,
+  selectedMainTabAtom,
+  AppSection,
+} from "@/lib/atoms"
 import { ComponentsList } from "@/components/ui/items-list"
 import { CategoriesList } from "@/components/features/categories/category-list"
 import { ComponentsHeader } from "@/components/features/main-page/main-page-header"
@@ -21,7 +27,7 @@ import {
   MagicBanner,
   magicBannerVisibleAtom,
 } from "@/components/features/magic/magic-banner"
-import { LogosList } from "@/components/features/logos/logos-list"
+import { CollectionsContainer } from "@/components/features/collections/collections-list"
 
 const MainContent = React.memo(function MainContent({
   activeTab,
@@ -38,7 +44,7 @@ const MainContent = React.memo(function MainContent({
     | "authors"
     | "pro"
     | "templates"
-    | "logos"
+    | "collections"
   selectedFilter: string
   setSelectedFilter: (filter: string) => void
   sortBy: SortOption
@@ -51,7 +57,7 @@ const MainContent = React.memo(function MainContent({
       | "authors"
       | "pro"
       | "templates"
-      | "logos",
+      | "collections",
   ) => void
 }) {
   const renderContent = () => {
@@ -70,31 +76,6 @@ const MainContent = React.memo(function MainContent({
       case "components":
         return (
           <>
-            <AnimatePresence mode="popLayout">
-              {!sidebarOpen && (
-                <motion.div
-                  initial={
-                    prevSidebarState !== sidebarOpen
-                      ? { opacity: 0, height: 0, marginBottom: 0 }
-                      : false
-                  }
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0, marginBottom: 0 }}
-                  transition={{
-                    duration: 0.2,
-                    height: {
-                      duration: 0.2,
-                    },
-                  }}
-                >
-                  <FilterChips
-                    activeTab={activeTab}
-                    selectedFilter={selectedFilter}
-                    onFilterChange={setSelectedFilter}
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
             <motion.div
               layout={prevSidebarState !== sidebarOpen}
               initial={
@@ -128,18 +109,10 @@ const MainContent = React.memo(function MainContent({
             <TemplatesContainer tagSlug={selectedFilter} />
           </>
         )
-      case "logos":
+      case "collections":
         return (
           <>
-            <FilterChips
-              activeTab={activeTab}
-              selectedFilter={selectedFilter}
-              onFilterChange={setSelectedFilter}
-            />
-            <LogosList
-              category={selectedFilter === "all" ? undefined : selectedFilter}
-              onCategoryChange={setSelectedFilter}
-            />
+            <CollectionsContainer tagSlug={selectedFilter} />
           </>
         )
       default:
@@ -148,7 +121,7 @@ const MainContent = React.memo(function MainContent({
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col pb-10">
       <ComponentsHeader activeTab={activeTab} onTabChange={handleTabChange} />
       {renderContent()}
     </div>
@@ -159,23 +132,30 @@ export function HomePageClient() {
   const [sortBy, setSortBy] = useAtom(sortByAtom)
   const [sidebarOpen] = useAtom(sidebarOpenAtom)
   const [isBannerVisible] = useAtom(magicBannerVisibleAtom)
+  const [, setTabChangeHandler] = useAtom(tabChangeHandlerAtom)
+  const [, setCurrentSection] = useAtom(currentSectionAtom)
+  const [selectedTab, setSelectedTab] = useAtom(selectedMainTabAtom)
   const [shouldShowBanner, setShouldShowBanner] = useState(false)
   const [prevSidebarState, setPrevSidebarState] = useState(sidebarOpen)
   const queryClient = useQueryClient()
   const searchParams = useSearchParams()
   const router = useRouter()
-  const [activeTab, setActiveTab] = useState<
-    "categories" | "components" | "authors" | "pro" | "templates" | "logos"
-  >(
-    (searchParams.get("tab") as
-      | "categories"
-      | "components"
-      | "authors"
-      | "pro"
-      | "templates"
-      | "logos") || "components",
+  const [activeTab, setActiveTab] = useState<Exclude<AppSection, "magic">>(
+    (searchParams.get("tab") as Exclude<AppSection, "magic">) || "components",
   )
   const [selectedFilter, setSelectedFilter] = useState<string>("all")
+
+  useEffect(() => {
+    setCurrentSection("components")
+  }, [setCurrentSection])
+
+  useEffect(() => {
+    const tab = searchParams.get("tab") as Exclude<AppSection, "magic"> | null
+    if (tab && tab !== activeTab) {
+      setActiveTab(tab)
+      setSelectedTab(tab)
+    }
+  }, [searchParams, setSelectedTab, activeTab])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -214,23 +194,21 @@ export function HomePageClient() {
     setPrevSidebarState(sidebarOpen)
   }, [sidebarOpen])
 
-  const handleTabChange = (
-    newTab:
-      | "categories"
-      | "components"
-      | "authors"
-      | "pro"
-      | "templates"
-      | "logos",
-  ) => {
+  const handleTabChange = (newTab: Exclude<AppSection, "magic">) => {
     setActiveTab(newTab)
+    setSelectedTab(newTab)
     setSelectedFilter("all")
   }
 
+  useEffect(() => {
+    setTabChangeHandler(() => handleTabChange)
+    return () => setTabChangeHandler(null)
+  }, [setTabChangeHandler])
+
   return (
     <>
-      <AnimatePresence mode="popLayout">
-        <AnimatePresence>
+      <AnimatePresence mode="popLayout" key="main-content">
+        <AnimatePresence key="magic-banner">
           {shouldShowBanner && (
             <motion.div
               initial={{ opacity: 0, height: 0, marginBottom: 0 }}
@@ -242,6 +220,12 @@ export function HomePageClient() {
                   duration: 0.2,
                 },
               }}
+              className="hidden md:block"
+              style={
+                {
+                  "--sidebar-width": sidebarOpen ? "280px" : "0px",
+                } as React.CSSProperties
+              }
             >
               <MagicBanner />
             </motion.div>
@@ -250,7 +234,8 @@ export function HomePageClient() {
         <div
           className={cn(
             "container mx-auto px-[var(--container-x-padding)] max-w-[3680px] [--container-x-padding:20px] min-720:[--container-x-padding:24px] min-1280:[--container-x-padding:32px] min-1536:[--container-x-padding:80px] transition-[margin] duration-200 ease-in-out",
-            shouldShowBanner && isBannerVisible ? "mt-[144px]" : "mt-20",
+            "mt-16",
+            shouldShowBanner && isBannerVisible ? "md:mt-[144px]" : "",
           )}
         >
           <MainContent

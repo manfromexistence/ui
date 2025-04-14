@@ -12,14 +12,14 @@ const styleMap: Partial<Record<keyof FormComponentStyles, Record<Viewports, Reco
       top: "flex-col gap-2 space-y-0",
     },
     md: {
-      left: "md:flex-row md:gap-2 md:space-y-0",
-      right: "md:flex-row md:gap-2 md:space-y-0 md:flex-row-reverse",
-      top: "md:flex-col md:gap-2 md:space-y-0",
+      left: "@3xl:flex-row @3xl:gap-2 @3xl:space-y-0",
+      right: "@3xl:flex-row @3xl:gap-2 @3xl:space-y-0 @3xl:flex-row-reverse",
+      top: "@3xl:flex-col @3xl:gap-2 @3xl:space-y-0",
     },
     lg: {
-      left: "lg:flex-row lg:gap-2 lg:space-y-0",
-      right: "lg:flex-row lg:gap-2 lg:space-y-0 lg:flex-row-reverse",
-      top: "lg:flex-col lg:gap-2 lg:space-y-0",
+      left: "@5xl:flex-row @5xl:gap-2 @5xl:space-y-0",
+      right: "@5xl:flex-row @5xl:gap-2 @5xl:space-y-0 @5xl:flex-row-reverse",
+      top: "@5xl:flex-col @5xl:gap-2 @5xl:space-y-0",
     },
   },
   visible: {
@@ -28,12 +28,12 @@ const styleMap: Partial<Record<keyof FormComponentStyles, Record<Viewports, Reco
       no: "hidden",
     },
     md: {
-      yes: "md:flex",
-      no: "md:hidden",
+      yes: "@3xl:flex",
+      no: "@3xl:hidden",
     },
     lg: {
-      yes: "lg:flex",
-      no: "lg:hidden",
+      yes: "@5xl:flex",
+      no: "@5xl:hidden",
     },
   },
   asCard: {
@@ -42,12 +42,12 @@ const styleMap: Partial<Record<keyof FormComponentStyles, Record<Viewports, Reco
       no: "border-0 p-0",
     },
     md: {
-      yes: "md:rounded-md md:border md:p-4",
-      no: "md:border-0 md:p-0",
+      yes: "@3xl:rounded-md @3xl:border @3xl:p-4",
+      no: "@3xl:border-0 @3xl:p-0",
     },  
     lg: {
-      yes: "lg:rounded-md lg:border lg:p-4",
-      no: "lg:border-0 lg:p-0",
+      yes: "@5xl:rounded-md @5xl:border @5xl:p-4",
+      no: "@5xl:border-0 @5xl:p-0",
     },
   },
   showLabel: {
@@ -56,12 +56,12 @@ const styleMap: Partial<Record<keyof FormComponentStyles, Record<Viewports, Reco
       no: "hidden",
     },
     md: {
-      yes: "md:flex",
-      no: "md:hidden",
+      yes: "@3xl:flex",
+      no: "@3xl:hidden",
     },
     lg: {
-      yes: "lg:flex",
-      no: "lg:hidden",
+      yes: "@5xl:flex",
+      no: "@5xl:hidden",
     },
   },
   labelAlign: {
@@ -71,14 +71,14 @@ const styleMap: Partial<Record<keyof FormComponentStyles, Record<Viewports, Reco
       end: "items-end",
     },
     md: {
-      start: "md:items-start",
-      center: "md:items-center",
-      end: "md:items-end",
+      start: "@3xl:items-start",
+      center: "@3xl:items-center",
+      end: "@3xl:items-end",
     },
     lg: {
-      start: "lg:items-start",
-      center: "lg:items-center",
-      end: "lg:items-end",
+      start: "@5xl:items-start",
+      center: "@5xl:items-center",
+      end: "@5xl:items-end",
     },
   },
   textAlign: {
@@ -88,14 +88,14 @@ const styleMap: Partial<Record<keyof FormComponentStyles, Record<Viewports, Reco
       right: "text-right",
     },
     md: {
-      left: "md:text-left",
-      center: "md:text-center",
-      right: "md:text-right",
+      left: "@3xl:text-left",
+      center: "@3xl:text-center",
+      right: "@3xl:text-right",
     },
     lg: {
-      left: "lg:text-left",
-      center: "lg:text-center",
-      right: "lg:text-right",
+      left: "@5xl:text-left",
+      center: "@5xl:text-center",
+      right: "@5xl:text-right",
     },
   },
   colSpan: {
@@ -115,34 +115,34 @@ const styleMap: Partial<Record<keyof FormComponentStyles, Record<Viewports, Reco
       "12": "col-span-12",
     },
     md: {
-      auto: "md:col-auto",
-      "1": "md:col-span-1",
-      "2": "md:col-span-2",
-      "3": "md:col-span-3",
-      "4": "md:col-span-4",
-      "5": "md:col-span-5",
-      "6": "md:col-span-6",
-      "7": "md:col-span-7",
-      "8": "md:col-span-8",
-      "9": "md:col-span-9",
-      "10": "md:col-span-10",
-      "11": "md:col-span-11",
-      "12": "md:col-span-12",
+      auto: "@3xl:col-auto",
+      "1": "@3xl:col-span-1",
+      "2": "@3xl:col-span-2",
+      "3": "@3xl:col-span-3",
+      "4": "@3xl:col-span-4",
+      "5": "@3xl:col-span-5",
+      "6": "@3xl:col-span-6",
+      "7": "@3xl:col-span-7",
+      "8": "@3xl:col-span-8",
+      "9": "@3xl:col-span-9",
+      "10": "@3xl:col-span-10",
+      "11": "@3xl:col-span-11",
+      "12": "@3xl:col-span-12",
     },
     lg: {
-      auto: "lg:col-auto",
-      "1": "lg:col-span-1",
-      "2": "lg:col-span-2",
-      "3": "lg:col-span-3",
-      "4": "lg:col-span-4",
-      "5": "lg:col-span-5",
-      "6": "lg:col-span-6",
-      "7": "lg:col-span-7",
-      "8": "lg:col-span-8",
-      "9": "lg:col-span-9",
-      "10": "lg:col-span-10",
-      "11": "lg:col-span-11",
-      "12": "lg:col-span-12",
+      auto: "@5xl:col-auto",
+      "1": "@5xl:col-span-1",
+      "2": "@5xl:col-span-2",
+      "3": "@5xl:col-span-3",
+      "4": "@5xl:col-span-4",
+      "5": "@5xl:col-span-5",
+      "6": "@5xl:col-span-6",
+      "7": "@5xl:col-span-7",
+      "8": "@5xl:col-span-8",
+      "9": "@5xl:col-span-9",
+      "10": "@5xl:col-span-10",
+      "11": "@5xl:col-span-11",
+      "12": "@5xl:col-span-12",
     },
   },
   colStart: {
@@ -162,34 +162,34 @@ const styleMap: Partial<Record<keyof FormComponentStyles, Record<Viewports, Reco
       "12": "col-start-12",
     },
     md: {
-      auto: "md:col-start-auto",
-      "1": "md:col-start-1",
-      "2": "md:col-start-2",
-      "3": "md:col-start-3",
-      "4": "md:col-start-4",
-      "5": "md:col-start-5",
-      "6": "md:col-start-6",
-      "7": "md:col-start-7",
-      "8": "md:col-start-8",
-      "9": "md:col-start-9",
-      "10": "md:col-start-10",
-      "11": "md:col-start-11",
-      "12": "md:col-start-12",
+      auto: "@3xl:col-start-auto",
+      "1": "@3xl:col-start-1",
+      "2": "@3xl:col-start-2",
+      "3": "@3xl:col-start-3",
+      "4": "@3xl:col-start-4",
+      "5": "@3xl:col-start-5",
+      "6": "@3xl:col-start-6",
+      "7": "@3xl:col-start-7",
+      "8": "@3xl:col-start-8",
+      "9": "@3xl:col-start-9",
+      "10": "@3xl:col-start-10",
+      "11": "@3xl:col-start-11",
+      "12": "@3xl:col-start-12",
     },
     lg: {
-      auto: "lg:col-start-auto",
-      "1": "lg:col-start-1",
-      "2": "lg:col-start-2",
-      "3": "lg:col-start-3",
-      "4": "lg:col-start-4",
-      "5": "lg:col-start-5",
-      "6": "lg:col-start-6",
-      "7": "lg:col-start-7",
-      "8": "lg:col-start-8",
-      "9": "lg:col-start-9",
-      "10": "lg:col-start-10",
-      "11": "lg:col-start-11",
-      "12": "lg:col-start-12",
+      auto: "@5xl:col-start-auto",
+      "1": "@5xl:col-start-1",
+      "2": "@5xl:col-start-2",
+      "3": "@5xl:col-start-3",
+      "4": "@5xl:col-start-4",
+      "5": "@5xl:col-start-5",
+      "6": "@5xl:col-start-6",
+      "7": "@5xl:col-start-7",
+      "8": "@5xl:col-start-8",
+      "9": "@5xl:col-start-9",
+      "10": "@5xl:col-start-10",
+      "11": "@5xl:col-start-11",
+      "12": "@5xl:col-start-12",
     },
   },
   flexAlign: {
@@ -199,14 +199,14 @@ const styleMap: Partial<Record<keyof FormComponentStyles, Record<Viewports, Reco
       end: "items-end",
     },
     md: {
-      start: "md:items-start",
-      center: "md:items-center",
-      end: "md:items-end",
+      start: "@3xl:items-start",
+      center: "@3xl:items-center",
+      end: "@3xl:items-end",
     },
     lg: {
-      start: "lg:items-start",
-      center: "lg:items-center",
-      end: "lg:items-end",
+      start: "@5xl:items-start",
+      center: "@5xl:items-center",
+      end: "@5xl:items-end",
     },
   },
 };
@@ -261,25 +261,27 @@ export const generateTWClassesForAllViewports = (
     // If no Desktop override, try to get Tablet override
     const tabletOverride = override["md"]?.properties?.style?.[styleKey];
 
+    console.log(desktopOverride, tabletOverride);
+
     if (desktopOverride) {
       if (styleKey === "colSpan" && desktopOverride === "auto" && row) {
         const colSpan = Math.floor(12 / row?.components.length);
-        classes.push(`lg:${transformStyleKeyToClassName(styleKey)}-${colSpan}`);
+        classes.push(`@5xl:${transformStyleKeyToClassName(styleKey)}-${colSpan}`);
       } else if (styleMap[styleKey] && styleMap[styleKey]["lg"] && styleMap[styleKey]["lg"][desktopOverride]) {
         classes.push(styleMap[styleKey]["lg"][desktopOverride]);
       } else {
-        classes.push(`lg:${desktopOverride}`);
+        classes.push(`@5xl:${desktopOverride}`);
       }
     }
 
     if (tabletOverride) {
       if (styleKey === "colSpan" && tabletOverride === "auto" && row) {
         const colSpan = Math.floor(12 / row?.components.length);
-        classes.push(`md:${transformStyleKeyToClassName(styleKey)}-${colSpan}`);
+        classes.push(`@3xl:${transformStyleKeyToClassName(styleKey)}-${colSpan}`);
       } else if (styleMap[styleKey] && styleMap[styleKey]["md"] && styleMap[styleKey]["md"][tabletOverride]) {
         classes.push(styleMap[styleKey]["md"][tabletOverride]);
       } else {
-        classes.push(`md:${tabletOverride}`);
+        classes.push(`@3xl:${tabletOverride}`);
       }
     }
   }

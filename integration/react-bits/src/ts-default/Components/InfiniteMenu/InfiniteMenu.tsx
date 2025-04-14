@@ -90,7 +90,7 @@ void main() {
                      containerAspect / imageAspect);
     
     // Rotate 180 degrees and adjust UVs for cover
-    vec2 st = 1.0 - vUvs; // 180 degree rotation
+    vec2 st = vec2(vUvs.x, 1.0 - vUvs.y);
     st = (st - 0.5) * scale + 0.5;
     
     // Clamp coordinates to prevent repeating

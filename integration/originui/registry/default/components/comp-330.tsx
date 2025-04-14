@@ -1,4 +1,7 @@
-import { Button } from "@/registry/default/ui/button";
+import { useId } from "react"
+import { CheckIcon, RefreshCcwIcon } from "lucide-react"
+
+import { Button } from "@/registry/default/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -7,14 +10,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/default/ui/dialog";
-import { Label } from "@/registry/default/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group";
-import { CheckIcon, RefreshCcwIcon } from "lucide-react";
-import { useId } from "react";
+} from "@/registry/default/ui/dialog"
+import { Label } from "@/registry/default/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
 
 export default function Component() {
-  const id = useId();
+  const id = useId()
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -39,7 +40,7 @@ export default function Component() {
         <form className="space-y-5">
           <RadioGroup className="gap-2" defaultValue="2">
             {/* Radio card #1 */}
-            <div className="border-input has-data-[state=checked]:border-ring has-data-[state=checked]:bg-accent relative flex w-full items-center gap-2 rounded-md border px-4 py-3 shadow-xs outline-none">
+            <div className="border-input has-data-[state=checked]:border-primary/50 has-data-[state=checked]:bg-accent relative flex w-full items-center gap-2 rounded-md border px-4 py-3 shadow-xs outline-none">
               <RadioGroupItem
                 value="1"
                 id={`${id}-1`}
@@ -48,13 +49,16 @@ export default function Component() {
               />
               <div className="grid grow gap-1">
                 <Label htmlFor={`${id}-1`}>Essential</Label>
-                <p id={`${id}-1-description`} className="text-muted-foreground text-xs">
+                <p
+                  id={`${id}-1-description`}
+                  className="text-muted-foreground text-xs"
+                >
                   $4 per member/month
                 </p>
               </div>
             </div>
             {/* Radio card #2 */}
-            <div className="border-input has-data-[state=checked]:border-ring has-data-[state=checked]:bg-accent relative flex w-full items-center gap-2 rounded-md border px-4 py-3 shadow-xs outline-none">
+            <div className="border-input has-data-[state=checked]:border-primary/50 has-data-[state=checked]:bg-accent relative flex w-full items-center gap-2 rounded-md border px-4 py-3 shadow-xs outline-none">
               <RadioGroupItem
                 value="2"
                 id={`${id}-2`}
@@ -63,13 +67,16 @@ export default function Component() {
               />
               <div className="grid grow gap-1">
                 <Label htmlFor={`${id}-2`}>Standard</Label>
-                <p id={`${id}-2-description`} className="text-muted-foreground text-xs">
+                <p
+                  id={`${id}-2-description`}
+                  className="text-muted-foreground text-xs"
+                >
                   $19 per member/month
                 </p>
               </div>
             </div>
             {/* Radio card #3 */}
-            <div className="border-input has-data-[state=checked]:border-ring has-data-[state=checked]:bg-accent relative flex w-full items-center gap-2 rounded-md border px-4 py-3 shadow-xs outline-none">
+            <div className="border-input has-data-[state=checked]:border-primary/50 has-data-[state=checked]:bg-accent relative flex w-full items-center gap-2 rounded-md border px-4 py-3 shadow-xs outline-none">
               <RadioGroupItem
                 value="3"
                 id={`${id}-3`}
@@ -78,7 +85,10 @@ export default function Component() {
               />
               <div className="grid grow gap-1">
                 <Label htmlFor={`${id}-3`}>Enterprise</Label>
-                <p id={`${id}-3-description`} className="text-muted-foreground text-xs">
+                <p
+                  id={`${id}-3-description`}
+                  className="text-muted-foreground text-xs"
+                >
                   $32 per member/month
                 </p>
               </div>
@@ -91,27 +101,51 @@ export default function Component() {
             </p>
             <ul className="text-muted-foreground space-y-2 text-sm">
               <li className="flex gap-2">
-                <CheckIcon size={16} className="text-primary mt-0.5 shrink-0" aria-hidden="true" />
+                <CheckIcon
+                  size={16}
+                  className="text-primary mt-0.5 shrink-0"
+                  aria-hidden="true"
+                />
                 Create unlimited projects.
               </li>
               <li className="flex gap-2">
-                <CheckIcon size={16} className="text-primary mt-0.5 shrink-0" aria-hidden="true" />
+                <CheckIcon
+                  size={16}
+                  className="text-primary mt-0.5 shrink-0"
+                  aria-hidden="true"
+                />
                 Remove watermarks.
               </li>
               <li className="flex gap-2">
-                <CheckIcon size={16} className="text-primary mt-0.5 shrink-0" aria-hidden="true" />
+                <CheckIcon
+                  size={16}
+                  className="text-primary mt-0.5 shrink-0"
+                  aria-hidden="true"
+                />
                 Add unlimited users and free viewers.
               </li>
               <li className="flex gap-2">
-                <CheckIcon size={16} className="text-primary mt-0.5 shrink-0" aria-hidden="true" />
+                <CheckIcon
+                  size={16}
+                  className="text-primary mt-0.5 shrink-0"
+                  aria-hidden="true"
+                />
                 Upload unlimited files.
               </li>
               <li className="flex gap-2">
-                <CheckIcon size={16} className="text-primary mt-0.5 shrink-0" aria-hidden="true" />
+                <CheckIcon
+                  size={16}
+                  className="text-primary mt-0.5 shrink-0"
+                  aria-hidden="true"
+                />
                 7-day money back guarantee.
               </li>
               <li className="flex gap-2">
-                <CheckIcon size={16} className="text-primary mt-0.5 shrink-0" aria-hidden="true" />
+                <CheckIcon
+                  size={16}
+                  className="text-primary mt-0.5 shrink-0"
+                  aria-hidden="true"
+                />
                 Advanced permissions.
               </li>
             </ul>
@@ -130,5 +164,5 @@ export default function Component() {
         </form>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

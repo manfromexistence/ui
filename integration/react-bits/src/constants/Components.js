@@ -37,6 +37,7 @@ const textAnimations = {
   'scroll-float': () => import("../demo/TextAnimations/ScrollFloatDemo"),
   'glitch-text': () => import("../demo/TextAnimations/GlitchTextDemo"),
   'fuzzy-text': () => import("../demo/TextAnimations/FuzzyTextDemo"),
+  'text-cursor': () => import("../demo/TextAnimations/TextCursorDemo"),
 };
 
 const components = {
@@ -60,6 +61,9 @@ const components = {
   'counter': () => import("../demo/Components/CounterDemo"),
   'lanyard': () => import("../demo/Components/LanyardDemo"),
   'glass-icons': () => import("../demo/Components/GlassIconsDemo"),
+  'animated-list': () => import("../demo/Components/AnimatedListDemo"),
+  'folder': () => import("../demo/Components/FolderDemo"),
+  'gooey-nav': () => import("../demo/Components/GooeyNavDemo"),
 };
 
 const backgrounds = {
@@ -79,6 +83,7 @@ const backgrounds = {
   'balatro': () => import("../demo/Backgrounds/BalatroDemo"),
   'threads': () => import("../demo/Backgrounds/ThreadsDemo"),
   'dither': () => import("../demo/Backgrounds/DitherDemo"),
+  'lightning': () => import("../demo/Backgrounds/LightningDemo"),
 };
 
 export const componentMap = {

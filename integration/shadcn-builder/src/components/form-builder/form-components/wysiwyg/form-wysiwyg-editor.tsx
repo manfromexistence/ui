@@ -4,6 +4,8 @@ import StarterKit from "@tiptap/starter-kit";
 import { Heading } from "@tiptap/extension-heading";
 import { Underline } from "@tiptap/extension-underline";
 import TextStyle from '@tiptap/extension-text-style'
+import TextAlign from '@tiptap/extension-text-align'
+
 import "./form-wysiwyg-editor.css";
 import { EditorToolbar } from "./editor-toolbar";
 import customClass from "./extensions/textCustomStyle";
@@ -30,6 +32,7 @@ export const TextColorStyle = TextStyle.extend({
 
 export const FormWysiwygEditor: React.FC<FormWysiwygEditorProps> = memo(
   ({ value, onChange, isEditable = false }) => {
+
     // Memoize editor extensions
     const extensions = useMemo(
       () => [
@@ -51,6 +54,16 @@ export const FormWysiwygEditor: React.FC<FormWysiwygEditorProps> = memo(
             },
           },
           heading: false,
+          bulletList: {
+            HTMLAttributes: {
+              class: "my-6 ml-6 list-disc [&>li]:mt-2",
+            },
+          },
+          orderedList: {
+            HTMLAttributes: {
+              class: "my-6 ml-6 list-decimal [&>li]:mt-2",
+            },
+          },
         }),
         Heading.configure({ levels: [1, 2, 3, 4] }).extend({
           levels: [1, 2, 3, 4],
@@ -76,19 +89,22 @@ export const FormWysiwygEditor: React.FC<FormWysiwygEditorProps> = memo(
         Underline,
         TextColorStyle,
         customClass,
+        TextAlign.configure({
+          types: ['heading', 'paragraph', "textStyle"],
+        })
       ],
       []
     );
 
     const editor = useEditor({
-      editable: true,
-      immediatelyRender: false,
+      editable: isEditable,
+      immediatelyRender: true,
       extensions,
       content: value,
       onUpdate: ({ editor }) => {
         onChange(editor.getHTML());
       },
-    });
+    }, [isEditable]);
 
     // Only update content when value prop changes and it's different from our local content
 

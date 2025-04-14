@@ -15,10 +15,18 @@ import { useHotkeys } from "react-hotkeys-hook"
 import { isMac } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { ComponentCardSkeleton } from "./skeletons"
+import { ComponentPreviewDialog } from "../features/component-page/preview-dialog"
+import { toast } from "sonner"
 
 type ComponentOrDemo =
   | DemoWithComponent
   | (Component & { user: User } & { view_count?: number })
+
+// --- Define the type alias for the admin liked demo function return type ---
+// Ensure the path matches your actual Supabase generated types
+type AdminLikedDemo =
+  Database["public"]["Functions"]["get_admin_liked_demos_v1"]["Returns"][number]
+// ---
 
 interface BaseListProps {
   className?: string
@@ -50,11 +58,18 @@ interface SearchListProps extends BaseListProps {
   sortBy: SortOption
 }
 
+interface CollectionListProps extends BaseListProps {
+  type: "collection"
+  collectionId: string
+  sortBy: SortOption
+}
+
 type ComponentsListProps =
   | MainListProps
   | TagListProps
   | UserListProps
   | SearchListProps
+  | CollectionListProps
 
 function useMainDemos(
   sortBy: SortOption,
@@ -62,26 +77,151 @@ function useMainDemos(
   initialData?: ComponentOrDemo[],
 ) {
   const supabase = useClerkSupabaseClient()
+  const adminUserIds = [
+    "user_2nA0HITg0H7hvozIDNdxvzinpei",
+    "user_2nElBLvklOKlAURm6W1PTu6yYFh",
+  ]
+  const itemsPerPage = 24
+  const adminLikedItemsLimit = 12 // Fetch 12 items per admin
+
   return useInfiniteQuery({
-    queryKey: ["filtered-demos", sortBy, tagSlug] as const,
+    queryKey: ["filtered-demos", sortBy, tagSlug, "with-admin-likes"] as const,
     queryFn: async ({ pageParam = 0 }) => {
-      const { data: filteredData, error } = await supabase.rpc(
-        "get_demos_list",
-        {
-          p_sort_by: sortBy,
-          p_offset: Number(pageParam) * 24,
-          p_limit: 24,
-          p_tag_slug: tagSlug,
-          p_include_private: false,
-        } as Database["public"]["Functions"]["get_demos_list"]["Args"],
-      )
+      const currentPage = Number(pageParam)
+      const isFirstPage = currentPage === 0
+      const isRecommendedSort = sortBy === "recommended"
 
-      if (error) throw error
-      const transformedData = (filteredData || []).map(transformDemoResult)
+      // --- Special handling for first page + recommended sort ---
+      if (isFirstPage && isRecommendedSort) {
+        const [likedResults, regularResult] = await Promise.all([
+          // Fetch liked demos for all admin users
+          Promise.all(
+            adminUserIds.map((userId) =>
+              supabase.rpc("get_admin_liked_demos_v1", {
+                p_user_id: userId,
+                p_limit: adminLikedItemsLimit, // Use the new limit
+              }),
+            ),
+          ),
+          // Fetch regular first page (recommended sort)
+          supabase.rpc("get_demos_list_v2", {
+            p_sort_by: "recommended", // Explicitly use recommended sort
+            p_offset: 0,
+            p_limit: itemsPerPage,
+            p_tag_slug: tagSlug,
+            p_include_private: false,
+          } as Database["public"]["Functions"]["get_demos_list_v2"]["Args"]),
+        ])
 
-      return {
-        data: transformedData,
-        total_count: (filteredData?.[0] as any)?.total_count ?? 0,
+        // Process Liked Demos
+        let combinedLikedDemosRaw: AdminLikedDemo[] = [] // Use defined type
+        likedResults.forEach((result) => {
+          if (result.error) {
+            console.error(
+              `Error fetching admin liked demos for one user:`,
+              result.error,
+            )
+          } else if (result.data) {
+            combinedLikedDemosRaw = combinedLikedDemosRaw.concat(
+              result.data as AdminLikedDemo[],
+            )
+          }
+        })
+
+        // Deduplicate liked demos using a Map, preserving first occurrence
+        const uniqueLikedDemosMap = new Map<number, AdminLikedDemo>()
+        combinedLikedDemosRaw.forEach((demo) => {
+          // Ensure demo and demo.id are valid before using the map
+          if (
+            demo &&
+            typeof demo.id === "number" &&
+            !uniqueLikedDemosMap.has(demo.id)
+          ) {
+            uniqueLikedDemosMap.set(demo.id, demo)
+          }
+        })
+
+        // Transform and Sort unique liked demos by updated_at desc as proxy for bookmarked_at
+        const uniqueLikedDemosTransformed = Array.from(
+          uniqueLikedDemosMap.values(),
+        )
+          .map(transformDemoResult) // Transform first
+          .sort((a, b) => {
+            // Then sort
+            // Handle potential null or undefined dates gracefully
+            const dateA = a.updated_at ? new Date(a.updated_at).getTime() : 0
+            const dateB = b.updated_at ? new Date(b.updated_at).getTime() : 0
+            return dateB - dateA // Descending order
+          })
+
+        const uniqueLikedDemoIds = new Set(
+          uniqueLikedDemosTransformed.map((d) => d.id),
+        )
+
+        // Process Regular Demos
+        if (regularResult.error) {
+          console.error(
+            "Error fetching regular recommended demos:",
+            regularResult.error,
+          )
+          throw regularResult.error
+        }
+
+        const regularDemosRaw = regularResult.data || []
+        const totalCount = (regularDemosRaw[0] as any)?.total_count ?? 0
+        const regularDemosTransformed = regularDemosRaw.map(transformDemoResult)
+
+        // Filter regular demos to remove duplicates from liked list
+        const filteredRegularDemos = regularDemosTransformed.filter(
+          (demo) => !uniqueLikedDemoIds.has(demo.id),
+        )
+
+        // Combine: Sorted Liked demos first, then filtered regular recommended demos
+        const finalPageData = [
+          ...uniqueLikedDemosTransformed,
+          ...filteredRegularDemos,
+        ]
+
+        return {
+          data: finalPageData,
+          total_count: totalCount,
+        }
+      } else {
+        // --- Standard handling for other sorts or subsequent pages ---
+        const offset = isRecommendedSort
+          ? Math.max(
+              0,
+              currentPage * itemsPerPage -
+                adminLikedItemsLimit * adminUserIds.length,
+            ) // Adjust offset calculation if needed, or simplify if prepending logic guarantees correct pagination
+          : currentPage * itemsPerPage
+
+        // Fetch pages normally using the provided sortBy and calculated offset
+        const { data: filteredData, error } = await supabase.rpc(
+          "get_demos_list_v2",
+          {
+            p_sort_by: sortBy, // Use the current sortBy value
+            p_offset: currentPage * itemsPerPage, // Keep original offset logic for simplicity
+            p_limit: itemsPerPage,
+            p_tag_slug: tagSlug,
+            p_include_private: false,
+          } as Database["public"]["Functions"]["get_demos_list_v2"]["Args"],
+        )
+
+        if (error) {
+          console.error(
+            `Error fetching demos (page ${currentPage}, sort ${sortBy}):`,
+            error,
+          )
+          throw error
+        }
+        const transformedData = (filteredData || []).map(transformDemoResult)
+        const totalCount = (filteredData?.[0] as any)?.total_count ?? 0
+
+        return {
+          data: transformedData,
+          total_count: totalCount,
+        }
       }
     },
     initialData: initialData
@@ -96,12 +236,15 @@ function useMainDemos(
         }
       : undefined,
     getNextPageParam: (lastPage, allPages) => {
-      if (!lastPage?.data || lastPage.data.length === 0) return undefined
+      if (!lastPage?.data) return undefined
+
       const loadedCount = allPages.reduce(
-        (sum, page) => sum + page.data.length,
+        (sum, page) => sum + (page?.data?.length ?? 0),
         0,
       )
-      return loadedCount < lastPage.total_count ? allPages.length : undefined
+      const totalItems = lastPage.total_count ?? 0
+
+      return loadedCount < totalItems ? allPages.length : undefined
     },
     initialPageParam: 0,
     staleTime: 1000 * 60 * 5,
@@ -197,7 +340,7 @@ function useSearchDemos(
     queryFn: async ({ pageParam = 0 }) => {
       try {
         const { data: searchResults, error } = await supabase.functions.invoke(
-          "ai-search-oai",
+          "search_demos_ai_oai_extended",
           {
             body: {
               search: query,
@@ -240,6 +383,7 @@ function useSearchDemos(
               user_id: userData.id,
               video_url: result.video_url,
               view_count: result.view_count || 0,
+              bookmarks_count: result.bookmarks_count || 0,
               component: componentWithUser,
               tags: [],
               embedding: null,
@@ -314,6 +458,9 @@ export function ComponentsList({
   const [localSearchQuery, setLocalSearchQuery] = useAtom(tagPageSearchAtom)
   const router = useRouter()
   const loadMoreRef = React.useRef<HTMLDivElement>(null)
+  const [selectedDemo, setSelectedDemo] =
+    React.useState<DemoWithComponent | null>(null)
+  const [isPreviewDialogOpen, setIsPreviewDialogOpen] = React.useState(false)
 
   let rawComponents: DemoWithComponent[] | undefined
   let isLoading = false
@@ -358,6 +505,72 @@ export function ComponentsList({
       isFetching = aiSearchQuery.isFetching
       hasNextPage = aiSearchQuery.hasNextPage
       fetchNextPage = aiSearchQuery.fetchNextPage
+      break
+    }
+    case "collection": {
+      console.log("[ComponentsList] Collection case:", {
+        collectionId: props.collectionId,
+        sortBy: props.sortBy,
+      })
+
+      const supabase = useClerkSupabaseClient()
+      const collectionQuery = useQuery({
+        queryKey: [
+          "collection-components",
+          props.collectionId,
+          props.sortBy,
+        ] as const,
+        queryFn: async () => {
+          console.log(
+            "[ComponentsList] Fetching collection components with params:",
+            {
+              p_collection_id: props.collectionId,
+              p_sort_by: props.sortBy,
+              p_offset: 0,
+              p_limit: 1000,
+            },
+          )
+          const { data: components, error } = await supabase.rpc(
+            "get_collection_components_v1",
+            {
+              p_collection_id: props.collectionId,
+              p_sort_by: props.sortBy,
+              p_offset: 0,
+              p_limit: 1000,
+            },
+          )
+
+          if (error) {
+            console.error("[ComponentsList] Error fetching components:", error)
+            throw error
+          }
+
+          console.log("[ComponentsList] Raw components data:", components)
+          const transformedData = (components || []).map(transformDemoResult)
+          console.log(
+            "[ComponentsList] Transformed components:",
+            transformedData,
+          )
+
+          return {
+            data: transformedData,
+            total_count: components?.length ?? 0,
+          }
+        },
+        initialData: initialData
+          ? {
+              data: initialData as DemoWithComponent[],
+              total_count: initialData.length,
+            }
+          : undefined,
+        staleTime: 1000 * 60 * 5,
+        gcTime: 1000 * 60 * 30,
+      })
+
+      rawComponents = collectionQuery.data?.data
+      isLoading = collectionQuery.isLoading
+      isFetching = collectionQuery.isFetching
+      hasNextPage = false
       break
     }
   }
@@ -466,6 +679,22 @@ export function ComponentsList({
               <ComponentCard
                 key={`${component.id}-${component.updated_at}`}
                 demo={component}
+                onClick={() => {
+                  if (component.bundle_url?.html) {
+                    setSelectedDemo(component)
+                    setIsPreviewDialogOpen(true)
+                  } else {
+                    router.push(
+                      `/${component.user.username}/${component.component.component_slug}/${component.demo_slug}`,
+                    )
+                  }
+                }}
+                onCtrlClick={(url) => {
+                  window.open(url, "_blank")
+                  toast.success(
+                    `${component.component?.name || component.name} was opened in a new tab`,
+                  )
+                }}
               />
             ))}
             {hasNextPage && (
@@ -481,6 +710,17 @@ export function ComponentsList({
         <div className="col-span-full flex justify-center pt-2 pb-4">
           <Loader2 className="h-5 w-5 animate-spin text-foreground/20 -mt-6" />
         </div>
+      )}
+
+      {/* Preview Dialog */}
+      {selectedDemo && (
+        <ComponentPreviewDialog
+          isOpen={isPreviewDialogOpen}
+          onClose={() => {
+            setIsPreviewDialogOpen(false)
+          }}
+          demo={selectedDemo}
+        />
       )}
     </>
   )

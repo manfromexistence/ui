@@ -8,7 +8,10 @@ import tsTailwind from '@ts-tailwind/TextAnimations/FallingText/FallingText.tsx?
 
 export const fallingText = {
   ...(generateCliCommands('TextAnimations/FallingText')),
-  installation: `npm i matter-js`,
+  installation: `npm i matter-js
+
+  //TS only
+  npm i -D @types/matter-js`,
   usage: `import FallingText from './FallingText';
   
 <FallingText

@@ -35,44 +35,80 @@ export function RenderEditorComponent({
 }: FormComponentProps & { dndAttributes: any; dndListeners: any }) {
   const { removeComponent, selectedComponent, viewport, updateComponent } =
     useFormBuilderStore();
-  const rowColumns = row.components.length;
-
+  const mode = useFormBuilderStore((state) => state.mode);
   const componentViews = getComponentViews(component);
 
   return (
-    <div className="relative flex h-full" key={component.id}>
-      <div className="relative flex-1 group/component">
+    <div
+      className={cn(
+        "relative flex h-full",
+        selectedComponent && "opacity-30",
+        selectedComponent?.id === component.id &&
+          "opacity-100 outline-2 outline-offset-6 outline-slate-400 rounded-xs"
+      )}
+      key={component.id}
+    >
+      <div className="relative flex-1">
         {component.category === "form" ? (
           <>
             <FormField
               control={form.control}
               name={component.id}
               render={({ field }) => (
-                <FormItem>
-                  <div className="flex items-center select-none text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ">
-                    <Icons.GripVertical
-                      className="h-4 w-4 text-slate-400 cursor-grab active:cursor-grabbing"
-                      {...dndAttributes}
-                      {...dndListeners}
-                    />
-                    <FormLabel className="shrink-0 text-xs text-slate-500">
-                      {component.getField("label", viewport)}
+                <FormItem className={cn(mode === "editor" && "group/component")}>
+                  <div className="flex items-center select-none">
+                    {mode === "editor" && (
+                      <Icons.GripVertical
+                        className="h-4 w-4 text-slate-400 cursor-grab active:cursor-grabbing focus:outline-none"
+                        {...dndAttributes}
+                        {...dndListeners}
+                      />
+                    )}
+                    <FormLabel
+                      className={cn(
+                        "shrink-0 flex items-center gap-2 ",
+                        mode === "editor" && "cursor-pointer"
+                      )}
+                      htmlFor={component.id}
+                    >
+                      {component.getField(
+                        "properties.style.showLabel",
+                        viewport
+                      ) === "yes" && component.getField("label", viewport)}
+
+                      {mode === "editor" && (
+                        <span
+                          className={cn(
+                            "text-xs text-slate-400",
+                            component.getField(
+                              "properties.style.showLabel",
+                              viewport
+                            ) === "no"
+                              ? "opacity-100"
+                              : "group-hover/component:opacity-100 opacity-0"
+                          )}
+                        >
+                          {component.getField("type")}
+                        </span>
+                      )}
                     </FormLabel>
                   </div>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className={cn(
-                      "h-8 w-8 absolute right-0 -top-2 m-0! text-red-500 group-hover/component:opacity-100 opacity-0",
-                      component.id === selectedComponent?.id && "opacity-100"
-                    )}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      removeComponent(row.id, component.id);
-                    }}
-                  >
-                    <Icons.Trash2Icon className="h-4 w-4" />
-                  </Button>
+                  {mode === "editor" && (
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className={cn(
+                        "h-8 w-8 absolute right-0 -top-2 m-0! text-red-500 group-hover/component:opacity-100 opacity-0",
+                        component.id === selectedComponent?.id && "opacity-100"
+                      )}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        removeComponent(row.id, component.id);
+                      }}
+                    >
+                      <Icons.Trash2Icon className="h-4 w-4" />
+                    </Button>
+                  )}
                   <FormControl>{componentViews?.render}</FormControl>
                   {component.description && (
                     <FormDescription>{component.description}</FormDescription>
@@ -82,25 +118,32 @@ export function RenderEditorComponent({
             />
           </>
         ) : (
-          <div className="relative group/component">
-            <>
-              <div className="flex items-center select-none text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ">
-                <Icons.GripVertical
-                  className="h-4 w-4 text-slate-400 cursor-grab active:cursor-grabbing"
-                  {...dndAttributes}
-                  {...dndListeners}
-                />
-                <FormLabel className="shrink-0 text-xs text-slate-500">
-                  {component.getField("label", viewport)}
-                </FormLabel>
-              </div>
-            </>
+          <div className={cn("relative", mode === "editor" && "group/component")}>
+            {mode === "editor" && (
+                <div className="flex items-center select-none">
+                  <Icons.GripVertical
+                    className="h-4 w-4 text-slate-400 cursor-grab active:cursor-grabbing"
+                    {...dndAttributes}
+                    {...dndListeners}
+                  />
+                  <FormLabel
+                    className={cn(
+                      "shrink-0 flex items-center gap-2 cursor-pointer",
+                      component.id === selectedComponent?.id && "font-bold"
+                    )}
+                  >
+                    <span className="text-xs text-slate-400">
+                      {component.getField("type")}
+                    </span>
+                  </FormLabel>
+                </div>
+            )}
             <Button
               variant="ghost"
               size="icon"
               className={cn(
                 "h-8 w-8 absolute right-0 -top-2 m-0! text-red-500 group-hover/component:opacity-100 opacity-0",
-                component.id === selectedComponent?.id && "opacity-100"
+                component.id === selectedComponent?.id && mode === "editor" && "opacity-100"
               )}
               onClick={(e) => {
                 e.stopPropagation();
@@ -112,9 +155,11 @@ export function RenderEditorComponent({
             <FormWysiwygEditor
               value={component.content || ""}
               onChange={(content) => {
-                updateComponent(component.id, "content", content, true)
+                updateComponent(component.id, "content", content, true);
               }}
-              isEditable={selectedComponent?.id === component.id}
+              isEditable={
+                selectedComponent?.id === component.id && mode === "editor"
+              }
             />
           </div>
         )}

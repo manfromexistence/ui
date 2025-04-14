@@ -60,6 +60,7 @@ const VariableProximity = forwardRef((props, ref) => {
   const letterRefs = useRef([]);
   const interpolatedSettingsRef = useRef([]);
   const mousePositionRef = useMousePositionRef(containerRef);
+  const lastPositionRef = useRef({ x: null, y: null });
 
   const parsedSettings = useMemo(() => {
     const parseSettings = (settingsStr) =>
@@ -97,6 +98,12 @@ const VariableProximity = forwardRef((props, ref) => {
 
   useAnimationFrame(() => {
     if (!containerRef?.current) return;
+    const { x, y } = mousePositionRef.current;
+    if (lastPositionRef.current.x === x && lastPositionRef.current.y === y) {
+      return;
+    }
+    lastPositionRef.current = { x, y };
+
     const containerRect = containerRef.current.getBoundingClientRect();
 
     letterRefs.current.forEach((letterRef, index) => {

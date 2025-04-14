@@ -34,10 +34,9 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     <Textarea
       key="${component.id}"
       id="${escapeHtml(component.getField("attributes.id"))}"
-      name="${escapeHtml(component.getField("attributes.name"))}"
       placeholder="${escapeHtml(component.getField("attributes.placeholder"))}"
       className="${escapeHtml(component.getField("attributes.class"))}"
-      defaultValue="${escapeHtml(String(component.value))}"
+      {...field}
     />
     `,
     dependencies: {
@@ -55,4 +54,5 @@ export const TextareaDesignProperties: DesignPropertiesViews = {
   input: <InputGroup />,
   options: null,
   button: null,
+  validation: null,
 };

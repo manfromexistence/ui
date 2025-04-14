@@ -44,9 +44,8 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     <RadioGroup
       key="${component.id}"
       id="${escapeHtml(component.getField("attributes.id"))}"
-      name="${escapeHtml(component.getField("attributes.name"))}"
       className="${escapeHtml(component.getField("attributes.class"))}"
-      value="${escapeHtml(String(component.value))}"
+      {...field}
     > 
       ${component.options?.map((option) => `
         <div key="${escapeHtml(option.value)}" className="flex items-center space-x-2">
@@ -74,4 +73,5 @@ export const RadioDesignProperties: DesignPropertiesViews = {
   input: <InputGroup whitelist={["placeholder", "description", "value"]} />,
   options: <OptionsGroup />,
   button: null,
+  validation: null,
 };

@@ -24,16 +24,14 @@ export const DropdownComponents = ({
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
+          <div
             className={cn(
-              "h-6 w-6 cursor-pointer active:cursor-grabbing self-center hover:bg-slate-200",
+              "h-4 w-4 cursor-pointer active:cursor-grabbing self-center hover:bg-indigo-400 rounded-full flex items-center justify-center group/dropdown",
               className
             )}
           >
-            <PlusIcon className="h-2 w-2 text-slate-400" />
-          </Button>
+            <PlusIcon className="h-3 w-3 text-indigo-400 group-hover/dropdown:text-white" />
+          </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           {AVAILABLE_COMPONENTS.map((component) => (

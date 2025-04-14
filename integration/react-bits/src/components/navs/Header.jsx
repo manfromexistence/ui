@@ -22,6 +22,7 @@ import { TiStarFullOutline } from "react-icons/ti";
 import { useStars } from '../../hooks/useStars';
 import { useDeviceOS } from 'react-haiku';
 import { useSearch } from '../context/SearchContext/useSearch';
+import { useLanguage } from '../context/LanguageContext/useLanguage'
 
 
 import Logo from '../../assets/logos/reactbits-logo.svg';
@@ -31,6 +32,7 @@ import FadeContent from '../../content/Animations/FadeContent/FadeContent';
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { toggleSearch } = useSearch();
+  const { languagePreset, setLanguagePreset } = useLanguage();
   const stars = useStars();
   const os = useDeviceOS();
 
@@ -84,8 +86,8 @@ const Header = () => {
               rounded="xl"
               width="fit-content"
               fontWeight={600}
-              onChange={(e) => localStorage.setItem('preferredLanguage', e.target.value)}
-              defaultValue={localStorage.getItem('preferredLanguage') || 'JS'}
+              onChange={(e) => setLanguagePreset(e.target.value)}
+              value={languagePreset}
             >
               <option value="JS">JS</option>
               <option value="TS">TS</option>

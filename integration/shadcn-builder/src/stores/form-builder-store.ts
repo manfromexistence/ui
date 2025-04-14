@@ -1,14 +1,11 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { FormBuilderStore, FormRow, Viewports } from '@/types/form-builder.types';
-import { AVAILABLE_COMPONENTS } from '@/config/available-components';
 import { FormComponentModel } from '@/models/FormComponent';
 
 const generateComponentId = (component: FormComponentModel, rows: FormRow[]): string => {
   const existingComponents = rows.flatMap(row => row.components);
   const existingTypes = existingComponents.filter(comp => comp.getField("type").startsWith(component.getField("type")));
-
-  console.log(existingTypes);
 
   let counter = existingTypes.length;
   let newId = `${component.getField("id")}-${counter}`;
@@ -34,11 +31,12 @@ export const useFormBuilderStore = create<FormBuilderStore>()(
         set((state) => {
           const newComponent = new FormComponentModel({...component});
           newComponent.id = generateComponentId(newComponent, state.rows);
+
           newComponent.attributes = {
             ...newComponent.attributes,
             id: newComponent.id
           };
-          
+
           const newRow = { id: state.rows.length + 1, components: [newComponent] };
 
           if (after !== undefined) {
@@ -59,7 +57,12 @@ export const useFormBuilderStore = create<FormBuilderStore>()(
           rows: state.rows.filter((row) => row.id !== rowId),
         }));
       },
-      updateRows: (rows: FormRow[]) => set({ rows }), 
+      updateRows: (rows: FormRow[]) => set({ 
+        rows: rows.map((row, index) => ({
+          ...row,
+          id: index + 1
+        }))
+      }),
       updateRow: (row: FormRow) => set((state) => ({
         rows: state.rows.map((r) => r.id === row.id ? row : r)
       })),
@@ -187,7 +190,7 @@ export const useFormBuilderStore = create<FormBuilderStore>()(
           };
         });
       },
-      selectComponent: (component: FormComponentModel | null) => set(() => ({ selectedComponent: component ? new FormComponentModel(component) : null, selectedRow: null })),
+      selectComponent: (component: FormComponentModel | null) => set(() => ({ selectedComponent: component ? new FormComponentModel(component) : null })),
       getComponentFieldValue: (component: FormComponentModel, field: string) => {
         const state = get();
 
@@ -230,7 +233,6 @@ export const useFormBuilderStore = create<FormBuilderStore>()(
           state.rows = state.rows.map(row => ({
             ...row,
             components: row.components.map(component => {
-              const matchingComponent = AVAILABLE_COMPONENTS.find(c => c.type === component.type);
               return new FormComponentModel(component);
             })
           }));

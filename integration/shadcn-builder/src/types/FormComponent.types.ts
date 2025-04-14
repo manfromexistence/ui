@@ -5,6 +5,7 @@ import { HTMLAttributes, HTMLInputTypeAttribute } from "react";
 export interface FormComponentModelInput {
   id: string;
   label: string;
+  label_info: string;
   label_description?: string;
   type: string;
   category: "form" | "content";
@@ -16,31 +17,11 @@ export interface FormComponentModelInput {
   attributes?: FormComponentAttributes;
   overrides?: FormComponentOverrides;
   options?: { label: string; value: string; checked?: boolean }[];
-  required?: boolean;
+  validations?: FormComponentValidationTypes;
 }
 
 export type FormComponentProperties = {
   style?: FormComponentStyles;
-};
-
-export type FormComponentAttributes = Partial<HTMLAttributes<HTMLElement>> & {
-  id?: string;
-  type?: HTMLInputTypeAttribute;
-  name?: string;
-  class?: string;
-  value?: string | number | readonly string[];
-  checked?: boolean;
-  placeholder?: string;
-  required?: boolean;
-  disabled?: boolean;
-  min?: number | string;
-  max?: number | string;
-  step?: number | string;
-  pattern?: string;
-};
-
-export type FormComponentOverrides = {
-  [key in Viewports]?: Omit<FormComponentModelInput, "overrides">;
 };
 
 export interface FormComponentStyles {
@@ -80,3 +61,30 @@ export interface FormComponentStyles {
     | "12";
   flexAlign?: "start" | "center" | "end";
 }
+
+export type FormComponentAttributes = Partial<HTMLAttributes<HTMLElement>> & {
+  id?: string;
+  type?: HTMLInputTypeAttribute;
+  name?: string;
+  class?: string;
+  value?: string | number | readonly string[];
+  checked?: boolean;
+  placeholder?: string;
+  required?: boolean;
+  disabled?: boolean;
+};
+
+export type FormComponentOverrides = {
+  [key in Viewports]?: Omit<FormComponentModelInput, "overrides">;
+};
+
+export interface FormComponentValidationTypes {
+  required?: boolean;
+  min?: number;
+  max?: number;
+  minLength?: number;
+  maxLength?: number;
+}
+
+
+

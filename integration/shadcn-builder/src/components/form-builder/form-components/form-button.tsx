@@ -51,4 +51,5 @@ export const ButtonDesignProperties: DesignPropertiesViews = {
   input: null,
   button: <ButtonGroup />,
   options: null,
+  validation: null,
 };

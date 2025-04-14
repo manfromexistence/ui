@@ -2,23 +2,18 @@
 
 import { useFormBuilderStore } from "@/stores/form-builder-store";
 import { useEffect, useRef, useMemo, memo } from "react";
-import GenerateEditorMode from "./canvas/generate-editor-mode";
-import { IFrame } from "./helpers/iframe";
+import GenerateEditor from "./canvas/generate-editor";
 import { Pre } from "@/components/ui/pre";
 import { generateJsonSchema } from "./helpers/generate-json";
 import { cn } from "@/lib/utils";
+import { CardContent } from "../ui/card";
+import { Card } from "../ui/card";
 
 // Memoize static viewport styles
 const viewportEditorStyles = {
-  sm: "w-[418px]",
-  md: "w-[866px]",
-  lg: "w-[1134px]",
-} as const;
-
-const viewportPreviewStyles = {
-  sm: "w-[320px]",
-  md: "w-[768px]",
-  lg: "w-[1024px]",
+  sm: "w-[370px]",
+  md: "w-[818px]",
+  lg: "w-[1074px]",
 } as const;
 
 // Memoize the JSON preview component
@@ -40,13 +35,13 @@ JsonPreview.displayName = "JsonPreview";
 export function MainCanvas() {
   // Split store selectors to minimize re-renders
   const rows = useFormBuilderStore((state) => state.rows);
-  const mode = useFormBuilderStore((state) => state.mode);
   const viewport = useFormBuilderStore((state) => state.viewport);
   const showJson = useFormBuilderStore((state) => state.showJson);
   const selectedComponent = useFormBuilderStore(
     (state) => state.selectedComponent
   );
-
+  const selectRow = useFormBuilderStore((state) => state.selectRow);
+  const selectComponent = useFormBuilderStore((state) => state.selectComponent);
   const previewIframeRef = useRef<HTMLIFrameElement>(null);
   const editorIframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -73,30 +68,29 @@ export function MainCanvas() {
     }
   }, [rows]);
 
-  const tabsTriggerClass =
-    "relative flex items-center gap-2 cursor-pointer rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none";
-
   return (
     <div className="flex gap-4 h-full flex-col 3xl:flex-row">
       <div
-        className={`h-full w-full ${mode === "editor" ? "block" : "hidden"}`}
+        className={`h-full w-full`}
+        onClick={() => {
+          if (selectedComponent) {
+            selectComponent(null);
+            selectRow(null);
+          }
+        }}
       >
-        <IFrame
-          ref={editorIframeRef}
-          className={cn(`${viewportEditorStyles[viewport]}`, "mx-auto")}
+        <Card
+          className={cn(
+            'transition-all duration-300',
+            `${viewportEditorStyles[viewport]}`,
+            "mx-auto scrollbar-hide mt-6"
+          )}
         >
-          <GenerateEditorMode />
-        </IFrame>
-      </div>
-      <div
-        className={`h-full mx-auto ${mode === "preview" ? "block" : "hidden"}`}
-      >
-        <iframe
-          ref={previewIframeRef}
-          src="/canvas/preview"
-          className={`h-full border-0 mx-auto ${viewportPreviewStyles[viewport]}`}
-          title="Form Canvas"
-        />
+          <CardContent className="@container">
+            <GenerateEditor />
+          </CardContent>
+        </Card>
+        
       </div>
       {showJson && <JsonPreview rows={rows} />}
     </div>

@@ -6,8 +6,11 @@ import { LabelGroup } from "../sidebar/groups/label-group";
 import { InputGroup } from "../sidebar/groups/input-group";
 import { GridGroup } from "../sidebar/groups/grid-group";
 import { cn, escapeHtml } from "@/lib/utils";
+import { ValidationGroup } from "../sidebar/groups/validation-group";
+
 
 export function FormInput(component: FormComponentModel) {
+
   return (
     <Input
       key={component.id}
@@ -34,9 +37,8 @@ export function getReactCode(component: FormComponentModel): ReactCode {
       placeholder="${escapeHtml(component.getField("attributes.placeholder"))}"
       type="${escapeHtml(component.getField("attributes.type"))}"
       id="${escapeHtml(component.getField("attributes.id"))}"
-      name="${escapeHtml(component.getField("attributes.name"))}"
       className="${escapeHtml(component.getField("attributes.class"))}"
-      defaultValue="${escapeHtml(String(component.value))}"
+      {...field}
     />  
     `,
     dependencies: {
@@ -53,4 +55,5 @@ export const InputDesignProperties: DesignPropertiesViews = {
   input: <InputGroup />,
   options: null,
   button: null,
+  validation: <ValidationGroup />,
 };

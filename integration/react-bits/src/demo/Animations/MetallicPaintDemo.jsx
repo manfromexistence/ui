@@ -4,7 +4,7 @@ import { Box } from "@chakra-ui/react";
 
 import Customize from "../../components/common/Customize";
 import PreviewSlider from "../../components/common/PreviewSlider";
-import logo from '../../assets/logos/react-bits-solid-white.svg';
+import logo from '../../assets/logos/react-bits-solid-black.svg';
 import CodeExample from "../../components/code/CodeExample";
 import useForceRerender from "../../hooks/useForceRerender";
 import CliInstallation from "../../components/code/CliInstallation";
@@ -15,7 +15,7 @@ import { metallicPaint } from "../../constants/code/Animations/metallicPaintCode
 
 const LiquidPaperDemo = () => {
   const [imageData, setImageData] = useState(null);
-  const [edge, setEdge] = useState(1);
+  const [edge, setEdge] = useState(0);
   const [patternScale, setPatternScale] = useState(2);
   const [refraction, setRefraction] = useState(0.015);
   const [patternBlur, setPatternBlur] = useState(0.005);
@@ -67,7 +67,7 @@ const LiquidPaperDemo = () => {
           <PreviewSlider
             title="Edge"
             min={0}
-            max={5}
+            max={2}
             step={0.1}
             value={edge}
             onChange={(val) => {

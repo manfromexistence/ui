@@ -1080,6 +1080,18 @@ class App {
     this.setSize = this.setSize.bind(this);
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
+
+    window.addEventListener("resize", this.onWindowResize.bind(this));
+  }
+
+  onWindowResize() {
+    const width = this.container.offsetWidth;
+    const height = this.container.offsetHeight;
+
+    this.renderer.setSize(width, height);
+    this.camera.aspect = width / height;
+    this.camera.updateProjectionMatrix();
+    this.composer.setSize(width, height);
   }
 
   initPasses() {

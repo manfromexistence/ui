@@ -45,12 +45,7 @@ export function parseLogoImage(
       let width = img.naturalWidth;
       let height = img.naturalHeight;
 
-      if (
-        width > MAX_SIZE ||
-        height > MAX_SIZE ||
-        width < MIN_SIZE ||
-        height < MIN_SIZE
-      ) {
+      if (width > MAX_SIZE || height > MAX_SIZE || width < MIN_SIZE || height < MIN_SIZE) {
         if (width > height) {
           if (width > MAX_SIZE) {
             height = Math.round((height * MAX_SIZE) / width);
@@ -82,19 +77,17 @@ export function parseLogoImage(
       const shapeImageData = shapeCtx.getImageData(0, 0, width, height);
       const data = shapeImageData.data;
       const shapeMask = new Array(width * height).fill(false);
-      for (var y = 0; y < height; y++) {
-        for (var x = 0; x < width; x++) {
-          var idx4 = (y * width + x) * 4;
-          var r = data[idx4];
-          var g = data[idx4 + 1];
-          var b = data[idx4 + 2];
-          var a = data[idx4 + 3];
-          const tolerance = 255;
-          if (r >= tolerance && g >= tolerance && b >= tolerance && a === 255) {
-            shapeMask[y * width + x] = false;
-          } else {
-            shapeMask[y * width + x] = true;
-          }
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          const idx4 = (y * width + x) * 4;
+          const r = data[idx4];
+          const g = data[idx4 + 1];
+          const b = data[idx4 + 2];
+          const a = data[idx4 + 3];
+          shapeMask[y * width + x] = !(
+            (r === 255 && g === 255 && b === 255 && a === 255) ||
+            a === 0
+          );
         }
       }
 
@@ -103,14 +96,14 @@ export function parseLogoImage(
         return shapeMask[y * width + x];
       }
 
-      var boundaryMask = new Array(width * height).fill(false);
-      for (var y = 0; y < height; y++) {
-        for (var x = 0; x < width; x++) {
-          var idx = y * width + x;
+      const boundaryMask = new Array(width * height).fill(false);
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          const idx = y * width + x;
           if (!shapeMask[idx]) continue;
-          var isBoundary = false;
-          for (var ny = y - 1; ny <= y + 1 && !isBoundary; ny++) {
-            for (var nx = x - 1; nx <= x + 1 && !isBoundary; nx++) {
+          let isBoundary = false;
+          for (let ny = y - 1; ny <= y + 1 && !isBoundary; ny++) {
+            for (let nx = x - 1; nx <= x + 1 && !isBoundary; nx++) {
               if (!inside(nx, ny)) {
                 isBoundary = true;
               }
@@ -138,10 +131,10 @@ export function parseLogoImage(
         }
       }
 
-      var u = new Float32Array(width * height).fill(0);
-      var newU = new Float32Array(width * height).fill(0);
-      var C = 0.01;
-      var ITERATIONS = 100;
+      const u = new Float32Array(width * height).fill(0);
+      const newU = new Float32Array(width * height).fill(0);
+      const C = 0.01;
+      const ITERATIONS = 300;
 
       function getU(x: number, y: number, arr: Float32Array) {
         if (x < 0 || x >= width || y < 0 || y >= height) return 0;
@@ -149,40 +142,35 @@ export function parseLogoImage(
         return arr[y * width + x];
       }
 
-      for (var iter = 0; iter < ITERATIONS; iter++) {
-        for (var y = 0; y < height; y++) {
-          for (var x = 0; x < width; x++) {
-            var idx = y * width + x;
-            if (!interiorMask[idx]) {
+      for (let iter = 0; iter < ITERATIONS; iter++) {
+        for (let y = 0; y < height; y++) {
+          for (let x = 0; x < width; x++) {
+            const idx = y * width + x;
+            if (!shapeMask[idx] || boundaryMask[idx]) {
               newU[idx] = 0;
               continue;
             }
-            var sumN =
-              getU(x + 1, y, u) +
-              getU(x - 1, y, u) +
-              getU(x, y + 1, u) +
-              getU(x, y - 1, u);
+            const sumN =
+              getU(x + 1, y, u) + getU(x - 1, y, u) + getU(x, y + 1, u) + getU(x, y - 1, u);
             newU[idx] = (C + sumN) / 4;
           }
         }
-        for (var i = 0; i < width * height; i++) {
-          u[i] = newU[i];
-        }
+        u.set(newU);
       }
 
-      var maxVal = 0;
-      for (var i = 0; i < width * height; i++) {
+      let maxVal = 0;
+      for (let i = 0; i < width * height; i++) {
         if (u[i] > maxVal) maxVal = u[i];
       }
       const alpha = 2.0;
       const outImg = ctx.createImageData(width, height);
 
-      for (var y = 0; y < height; y++) {
-        for (var x = 0; x < width; x++) {
-          var idx = y * width + x;
-          var px = idx * 4;
-          if (!shapeMask[idx] || !interiorMask[idx]) {
-            outImg.data[px + 0] = 255;
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          const idx = y * width + x;
+          const px = idx * 4;
+          if (!shapeMask[idx]) {
+            outImg.data[px] = 255;
             outImg.data[px + 1] = 255;
             outImg.data[px + 2] = 255;
             outImg.data[px + 3] = 255;
@@ -190,7 +178,7 @@ export function parseLogoImage(
             const raw = u[idx] / maxVal;
             const remapped = Math.pow(raw, alpha);
             const gray = 255 * (1 - remapped);
-            outImg.data[px + 0] = gray;
+            outImg.data[px] = gray;
             outImg.data[px + 1] = gray;
             outImg.data[px + 2] = gray;
             outImg.data[px + 3] = 255;
@@ -225,8 +213,7 @@ out vec2 vUv;
 void main() {
     vUv = .5 * (a_position + 1.);
     gl_Position = vec4(a_position, 0.0, 1.0);
-}
-`;
+}`;
 
 const liquidFragSource = `#version 300 es
 precision mediump float;
@@ -322,14 +309,12 @@ void main() {
     float diagonal = uv.x - uv.y;
     float t = .001 * u_time;
     vec2 img_uv = get_img_uv();
-    float border_cutoff = 0.1 * u_edge + 0.01;
     vec4 img = texture(u_image_texture, img_uv);
     vec3 color = vec3(0.);
     float opacity = 1.;
     vec3 color1 = vec3(.98, 0.98, 1.);
     vec3 color2 = vec3(.1, .1, .1 + .1 * smoothstep(.7, 1.3, uv.x + uv.y));
-    float edge = 1.0 - img.r;
-    float mask = 1.0 - img.r;
+    float edge = img.r;
     vec2 grad_uv = uv;
     grad_uv -= .5;
     float dist = length(grad_uv + vec2(0., .2 * diagonal));
@@ -343,8 +328,8 @@ void main() {
     float wide_strip_ratio = (1. - thin_strip_1_ratio - thin_strip_2_ratio);
     float thin_strip_1_width = cycle_width * thin_strip_1_ratio;
     float thin_strip_2_width = cycle_width * thin_strip_2_ratio;
-    opacity = 1. - smoothstep(border_cutoff - 0.01, border_cutoff + 0.01, edge);
-    opacity *= get_img_frame_alpha(img_uv, 0.09);
+    opacity = 1. - smoothstep(.9 - .5 * u_edge, 1. - .5 * u_edge, edge);
+    opacity *= get_img_frame_alpha(img_uv, 0.01);
     float noise = snoise(uv - t);
     edge += (1. - edge) * u_liquid * noise;
     float refr = 0.;
@@ -606,7 +591,5 @@ export default function MetallicPaint({
     };
   }, [gl, uniforms, imageData]);
 
-  return (
-    <canvas ref={canvasRef} className="block w-full h-full object-contain" />
-  );
+  return <canvas ref={canvasRef} className="block w-full h-full object-contain" />;
 }

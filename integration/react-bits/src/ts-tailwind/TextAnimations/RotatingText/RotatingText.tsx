@@ -6,7 +6,15 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { motion, AnimatePresence, Transition } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  Transition,
+  type VariantLabels,
+  type Target,
+  type AnimationControls,
+  type TargetAndTransition,
+} from "framer-motion";
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(" ");
@@ -26,9 +34,9 @@ export interface RotatingTextProps
   > {
   texts: string[];
   transition?: Transition;
-  initial?: any;
-  animate?: any;
-  exit?: any;
+  initial?: boolean | Target | VariantLabels;
+  animate?: boolean | VariantLabels | AnimationControls | TargetAndTransition;
+  exit?: Target | VariantLabels;
   animatePresenceMode?: "sync" | "wait";
   animatePresenceInitial?: boolean;
   rotationInterval?: number;

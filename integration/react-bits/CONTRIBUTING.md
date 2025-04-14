@@ -18,7 +18,7 @@ For example, if you are working on a feature related to adding a new component, 
 
 ## Pull Requests
 
-We welcome pull requests from everyone. To submit a pull request, please follow these steps:
+We welcome pull requests from everyone as long as they respeect the quality standards of this project. To submit a pull request, please follow these steps:
 
 1. Fork the repository and create a new branch based on the branch naming convention mentioned above.
 2. Make your changes in the new branch.
@@ -26,14 +26,9 @@ We welcome pull requests from everyone. To submit a pull request, please follow 
 4. Provide a clear and descriptive title for your pull request, along with a detailed description of the changes you have made, and screenshots/videos where possible.
 5. For components updates, ensure that changes are reflected in all related files, such as:
    - `react-bits/src/demo/Backgrounds/<ComponentName>Demo.jsx`
-   - `react-bits/src/constants/code/<componentName>Code.js`
    - Preview and Code pages in the documentation, so users can copy the final component code.
 6. Before you open a pull request, please make sure that your changes are tested locally, and everything looks good on desktop and mobile, also check the console for errors, and so on, so that we can keep this library at the highest quality possible.
 7. Any pull requests that fail to meet these requirements will be denied, so please make sure you respect them so that your work can go through.
-
-## Component Dependencies
-
-When updating or adding new components, avoid introducing additional dependencies unless absolutely necessary. Components should remain as agnostic as possible, allowing users to fully customize them to their preferences. Most components in React Bits only use animation libraries and THREE.js at most.
 
 ## Conclusion
 

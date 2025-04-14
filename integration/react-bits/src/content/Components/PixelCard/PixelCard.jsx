@@ -266,7 +266,7 @@ export default function PixelCard({
       tabIndex={finalNoFocus ? -1 : 0}
     >
       <canvas
-        className="piexl-canvas"
+        className="pixel-canvas"
         ref={canvasRef}
       />
       {children}

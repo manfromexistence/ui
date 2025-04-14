@@ -1,7 +1,8 @@
 export interface ComponentCategory {
-  slug: string;
-  name: string;
-  components: { name: string }[];
+  slug: string
+  name: string
+  components: { name: string }[]
+  isNew?: boolean
 }
 
 export const categories: ComponentCategory[] = [
@@ -296,6 +297,12 @@ export const categories: ComponentCategory[] = [
       { name: "comp-379" },
       { name: "comp-380" },
     ],
+  },
+  {
+    slug: "event-calendar",
+    name: "Event calendar",
+    isNew: true,
+    components: [{ name: "comp-542" }],
   },
   {
     slug: "input",
@@ -663,6 +670,24 @@ export const categories: ComponentCategory[] = [
     ],
   },
   {
+    slug: "timeline",
+    name: "Timeline",
+    components: [
+      { name: "comp-530" },
+      { name: "comp-531" },
+      { name: "comp-532" },
+      { name: "comp-533" },
+      { name: "comp-534" },
+      { name: "comp-535" },
+      { name: "comp-536" },
+      { name: "comp-537" },
+      { name: "comp-538" },
+      { name: "comp-539" },
+      { name: "comp-540" },
+      { name: "comp-541" },
+    ],
+  },
+  {
     slug: "tooltip",
     name: "Tooltip",
     components: [
@@ -680,8 +705,8 @@ export const categories: ComponentCategory[] = [
       { name: "comp-365" },
     ],
   },
-];
+]
 
 export function getCategory(slug: string): ComponentCategory | undefined {
-  return categories.find((category) => category.slug === slug);
+  return categories.find((category) => category.slug === slug)
 }

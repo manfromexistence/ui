@@ -124,6 +124,10 @@ div:has(> .props-table) {
   top: 2em;
 }
 
+.custom-folder {
+  margin-top: 4em;
+}
+
 .rotating-text-demo-container {
   white-space: pre;
   font-size: clamp(2rem, 6vw, 6rem);

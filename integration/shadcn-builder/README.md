@@ -3,7 +3,7 @@
 I'm building a modern form builder application that allows you to create complex forms with a drag-and-drop interface. This is a fun side project I work on in my free time, and while I'm not full-time on it, I'm actively developing new features and improvements when I can.
 
 # Online preview
-Visit [shadcn-builder.com](https://www.shadcn-builder.com?ref=README) to try it out!
+Visit [shadcn-builder.com](https://www.shadcn-builder.com/?utm_source=github&utm_content=README) to try it out!
 
 
 ## Features

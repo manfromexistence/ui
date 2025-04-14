@@ -42,7 +42,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
       key="${component.id}"
       className="${escapeHtml(cn(asCardClasses, "flex items-start space-x-2"))}"
     >
-      <Checkbox id="${escapeHtml(component.getField("attributes.id"))}" />
+      <Checkbox id="${escapeHtml(component.getField("attributes.id"))}" {...field} />
       <div className="grid gap-1.5 leading-none">
         <Label htmlFor="${escapeHtml(component.getField("attributes.id"))}">
           ${escapeHtml(component.getField("label"))}
@@ -69,4 +69,5 @@ export const CheckboxDesignProperties: DesignPropertiesViews = {
   input: <InputGroup whitelist={["description", "asCard"]} />,
   options: null,
   button: null,
+  validation: null,
 };

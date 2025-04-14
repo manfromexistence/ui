@@ -66,6 +66,141 @@ export type Database = {
           },
         ]
       }
+      backup_code_embeddings: {
+        Row: {
+          created_at: string | null
+          embedding: string | null
+          id: string | null
+          item_id: number | null
+          item_type: string | null
+          metadata: Json | null
+        }
+        Insert: {
+          created_at?: string | null
+          embedding?: string | null
+          id?: string | null
+          item_id?: number | null
+          item_type?: string | null
+          metadata?: Json | null
+        }
+        Update: {
+          created_at?: string | null
+          embedding?: string | null
+          id?: string | null
+          item_id?: number | null
+          item_type?: string | null
+          metadata?: Json | null
+        }
+        Relationships: []
+      }
+      backup_usage_embeddings: {
+        Row: {
+          created_at: string | null
+          embedding: string | null
+          id: string | null
+          item_id: number | null
+          item_type: string | null
+          metadata: Json | null
+          usage_description: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          embedding?: string | null
+          id?: string | null
+          item_id?: number | null
+          item_type?: string | null
+          metadata?: Json | null
+          usage_description?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          embedding?: string | null
+          id?: string | null
+          item_id?: number | null
+          item_type?: string | null
+          metadata?: Json | null
+          usage_description?: string | null
+        }
+        Relationships: []
+      }
+      code_embeddings: {
+        Row: {
+          created_at: string | null
+          embedding: string
+          id: string
+          item_id: number
+          item_type: string
+          metadata: Json | null
+        }
+        Insert: {
+          created_at?: string | null
+          embedding: string
+          id?: string
+          item_id: number
+          item_type: string
+          metadata?: Json | null
+        }
+        Update: {
+          created_at?: string | null
+          embedding?: string
+          id?: string
+          item_id?: number
+          item_type?: string
+          metadata?: Json | null
+        }
+        Relationships: []
+      }
+      collections: {
+        Row: {
+          cover_url: string | null
+          created_at: string
+          description: string | null
+          id: string
+          is_public: boolean
+          name: string
+          slug: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          cover_url?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_public?: boolean
+          name: string
+          slug: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          cover_url?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_public?: boolean
+          name?: string
+          slug?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "collections_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "referral_analytics"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "collections_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       component_analytics: {
         Row: {
           activity_type: string | null
@@ -436,6 +571,139 @@ export type Database = {
           },
         ]
       }
+      components_purchases: {
+        Row: {
+          component_id: number
+          created_at: string | null
+          id: string
+          price_paid: number
+          user_id: string
+        }
+        Insert: {
+          component_id: number
+          created_at?: string | null
+          id?: string
+          price_paid: number
+          user_id: string
+        }
+        Update: {
+          component_id?: number
+          created_at?: string | null
+          id?: string
+          price_paid?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "components_purchases_component_id_fkey"
+            columns: ["component_id"]
+            isOneToOne: false
+            referencedRelation: "component_dependencies_graph_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "components_purchases_component_id_fkey"
+            columns: ["component_id"]
+            isOneToOne: false
+            referencedRelation: "components"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "components_purchases_component_id_fkey"
+            columns: ["component_id"]
+            isOneToOne: false
+            referencedRelation: "components_with_username"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "components_purchases_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "referral_analytics"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "components_purchases_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      components_to_collections: {
+        Row: {
+          collection_id: string
+          component_id: number
+          created_at: string
+        }
+        Insert: {
+          collection_id: string
+          component_id: number
+          created_at?: string
+        }
+        Update: {
+          collection_id?: string
+          component_id?: number
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "components_to_collections_collection_id_fkey"
+            columns: ["collection_id"]
+            isOneToOne: false
+            referencedRelation: "collections"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "components_to_collections_component_id_fkey"
+            columns: ["component_id"]
+            isOneToOne: false
+            referencedRelation: "component_dependencies_graph_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "components_to_collections_component_id_fkey"
+            columns: ["component_id"]
+            isOneToOne: false
+            referencedRelation: "components"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "components_to_collections_component_id_fkey"
+            columns: ["component_id"]
+            isOneToOne: false
+            referencedRelation: "components_with_username"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      demo_bookmarks: {
+        Row: {
+          bookmarked_at: string | null
+          demo_id: number
+          user_id: string
+        }
+        Insert: {
+          bookmarked_at?: string | null
+          demo_id: number
+          user_id: string
+        }
+        Update: {
+          bookmarked_at?: string | null
+          demo_id?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_demo"
+            columns: ["demo_id"]
+            isOneToOne: false
+            referencedRelation: "demos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       demo_tags: {
         Row: {
           created_at: string | null
@@ -474,6 +742,9 @@ export type Database = {
       }
       demos: {
         Row: {
+          bookmarks_count: number | null
+          bundle_hash?: string | null
+          bundle_html_url?: string | null
           compiled_css: string | null
           component_id: number | null
           created_at: string | null
@@ -493,6 +764,9 @@ export type Database = {
           video_url: string | null
         }
         Insert: {
+          bookmarks_count?: number | null
+          bundle_hash?: string | null
+          bundle_html_url?: string | null
           compiled_css?: string | null
           component_id?: number | null
           created_at?: string | null
@@ -512,6 +786,9 @@ export type Database = {
           video_url?: string | null
         }
         Update: {
+          bookmarks_count?: number | null
+          bundle_hash?: string | null
+          bundle_html_url?: string | null
           compiled_css?: string | null
           component_id?: number | null
           created_at?: string | null
@@ -567,6 +844,298 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      feedback: {
+        Row: {
+          content: string
+          created_at: string
+          id: number
+          response: string | null
+          status: string | null
+          type: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: number
+          response?: string | null
+          status?: string | null
+          type: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: number
+          response?: string | null
+          status?: string | null
+          type?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "feedback_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "referral_analytics"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "feedback_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      mcp_author_payouts: {
+        Row: {
+          author_id: string
+          created_at: string | null
+          id: number
+          paypal_email: string
+          period_end: string
+          period_start: string
+          processed_at: string | null
+          status: string
+          total_amount: number
+          total_usage: number
+          transaction_id: string | null
+        }
+        Insert: {
+          author_id: string
+          created_at?: string | null
+          id?: never
+          paypal_email: string
+          period_end: string
+          period_start: string
+          processed_at?: string | null
+          status?: string
+          total_amount: number
+          total_usage: number
+          transaction_id?: string | null
+        }
+        Update: {
+          author_id?: string
+          created_at?: string | null
+          id?: never
+          paypal_email?: string
+          period_end?: string
+          period_start?: string
+          processed_at?: string | null
+          status?: string
+          total_amount?: number
+          total_usage?: number
+          transaction_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_author"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "referral_analytics"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "fk_author"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      mcp_component_usage: {
+        Row: {
+          author_id: string
+          author_share: number
+          component_id: number
+          created_at: string | null
+          generation_request_id: number
+          id: number
+          payout_id: number | null
+          payout_status: string
+        }
+        Insert: {
+          author_id: string
+          author_share: number
+          component_id: number
+          created_at?: string | null
+          generation_request_id: number
+          id?: never
+          payout_id?: number | null
+          payout_status?: string
+        }
+        Update: {
+          author_id?: string
+          author_share?: number
+          component_id?: number
+          created_at?: string | null
+          generation_request_id?: number
+          id?: never
+          payout_id?: number | null
+          payout_status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_author"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "referral_analytics"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "fk_author"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_component"
+            columns: ["component_id"]
+            isOneToOne: false
+            referencedRelation: "component_dependencies_graph_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_component"
+            columns: ["component_id"]
+            isOneToOne: false
+            referencedRelation: "components"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_component"
+            columns: ["component_id"]
+            isOneToOne: false
+            referencedRelation: "components_with_username"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_generation_request"
+            columns: ["generation_request_id"]
+            isOneToOne: false
+            referencedRelation: "mcp_generation_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      mcp_generation_requests: {
+        Row: {
+          api_key: string
+          created_at: string | null
+          generation_cost: number
+          id: number
+          search_query: string
+          subscription_plan: string
+          user_id: string
+        }
+        Insert: {
+          api_key: string
+          created_at?: string | null
+          generation_cost: number
+          id?: never
+          search_query: string
+          subscription_plan: string
+          user_id: string
+        }
+        Update: {
+          api_key?: string
+          created_at?: string | null
+          generation_cost?: number
+          id?: never
+          search_query?: string
+          subscription_plan?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_user"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "referral_analytics"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "fk_user"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      plans: {
+        Row: {
+          add_usage: number | null
+          created_at: string
+          env: string | null
+          id: number
+          period: string | null
+          price: number | null
+          stripe_plan_id: string | null
+          type: string | null
+          version: 1 | 2
+        }
+        Insert: {
+          add_usage?: number | null
+          created_at?: string
+          env?: string | null
+          id?: number
+          period?: string | null
+          price?: number | null
+          stripe_plan_id?: string | null
+          type?: string | null
+          version: 1 | 2
+        }
+        Update: {
+          add_usage?: number | null
+          created_at?: string
+          env?: string | null
+          id?: number
+          period?: string | null
+          price?: number | null
+          stripe_plan_id?: string | null
+          type?: string | null
+          version: 1 | 2
+        }
+        Relationships: []
+      }
+      prompt_rules: {
+        Row: {
+          additional_context: string | null
+          created_at: string | null
+          id: number
+          name: string
+          tech_stack: Json | null
+          theme: Json | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          additional_context?: string | null
+          created_at?: string | null
+          id?: number
+          name: string
+          tech_stack?: Json | null
+          theme?: Json | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          additional_context?: string | null
+          created_at?: string | null
+          id?: number
+          name?: string
+          tech_stack?: Json | null
+          theme?: Json | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
       }
       referral_payments: {
         Row: {
@@ -791,6 +1360,75 @@ export type Database = {
           },
         ]
       }
+      usage_embeddings: {
+        Row: {
+          created_at: string | null
+          embedding: string
+          id: string
+          item_id: number
+          item_type: string
+          metadata: Json | null
+          usage_description: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          embedding: string
+          id?: string
+          item_id: number
+          item_type: string
+          metadata?: Json | null
+          usage_description?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          embedding?: string
+          id?: string
+          item_id?: number
+          item_type?: string
+          metadata?: Json | null
+          usage_description?: string | null
+        }
+        Relationships: []
+      }
+      usages: {
+        Row: {
+          created_at: string
+          id: number
+          limit: number | null
+          usage: number | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          limit?: number | null
+          usage?: number | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          limit?: number | null
+          usage?: number | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "usage_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "referral_analytics"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "usage_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       users: {
         Row: {
           bio: string | null
@@ -805,9 +1443,11 @@ export type Database = {
           is_admin: boolean
           manually_added: boolean
           name: string | null
+          paypal_email: string | null
           pro_banner_url: string | null
           pro_referral_url: string | null
           ref: string | null
+          role: Database["public"]["Enums"]["user_role"] | null
           twitter_url: string | null
           updated_at: string | null
           username: string | null
@@ -826,9 +1466,11 @@ export type Database = {
           is_admin?: boolean
           manually_added?: boolean
           name?: string | null
+          paypal_email?: string | null
           pro_banner_url?: string | null
           pro_referral_url?: string | null
           ref?: string | null
+          role?: Database["public"]["Enums"]["user_role"] | null
           twitter_url?: string | null
           updated_at?: string | null
           username?: string | null
@@ -847,15 +1489,72 @@ export type Database = {
           is_admin?: boolean
           manually_added?: boolean
           name?: string | null
+          paypal_email?: string | null
           pro_banner_url?: string | null
           pro_referral_url?: string | null
           ref?: string | null
+          role?: Database["public"]["Enums"]["user_role"] | null
           twitter_url?: string | null
           updated_at?: string | null
           username?: string | null
           website_url?: string | null
         }
         Relationships: []
+      }
+      users_to_plans: {
+        Row: {
+          created_at: string
+          id: number
+          last_paid_at: string | null
+          meta: Json | null
+          plan_id: number | null
+          status: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          last_paid_at?: string | null
+          meta?: Json | null
+          plan_id?: number | null
+          status?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          last_paid_at?: string | null
+          meta?: Json | null
+          plan_id?: number | null
+          status?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "users_to_plans_plan_id_fkey"
+            columns: ["plan_id"]
+            isOneToOne: false
+            referencedRelation: "plans"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "users_to_plans_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "referral_analytics"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "users_to_plans_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
@@ -1056,6 +1755,38 @@ export type Database = {
       }
     }
     Functions: {
+      analyze_author_payouts: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          author_id: string
+          username: string
+          display_name: string
+          published_components: number
+          total_usage: number
+          free_plan_usage: number
+          paid_plan_usage: number
+          potential_amount: number
+          actual_amount: number
+          has_payouts: boolean
+          last_payout_date: string
+          last_payout_status: string
+        }[]
+      }
+      analyze_component_usage: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          author_id: string
+          username: string
+          display_name: string
+          component_id: number
+          component_name: string
+          total_usage: number
+          free_plan_usage: number
+          paid_plan_usage: number
+          total_amount: number
+          has_payouts: boolean
+        }[]
+      }
       check_api_key: {
         Args: {
           api_key: string
@@ -1127,6 +1858,97 @@ export type Database = {
           total_count: number
         }[]
       }
+      get_admin_liked_demos_v1: {
+        Args: {
+          p_user_id: string
+          p_limit?: number
+        }
+        Returns: {
+          id: number
+          name: string
+          preview_url: string
+          video_url: string
+          updated_at: string
+          demo_slug: string
+          component_data: Json
+          user_data: Json
+          component_user_data: Json
+          total_count: number
+          view_count: number
+          bookmarks_count: number
+          bundle_url: Json
+        }[]
+      }
+      get_all_author_payouts: {
+        Args: {
+          p_period?: string
+          p_min_amount?: number
+          p_max_amount?: number
+          p_status?: string
+          p_sort_by?: string
+          p_sort_order?: string
+          p_limit?: number
+          p_offset?: number
+        }
+        Returns: Json[]
+      }
+      get_all_author_payouts_count: {
+        Args: {
+          p_period?: string
+          p_min_amount?: number
+          p_max_amount?: number
+          p_status?: string
+        }
+        Returns: number
+      }
+      get_author_payout_stats: {
+        Args: {
+          p_author_id: string
+        }
+        Returns: Json
+      }
+      get_collection_components_v1: {
+        Args: {
+          p_collection_id: string
+          p_sort_by: string
+          p_offset: number
+          p_limit: number
+        }
+        Returns: {
+          id: number
+          name: string
+          preview_url: string
+          video_url: string
+          updated_at: string
+          demo_slug: string
+          component_data: Json
+          user_data: Json
+          component_user_data: Json
+          total_count: number
+          view_count: number
+          bookmarks_count: number
+        }[]
+      }
+      get_collections_v1: {
+        Args: {
+          p_offset?: number
+          p_limit?: number
+          p_include_private?: boolean
+        }
+        Returns: {
+          id: string
+          name: string
+          description: string
+          cover_url: string
+          user_id: string
+          created_at: string
+          updated_at: string
+          is_public: boolean
+          slug: string
+          components_count: number
+          user_data: Json
+        }[]
+      }
       get_demos_list: {
         Args: {
           p_sort_by: string
@@ -1147,6 +1969,31 @@ export type Database = {
           component_user_data: Json
           total_count: number
           view_count: number
+          bookmarks_count: number
+        }[]
+      }
+      get_demos_list_v2: {
+        Args: {
+          p_sort_by: string
+          p_offset: number
+          p_limit: number
+          p_tag_slug?: string
+          p_include_private?: boolean
+        }
+        Returns: {
+          id: number
+          name: string
+          preview_url: string
+          video_url: string
+          updated_at: string
+          demo_slug: string
+          component_data: Json
+          user_data: Json
+          component_user_data: Json
+          total_count: number
+          view_count: number
+          bookmarks_count: number
+          bundle_url: Json
         }[]
       }
       get_liked_components: {
@@ -1178,6 +2025,14 @@ export type Database = {
           display_image_url: string
           ref: string
         }[]
+      }
+      get_prompt: {
+        Args: {
+          p_prompt_type: string
+          p_rule_id?: number
+          p_additional_context?: string
+        }
+        Returns: string
       }
       get_section_previews: {
         Args: {
@@ -1221,6 +2076,21 @@ export type Database = {
           likes_count: number
         }[]
       }
+      get_top_components_for_email: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          id: string
+          name: string
+          description: string
+          username: string
+          component_slug: string
+          preview_url: string
+          demo_slug: string
+          demo_preview_url: string
+          is_paid: boolean
+          is_current_week: boolean
+        }[]
+      }
       get_user_bookmarks_list: {
         Args: {
           p_user_id: string
@@ -1261,6 +2131,12 @@ export type Database = {
           component_user_data: Json
         }[]
       }
+      get_user_state: {
+        Args: {
+          user_id_param: string
+        }
+        Returns: Json
+      }
       increment: {
         Args: Record<PropertyKey, never>
         Returns: number
@@ -1271,6 +2147,39 @@ export type Database = {
         }
         Returns: undefined
       }
+      insert_code_embedding: {
+        Args: {
+          p_id: string
+          p_item_id: number
+          p_item_type: string
+          p_embedding: string
+          p_code: string
+          p_metadata: Json
+        }
+        Returns: undefined
+      }
+      insert_embedding:
+        | {
+            Args: {
+              p_id: string
+              p_item_id: number
+              p_item_type: string
+              p_embedding: string
+              p_usage_description: string
+              p_metadata: Json
+            }
+            Returns: undefined
+          }
+        | {
+            Args: {
+              p_item_id: number
+              p_item_type: string
+              p_embedding: string
+              p_usage_description: string
+              p_metadata: Json
+            }
+            Returns: undefined
+          }
       is_trigger_operation: {
         Args: Record<PropertyKey, never>
         Returns: boolean
@@ -1283,6 +2192,69 @@ export type Database = {
         }
         Returns: undefined
       }
+      match_embeddings: {
+        Args: {
+          query_embedding: string
+          match_threshold: number
+          match_count: number
+          filter?: string
+          table_name?: string
+        }
+        Returns: {
+          id: string
+          item_id: number
+          item_type: string
+          embedding: string
+          similarity: number
+        }[]
+      }
+      match_embeddings_with_details: {
+        Args: {
+          query_embedding: string
+          match_threshold: number
+          match_count: number
+        }
+        Returns: {
+          id: number
+          name: string
+          preview_url: string
+          video_url: string
+          demo_slug: string
+          user_id: string
+          component_data: Json
+          user_data: Json
+          usage_data: Json
+        }[]
+      }
+      purchase_component: {
+        Args: {
+          p_user_id: string
+          p_component_id: number
+        }
+        Returns: Json
+      }
+      record_mcp_component_usage:
+        | {
+            Args: {
+              p_user_id: string
+              p_api_key: string
+              p_search_query: string
+              p_component_ids: number[]
+              p_author_ids: string[]
+            }
+            Returns: Json
+          }
+        | {
+            Args: {
+              p_user_id: string
+              p_api_key: string
+              p_search_query: string
+              p_component_ids: number[]
+              p_component_names: string[]
+              p_author_ids: string[]
+            }
+            Returns: Json
+          }
       requesting_user_id: {
         Args: Record<PropertyKey, never>
         Returns: string
@@ -1382,11 +2354,23 @@ export type Database = {
         }
         Returns: undefined
       }
+      vec_dim: {
+        Args: {
+          v: string
+        }
+        Returns: number
+      }
     }
     Enums: {
       api_plan: "free" | "pro" | "enterprise"
       payment_status: "pending" | "paid" | "rejected"
       submission_status: "on_review" | "featured" | "posted"
+      user_role:
+        | "designer"
+        | "frontend_developer"
+        | "backend_developer"
+        | "product_manager"
+        | "entrepreneur"
     }
     CompositeTypes: {
       component_with_user: {

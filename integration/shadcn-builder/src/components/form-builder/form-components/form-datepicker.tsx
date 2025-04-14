@@ -100,4 +100,5 @@ export const DatePickerDesignProperties: DesignPropertiesViews = {
   input: <InputGroup whitelist={["placeholder", "description"]} />,
   options: null,
   button: null,
+  validation: null,
 };

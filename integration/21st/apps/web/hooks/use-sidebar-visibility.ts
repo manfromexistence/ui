@@ -7,7 +7,12 @@ export function useSidebarVisibility() {
 
   // Show sidebar only on main page, tag pages and search results
   const shouldShowSidebar =
-    pathname === "/" || pathname.startsWith("/s/") || pathname.startsWith("/q/")
+    pathname === "/" ||
+    pathname.startsWith("/s/") ||
+    pathname.startsWith("/q/") ||
+    pathname.startsWith("/c/") ||
+    pathname.startsWith("/magic/get-started") ||
+    pathname.startsWith("/magic/console")
 
   return shouldShowSidebar
 }

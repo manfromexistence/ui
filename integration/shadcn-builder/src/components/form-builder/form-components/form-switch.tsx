@@ -50,7 +50,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
           ${escapeHtml(component.getField("label_description"))}
         </p>
       </div>
-      <Switch id="${escapeHtml(component.getField("attributes.id"))}" />
+      <Switch id="${escapeHtml(component.getField("attributes.id"))}" {...field} />
     </div>
     `,
     dependencies: {
@@ -69,4 +69,5 @@ export const SwitchDesignProperties: DesignPropertiesViews = {
   input: <InputGroup whitelist={["description", "asCard"]} />,
   options: null,
   button: null,
+  validation: null,
 };

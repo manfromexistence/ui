@@ -55,4 +55,5 @@ export const TextDesignProperties: DesignPropertiesViews = {
   input: null,
   options: null,
   button: null,
+  validation: null,
 };

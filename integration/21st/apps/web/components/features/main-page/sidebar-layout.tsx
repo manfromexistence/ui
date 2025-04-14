@@ -1,32 +1,202 @@
 "use client"
 
 import * as React from "react"
-import { categories } from "@/lib/navigation"
+import {
+  categories as defaultCategories,
+  mainNavigationItems,
+  magicNavItem,
+} from "@/lib/navigation"
+import { useFilteredNavigation } from "@/lib/navigation-with-magic"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { useSidebar } from "@/components/ui/sidebar"
 import { Icons } from "@/components/icons"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip"
+import {
+  ArrowUpRight,
+  ChevronRight,
+  Box,
+  Users,
+  Crown,
+  FolderKanban,
+  Component,
+  Bookmark,
+  FolderOpen,
+  LayoutTemplate,
+  Sparkles,
+  Group,
+  Presentation,
+} from "lucide-react"
+import { useAtom } from "jotai"
+import {
+  AppSection,
+  currentSectionAtom,
+  selectedMainTabAtom,
+  getMainPageUrlWithTab,
+} from "@/lib/atoms"
+import { sortByAtom } from "@/components/features/main-page/main-page-header"
+import type { SortOption } from "@/types/global"
+import { useUser } from "@clerk/nextjs"
+import { userStateAtom } from "@/lib/store/user-store"
+import { Help } from "./help"
+import { motion, AnimatePresence } from "motion/react"
 
 import {
   Sidebar,
   SidebarContent,
-  SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarGroup,
   SidebarGroupLabel,
   SidebarGroupContent,
+  SidebarFooter,
 } from "@/components/ui/sidebar"
+
+// Import types from navigation-with-magic.tsx
+import type {
+  NavigationItem,
+  NavigationCategory,
+} from "@/lib/navigation-with-magic"
 
 export function MainSidebar() {
   const { toggleSidebar } = useSidebar()
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const { user: clerkUser } = useUser()
+  const [userState] = useAtom(userStateAtom)
+
   const [showTrigger, setShowTrigger] = React.useState(true)
+  const [hoveredItem, setHoveredItem] = React.useState<string | null>(null)
+  const [expandedCategories, setExpandedCategories] = React.useState<string[]>(
+    [],
+  )
+  const [expandedItems, setExpandedItems] = React.useState<string[]>([]) // Start with Magic menu closed
+
+  const [currentSection, setCurrentSection] = useAtom(currentSectionAtom)
+  const [selectedMainTab, setSelectedMainTab] = useAtom(selectedMainTabAtom)
+  const [sortBy] = useAtom<SortOption>(sortByAtom)
+
+  // Use the filtered navigation that checks if Magic onboarding is completed
+  const filteredCategories = useFilteredNavigation()
+
+  // Fall back to default categories if filteredCategories is not available (SSR)
+  const categories = filteredCategories || defaultCategories
+
+  // Get the current tab from URL when available
+  const urlTab = searchParams.get("tab") as Exclude<AppSection, "magic"> | null
+
+  // Update the current section and selected tab based on pathname and URL params
+  React.useEffect(() => {
+    // Check if we're on a magic page
+    if (pathname.startsWith("/magic")) {
+      setCurrentSection("magic")
+      return
+    }
+
+    // If we're on the main page with a tab parameter
+    if (pathname === "/" && urlTab) {
+      setCurrentSection("components") // Main section
+      setSelectedMainTab(urlTab) // Update the selected tab based on URL
+      return
+    }
+
+    // Default for other pages
+    if (pathname !== "/") {
+      setCurrentSection("components") // Default to components for other pages
+    }
+  }, [pathname, urlTab, setCurrentSection, setSelectedMainTab])
+
+  // Function to navigate to a main tab
+  const navigateToMainTab = (tab: Exclude<AppSection, "magic">) => {
+    // Update the selected tab immediately for responsive UI
+    setSelectedMainTab(tab)
+
+    // Navigate to main page with the selected tab
+    const url = getMainPageUrlWithTab(
+      tab,
+      tab === "components" ? sortBy : undefined,
+    )
+    router.push(url)
+  }
+
+  // Toggle category expansion
+  const toggleCategory = (categoryId: string) => {
+    setExpandedCategories((prev) =>
+      prev.includes(categoryId)
+        ? prev.filter((id) => id !== categoryId)
+        : [...prev, categoryId],
+    )
+  }
+
+  // Toggle item expansion (like Magic MCP)
+  const toggleExpandItem = (id: string) => {
+    setExpandedItems((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
+    )
+  }
+
+  // Get the Components item and other items
+  const componentsItem = mainNavigationItems.find(
+    (item) => item.value === "components",
+  )
+  const otherItems = mainNavigationItems.filter(
+    (item) => item.value !== "components",
+  )
+
+  // Map navigation value to icon component
+  const getIconForNavItem = (value: string) => {
+    switch (value) {
+      case "components":
+        return <Component className="mr-2 h-4 w-4" />
+      case "templates":
+        return <LayoutTemplate className="mr-2 h-4 w-4" />
+      case "categories":
+        return <FolderKanban className="mr-2 h-4 w-4" />
+      case "authors":
+        return <Users className="mr-2 h-4 w-4" />
+      case "pro":
+        return <Crown className="mr-2 h-4 w-4" />
+      case "collections":
+        return <FolderOpen className="mr-2 h-4 w-4" />
+      default:
+        return <Box className="mr-2 h-4 w-4" />
+    }
+  }
+
+  const [helpOpen, setHelpOpen] = React.useState(false)
+
+  // Add keyboard event handler
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Add handler for slash key using code
+      if (e.code === "Slash" || e.code === "IntlRo") {
+        e.preventDefault()
+        setHelpOpen((prev) => !prev)
+        return
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [])
+
+  // Add a useEffect to automatically open Magic menu after 1 second
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setExpandedItems((prev) =>
+        prev.includes("magic") ? prev : [...prev, "magic"],
+      )
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, []) // Empty dependency array ensures this only runs once on mount
 
   return (
     <Sidebar className="hidden md:block">
@@ -62,40 +232,382 @@ export function MainSidebar() {
         </div>
       </div>
       <SidebarContent className="pb-14">
-        {categories.map((category) => (
-          <SidebarGroup key={category.title}>
-            <SidebarGroupLabel className="text-sm font-semibold text-foreground">
-              {category.title}
-            </SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {category.items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <Link
-                        href={item.href}
-                        className="w-full flex items-center justify-between"
-                      >
-                        <span className="flex items-center">
-                          {item.title}
-                          {item.isNew && (
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {/* Components tab first */}
+              {componentsItem && (
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    isActive={
+                      currentSection !== "magic" &&
+                      selectedMainTab === componentsItem.value &&
+                      !pathname.startsWith("/s/")
+                    }
+                    onClick={() =>
+                      navigateToMainTab(
+                        componentsItem.value as Exclude<AppSection, "magic">,
+                      )
+                    }
+                  >
+                    <div className="flex items-center w-full">
+                      {getIconForNavItem(componentsItem.value)}
+                      {componentsItem.title}
+                      {componentsItem.isNew && (
+                        <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000]">
+                          New
+                        </span>
+                      )}
+                    </div>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              )}
+
+              {/* Magic MCP collapsible menu */}
+              <SidebarMenuItem className="group/menu-item relative">
+                <SidebarMenuButton
+                  isActive={false}
+                  onClick={() => toggleExpandItem("magic")}
+                >
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center">
+                      <Sparkles className="mr-2 h-4 w-4" />
+                      {magicNavItem.title}
+                      {magicNavItem.isNew && (
+                        <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000]">
+                          New
+                        </span>
+                      )}
+                    </div>
+                    <ChevronRight
+                      className={cn(
+                        "h-4 w-4 transition-transform",
+                        expandedItems.includes("magic") &&
+                          "transform rotate-90",
+                      )}
+                    />
+                  </div>
+                </SidebarMenuButton>
+
+                <AnimatePresence mode="wait">
+                  {expandedItems.includes("magic") && (
+                    <motion.div
+                      key="magic-menu"
+                      initial={{
+                        height: 0,
+                        opacity: 0,
+                        marginTop: 0,
+                        marginBottom: 0,
+                      }}
+                      animate={{
+                        height: "auto",
+                        opacity: 1,
+                        marginTop: 4,
+                        marginBottom: 4,
+                      }}
+                      exit={{
+                        height: 0,
+                        opacity: 0,
+                        marginTop: 0,
+                        marginBottom: 0,
+                      }}
+                      transition={{ duration: 0.15, ease: "easeOut" }}
+                      className="overflow-hidden ml-6 w-auto"
+                      style={{ paddingBottom: 0 }}
+                    >
+                      <div className="flex flex-col gap-0.5">
+                        {magicNavItem.subitems.map((subitem, itemIndex) => {
+                          const isActive =
+                            pathname === subitem.href ||
+                            (currentSection === "magic" &&
+                              pathname === subitem.href)
+
+                          // Calculate staggered delay
+                          const staggerDelay = Math.min(itemIndex * 0.02, 0.15)
+
+                          return (
+                            <motion.div
+                              key={subitem.title}
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -5 }}
+                              transition={{
+                                duration: 0.15,
+                                delay: staggerDelay,
+                                ease: "easeOut",
+                              }}
+                            >
+                              <SidebarMenuItem className="mb-0">
+                                <SidebarMenuButton asChild isActive={isActive}>
+                                  <Link
+                                    href={subitem.href}
+                                    className={cn(
+                                      "flex items-center justify-between w-full",
+                                      isActive
+                                        ? "bg-accent text-accent-foreground font-medium"
+                                        : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
+                                    )}
+                                    target={
+                                      subitem.externalLink
+                                        ? "_blank"
+                                        : undefined
+                                    }
+                                    rel={
+                                      subitem.externalLink
+                                        ? "noopener noreferrer"
+                                        : undefined
+                                    }
+                                  >
+                                    <span>{subitem.title}</span>
+                                    {subitem.externalLink && (
+                                      <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                                    )}
+                                  </Link>
+                                </SidebarMenuButton>
+                              </SidebarMenuItem>
+                            </motion.div>
+                          )
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </SidebarMenuItem>
+
+              {/* Rest of main tabs */}
+              {otherItems.map((item) => (
+                <SidebarMenuItem key={item.value}>
+                  <SidebarMenuButton
+                    isActive={
+                      currentSection !== "magic" &&
+                      selectedMainTab === item.value
+                    }
+                    onClick={() =>
+                      navigateToMainTab(
+                        item.value as Exclude<AppSection, "magic">,
+                      )
+                    }
+                  >
+                    <div className="flex items-center w-full">
+                      {getIconForNavItem(item.value)}
+                      {item.title}
+                      {item.isNew && (
+                        <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000]">
+                          New
+                        </span>
+                      )}
+                    </div>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        {/* Add You section */}
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-sm font-semibold text-foreground">
+            You
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  onClick={() => {
+                    if (userState.profile?.display_username) {
+                      router.push(
+                        `/${userState.profile.display_username}?tab=bookmarks`,
+                      )
+                    } else if (clerkUser?.externalAccounts?.[0]?.username) {
+                      router.push(
+                        `/${clerkUser.externalAccounts[0].username}?tab=bookmarks`,
+                      )
+                    }
+                  }}
+                >
+                  <div className="flex items-center w-full">
+                    <Bookmark className="mr-2 h-4 w-4" />
+                    Bookmarks
+                  </div>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-sm font-semibold text-foreground">
+            Explore
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {categories.map((category: NavigationCategory, index: number) => {
+                const categoryId = `category-${index}`
+                const isExpanded = expandedCategories.includes(categoryId)
+
+                const getCategoryIcon = () => {
+                  if (category.title === "Marketing Blocks") {
+                    return <Presentation className="mr-2 h-4 w-4" />
+                  }
+                  if (category.title === "Collections") {
+                    return <FolderKanban className="mr-2 h-4 w-4" />
+                  }
+                  return <Group className="mr-2 h-4 w-4" />
+                }
+
+                return (
+                  <SidebarMenuItem
+                    key={category.title}
+                    className="group/menu-item relative"
+                  >
+                    <SidebarMenuButton
+                      onClick={() => toggleCategory(categoryId)}
+                    >
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center">
+                          {getCategoryIcon()}
+                          {category.title}
+                          {category.isNew && (
                             <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000]">
                               New
                             </span>
                           )}
-                        </span>
-                        <span className="text-muted-foreground text-sm">
-                          {item.demosCount}
-                        </span>
-                      </Link>
+                        </div>
+                        <ChevronRight
+                          className={cn(
+                            "h-4 w-4 transition-transform",
+                            isExpanded && "transform rotate-90",
+                          )}
+                        />
+                      </div>
                     </SidebarMenuButton>
+
+                    <AnimatePresence mode="wait">
+                      {isExpanded && (
+                        <motion.div
+                          key={`category-${categoryId}`}
+                          initial={{
+                            height: 0,
+                            opacity: 0,
+                            marginTop: 0,
+                            marginBottom: 0,
+                          }}
+                          animate={{
+                            height: "auto",
+                            opacity: 1,
+                            marginTop: 4,
+                            marginBottom: 4,
+                          }}
+                          exit={{
+                            height: 0,
+                            opacity: 0,
+                            marginTop: 0,
+                            marginBottom: 0,
+                          }}
+                          transition={{ duration: 0.15, ease: "easeOut" }}
+                          className="overflow-hidden ml-6 w-auto"
+                          style={{ paddingBottom: 0 }}
+                        >
+                          <div className="flex flex-col gap-0.5">
+                            {category.items.map(
+                              (item: NavigationItem, itemIndex: number) => {
+                                const isActive =
+                                  pathname === item.href ||
+                                  pathname.endsWith(item.title.toLowerCase())
+
+                                // Calculate staggered delay but ensure total animation stays under 300ms
+                                const staggerDelay = Math.min(
+                                  itemIndex * 0.02,
+                                  0.15,
+                                )
+
+                                return (
+                                  <motion.div
+                                    key={item.title}
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{
+                                      opacity: 0,
+                                      y: -5,
+                                    }}
+                                    transition={{
+                                      duration: 0.15,
+                                      delay: staggerDelay,
+                                      ease: "easeOut",
+                                    }}
+                                  >
+                                    <SidebarMenuItem className="mb-0">
+                                      <SidebarMenuButton
+                                        asChild
+                                        isActive={isActive}
+                                      >
+                                        <Link
+                                          href={item.href}
+                                          className={cn(
+                                            "flex items-center justify-between w-full",
+                                            isActive
+                                              ? "bg-accent text-accent-foreground font-medium"
+                                              : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
+                                          )}
+                                          target={
+                                            item.externalLink
+                                              ? "_blank"
+                                              : undefined
+                                          }
+                                          rel={
+                                            item.externalLink
+                                              ? "noopener noreferrer"
+                                              : undefined
+                                          }
+                                          onMouseEnter={() =>
+                                            setHoveredItem(item.title)
+                                          }
+                                          onMouseLeave={() =>
+                                            setHoveredItem(null)
+                                          }
+                                        >
+                                          <span className="flex items-center">
+                                            {item.title}
+                                            {item.isNew && (
+                                              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000]">
+                                                New
+                                              </span>
+                                            )}
+                                          </span>
+                                          <span
+                                            className={cn(
+                                              "text-muted-foreground text-sm flex items-center",
+                                              hoveredItem === item.title &&
+                                                "text-accent-foreground",
+                                            )}
+                                          >
+                                            {item.externalLink &&
+                                              hoveredItem === item.title && (
+                                                <ArrowUpRight className="ml-1 h-3.5 w-3.5 transition-opacity" />
+                                              )}
+                                            {item.demosCount}
+                                          </span>
+                                        </Link>
+                                      </SidebarMenuButton>
+                                    </SidebarMenuItem>
+                                  </motion.div>
+                                )
+                              },
+                            )}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        ))}
+                )
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter className="flex justify-end pr-4">
+        <Help open={helpOpen} onOpenChange={setHelpOpen} />
+      </SidebarFooter>
     </Sidebar>
   )
 }

@@ -101,7 +101,6 @@ const WavesDemo = () => {
           />
         </Flex>
 
-
         <h2 className="demo-title-extra">Customize</h2>
         <Flex direction="row" alignItems="center" gap={4} mt={4}>
           <Text>Color</Text>

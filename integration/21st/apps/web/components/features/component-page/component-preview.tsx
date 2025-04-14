@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect, useMemo } from "react"
 import { useAnimation, motion, AnimatePresence } from "motion/react"
 import { useAtom } from "jotai"
 import { useTheme } from "next-themes"
@@ -12,6 +12,11 @@ import {
   Info,
   ChevronDown,
 } from "lucide-react"
+
+import {
+  SandpackProvider as SandpackProviderUnstyled,
+  SandpackPreview,
+} from "@codesandbox/sandpack-react/unstyled"
 
 import { ComponentPageInfo } from "./info-section"
 import { Icons } from "@/components/icons"
@@ -38,17 +43,13 @@ import {
   SandpackFileExplorer,
   SandpackProviderProps,
 } from "@codesandbox/sandpack-react"
-import {
-  SandpackProvider as SandpackProviderUnstyled,
-  SandpackPreview,
-} from "@codesandbox/sandpack-react/unstyled"
 
 import { useDebugMode } from "@/hooks/use-debug-mode"
 import { useCompileCss } from "@/hooks/use-compile-css"
 import { useIsMobile } from "@/hooks/use-media-query"
 
 import { Component, Tag, User, Demo } from "@/types/global"
-import { generateSandpackFiles } from "@/lib/sandpack"
+import { generateBundleFiles, generateSandpackFiles } from "@/lib/sandpack"
 import { trackEvent, AMPLITUDE_EVENTS } from "@/lib/amplitude"
 import { getPackageRunner, cn } from "@/lib/utils"
 import { toast } from "sonner"
@@ -56,6 +57,9 @@ import { useUser } from "@clerk/nextjs"
 
 import styles from "./component-preview.module.css"
 import { FullScreenButton } from "../../ui/full-screen-button"
+import { useBundleDemo } from "@/hooks/use-bundle-demo"
+import { PayWall } from "./pay-wall"
+import { ComponentAccessState } from "@/hooks/use-component-access"
 
 export function ComponentPagePreview({
   component,
@@ -72,6 +76,7 @@ export function ComponentPagePreview({
   setIsEditDialogOpen,
   demo,
   compiledCss,
+  accessState,
 }: {
   component: Component & { user: User } & { tags: Tag[] }
   code: string
@@ -87,6 +92,8 @@ export function ComponentPagePreview({
   canEdit: boolean
   setIsEditDialogOpen: (value: boolean) => void
   demo: Demo
+  showPaywall: boolean
+  accessState: ComponentAccessState
 }) {
   const sandpackRef = useRef<HTMLDivElement>(null)
   const { user } = useUser()
@@ -95,6 +102,8 @@ export function ComponentPagePreview({
   const [isShowCode, setIsShowCode] = useAtom(isShowCodeAtom)
   const isDebug = useDebugMode()
   const [isFullScreen] = useAtom(isFullScreenAtom)
+
+  const effectiveAccessState = accessState
 
   const dumySandpackFiles = generateSandpackFiles({
     demoComponentNames,
@@ -106,15 +115,19 @@ export function ComponentPagePreview({
     css: "",
   })
 
-  const shellCode = Object.entries(dumySandpackFiles)
-    .filter(
-      ([key]) =>
-        key.endsWith(".tsx") ||
-        key.endsWith(".jsx") ||
-        key.endsWith(".ts") ||
-        key.endsWith(".js"),
-    )
-    .map(([, file]) => file)
+  const shellCode = useMemo(
+    () =>
+      Object.entries(dumySandpackFiles)
+        .filter(
+          ([key]) =>
+            key.endsWith(".tsx") ||
+            key.endsWith(".jsx") ||
+            key.endsWith(".ts") ||
+            key.endsWith(".js"),
+        )
+        .map(([, file]) => file),
+    [dumySandpackFiles],
+  )
 
   const css = useCompileCss(
     code,
@@ -144,6 +157,62 @@ export function ComponentPagePreview({
     }),
   }
 
+  const bundleFiles = useMemo(
+    () => ({
+      ...registryDependencies,
+      ...generateBundleFiles({
+        demoComponentNames,
+        componentSlug: component.component_slug,
+        relativeImportPath: `/components/${component.registry}`,
+        code,
+        demoCode,
+        css: css || "",
+        customTailwindConfig: tailwindConfig,
+        customGlobalCss: globalCss,
+      }),
+    }),
+    [
+      registryDependencies,
+      demoComponentNames,
+      component.component_slug,
+      component.registry,
+      code,
+      demoCode,
+      css,
+      tailwindConfig,
+      globalCss,
+    ],
+  )
+
+  const allDependencies = useMemo(
+    () => ({
+      "@radix-ui/react-select": "^1.0.0",
+      "lucide-react": "latest",
+      "tailwind-merge": "latest",
+      clsx: "latest",
+      ...dependencies,
+      ...demoDependencies,
+      ...npmDependenciesOfRegistryDependencies,
+    }),
+    [dependencies, demoDependencies, npmDependenciesOfRegistryDependencies],
+  )
+  const [previewError, setPreviewError] = useState(false)
+  const { bundle, error } = useBundleDemo(
+    bundleFiles,
+    allDependencies,
+    component,
+    shellCode,
+    demo.id,
+    tailwindConfig,
+    globalCss,
+  )
+
+  useEffect(() => {
+    if (error) {
+      setPreviewError(true)
+    }
+  }, [error])
+
   const mainComponentFile = Object.keys(files).find((file) =>
     file.endsWith(`${component.component_slug}.tsx`),
   )
@@ -156,7 +225,6 @@ export function ComponentPagePreview({
     demoComponentFile ?? mainComponentFile ?? "",
   )
 
-  const [previewError, setPreviewError] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [loadingText, setLoadingText] = useState("Starting preview...")
 
@@ -164,11 +232,13 @@ export function ComponentPagePreview({
     if (isLoading) {
       const timer = setTimeout(() => {
         setLoadingText(
-          "Loading is taking longer than usual. You may want to refresh the page...",
+          "Loading is taking longer than usual... you may want to refresh the page",
         )
-      }, 4000)
+      }, 10000)
 
-      return () => clearTimeout(timer)
+      return () => {
+        clearTimeout(timer)
+      }
     }
   }, [isLoading])
 
@@ -237,38 +307,15 @@ export function ComponentPagePreview({
       transition={{
         layout: {
           duration: 0.4,
-          ease: [0.4, 0, 0.2, 1], // ease-out-cubic
+          ease: [0.4, 0, 0.2, 1],
         },
       }}
     >
-      <SandpackProviderUnstyled {...providerProps}>
-        <motion.div
-          layout="position"
-          className="flex-grow h-full relative rounded-lg overflow-hidden"
-          transition={{
-            layout: {
-              duration: 0.4,
-              ease: [0.4, 0, 0.2, 1],
-            },
-          }}
-        >
-          <FullScreenButton />
-          {previewError ? (
-            <div className="flex flex-col items-center justify-center h-full gap-3">
-              <p className="text-muted-foreground text-sm">
-                Failed to load preview
-              </p>
-              <button
-                onClick={() => {
-                  setPreviewError(false)
-                  setIsLoading(true)
-                }}
-                className="text-sm underline text-muted-foreground hover:text-foreground"
-              >
-                Try again
-              </button>
-            </div>
-          ) : (
+      <motion.div className="relative flex-grow h-full rounded-lg overflow-hidden">
+        <FullScreenButton />
+
+        {previewError && (
+          <SandpackProviderUnstyled {...providerProps}>
             <SandpackPreview
               showSandpackErrorOverlay={false}
               showOpenInCodeSandbox={process.env.NODE_ENV === "development"}
@@ -279,14 +326,28 @@ export function ComponentPagePreview({
                 setIsLoading(false)
               }}
             />
-          )}
-          {isLoading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-background/50">
-              <LoadingSpinner text={loadingText} />
-            </div>
-          )}
-        </motion.div>
-      </SandpackProviderUnstyled>
+          </SandpackProviderUnstyled>
+        )}
+
+        {isLoading && (
+          <div className="flex flex-col items-center justify-center h-full gap-3">
+            <LoadingSpinner text={loadingText} />
+          </div>
+        )}
+        {bundle?.html && (
+          <iframe
+            src={isDarkTheme ? `${bundle?.html}?dark=true` : bundle?.html}
+            className="w-full h-full"
+            onLoad={() => {
+              setIsLoading(false)
+            }}
+            onError={() => {
+              setPreviewError(true)
+              setIsLoading(false)
+            }}
+          />
+        )}
+      </motion.div>
 
       <AnimatePresence mode="popLayout">
         {!isFullScreen && (
@@ -320,40 +381,47 @@ export function ComponentPagePreview({
                     />
                     <div className="flex w-full h-full flex-col">
                       {isShowCode ? (
-                        <>
-                          <CopyCommandSection component={component} />
-                          {isDebug && <SandpackFileExplorer />}
-                          <div
-                            className={`overflow-auto ${styles.codeViewerWrapper} relative`}
-                          >
-                            <CopyCodeButton
-                              component_id={component.id}
-                              user_id={user?.id}
-                            />
-                            <Tabs
-                              value={activeFile}
-                              onValueChange={setActiveFile}
+                        effectiveAccessState === "UNLOCKED" ? (
+                          <>
+                            <CopyCommandSection component={component} />
+                            {isDebug && <SandpackFileExplorer />}
+                            <div
+                              className={`overflow-auto ${styles.codeViewerWrapper} relative`}
                             >
-                              <TabsList className="h-9 relative bg-muted dark:bg-background justify-start w-full gap-0.5 pb-0 before:absolute before:inset-x-0 before:bottom-0 before:h-px before:bg-border px-4 overflow-x-auto flex-nowrap hide-scrollbar">
-                                {visibleFiles.map((file) => (
-                                  <TabsTrigger
-                                    key={file}
-                                    value={file}
-                                    className="overflow-hidden data-[state=active]:rounded-b-none data-[state=active]:bg-white dark:data-[state=active]:bg-[#151515] data-[state=active]:border-x data-[state=active]:border-t data-[state=active]:border-border bg-muted dark:bg-background py-2 data-[state=active]:z-10 data-[state=active]:shadow-none flex-shrink-0 whitespace-nowrap"
-                                  >
-                                    {file.split("/").pop()}
-                                  </TabsTrigger>
-                                ))}
-                              </TabsList>
-                              <div className="">
-                                <SandpackCodeViewer
-                                  wrapContent={true}
-                                  showTabs={false}
-                                />
-                              </div>
-                            </Tabs>
-                          </div>
-                        </>
+                              <CopyCodeButton
+                                component_id={component.id}
+                                user_id={user?.id}
+                              />
+                              <Tabs
+                                value={activeFile}
+                                onValueChange={setActiveFile}
+                              >
+                                <TabsList className="h-9 relative bg-muted dark:bg-background justify-start w-full gap-0.5 pb-0 before:absolute before:inset-x-0 before:bottom-0 before:h-px before:bg-border px-4 overflow-x-auto flex-nowrap hide-scrollbar">
+                                  {visibleFiles.map((file) => (
+                                    <TabsTrigger
+                                      key={file}
+                                      value={file}
+                                      className="overflow-hidden data-[state=active]:rounded-b-none data-[state=active]:bg-white dark:data-[state=active]:bg-[#151515] data-[state=active]:border-x data-[state=active]:border-t data-[state=active]:border-border bg-muted dark:bg-background py-2 data-[state=active]:z-10 data-[state=active]:shadow-none flex-shrink-0 whitespace-nowrap"
+                                    >
+                                      {file.split("/").pop()}
+                                    </TabsTrigger>
+                                  ))}
+                                </TabsList>
+                                <div className="">
+                                  <SandpackCodeViewer
+                                    wrapContent={true}
+                                    showTabs={false}
+                                  />
+                                </div>
+                              </Tabs>
+                            </div>
+                          </>
+                        ) : (
+                          <PayWall
+                            accessState={effectiveAccessState}
+                            component={component}
+                          />
+                        )
                       ) : (
                         <ComponentPageInfo component={component} />
                       )}

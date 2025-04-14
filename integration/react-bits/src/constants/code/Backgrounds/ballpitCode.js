@@ -8,7 +8,10 @@ import tsTailwind from '@ts-tailwind/Backgrounds/Ballpit/Ballpit.tsx?raw';
 export const ballpit = {
   ...(generateCliCommands('Backgrounds/Ballpit')),
   installation: `npm i three`,
-  usage: `import Ballpit from './Ballpit;'
+  usage: `//Component inspired by Kevin Levron:
+//https://x.com/soju22/status/1858925191671271801
+  
+import Ballpit from './Ballpit;'
 
 <div style={{position: 'relative', overflow: 'hidden', minHeight: '500px', maxHeight: '500px', width: '100%'}}>
   <Ballpit

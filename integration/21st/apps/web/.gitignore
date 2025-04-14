@@ -26,7 +26,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # env files (can opt-in for commiting if needed)
-# .env*
+.env*
 
 # vercel
 .vercel
@@ -37,3 +37,4 @@ next-env.d.ts
 
 # css
 css/*
+.env*.local

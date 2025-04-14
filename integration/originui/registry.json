@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "acme",
-  "homepage": "https://acme.com",
+  "name": "originui",
+  "homepage": "https://originui.com",
   "items": [
     {
       "name": "accordion",
@@ -378,6 +378,17 @@
       "files": [
         {
           "path": "registry/default/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "dependencies": ["@radix-ui/react-slot"],
+      "files": [
+        {
+          "path": "registry/default/ui/timeline.tsx",
           "type": "registry:ui"
         }
       ]
@@ -773,7 +784,8 @@
       "type": "registry:component",
       "registryDependencies": [
         "https://originui.com/r/input.json",
-        "https://originui.com/r/label.json"
+        "https://originui.com/r/label.json",
+        "https://originui.com/r/select-native.json"
       ],
       "files": [
         {
@@ -790,7 +802,8 @@
       "type": "registry:component",
       "registryDependencies": [
         "https://originui.com/r/input.json",
-        "https://originui.com/r/label.json"
+        "https://originui.com/r/label.json",
+        "https://originui.com/r/select-native.json"
       ],
       "files": [
         {
@@ -1245,7 +1258,7 @@
         "https://originui.com/r/input.json",
         "https://originui.com/r/label.json"
       ],
-      "dependencies": ["react-phone-number-input", "react-phone-number-input/flags"],
+      "dependencies": ["react-phone-number-input"],
       "files": [
         {
           "path": "registry/default/components/comp-46.tsx",
@@ -5515,7 +5528,7 @@
         }
       ],
       "meta": {
-        "tags": ["notification", "toast", "radix"],
+        "tags": ["notification", "toast", "sonner", "radix"],
         "colSpan": 2,
         "style": 1
       }
@@ -5532,7 +5545,7 @@
         }
       ],
       "meta": {
-        "tags": ["notification", "toast", "success", "radix"],
+        "tags": ["notification", "toast", "sonner", "success", "radix"],
         "colSpan": 2,
         "style": 1
       }
@@ -6134,8 +6147,7 @@
           "search",
           "radix",
           "autocomplete",
-          "radix",
-          null
+          "radix"
         ],
         "style": 1
       }
@@ -8735,8 +8747,7 @@
           "chip",
           "pagination",
           "filter",
-          "select",
-          null
+          "select"
         ],
         "colSpan": 3
       }
@@ -9453,6 +9464,283 @@
       "meta": {
         "tags": ["stepper", "vertical stepper"],
         "colSpan": 2
+      }
+    },
+    {
+      "name": "comp-530",
+      "type": "registry:component",
+      "registryDependencies": ["https://originui.com/r/timeline.json"],
+      "files": [
+        {
+          "path": "registry/default/components/comp-530.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["timeline", "vertical timeline"],
+        "colSpan": 2
+      }
+    },
+    {
+      "name": "comp-531",
+      "type": "registry:component",
+      "registryDependencies": ["https://originui.com/r/timeline.json"],
+      "files": [
+        {
+          "path": "registry/default/components/comp-531.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["timeline", "vertical timeline"],
+        "colSpan": 2
+      }
+    },
+    {
+      "name": "comp-532",
+      "type": "registry:component",
+      "registryDependencies": ["https://originui.com/r/timeline.json"],
+      "files": [
+        {
+          "path": "registry/default/components/comp-532.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["timeline", "vertical timeline"],
+        "colSpan": 2
+      }
+    },
+    {
+      "name": "comp-533",
+      "type": "registry:component",
+      "registryDependencies": ["https://originui.com/r/timeline.json"],
+      "files": [
+        {
+          "path": "registry/default/components/comp-533.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["timeline", "vertical timeline"],
+        "colSpan": 2
+      }
+    },
+    {
+      "name": "comp-534",
+      "type": "registry:component",
+      "registryDependencies": ["https://originui.com/r/timeline.json"],
+      "files": [
+        {
+          "path": "registry/default/components/comp-534.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["timeline", "vertical timeline"],
+        "colSpan": 2
+      }
+    },
+    {
+      "name": "comp-535",
+      "type": "registry:component",
+      "registryDependencies": ["https://originui.com/r/timeline.json"],
+      "files": [
+        {
+          "path": "registry/default/components/comp-535.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["timeline", "vertical timeline"],
+        "colSpan": 2
+      }
+    },
+    {
+      "name": "comp-536",
+      "type": "registry:component",
+      "registryDependencies": ["https://originui.com/r/timeline.json"],
+      "files": [
+        {
+          "path": "registry/default/components/comp-536.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["timeline", "vertical timeline"],
+        "colSpan": 2
+      }
+    },
+    {
+      "name": "comp-537",
+      "type": "registry:component",
+      "registryDependencies": ["https://originui.com/r/timeline.json"],
+      "files": [
+        {
+          "path": "registry/default/components/comp-537.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["timeline", "vertical timeline"],
+        "colSpan": 2
+      }
+    },
+    {
+      "name": "comp-538",
+      "type": "registry:component",
+      "registryDependencies": ["https://originui.com/r/timeline.json"],
+      "files": [
+        {
+          "path": "registry/default/components/comp-538.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["timeline", "vertical timeline"],
+        "colSpan": 2
+      }
+    },
+    {
+      "name": "comp-539",
+      "type": "registry:component",
+      "registryDependencies": ["https://originui.com/r/timeline.json"],
+      "files": [
+        {
+          "path": "registry/default/components/comp-539.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["timeline", "vertical timeline"],
+        "colSpan": 2
+      }
+    },
+    {
+      "name": "comp-540",
+      "type": "registry:component",
+      "registryDependencies": ["https://originui.com/r/timeline.json"],
+      "files": [
+        {
+          "path": "registry/default/components/comp-540.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["timeline"],
+        "colSpan": 3
+      }
+    },
+    {
+      "name": "comp-541",
+      "type": "registry:component",
+      "registryDependencies": ["https://originui.com/r/timeline.json"],
+      "files": [
+        {
+          "path": "registry/default/components/comp-541.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["timeline"],
+        "colSpan": 3
+      }
+    },
+    {
+      "name": "comp-542",
+      "type": "registry:component",
+      "dependencies": ["date-fns", "@dnd-kit/core", "@dnd-kit/modifiers", "@dnd-kit/utilities", "@remixicon/react"],
+      "registryDependencies": [
+        "https://originui.com/r/button.json",
+        "https://originui.com/r/calendar.json",
+        "https://originui.com/r/checkbox.json",
+        "https://originui.com/r/dropdown-menu.json",
+        "https://originui.com/r/dialog.json",
+        "https://originui.com/r/input.json",
+        "https://originui.com/r/textarea.json",
+        "https://originui.com/r/label.json",
+        "https://originui.com/r/popover.json",
+        "https://originui.com/r/radio-group.json",
+        "https://originui.com/r/select.json",
+        "https://originui.com/r/sonner.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/components/comp-542.tsx",
+          "type": "registry:component"
+        },        
+        {
+          "path": "registry/default/components/event-calendar/agenda-view.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/components/event-calendar/calendar-dnd-context.tsx",
+          "type": "registry:component"
+        },         
+        {
+          "path": "registry/default/components/event-calendar/constants.ts",
+          "type": "registry:component"
+        },                
+        {
+          "path": "registry/default/components/event-calendar/day-view.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/components/event-calendar/draggable-event.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/components/event-calendar/droppable-cell.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/components/event-calendar/event-dialog.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/components/event-calendar/event-item.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/components/event-calendar/events-popup.tsx",
+          "type": "registry:component"
+        },        
+        {
+          "path": "registry/default/components/event-calendar/event-calendar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/components/event-calendar/index.ts",
+          "type": "registry:component"
+        },        
+        {
+          "path": "registry/default/components/event-calendar/month-view.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/components/event-calendar/types.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/components/event-calendar/utils.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/components/event-calendar/week-view.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/components/event-calendar/hooks/use-current-time-indicator.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/components/event-calendar/hooks/use-event-visibility.ts",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["calendar"],
+        "colSpan": 3
       }
     }
   ]

@@ -312,7 +312,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100dvh;
+  min-height: 100dvh;
 }
 
 @media (max-height: 850px) {
@@ -334,7 +334,6 @@
 }
 
 @keyframes shake {
-
   0%,
   100% {
     transform: rotate(-5deg);
@@ -424,7 +423,7 @@
   width: 1px;
   height: 50px;
   margin: 20px auto;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   z-index: 3;
   overflow: hidden;
@@ -535,3 +534,4 @@
   width: 100%;
   max-width: 600px;
 }
+

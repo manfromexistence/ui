@@ -1,5 +1,5 @@
 import { CodeTab, PreviewTab, CliTab, TabbedLayout } from "../../components/common/TabbedLayout";
-import { Box, Flex, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 
 import CodeExample from "../../components/code/CodeExample";
 import CliInstallation from "../../components/code/CliInstallation";
@@ -10,6 +10,8 @@ import { useState } from "react";
 import useForceRerender from "../../hooks/useForceRerender";
 import Aurora from "../../content/Backgrounds/Aurora/Aurora";
 import { aurora } from "../../constants/code/Backgrounds/auroraCode";
+import PreviewSlider from "../../components/common/PreviewSlider";
+import Customize from "../../components/common/Customize";
 
 const AuroraDemo = () => {
   const [color1, setColor1] = useState('#00d8ff');
@@ -17,10 +19,17 @@ const AuroraDemo = () => {
   const [color3, setColor3] = useState('#00d8ff');
 
   const [speed, setSpeed] = useState(1);
+  const [blend, setBlend] = useState(0.5);
 
   const [key, forceRerender] = useForceRerender();
 
   const propData = [
+    {
+      name: "colorStops",
+      type: "[string, string, string]",
+      default: '["#3A29FF", "#FF94B4", "#FF3232"]',
+      description: "An array of three hex colors defining the aurora gradient.",
+    },
     {
       name: "speed",
       type: "number",
@@ -28,10 +37,10 @@ const AuroraDemo = () => {
       description: "Controls the animation speed. Higher values make the aurora move faster.",
     },
     {
-      name: "colorStops",
-      type: "[string, string, string]",
-      default: '["#3A29FF", "#FF94B4", "#FF3232"]',
-      description: "An array of three hex colors defining the aurora gradient.",
+      name: "blend",
+      type: "number",
+      default: "0.5",
+      description: "Controls the blending of the aurora effect with the background.",
     },
     {
       name: "amplitude",
@@ -45,11 +54,10 @@ const AuroraDemo = () => {
     <TabbedLayout>
       <PreviewTab>
         <Box position="relative" className="demo-container" h={500} p={0} overflow="hidden">
-          <Aurora key={key} speed={speed} colorStops={[color1, color2, color3]} />
+          <Aurora key={key} blend={blend} speed={speed} colorStops={[color1, color2, color3]} />
         </Box>
 
-        <div className="preview-options">
-          <h2 className="demo-title-extra">Customize</h2>
+        <Customize>
           <Flex gap={4} mb={2}>
             <Flex alignItems="center">
               <Text mr={2}>Color 1</Text>
@@ -91,28 +99,30 @@ const AuroraDemo = () => {
             </Flex>
           </Flex>
 
-          <Flex gap={4} align="center" mt={4}>
-            <Text fontSize="sm">Speed</Text>
-            <Slider 
-              min={0}
-              max={2}
-              step={0.1}
-              value={speed}
-              onChange={(val) => {
-                setSpeed(val);
-                forceRerender();
-              }}
-              width="200px"
-            >
-              <SliderTrack>
-                <SliderFilledTrack />
-              </SliderTrack>
-              <SliderThumb />
-            </Slider>
-            <Text fontSize="sm">{speed}</Text>
-          </Flex>
+          <PreviewSlider
+            title="Speed"
+            min={0}
+            max={2}
+            step={0.1}
+            value={speed}
+            onChange={(val) => {
+              setSpeed(val);
+              forceRerender();
+            }}
+          />
 
-        </div>
+          <PreviewSlider
+            title="Blend"
+            min={0}
+            max={1}
+            step={0.01}
+            value={blend}
+            onChange={(val) => {
+              setBlend(val);
+              forceRerender();
+            }}
+          />
+        </Customize>
 
 
         <PropTable data={propData} />

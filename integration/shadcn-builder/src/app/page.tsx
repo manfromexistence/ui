@@ -26,6 +26,8 @@ import { GenerateCodeDialog } from "@/components/form-builder/dialogs/generate-c
 import { MobileNotification } from "@/components/form-builder/ui/mobile-notification";
 import { useIsMobile } from "@/hooks/use-mobile";
 import SocialLinks from "@/components/form-builder/sidebar/socialLinks";
+import { OpenJsonDialog } from "@/components/form-builder/dialogs/open-json-dialog";
+
 export default function FormBuilderPage() {
   const isMobile = useIsMobile();
   // Split the store selectors to only subscribe to what we need
@@ -41,6 +43,8 @@ export default function FormBuilderPage() {
     (state) => state.toggleJsonPreview
   );
 
+  const selectRow = useFormBuilderStore((state) => state.selectRow);
+  const selectComponent = useFormBuilderStore((state) => state.selectComponent);
   const [showCodeDialog, setShowCodeDialog] = useState(false);
   const [generatedCode, setGeneratedCode] = useState<{
     code: string;
@@ -83,9 +87,11 @@ export default function FormBuilderPage() {
             </sup>
           </h2>
         </div>
-        <div className="p-2 flex-1 grid-cols-3 hidden md:grid">
-          <div className="col-span-1"></div>
-          <div className="col-span-1 flex justify-center">
+        <div className="p-2 flex-1 grid-cols-2 xl:grid-cols-3 hidden md:grid">
+          <div className="hidden xl:block col-span-1">
+            {process.env.NODE_ENV === "development" && <OpenJsonDialog />}
+          </div>
+          <div className="col-span-1 flex xl:justify-center">
             <div className=" text-center flex flex-row items-center justify-center gap-1 border rounded-md h-9 px-4">
               <div
                 className="max-w-80 overflow-y-hidden whitespace-nowrap text-sm outline-none scrollbar-hide"
@@ -119,9 +125,13 @@ export default function FormBuilderPage() {
             <ToggleGroupNav
               items={modeItems}
               defaultValue={mode}
-              onValueChange={(value) =>
-                updateMode(value as "editor" | "preview")
-              }
+              onValueChange={(value) => {
+                if (value === "preview") {
+                  selectComponent(null);
+                  selectRow(null);
+                }
+                updateMode(value as "editor" | "preview");
+              }}
             />
           </div>
         </div>
@@ -131,6 +141,7 @@ export default function FormBuilderPage() {
             size="sm"
             className="w-full cursor-pointer"
             onClick={handleGenerateCode}
+            disabled={rows.length === 0}
           >
             Generate Code
           </Button>
@@ -154,7 +165,7 @@ export default function FormBuilderPage() {
             <DndContext>
               <div className="flex w-full h-screen justify-between">
                 <SidebarLeft />
-                <main className="flex-1 overflow-auto relative bg-slate-50 bg-dotted pt-14">
+                <main className="flex-1 overflow-auto relative bg-slate-50 bg-dotted pt-14 scrollbar-hide">
                   <MainCanvas />
                 </main>
                 <SidebarRight />

@@ -150,11 +150,9 @@ const FallingText = ({
     const updateLoop = () => {
       wordBodies.forEach(({ body, elem }) => {
         const { x, y } = body.position;
-        const w = body.bounds.max.x - body.bounds.min.x;
-        const h = body.bounds.max.y - body.bounds.min.y;
-        elem.style.left = `${x - w / 2}px`;
-        elem.style.top = `${y - h / 2}px`;
-        elem.style.transform = `rotate(${body.angle}rad)`;
+        elem.style.left = `${x}px`;
+        elem.style.top = `${y}px`;
+        elem.style.transform = `translate(-50%, -50%) rotate(${body.angle}rad)`;
       });
       Matter.Engine.update(engine);
       requestAnimationFrame(updateLoop);
