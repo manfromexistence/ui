@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fireworks-background-demo",
+  "type": "registry:ui",
+  "title": "Fireworks Background Demo",
+  "description": "Demo showing an animated fireworks background.",
+  "registryDependencies": ["https://animate-ui.com/r/fireworks-background"],
+  "files": [
+    {
+      "path": "registry/demo/backgrounds/fireworks-background-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/fireworks-background-demo.tsx"
+    }
+  ]
+}

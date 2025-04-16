@@ -1,0 +1,36 @@
+---
+title: Gradient Background
+description: A background component featuring a subtle yet engaging animated gradient effect, smoothly transitioning colors to enhance visual depth.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="gradient-background-demo" />
+
+## Installation
+
+<ComponentInstallation name="gradient-background" />
+
+## Props
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the component',
+      type: 'React.ReactNode',
+      required: false,
+    },
+    className: {
+      description: 'The className of the component',
+      type: 'string',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the gradient',
+      type: 'Transition',
+      required: false,
+      default: "{ duration: 15, ease: 'easeInOut', repeat: Infinity }",
+    },
+  }}
+/>

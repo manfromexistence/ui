@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion-highlight-cards-hover-demo",
+  "type": "registry:ui",
+  "title": "Motion Highlight Cards Hover Demo",
+  "description": "Demo showing the motion highlight cards hover effect.",
+  "registryDependencies": ["https://animate-ui.com/r/motion-highlight"],
+  "files": [
+    {
+      "path": "registry/demo/effects/motion-highlight-cards-hover-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/motion-highlight-cards-hover-demo.tsx"
+    }
+  ]
+}

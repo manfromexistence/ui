@@ -1,0 +1,207 @@
+---
+title: List
+description: List views are a great way to show a list of tasks grouped by status and ranked by priority.
+icon: List
+---
+
+<PoweredBy packages={[
+  { name: 'dnd kit', url: 'https://dndkit.com/' },
+  { name: 'Lucide', url: 'https://lucide.dev/' },
+]} />
+
+<Preview name="list" code={`'use client';
+
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import {
+  ListGroup,
+  ListHeader,
+  ListItem,
+  ListItems,
+  ListProvider,
+} from '@/components/ui/kibo-ui/list';
+import type { DragEndEvent } from '@/components/ui/kibo-ui/list';
+import { useState } from 'react';
+import { exampleFeatures, exampleStatuses } from '@/lib/content';
+
+const Example = () => {
+  const [features, setFeatures] = useState(exampleFeatures);
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (!over) {
+      return;
+    }
+
+    const status = exampleStatuses.find((status) => status.name === over.id);
+
+    if (!status) {
+      return;
+    }
+
+    setFeatures(
+      features.map((feature) => {
+        if (feature.id === active.id) {
+          return { ...feature, status };
+        }
+
+        return feature;
+      })
+    );
+  };
+
+  return (
+    <ListProvider onDragEnd={handleDragEnd}>
+      {exampleStatuses.map((status) => (
+        <ListGroup key={status.name} id={status.name}>
+          <ListHeader name={status.name} color={status.color} />
+          <ListItems>
+            {features
+              .filter((feature) => feature.status.name === status.name)
+              .map((feature, index) => (
+                <ListItem
+                  key={feature.id}
+                  id={feature.id}
+                  name={feature.name}
+                  parent={feature.status.name}
+                  index={index}
+                >
+                  <div
+                    className="h-2 w-2 shrink-0 rounded-full"
+                    style={{ backgroundColor: feature.status.color }}
+                  />
+                  <p className="m-0 flex-1 font-medium text-sm">
+                    {feature.name}
+                  </p>
+                  {feature.owner && (
+                    <Avatar className="h-4 w-4 shrink-0">
+                      <AvatarImage src={feature.owner.image} />
+                      <AvatarFallback>
+                        {feature.owner.name?.slice(0, 2)}
+                      </AvatarFallback>
+                    </Avatar>
+                  )}
+                </ListItem>
+              ))}
+          </ListItems>
+        </ListGroup>
+      ))}
+    </ListProvider>
+  );
+};
+
+export default Example;`} />
+
+## Installation
+
+<Installer packageName="list" />
+
+## Features
+
+- Drag and drop items between groups
+- Customize the item contents
+
+## Examples
+
+### Simple version
+
+<Preview name="list" code={`'use client';
+
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import {
+  ListGroup,
+  ListHeader,
+  ListItem,
+  ListItems,
+  ListProvider,
+} from '@/components/ui/kibo-ui/list';
+import type { DragEndEvent } from '@/components/ui/kibo-ui/list';
+import { useState } from 'react';
+import { exampleFeatures, exampleStatuses } from '@/lib/content';
+
+const Example = () => {
+  const [features, setFeatures] = useState(exampleFeatures);
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (!over) {
+      return;
+    }
+
+    const status = exampleStatuses.find((status) => status.name === over.id);
+
+    if (!status) {
+      return;
+    }
+
+    setFeatures(
+      features.map((feature) => {
+        if (feature.id === active.id) {
+          return { ...feature, status };
+        }
+
+        return feature;
+      })
+    );
+  };
+
+  return (
+    <ListProvider onDragEnd={handleDragEnd}>
+      {exampleStatuses.map((status) => (
+        <ListGroup key={status.name} id={status.name}>
+          <ListHeader name={status.name} color={status.color} />
+          <ListItems>
+            {features
+              .filter((feature) => feature.status.name === status.name)
+              .map((feature, index) => (
+                <ListItem
+                  key={feature.id}
+                  id={feature.id}
+                  name={feature.name}
+                  parent={feature.status.name}
+                  index={index}
+                />
+              ))}
+          </ListItems>
+        </ListGroup>
+      ))}
+    </ListProvider>
+  );
+};
+
+export default Example;`} />
+
+## Props
+
+The list view is made up of the following subcomponents:
+
+### ListProvider
+
+The `ListProvider` component is used to provide the features to the list.
+
+<AutoTypeTable path="node_modules/@repo/list/index.tsx" name="ListProviderProps" />
+
+### ListGroup
+
+The `ListGroup` component is used to display a group of items.
+
+<AutoTypeTable path="node_modules/@repo/list/index.tsx" name="ListGroupProps" />
+
+### ListHeader
+
+The `ListHeader` component is used to display the header of a group.
+
+<AutoTypeTable path="node_modules/@repo/list/index.tsx" name="ListHeaderProps" />
+
+### ListItems
+
+The `ListItems` component is used to display the items of a group.
+
+<AutoTypeTable path="node_modules/@repo/list/index.tsx" name="ListItemsProps" />
+
+### ListItem
+
+The `ListItem` component is used to display an item.
+
+<AutoTypeTable path="node_modules/@repo/list/index.tsx" name="ListItemProps" />

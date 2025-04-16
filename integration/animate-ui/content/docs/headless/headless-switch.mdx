@@ -1,0 +1,50 @@
+---
+title: Switch
+description: Switches are a pleasant interface for toggling a value between two states, and offer the same semantics and keyboard navigation as native checkbox elements.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="headless-switch-demo" />
+
+## Installation
+
+<ComponentInstallation name="headless-switch" />
+
+## Props
+
+<div className="flex flex-row gap-x-3">
+  <ExternalLink href="https://headlessui.com/react/switch" text="Docs" />
+  <ExternalLink
+    href="https://headlessui.com/react/switch#component-api"
+    text="API Reference"
+  />
+</div>
+
+### Animate UI props
+
+<TypeTable
+  type={{
+    leftIcon: {
+      description: 'The icon to display on the left of the switch',
+      type: 'React.ReactNode',
+      required: false,
+    },
+    rightIcon: {
+      description: 'The icon to display on the right of the switch',
+      type: 'React.ReactNode',
+      required: false,
+    },
+    thumbIcon: {
+      description: 'The icon to display on the thumb of the switch',
+      type: 'React.ReactNode',
+      required: false,
+    },
+  }}
+/>
+
+## Credits
+
+- We use [Headless UI](https://headlessui.com/react/popover) for the popover component.
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/popover) for the popover style.

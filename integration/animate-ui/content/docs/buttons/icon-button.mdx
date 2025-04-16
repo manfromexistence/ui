@@ -1,0 +1,60 @@
+---
+title: Icon Button
+description: An icon button that displays particles when clicked.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+new: true
+---
+
+<ComponentPreview name="icon-button-demo" />
+
+## Installation
+
+<ComponentInstallation name="icon-button" />
+
+## Props
+
+<TypeTable
+  type={{
+    icon: {
+      description: 'The icon to display',
+      type: 'React.ElementType',
+      required: true,
+    },
+    active: {
+      description: 'Whether the button is active',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    animate: {
+      description: 'Whether the button should display animations',
+      type: 'boolean',
+      required: false,
+      default: 'true',
+    },
+    size: {
+      description: 'The size of the button',
+      type: "'default' | 'sm' | 'md' | 'lg'",
+      required: false,
+      default: 'default',
+    },
+    color: {
+      description: 'The color of the button',
+      type: '[number, number, number]',
+      required: false,
+      default: '[59, 130, 246]',
+    },
+    transition: {
+      description: 'The transition of the button',
+      type: 'Transition',
+      required: false,
+      default: 'spring',
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [SHSF UI](https://www.shsfui.com/primitives/buttons/heart-button) for the icon animation inspiration

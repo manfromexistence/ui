@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "install-tabs-demo",
+  "type": "registry:ui",
+  "title": "Install Tabs Demo",
+  "description": "Demo showing an install tabs.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/install-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/install-tabs-demo/index.tsx",
+      "content": "import { InstallTabs } from '@/components/animate-ui/install-tabs';\n\nconst COMMANDS = {\n  npm: `npx shadcn@latest add \"https://animate-ui.com/r/install-tabs\"`,\n  pnpm: `pnpm dlx shadcn@latest add \"https://animate-ui.com/r/install-tabs\"`,\n  yarn: `npx shadcn@latest add \"https://animate-ui.com/r/install-tabs\"`,\n  bun: `bun x --bun shadcn@latest add \"https://animate-ui.com/r/install-tabs\"`,\n};\n\nexport const InstallTabsDemo = () => {\n  return (\n    <InstallTabs\n      defaultValue=\"pnpm\"\n      className=\"max-w-[650px]\"\n      commands={COMMANDS}\n    />\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/install-tabs-demo.tsx"
+    }
+  ]
+}

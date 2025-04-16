@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-switch",
+  "type": "registry:ui",
+  "title": "Radix Switch",
+  "description": "Radix UI switch component",
+  "dependencies": ["motion", "@radix-ui/react-switch"],
+  "files": [
+    {
+      "path": "registry/radix/radix-switch/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-switch.tsx"
+    }
+  ]
+}

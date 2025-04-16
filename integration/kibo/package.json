@@ -1,0 +1,38 @@
+{
+  "name": "kibo-ui",
+  "version": "1.0.18",
+  "bin": {
+    "kibo-ui": "dist/index.js"
+  },
+  "files": ["dist/index.js"],
+  "scripts": {
+    "prebuild": "bun scripts/build-registry.ts",
+    "build": "turbo build",
+    "predev": "pnpm run prebuild",
+    "dev": "turbo dev",
+    "lint": "ultracite lint",
+    "format": "ultracite format",
+    "test": "turbo test",
+    "analyze": "turbo analyze",
+    "bump-deps": "npx npm-check-updates --deep -u -x react-day-picker && pnpm install",
+    "bump-ui": "npx shadcn@latest add --all --overwrite -c packages/shadcn-ui",
+    "clean": "git clean -xdf node_modules"
+  },
+  "devDependencies": {
+    "@auto-it/first-time-contributor": "^11.3.0",
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "^22.14.1",
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.3",
+    "ultracite": "^4.2.1"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@10.8.1",
+  "type": "module",
+  "dependencies": {
+    "tsup": "^8.4.0",
+    "zod": "^3.24.2"
+  }
+}

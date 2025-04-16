@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-dropdown-menu-demo",
+  "type": "registry:ui",
+  "title": "Radix Dropdown Menu Demo",
+  "description": "Demo showing an animated radix dropdown menu.",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-dropdown-menu",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-dropdown-menu-demo/index.tsx",
+      "content": "'use client';\n\nimport {\n  CreditCard,\n  Keyboard,\n  LogOut,\n  Mail,\n  MessageSquare,\n  Plus,\n  PlusCircle,\n  Settings,\n  User,\n  UserPlus,\n  Users,\n} from 'lucide-react';\nimport { motion } from 'motion/react';\nimport { Button } from '@/components/ui/button';\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuGroup,\n  DropdownMenuItem,\n  DropdownMenuLabel,\n  DropdownMenuPortal,\n  DropdownMenuSeparator,\n  DropdownMenuShortcut,\n  DropdownMenuSub,\n  DropdownMenuSubContent,\n  DropdownMenuSubTrigger,\n  DropdownMenuTrigger,\n} from '@/components/animate-ui/radix-dropdown-menu';\n\nexport const RadixDropdownMenuDemo = () => {\n  return (\n    <DropdownMenu>\n      <DropdownMenuTrigger asChild>\n        <Button variant=\"outline\" asChild>\n          <motion.button\n            whileHover={{ scale: 1.05 }}\n            whileTap={{ scale: 0.95 }}\n          >\n            Open\n          </motion.button>\n        </Button>\n      </DropdownMenuTrigger>\n      <DropdownMenuContent className=\"w-56\">\n        <DropdownMenuLabel>My Account</DropdownMenuLabel>\n        <DropdownMenuSeparator />\n        <DropdownMenuGroup>\n          <DropdownMenuItem>\n            <User />\n            <span>Profile</span>\n            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>\n          </DropdownMenuItem>\n          <DropdownMenuItem>\n            <CreditCard />\n            <span>Billing</span>\n            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>\n          </DropdownMenuItem>\n          <DropdownMenuItem>\n            <Settings />\n            <span>Settings</span>\n            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>\n          </DropdownMenuItem>\n          <DropdownMenuItem>\n            <Keyboard />\n            <span>Keyboard shortcuts</span>\n            <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>\n          </DropdownMenuItem>\n        </DropdownMenuGroup>\n        <DropdownMenuSeparator />\n        <DropdownMenuGroup>\n          <DropdownMenuItem>\n            <Users />\n            <span>Team</span>\n          </DropdownMenuItem>\n          <DropdownMenuSub>\n            <DropdownMenuSubTrigger>\n              <UserPlus />\n              <span>Invite users</span>\n            </DropdownMenuSubTrigger>\n            <DropdownMenuPortal>\n              <DropdownMenuSubContent>\n                <DropdownMenuItem>\n                  <Mail />\n                  <span>Email</span>\n                </DropdownMenuItem>\n                <DropdownMenuItem>\n                  <MessageSquare />\n                  <span>Message</span>\n                </DropdownMenuItem>\n                <DropdownMenuSeparator />\n                <DropdownMenuItem>\n                  <PlusCircle />\n                  <span>More...</span>\n                </DropdownMenuItem>\n              </DropdownMenuSubContent>\n            </DropdownMenuPortal>\n          </DropdownMenuSub>\n          <DropdownMenuItem disabled>\n            <Plus />\n            <span>New Team</span>\n            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>\n          </DropdownMenuItem>\n        </DropdownMenuGroup>\n        <DropdownMenuSeparator />\n        <DropdownMenuItem>\n          <LogOut />\n          <span>Log out</span>\n          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>\n        </DropdownMenuItem>\n      </DropdownMenuContent>\n    </DropdownMenu>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-dropdown-menu-demo.tsx"
+    }
+  ]
+}

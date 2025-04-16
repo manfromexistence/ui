@@ -1,0 +1,200 @@
+---
+title: Snippet
+description: Snippet is a component that allows you to display and copy code in a tabbed interface.
+icon: Code
+---
+
+<PoweredBy packages={[
+  { name: 'Radix UI Tabs', url: 'https://www.radix-ui.com/primitives/docs/components/tabs' },
+  { name: 'Lucide', url: 'https://lucide.dev/' },
+]} />
+
+<Preview name="snippet" code={`'use client';
+
+import {
+  Snippet,
+  SnippetCopyButton,
+  SnippetHeader,
+  SnippetTabsContent,
+  SnippetTabsList,
+  SnippetTabsTrigger,
+} from '@/components/ui/kibo-ui/snippet';
+import { HeartIcon, BoxIcon } from 'lucide-react';
+import { useState } from 'react';
+
+const commands = [
+  {
+    label: 'kibo-ui',
+    icon: HeartIcon,
+    code: \`npx kibo-ui@latest add snippet\`,
+  },
+  {
+    label: 'shadcn',
+    icon: BoxIcon,
+    code: \`npx shadcn@latest add https://www.kibo-ui.com/registry/snippet.json\`,
+  },
+];
+
+const Example = () => {
+  const [value, setValue] = useState(commands[0].label);
+  const activeCommand = commands.find((command) => command.label === value);
+
+  return (
+    <div className="p-4">
+      <Snippet value={value} onValueChange={setValue}>
+        <SnippetHeader>
+          <SnippetTabsList>
+            {commands.map((command) => (
+              <SnippetTabsTrigger key={command.label} value={command.label}>
+                <command.icon size={14} />
+                <span>{command.label}</span>
+              </SnippetTabsTrigger>
+            ))}
+          </SnippetTabsList>
+          <SnippetCopyButton
+            value={activeCommand?.code}
+            onCopy={() =>
+              console.log(\`Copied "\${activeCommand?.code}" to clipboard\`)
+            }
+            onError={() =>
+              console.error(\`Failed to copy "\${activeCommand?.code}" to clipboard\`)
+            }
+          />
+        </SnippetHeader>
+        {commands.map((command) => (
+          <SnippetTabsContent key={command.label} value={command.label}>
+            {command.code}
+          </SnippetTabsContent>
+        ))}
+      </Snippet>
+    </div>
+  );
+};
+
+export default Example;`} />
+
+## Installation
+
+<Installer packageName="snippet" />
+
+## Features
+
+- Copy code to clipboard
+- Customize the tab contents
+- Multiple tabs support
+- Customizable copy button, tab triggers and tab content
+- Customizable copy button timeout and callbacks
+- Accessible tabs using `@radix-ui/react-tabs`
+
+## Examples
+
+### NPM packages
+
+<Preview name="snippet" code={`'use client';
+
+import {
+  Snippet,
+  SnippetCopyButton,
+  SnippetHeader,
+  SnippetTabsContent,
+  SnippetTabsList,
+  SnippetTabsTrigger,
+} from '@/components/ui/kibo-ui/snippet';
+import { HeartIcon, BoxIcon } from 'lucide-react';
+import { useState } from 'react';
+
+const commands = [
+  {
+    label: 'npm',
+    code: 'npx next-forge@latest init',
+  },
+  {
+    label: 'yarn',
+    code: 'yarn dlx next-forge@latest init',
+  },
+  {
+    label: 'pnpm',
+    code: 'pnpx next-forge@latest init',
+  },
+  {
+    label: 'bun',
+    code: 'bunx next-forge@latest init',
+  },
+];
+
+const Example = () => {
+  const [value, setValue] = useState(commands[0].label);
+  const activeCommand = commands.find((command) => command.label === value);
+
+  return (
+    <div className="p-4">
+      <Snippet value={value} onValueChange={setValue}>
+        <SnippetHeader>
+          <SnippetTabsList>
+            {commands.map((command) => (
+              <SnippetTabsTrigger key={command.label} value={command.label}>
+                {command.label}
+              </SnippetTabsTrigger>
+            ))}
+          </SnippetTabsList>
+          <SnippetCopyButton
+            value={activeCommand?.code}
+            onCopy={() =>
+              console.log(\`Copied "\${activeCommand?.code}" to clipboard\`)
+            }
+            onError={() =>
+              console.error(\`Failed to copy "\${activeCommand?.code}" to clipboard\`)
+            }
+          />
+        </SnippetHeader>
+        {commands.map((command) => (
+          <SnippetTabsContent key={command.label} value={command.label}>
+            {command.code}
+          </SnippetTabsContent>
+        ))}
+      </Snippet>
+    </div>
+  );
+};
+
+export default Example;`} />
+
+## Props
+
+The snippet component is made up of the following subcomponents:
+
+### Snippet
+
+The `Snippet` component is used as a provider for the snippet.
+
+<AutoTypeTable path="node_modules/@repo/snippet/index.tsx" name="SnippetProps" />
+
+### SnippetHeader
+
+The `SnippetHeader` component is used to display the header of the snippet.
+
+<AutoTypeTable path="node_modules/@repo/snippet/index.tsx" name="SnippetHeaderProps" />
+
+### SnippetTabsList
+
+The `SnippetTabsList` component is used to display the tabs of the snippet.
+
+<AutoTypeTable path="node_modules/@repo/snippet/index.tsx" name="SnippetTabsListProps" />
+
+### SnippetTabsTrigger
+
+The `SnippetTabsTrigger` component is used to display the trigger of a tab.
+
+<AutoTypeTable path="node_modules/@repo/snippet/index.tsx" name="SnippetTabsTriggerProps" />
+
+### SnippetTabsContent
+
+The `SnippetTabsContent` component is used to display the content of a tab.
+
+<AutoTypeTable path="node_modules/@repo/snippet/index.tsx" name="SnippetTabsContentProps" />
+
+### SnippetCopyButton
+
+The `SnippetCopyButton` component is used to display the copy button of the snippet.
+
+<AutoTypeTable path="node_modules/@repo/snippet/index.tsx" name="SnippetCopyButtonProps" />

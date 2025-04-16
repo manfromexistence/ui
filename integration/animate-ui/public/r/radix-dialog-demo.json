@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-dialog-demo",
+  "type": "registry:ui",
+  "title": "Radix Dialog Demo",
+  "description": "Demo showing an animated radix dialog.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-dialog",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-dialog-demo/index.tsx",
+      "content": "import { Button } from '@/components/ui/button';\nimport {\n  Dialog,\n  DialogTrigger,\n  DialogContent,\n  DialogHeader,\n  DialogTitle,\n  DialogDescription,\n  DialogFooter,\n} from '@/components/animate-ui/radix-dialog';\n\nexport const RadixDialogDemo = () => {\n  return (\n    <Dialog>\n      <DialogTrigger asChild>\n        <Button variant=\"outline\">Open Dialog</Button>\n      </DialogTrigger>\n\n      <DialogContent className=\"sm:max-w-[425px]\">\n        <DialogHeader>\n          <DialogTitle>Terms of Service</DialogTitle>\n          <DialogDescription>\n            Please read the following terms of service carefully.\n          </DialogDescription>\n        </DialogHeader>\n\n        <div className=\"grid gap-4 py-4\">\n          <p>\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,\n            quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.\n            Quisquam, quos.\n          </p>\n        </div>\n\n        <DialogFooter>\n          <Button variant=\"outline\">Decline</Button>\n          <Button type=\"submit\">Accept</Button>\n        </DialogFooter>\n      </DialogContent>\n    </Dialog>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-dialog-demo.tsx"
+    }
+  ]
+}

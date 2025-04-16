@@ -1,0 +1,360 @@
+.category-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.main-nav {
+  background: linear-gradient(to bottom, #060606, transparent);
+  width: 100%;
+  position: fixed;
+  padding: 0 2em;
+  height: 70px;
+  background: #060606;
+  left: 0;
+}
+
+.main-nav .nav-items {
+  position: relative;
+  height: 70px;
+  padding: 0;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.main-nav .nav-items::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #222, transparent);
+}
+
+.main-nav .nav-items::after {
+  pointer-events: none;
+  content: '';
+  position: fixed;
+  left: 0;
+  top: 70px;
+  z-index: -1;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(to bottom, #060606, transparent);
+}
+
+.main-nav .nav-items .logo {
+  position: relative;
+}
+
+.category-name {
+  color: white;
+  font-weight: 900;
+  letter-spacing: -1px;
+  font-size: 18px;
+}
+
+.category-page {
+  width: calc(100% - 200px);
+  position: absolute;
+  right: 0;
+  padding: 8em 0 6em 1em;
+  min-height: 100vh;
+}
+
+.category-page .main-category {
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: -0.5px;
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.category-page .sub-category {
+  margin-bottom: 0.5em;
+  line-height: 1em;
+  font-size: 4.5rem;
+  color: #fff;
+  font-weight: 900;
+}
+
+.code-highlighter {
+  border: 1px solid #ffffff1c !important;
+  border-radius: 20px !important;
+  background: #060606 !important;
+  font-size: 14px !important;
+}
+
+.code-highlighter .language-bash {
+  color: #b6b6b6 !important;
+}
+
+.code-highlighter:has(.language-bash) {
+  padding: 1.25em !important;
+}
+
+.demo-container {
+  width: 100%;
+  margin-top: 1em;
+  background: #060606;
+  border: 1px solid #ffffff1c;
+  padding: 1em;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div:has(> .props-table) {
+  border: 1px solid #222;
+  border-radius: 20px;
+}
+
+.split-text-demo,
+.blur-text-demo {
+  font-size: 6rem;
+  font-weight: bolder;
+}
+
+.custom-bounceCards {
+  position: relative;
+  top: 2em;
+}
+
+.custom-folder {
+  margin-top: 4em;
+}
+
+.rotating-text-demo-container {
+  white-space: pre;
+  font-size: clamp(2rem, 6vw, 6rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rotating-text-demo-container .rotating-text-demo {
+  display: inline-block;
+  color: #060606;
+  background-color: #00f0ff;
+  padding: 0 0.4em;
+  border-radius: 15px;
+  transition: width 0.3s ease;
+}
+
+.ballpit-demo {
+  position: relative;
+}
+
+.tilted-card-demo-text {
+  font-family: "DM Sans";
+  font-weight: 900;
+  text-transform: capitalize;
+  box-shadow: 0 5px 30px #06060659;
+  border-radius: 15px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.5rem 1em;
+  letter-spacing: -0.5px;
+  margin: 2em;
+}
+
+.shapeblur-demo {
+  position: relative;
+  mix-blend-mode: difference;
+  z-index: 2;
+}
+
+.decrypted-text {
+  font-size: 2rem;
+  display: inline-block;
+  font-weight: 400;
+  color: #fff;
+  cursor: pointer;
+}
+
+.variable-proximity-demo {
+  max-width: 20ch;
+  line-height: 100%;
+  font-size: 4rem !important;
+  cursor: pointer;
+  text-align: center;
+}
+
+.shiny-text-demo {
+  font-weight: 300;
+}
+
+.shiny-button {
+  cursor: pointer;
+  border: 1px solid #353535;
+  background-color: #111;
+  padding: 0.4em 1.2em;
+  border-radius: 50px;
+  transition: 0.3s ease;
+}
+
+.shiny-button:hover {
+  background-color: #222;
+}
+
+.demo-title {
+  font-weight: bolder;
+  margin-top: 0.5em;
+  font-size: 2rem;
+}
+
+.demo-title span {
+  font-size: 0.8rem;
+  color: #a1a1aa;
+  font-weight: 500;
+}
+
+.demo-title::first-letter {
+  text-transform: uppercase;
+}
+
+.demo-title-extra,
+.demo-title-contribute {
+  margin: 1em 0 0.5em;
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+.demo-title-contribute {
+  margin-top: 2em;
+  letter-spacing: -0.5px;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.contribute-container {
+  background: linear-gradient(to bottom, #111, #060606);
+  border: 1px solid #161616;
+  border-radius: 20px;
+  margin-top: 1em;
+  padding-bottom: 3em;
+}
+
+.contribute-button {
+  background: linear-gradient(to bottom, #111, #060606) !important;
+  border: 1px solid #222;
+  transition: 0.5s ease;
+}
+
+.contribute-button span {
+  color: #a1a1aa;
+}
+
+.contribute-button:hover {
+  color: #00f0ff;
+}
+
+.demo-details {
+  font-size: 1.6rem;
+  margin: 0 0 1em;
+  display: flex;
+  gap: 0.3em;
+}
+
+.demo-details span {
+  background-color: #222;
+  white-space: nowrap;
+  color: #fff;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  padding: 0.5em 1em;
+  transition: 0.3s ease;
+}
+
+.demo-details span:hover {
+  cursor: pointer;
+  background-color: #111;
+}
+
+.demo-extra-info {
+  margin: 1em 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: #a1a1aa;
+}
+
+.jsrepo-info a {
+  text-decoration: underline;
+}
+
+.cli-divider {
+  position: relative;
+  margin: 4em auto 3em;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #222, transparent);
+}
+
+.cli-divider::before {
+  content: "Or";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #060606;
+  padding: 0 1em;
+  color: #a1a1aa;
+}
+
+.coming-soon a {
+  color: #00f0ff;
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 767px) {
+  .category-wrapper {
+    position: static;
+  }
+
+  .category-page {
+    width: 100%;
+    padding: 6em 1em 0;
+  }
+
+  .category-page .main-category {
+    font-size: 1rem;
+  }
+
+  .category-page .sub-category {
+    font-size: 3rem;
+  }
+
+  .split-text-demo,
+  .blur-text-demo {
+    font-size: 2rem;
+    font-weight: bolder;
+  }
+
+  .decrypted-text {
+    font-size: 1rem;
+  }
+
+  .variable-proximity-demo {
+    font-size: 1.6rem !important;
+  }
+}
+
+.custom-gradient-class {
+  padding: 1em 2em;
+  text-align: center;
+}
+
+.count-up-text {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.custom-spotlight-card {
+  width: 350px;
+  height: 300px;
+}

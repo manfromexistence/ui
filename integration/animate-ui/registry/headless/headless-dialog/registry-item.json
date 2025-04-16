@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-dialog",
+  "type": "registry:ui",
+  "title": "Headless Dialog",
+  "description": "Headless UI dialog component",
+  "dependencies": ["@headlessui/react", "motion"],
+  "files": [
+    {
+      "path": "registry/headless/headless-dialog/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-dialog.tsx"
+    }
+  ]
+}

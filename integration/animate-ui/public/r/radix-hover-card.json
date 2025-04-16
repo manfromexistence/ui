@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-hover-card",
+  "type": "registry:ui",
+  "title": "Hover Card",
+  "description": "Hover Card component",
+  "dependencies": [
+    "motion",
+    "@radix-ui/react-hover-card"
+  ],
+  "files": [
+    {
+      "path": "registry/radix/radix-hover-card/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport * as HoverCardPrimitive from '@radix-ui/react-hover-card';\nimport { AnimatePresence, motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface HoverCardContextType {\n  isOpen: boolean;\n}\nconst HoverCardContext = React.createContext<HoverCardContextType>({\n  isOpen: false,\n});\n\nconst useHoverCard = (): HoverCardContextType => {\n  const context = React.useContext(HoverCardContext);\n  if (!context) {\n    throw new Error('useHoverCard must be used within a HoverCard');\n  }\n  return context;\n};\n\ntype HoverCardProps = React.ComponentPropsWithoutRef<\n  typeof HoverCardPrimitive.Root\n>;\n\nconst HoverCard: React.FC<HoverCardProps> = ({ children, ...props }) => {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  React.useEffect(() => {\n    if (props?.open !== undefined) setIsOpen(props.open);\n  }, [props?.open]);\n\n  const handleOpenChange = React.useCallback(\n    (open: boolean) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open);\n    },\n    [props],\n  );\n\n  return (\n    <HoverCardContext.Provider value={{ isOpen }}>\n      <HoverCardPrimitive.Root {...props} onOpenChange={handleOpenChange}>\n        {children}\n      </HoverCardPrimitive.Root>\n    </HoverCardContext.Provider>\n  );\n};\n\ntype HoverCardTriggerProps = React.ComponentPropsWithoutRef<\n  typeof HoverCardPrimitive.Trigger\n>;\n\nconst HoverCardTrigger = HoverCardPrimitive.Trigger;\n\ntype HoverCardContentProps = React.ComponentPropsWithoutRef<\n  typeof HoverCardPrimitive.Content\n> & {\n  transition?: Transition;\n};\n\nconst HoverCardContent = React.forwardRef<\n  React.ElementRef<typeof HoverCardPrimitive.Content>,\n  HoverCardContentProps\n>(\n  (\n    {\n      className,\n      align = 'center',\n      sideOffset = 4,\n      transition = { type: 'spring', stiffness: 300, damping: 25 },\n      children,\n      ...props\n    },\n    ref,\n  ) => {\n    const { isOpen } = useHoverCard();\n\n    return (\n      <AnimatePresence>\n        {isOpen && (\n          <HoverCardPrimitive.Portal forceMount>\n            <HoverCardPrimitive.Content\n              forceMount\n              align={align}\n              sideOffset={sideOffset}\n              className=\"z-50\"\n              ref={ref}\n              {...props}\n            >\n              <motion.div\n                key=\"hover-card\"\n                initial={{ opacity: 0, scale: 0.5, y: 25 }}\n                animate={{ opacity: 1, scale: 1, y: 0 }}\n                exit={{ opacity: 0, scale: 0.5, y: 25 }}\n                transition={transition}\n                className={cn(\n                  'w-64 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',\n                  className,\n                )}\n              >\n                {children}\n              </motion.div>\n            </HoverCardPrimitive.Content>\n          </HoverCardPrimitive.Portal>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\nHoverCardContent.displayName = HoverCardPrimitive.Content.displayName;\n\nexport {\n  HoverCard,\n  HoverCardTrigger,\n  HoverCardContent,\n  useHoverCard,\n  type HoverCardContextType,\n  type HoverCardProps,\n  type HoverCardTriggerProps,\n  type HoverCardContentProps,\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-hover-card.tsx"
+    }
+  ]
+}

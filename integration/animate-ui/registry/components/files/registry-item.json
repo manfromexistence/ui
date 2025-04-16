@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "files",
+  "type": "registry:ui",
+  "title": "Files",
+  "description": "Files component",
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/motion-highlight",
+    "https://animate-ui.com/r/radix-accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/components/files/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/files.tsx"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+---
+title: Marquee
+date: 2023-07-26
+description: An infinite scrolling component that can be used to display text, images, or videos.
+author: dillionverma
+published: true
+video: https://cdn.magicui.design/marquee.mp4
+---
+
+<ComponentPreview name="marquee-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/marquee"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="marquee" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add the required CSS animations</Step>
+
+Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
+
+```css title="app/globals.css" {1-2,4-19}
+--animate-marquee: marquee var(--duration) infinite linear;
+--animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Examples
+
+### Vertical
+
+<ComponentPreview name="marquee-demo-vertical" />
+
+### 3D
+
+<ComponentPreview name="marquee-3d" />
+
+## Usage
+
+```tsx
+import { Marquee } from "@/components/magicui/marquee.tsx";
+```
+
+```tsx
+<Marquee>
+  <span>Next.js</span>
+  <span>React</span>
+  <span>TypeScript</span>
+  <span>Tailwind CSS</span>
+</Marquee>
+```
+
+## Props
+
+| Prop           | Type      | Default | Description                                                                  |
+| -------------- | --------- | ------- | ---------------------------------------------------------------------------- |
+| `className`    | `string`  | `-`     | The class name to apply to the component.                                    |
+| `reverse`      | `boolean` | `false` | Whether or not to reverse the direction of the marquee.                      |
+| `pauseOnHover` | `boolean` | `false` | Whether or not to pause the marquee when the user hovers over the component. |
+| `vertical`     | `boolean` | `false` | Whether or not to display the marquee vertically.                            |
+| `children`     | `node`    | `-`     | The content to display in the marquee.                                       |
+| `repeat`       | `number`  | `1`     | The number of times to repeat the content.                                   |

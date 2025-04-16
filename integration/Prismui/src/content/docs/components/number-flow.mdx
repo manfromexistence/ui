@@ -1,0 +1,154 @@
+---
+title: NumberFlow
+publishedAt: 2025-01-03
+summary: A smooth, animated number transition component with support for various formats and animations. NumberFlow was created by Maxwell Barvian.
+author: codehagen
+slug: components/number-flow
+related: ["introduction"]
+---
+
+<ComponentPreview name="number-flow-basic" />
+
+<Note variant="info">
+  The NumberFlow component provides smooth, animated number transitions with support for various formats including currency, percentage, and compact notation.
+  Perfect for dynamic counters, prices, statistics, and any numeric data that changes over time.
+</Note>
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <ComponentSource name="number-flow" isCli />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="number-flow" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Examples
+
+<ComponentPreview name="number-flow-demo" />
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import NumberFlow from '@number-flow/react'
+
+export default function Example() {
+  return <NumberFlow value={123} />
+}
+```
+
+### Currency Format
+
+```tsx
+<NumberFlow
+  value={1234.56}
+  format={{
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0
+  }}
+  transformTiming={{
+    duration: 500,
+    easing: 'ease-out'
+  }}
+/>
+```
+
+### Compact Notation
+
+```tsx
+<NumberFlow
+  value={1234567}
+  format={{
+    notation: 'compact',
+    compactDisplay: 'short',
+    roundingMode: 'trunc'
+  }}
+  willChange
+  continuous
+/>
+```
+
+## Customization
+
+<Steps>
+  <Step>Custom Animation Timing</Step>
+  ```tsx
+  <NumberFlow
+    value={value}
+    transformTiming={{
+      duration: 500,
+      easing: 'ease-out'
+    }}
+    spinTiming={{
+      duration: 750,
+      easing: 'linear(...)'
+    }}
+  />
+  ```
+
+  <Step>Custom Number Formatting</Step>
+  ```tsx
+  <NumberFlow
+    value={0.8567}
+    format={{
+      style: 'percent',
+      minimumFractionDigits: 1
+    }}
+  />
+  ```
+
+  <Step>Custom Trend Control</Step>
+  ```tsx
+  <NumberFlow
+    value={value}
+    trend={(oldValue, value) => {
+      // Return:
+      //  1: digits always go up
+      //  0: each digit goes up/down based on its change
+      // -1: digits always go down
+      return Math.sign(value - oldValue)
+    }}
+  />
+  ```
+</Steps>
+
+## Notes
+
+- Built with accessibility in mind
+- Numbers are properly formatted for screen readers
+- Animations respect `prefers-reduced-motion`
+- ARIA attributes are automatically applied
+- Uses spring-based animations for smooth transitions
+- Supports various number formats through Intl.NumberFormat
+- Optimized for performance with `willChange` prop
+
+## Props
+
+| Prop | Type | Description | Default |
+| --- | --- | --- | --- |
+| value | number | The number to display and animate | Required |
+| format | Intl.NumberFormatOptions | Formatting options for the number | {} |
+| locales | string &#124; string[] | The locale(s) for number formatting | undefined |
+| prefix | string | Text to display before the number | undefined |
+| suffix | string | Text to display after the number | undefined |
+| spinTiming | EffectTiming | Timing for digit spin animations | transformTiming |
+| willChange | boolean | Optimize for animations | false |
+
+See the [NumberFlow docs](https://number-flow.barvian.me) for a full list of props.
+
+## Credits
+
+NumberFlow was created by [Maxwell Barvian](https://twitter.com/mbarvian). The animations were inspired by Emil Kowalski's [Animations on the Web](https://www.framer.com/learn/animations-on-the-web/) course. 

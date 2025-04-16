@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "counting-number",
+  "type": "registry:ui",
+  "title": "Counting Number",
+  "description": "Counting number component",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/text/counting-number/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/counting-number.tsx"
+    }
+  ]
+}

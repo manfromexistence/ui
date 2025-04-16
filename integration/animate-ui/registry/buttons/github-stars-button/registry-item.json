@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github-stars-button",
+  "type": "registry:ui",
+  "title": "GitHub Stars Button",
+  "description": "A GitHub stars button component",
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["https://animate-ui.com/r/sliding-number"],
+  "files": [
+    {
+      "path": "registry/buttons/github-stars-button/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/github-stars-button.tsx"
+    }
+  ]
+}

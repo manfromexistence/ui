@@ -1,0 +1,123 @@
+---
+title: Files
+description: A component that allows you to display a list of files and folders.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+new: true
+---
+
+<ComponentPreview name="files-demo" />
+
+## Installation
+
+<ComponentInstallation name="files" />
+
+## Examples
+
+### Files Advanced
+
+<ComponentPreview name="files-advanced-demo" />
+
+## Props
+
+### Files
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the component.',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    className: {
+      description: 'The class name of the component.',
+      type: 'string',
+      required: false,
+    },
+    activeClassName: {
+      description: 'The class name of the highlight.',
+      type: 'string',
+      required: false,
+    },
+    defaultOpen: {
+      description: 'The child folders open by default.',
+      type: 'string[]',
+      required: false,
+    },
+    open: {
+      description: 'The child folders open.',
+      type: 'string[]',
+      required: false,
+    },
+    onOpenChange: {
+      description: 'The callback function when the child folders open change.',
+      type: 'function',
+      required: false,
+    },
+    sideComponent: {
+      description:
+        'The component to display on the right side of the component.',
+      type: 'React.ReactNode',
+      required: false,
+    },
+  }}
+/>
+
+### Folder
+
+<TypeTable
+  type={{
+    name: {
+      description: 'The name of the folder.',
+      type: 'string',
+      required: true,
+    },
+    children: {
+      description: 'The children of the component.',
+      type: 'React.ReactNode',
+      required: false,
+    },
+    className: {
+      description: 'The class name of the component.',
+      type: 'string',
+      required: false,
+    },
+    defaultOpen: {
+      description: 'The child folders open by default.',
+      type: 'string[]',
+      required: false,
+    },
+    open: {
+      description: 'The child folders open.',
+      type: 'string[]',
+      required: false,
+    },
+    onOpenChange: {
+      description: 'The callback function when the child folders open change.',
+      type: 'function',
+      required: false,
+    },
+  }}
+/>
+
+### File
+
+<TypeTable
+  type={{
+    className: {
+      description: 'The class name of the component.',
+      type: 'string',
+      required: false,
+    },
+    name: {
+      description: 'The name of the file.',
+      type: 'string',
+      required: true,
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [Fumadocs](https://fumadocs.vercel.app/docs/ui/components/files) for the inspiration

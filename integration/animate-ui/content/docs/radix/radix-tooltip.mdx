@@ -1,0 +1,46 @@
+---
+title: Tooltip
+description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="radix-tooltip-demo" />
+
+## Installation
+
+<ComponentInstallation name="radix-tooltip" />
+
+## Props
+
+<div className="flex flex-row gap-x-3">
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/tooltip"
+    text="Docs"
+  />
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/tooltip#api-reference"
+    text="API Reference"
+  />
+</div>
+
+### Animate UI props
+
+#### TooltipContent
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the tooltip content animation',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 300, damping: 25 }",
+    },
+  }}
+/>
+
+## Credits
+
+- We use [Radix UI](https://www.radix-ui.com/primitives/docs/components/tooltip) for the tooltip component.
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/tooltip) for the tooltip style.

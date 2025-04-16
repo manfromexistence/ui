@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-progress",
+  "type": "registry:ui",
+  "title": "Progress",
+  "description": "Progress component",
+  "dependencies": [
+    "motion",
+    "@radix-ui/react-progress"
+  ],
+  "files": [
+    {
+      "path": "registry/radix/radix-progress/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport * as ProgressPrimitive from '@radix-ui/react-progress';\nimport { motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\nconst MotionProgressIndicator = motion.create(ProgressPrimitive.Indicator);\n\ntype ProgressProps = React.ComponentPropsWithoutRef<\n  typeof ProgressPrimitive.Root\n> & {\n  transition?: Transition;\n};\n\nconst Progress = React.forwardRef<\n  React.ElementRef<typeof ProgressPrimitive.Root>,\n  ProgressProps\n>(\n  (\n    {\n      className,\n      value,\n      transition = { type: 'spring', stiffness: 100, damping: 30 },\n      ...props\n    },\n    ref,\n  ) => (\n    <ProgressPrimitive.Root\n      ref={ref}\n      className={cn(\n        'relative h-2 w-full overflow-hidden rounded-full bg-secondary',\n        className,\n      )}\n      {...props}\n    >\n      <MotionProgressIndicator\n        className=\"h-full w-full flex-1 bg-primary\"\n        animate={{\n          translateX: `-${100 - (value || 0)}%`,\n        }}\n        transition={transition}\n      />\n    </ProgressPrimitive.Root>\n  ),\n);\nProgress.displayName = ProgressPrimitive.Root.displayName;\n\nexport { Progress, type ProgressProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-progress.tsx"
+    }
+  ]
+}

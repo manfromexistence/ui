@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "liquid-button",
+  "type": "registry:ui",
+  "title": "Liquid Button",
+  "description": "A liquid button component",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/buttons/liquid-button/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/liquid-button.tsx"
+    }
+  ]
+}

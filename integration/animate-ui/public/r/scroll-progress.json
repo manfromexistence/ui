@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-progress",
+  "type": "registry:ui",
+  "title": "Scroll Progress",
+  "description": "Scroll progress component",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/components/scroll-progress/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useScroll,\n  useSpring,\n  type HTMLMotionProps,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface ScrollProgressProps extends React.HTMLAttributes<HTMLDivElement> {\n  progressProps?: HTMLMotionProps<'div'>;\n}\n\nconst ScrollProgress = React.forwardRef<HTMLDivElement, ScrollProgressProps>(\n  ({ className, children, progressProps, ...props }, ref) => {\n    const containerRef = React.useRef<HTMLDivElement | null>(null);\n    React.useImperativeHandle(\n      ref,\n      () => containerRef.current as HTMLDivElement,\n    );\n\n    const { scrollYProgress } = useScroll(\n      children ? { container: containerRef } : undefined,\n    );\n\n    const scaleX = useSpring(scrollYProgress, {\n      stiffness: 250,\n      damping: 40,\n      bounce: 0,\n    });\n\n    return (\n      <>\n        <motion.div\n          {...progressProps}\n          style={{ scaleX }}\n          className={cn(\n            'fixed z-50 top-0 inset-x-0 h-1 bg-blue-500 origin-left',\n            progressProps?.className,\n          )}\n        />\n        {containerRef && (\n          <div\n            ref={containerRef}\n            className={cn('overflow-y-auto h-full', className)}\n            {...props}\n          >\n            {children}\n          </div>\n        )}\n      </>\n    );\n  },\n);\n\nScrollProgress.displayName = 'ScrollProgress';\n\nexport { ScrollProgress, type ScrollProgressProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/scroll-progress.tsx"
+    }
+  ]
+}

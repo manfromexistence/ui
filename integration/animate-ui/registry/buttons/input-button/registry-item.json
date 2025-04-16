@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-button",
+  "type": "registry:ui",
+  "title": "Input Button",
+  "description": "A input button component",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/buttons/input-button/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/input-button.tsx"
+    }
+  ]
+}

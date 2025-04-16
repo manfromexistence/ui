@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-sidebar-demo",
+  "type": "registry:ui",
+  "title": "Radix Sidebar Demo",
+  "description": "Demo showing a sidebar with radix components.",
+  "dependencies": ["lucide-react", "motion"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-sidebar",
+    "https://animate-ui.com/r/radix-collapsible",
+    "https://animate-ui.com/r/radix-dropdown-menu",
+    "use-mobile",
+    "avatar",
+    "breadcrumb",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-sidebar-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-sidebar-demo.tsx"
+    }
+  ]
+}

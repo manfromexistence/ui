@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-background",
+  "type": "registry:ui",
+  "title": "Gradient Background",
+  "description": "Gradient background component",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/backgrounds/gradient-background/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { HTMLMotionProps, motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface GradientBackgroundProps extends HTMLMotionProps<'div'> {\n  transition?: Transition;\n}\n\nconst GradientBackground = React.forwardRef<\n  HTMLDivElement,\n  GradientBackgroundProps\n>(\n  (\n    {\n      className,\n      transition = { duration: 15, ease: 'easeInOut', repeat: Infinity },\n      ...props\n    },\n    ref,\n  ) => {\n    return (\n      <motion.div\n        ref={ref}\n        className={cn(\n          'size-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 bg-[length:400%_400%]',\n          className,\n        )}\n        animate={{\n          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],\n        }}\n        transition={transition}\n        {...props}\n      />\n    );\n  },\n);\n\nGradientBackground.displayName = 'GradientBackground';\n\nexport { GradientBackground, type GradientBackgroundProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/gradient-background.tsx"
+    }
+  ]
+}

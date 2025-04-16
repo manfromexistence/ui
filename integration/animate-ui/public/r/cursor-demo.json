@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cursor-demo",
+  "type": "registry:ui",
+  "title": "Cursor Demo",
+  "description": "Demo showing a cursor component.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/cursor"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/cursor-demo/index.tsx",
+      "content": "import {\n  Cursor,\n  CursorFollow,\n  CursorProvider,\n} from '@/components/animate-ui/cursor';\n\nexport const CursorDemo = () => {\n  return (\n    <div className=\"max-w-[400px] h-[400px] w-full rounded-xl bg-muted flex items-center justify-center\">\n      <p className=\"font-medium italic text-muted-foreground\">\n        Move your mouse over the div\n      </p>\n      <CursorProvider>\n        <Cursor>\n          <svg\n            className=\"size-6 text-blue-500\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            viewBox=\"0 0 40 40\"\n          >\n            <path\n              fill=\"currentColor\"\n              d=\"M1.8 4.4 7 36.2c.3 1.8 2.6 2.3 3.6.8l3.9-5.7c1.7-2.5 4.5-4.1 7.5-4.3l6.9-.5c1.8-.1 2.5-2.4 1.1-3.5L5 2.5c-1.4-1.1-3.5 0-3.3 1.9Z\"\n            />\n          </svg>\n        </Cursor>\n        <CursorFollow>\n          <div className=\"bg-blue-500 text-white px-2 py-1 rounded-lg text-sm shadow-lg\">\n            Designer\n          </div>\n        </CursorFollow>\n      </CursorProvider>\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/cursor-demo.tsx"
+    }
+  ]
+}

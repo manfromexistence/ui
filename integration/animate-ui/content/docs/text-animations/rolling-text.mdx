@@ -1,0 +1,63 @@
+---
+title: Rolling Text
+description: A text component that reveals content through an engaging rolling animation.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="rolling-text-demo" />
+
+## Installation
+
+<ComponentInstallation name="rolling-text" />
+
+## Props
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the component',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    className: {
+      description: 'The className of the component',
+      type: 'string',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the rolling text',
+      type: 'Transition',
+      required: false,
+      default: "{ duration: 0.5, delay: 0.1, ease: 'easeOut' }",
+    },
+    inView: {
+      description: 'Enable animation when in view.',
+      type: 'boolean',
+      default: 'false',
+      required: false,
+    },
+    inViewMargin: {
+      description: 'The margin of the in view.',
+      type: 'string',
+      required: false,
+      default: '0px',
+    },
+    inViewOnce: {
+      description: 'Enable animation when in view once.',
+      type: 'boolean',
+      required: false,
+      default: 'true',
+    },
+    text: {
+      description: 'The text to display',
+      type: 'string',
+      required: true,
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [motion primitives](https://motion-primitives.com/docs/text-roll) for the inspiration

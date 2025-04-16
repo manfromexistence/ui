@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-dialog-from-demo",
+  "type": "registry:ui",
+  "title": "Radix Dialog From Demo",
+  "description": "Demo showing an animated radix dialog.",
+  "registryDependencies": ["https://animate-ui.com/r/radix-dialog", "button"],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-dialog-from-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-dialog-from-demo.tsx"
+    }
+  ]
+}

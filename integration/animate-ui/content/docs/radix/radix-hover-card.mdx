@@ -1,0 +1,46 @@
+---
+title: Hover Card
+description: For sighted users to preview content available behind a link.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="radix-hover-card-demo" />
+
+## Installation
+
+<ComponentInstallation name="radix-hover-card" />
+
+## Props
+
+<div className="flex flex-row gap-x-3">
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/hover-card"
+    text="Docs"
+  />
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/hover-card#api-reference"
+    text="API Reference"
+  />
+</div>
+
+### Animate UI props
+
+#### HoverCardContent
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the hover card content animation',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 300, damping: 25 }",
+    },
+  }}
+/>
+
+## Credits
+
+- We use [Radix UI](https://www.radix-ui.com/primitives/docs/components/hover-card) for the hover card component.
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/hover-card) for the hover card style.

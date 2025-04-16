@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion-highlight-tabs-hover-demo",
+  "type": "registry:ui",
+  "title": "Motion Highlight Tabs Hover Demo",
+  "description": "Demo showing the motion highlight tabs hover effect.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/motion-highlight"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/effects/motion-highlight-tabs-hover-demo/index.tsx",
+      "content": "import { MotionHighlight } from '@/components/animate-ui/motion-highlight';\n\nconst TABS = [\n  {\n    value: 'tab-1',\n    title: 'Tab 1',\n    description: 'Tab 1 description',\n  },\n  {\n    value: 'tab-2',\n    title: 'Tab 2',\n    description: 'Tab 2 description',\n  },\n  {\n    value: 'tab-3',\n    title: 'Tab 3',\n    description: 'Tab 3 description',\n  },\n];\n\nexport const MotionHighlightTabsHoverDemo = () => {\n  return (\n    <div className=\"flex border rounded-full p-1\">\n      <MotionHighlight hover className=\"rounded-full\">\n        {TABS.map((tab) => (\n          <div\n            key={tab.value}\n            data-value={tab.value}\n            className=\"px-3 h-8 flex items-center cursor-pointer justify-center rounded-full text-sm data-[active=true]:text-current data-[active=true]:font-medium text-muted-foreground transition-all duration-300\"\n          >\n            {tab.title}\n          </div>\n        ))}\n      </MotionHighlight>\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/motion-highlight-tabs-hover-demo.tsx"
+    }
+  ]
+}

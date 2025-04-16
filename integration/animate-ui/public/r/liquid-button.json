@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "liquid-button",
+  "type": "registry:ui",
+  "title": "Liquid Button",
+  "description": "A liquid button component",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/buttons/liquid-button/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { motion, HTMLMotionProps } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype LiquidButtonProps = HTMLMotionProps<'button'>;\n\nconst LiquidButton = React.forwardRef<HTMLButtonElement, LiquidButtonProps>(\n  ({ className, ...props }, ref) => {\n    return (\n      <motion.button\n        whileTap={{ scale: 0.95 }}\n        whileHover={{ scale: 1.05 }}\n        className={cn(\n          'relative h-10 px-4 py-2 text-sm font-medium text-primary hover:text-primary-foreground !bg-muted [--liquid-button-color:var(--primary)] rounded-lg cursor-pointer overflow-hidden [background:_linear-gradient(var(--liquid-button-color)_0_0)_no-repeat_calc(200%-var(--liquid-button-fill,0%))_100%/200%_var(--liquid-button-fill,0.2em)] hover:[--liquid-button-fill:100%] hover:[--liquid-button-delay:0.3s] [transition:_background_0.3s_var(--liquid-button-delay,0s),_color_0.3s_var(--liquid-button-delay,0s),_background-position_0.3s_calc(0.3s_-_var(--liquid-button-delay,0s))] focus:outline-none',\n          className,\n        )}\n        {...props}\n        ref={ref}\n      />\n    );\n  },\n);\n\nLiquidButton.displayName = 'LiquidButton';\n\nexport { LiquidButton, type LiquidButtonProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/liquid-button.tsx"
+    }
+  ]
+}

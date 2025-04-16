@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-dialog-from-demo",
+  "type": "registry:ui",
+  "title": "Headless Dialog From Demo",
+  "description": "Demo showing an animated headless dialog with a from prop.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/headless-dialog"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/headless/headless-dialog-from-demo/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Button } from '@/components/ui/button';\nimport {\n  Dialog,\n  DialogBackdrop,\n  DialogPanel,\n  DialogTitle,\n  DialogDescription,\n  DialogHeader,\n  DialogFooter,\n} from '@/components/animate-ui/headless-dialog';\n\nexport const RadixDialogDemo = () => {\n  const [isOpen, setIsOpen] = React.useState(false);\n\n  return (\n    <div>\n      <Button variant=\"outline\" onClick={() => setIsOpen(true)}>\n        Open Dialog\n      </Button>\n\n      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>\n        <DialogBackdrop />\n\n        <DialogPanel from=\"left\" className=\"sm:max-w-[425px]\">\n          <DialogHeader>\n            <DialogTitle>Terms of Service</DialogTitle>\n            <DialogDescription>\n              Please read the following terms of service carefully.\n            </DialogDescription>\n          </DialogHeader>\n\n          <div className=\"grid gap-4 py-4\">\n            <p>\n              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,\n              quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.\n              Quisquam, quos.\n            </p>\n          </div>\n\n          <DialogFooter>\n            <Button variant=\"outline\" onClick={() => setIsOpen(false)}>\n              Decline\n            </Button>\n            <Button type=\"submit\" onClick={() => setIsOpen(false)}>\n              Accept\n            </Button>\n          </DialogFooter>\n        </DialogPanel>\n      </Dialog>\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-dialog-from-demo.tsx"
+    }
+  ]
+}

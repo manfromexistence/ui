@@ -1,0 +1,156 @@
+---
+title: Open Source
+publishedAt: 2025-01-02
+summary: A beautiful and interactive open-source project showcase component with animations and contributor statistics.
+author: codehagen
+slug: components/open-source
+related: ["introduction"]
+---
+
+<ComponentPreview name="open-source-basic" />
+
+<Note variant="info">
+  The Open Source component provides a beautiful way to showcase your GitHub repository's stars and contributors. Perfect for open-source project landing pages, documentation sites, and portfolio projects.
+</Note>
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <ComponentSource name="open-source" isCli />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="open-source" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Examples
+
+<ComponentPreview name="open-source-demo" />
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import OpenSource from "@/components/prismui/open-source"
+
+export default function Example() {
+  return (
+    <OpenSource
+      repository="username/repository"
+      defaultStats={{
+        stars: 0,
+        contributors: []
+      }}
+    />
+  )
+}
+```
+
+### With GitHub Token
+
+```tsx
+<OpenSource
+  repository="username/repository"
+  githubToken={process.env.GITHUB_TOKEN}
+  defaultStats={{
+    stars: 0,
+    contributors: []
+  }}
+/>
+```
+
+### Custom Content
+
+```tsx
+<OpenSource
+  repository="username/repository"
+  title="Custom Title"
+  description="Your custom description here"
+  buttonText="Custom Button Text"
+  defaultStats={{
+    stars: 0,
+    contributors: []
+  }}
+/>
+```
+
+## Customization
+
+<Steps>
+  <Step>Custom Styling</Step>
+  ```tsx
+  <OpenSource
+    className="custom-class"
+    // Add any custom styles or classes
+  />
+  ```
+
+  <Step>Custom Default Stats</Step>
+  ```tsx
+  <OpenSource
+    defaultStats={{
+      stars: 100,
+      contributors: [
+        {
+          login: "username",
+          avatar_url: "https://github.com/username.png"
+        }
+      ]
+    }}
+  />
+  ```
+
+  <Step>Custom Loading State</Step>
+  ```tsx
+  <Suspense fallback={<YourCustomLoadingComponent />}>
+    <OpenSource {...props} />
+  </Suspense>
+  ```
+</Steps>
+
+## Notes
+
+- Built with Framer Motion for smooth animations
+- Server Component with client-side fallback
+- Automatic data fetching with caching
+- Responsive design with mobile-first approach
+- TypeScript support with proper types
+- SSR compatible with "use client" directive
+- Optimized performance with proper suspense boundaries
+- ARIA attributes for accessibility
+- Rate limit aware with proper error handling
+
+## Features
+
+- Real-time GitHub stats
+- Animated star count
+- Contributor avatars with hover effects
+- Responsive layout
+- Custom content support
+- GitHub API integration
+- Error handling
+- Loading states
+- TypeScript support
+- SSR compatibility
+- Accessibility features
+
+## Props
+
+| Prop | Type | Description | Default |
+| --- | --- | --- | --- |
+| repository | string | The GitHub repository in format "owner/repo" | Required |
+| githubToken | string | Optional GitHub OAuth token for API requests | undefined |
+| title | string | Custom title text | "Proudly open-source" |
+| description | string | Custom description text | "Our source code is available..." |
+| buttonText | string | Custom button text | "Star on GitHub" |
+| className | string | Additional CSS classes | undefined | 

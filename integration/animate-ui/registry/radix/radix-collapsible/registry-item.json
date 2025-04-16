@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-collapsible",
+  "type": "registry:ui",
+  "title": "Collapsible",
+  "description": "Collapsible component",
+  "dependencies": ["motion", "@radix-ui/react-collapsible"],
+  "files": [
+    {
+      "path": "registry/radix/radix-collapsible/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-collapsible.tsx"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "counting-number-decimal-demo",
+  "type": "registry:ui",
+  "title": "Counting Number Decimal Demo",
+  "description": "Demo showing a counting number with a decimal separator.",
+  "registryDependencies": ["https://animate-ui.com/r/counting-number"],
+  "files": [
+    {
+      "path": "registry/demo/text/counting-number-decimal-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/counting-number-decimal-demo.tsx"
+    }
+  ]
+}

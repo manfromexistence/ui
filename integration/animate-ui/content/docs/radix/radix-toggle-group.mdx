@@ -1,0 +1,108 @@
+---
+title: Toggle Group
+description: A set of two-state buttons that can be toggled on or off.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="radix-toggle-group-demo" />
+
+## Installation
+
+<ComponentInstallation name="radix-toggle-group" />
+
+## Examples
+
+### Multiple
+
+<ComponentPreview name="radix-toggle-group-multiple-demo" />
+
+## Props
+
+<div className="flex flex-row gap-x-3">
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/toggle-group"
+    text="Docs"
+  />
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/toggle-group#api-reference"
+    text="API Reference"
+  />
+</div>
+
+### Animate UI props
+
+#### ToggleGroup
+
+<TypeTable
+  type={{
+    type: {
+      description: 'The type of the toggle group',
+      type: 'single' | 'multiple',
+      required: true,
+    },
+    transition: {
+      description: 'The transition of the toggle group',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', bounce: 0, stiffness: 200, damping: 25 }",
+    },
+    activeClassName: {
+      description: 'The class name of the active toggle group item',
+      type: 'string',
+      required: false,
+    },
+    variant: {
+      description: 'The variant of the toggle group',
+      type: 'default' | 'outline',
+      required: false,
+      default: 'default',
+    },
+    size: {
+      description: 'The size of the toggle group',
+      type: 'default' | 'sm' | 'lg',
+      required: false,
+      default: 'default',
+    },
+  }}
+/>
+
+#### ToggleGroupItem
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the toggle group item',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    buttonProps: {
+      description: 'The props of the toggle group item button',
+      type: 'HTMLMotionProps<"button">',
+      required: false,
+    },
+    spanProps: {
+      description: 'The props of the toggle group item span',
+      type: 'React.HTMLAttributes<HTMLSpanElement>',
+      required: false,
+    },
+    variant: {
+      description: 'The variant of the toggle group item',
+      type: 'default' | 'outline',
+      required: false,
+      default: 'default',
+    },
+    size: {
+      description: 'The size of the toggle group item',
+      type: 'default' | 'sm' | 'lg',
+      required: false,
+      default: 'default',
+    },
+  }}
+/>
+
+## Credits
+
+- We use [Radix UI](https://www.radix-ui.com/primitives/docs/components/toggle-group) for the toggle group component.
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/toggle-group) for the toggle group style.

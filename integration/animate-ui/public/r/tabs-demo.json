@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-demo",
+  "type": "registry:ui",
+  "title": "Tabs Demo",
+  "description": "Demo showing an animated tabs.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/tabs",
+    "label",
+    "input",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/tabs-demo/index.tsx",
+      "content": "import { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport {\n  Tabs,\n  TabsList,\n  TabsTrigger,\n  TabsContent,\n  TabsContents,\n} from '@/components/animate-ui/tabs';\nimport { Label } from '@/components/ui/label';\n\nexport const TabsDemo = () => {\n  return (\n    <Tabs defaultValue=\"account\" className=\"w-[400px] bg-muted rounded-lg\">\n      <TabsList className=\"grid w-full grid-cols-2\">\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"password\">Password</TabsTrigger>\n      </TabsList>\n\n      <TabsContents className=\"mx-1 mb-1 -mt-2 rounded-sm h-full bg-background\">\n        <TabsContent value=\"account\" className=\"space-y-6 p-6\">\n          <p className=\"text-sm text-muted-foreground\">\n            Make changes to your account here. Click save when you're done.\n          </p>\n\n          <div className=\"space-y-3\">\n            <div className=\"space-y-1\">\n              <Label htmlFor=\"name\">Name</Label>\n              <Input id=\"name\" defaultValue=\"Pedro Duarte\" />\n            </div>\n            <div className=\"space-y-1\">\n              <Label htmlFor=\"username\">Username</Label>\n              <Input id=\"username\" defaultValue=\"@peduarte\" />\n            </div>\n          </div>\n\n          <Button>Save changes</Button>\n        </TabsContent>\n        <TabsContent value=\"password\" className=\"space-y-6 p-6\">\n          <p className=\"text-sm text-muted-foreground\">\n            Change your password here. After saving, you'll be logged out.\n          </p>\n          <div className=\"space-y-3\">\n            <div className=\"space-y-1\">\n              <Label htmlFor=\"current\">Current password</Label>\n              <Input id=\"current\" type=\"password\" />\n            </div>\n            <div className=\"space-y-1\">\n              <Label htmlFor=\"new\">New password</Label>\n              <Input id=\"new\" type=\"password\" />\n            </div>\n            <div className=\"space-y-1\">\n              <Label htmlFor=\"confirm\">Confirm password</Label>\n              <Input id=\"confirm\" type=\"password\" />\n            </div>\n          </div>\n\n          <Button>Save password</Button>\n        </TabsContent>\n      </TabsContents>\n    </Tabs>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/tabs-demo.tsx"
+    }
+  ]
+}

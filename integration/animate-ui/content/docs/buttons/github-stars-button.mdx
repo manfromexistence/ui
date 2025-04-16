@@ -1,0 +1,64 @@
+---
+title: GitHub Stars Button
+description: A clickable button that links to a GitHub repository and displays the number of stars.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="github-stars-button-demo" />
+
+## Installation
+
+<ComponentInstallation name="github-stars-button" />
+
+## Props
+
+<TypeTable
+  type={{
+    username: {
+      description: 'The username of the repository',
+      type: 'string',
+      required: true,
+    },
+    repo: {
+      description: 'The repository name',
+      type: 'string',
+      required: true,
+    },
+    transition: {
+      description: 'The transition of the component',
+      type: 'object',
+      required: false,
+      default: '{ stiffness: 90, damping: 50 }',
+    },
+    formatted: {
+      description: 'Whether to format the number with a unit (e.g. 18k)',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    inView: {
+      description: 'Enable animation when in view.',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    inViewMargin: {
+      description: 'The margin of the in view.',
+      type: 'string',
+      required: false,
+      default: '0px',
+    },
+    inViewOnce: {
+      description: 'Enable animation when in view once.',
+      type: 'boolean',
+      required: false,
+      default: 'true',
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [SHSF UI](https://www.shsfui.com/primitives/buttons/heart-button) for the icon animation inspiration

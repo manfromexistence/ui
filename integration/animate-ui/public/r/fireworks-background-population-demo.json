@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fireworks-background-population-demo",
+  "type": "registry:ui",
+  "title": "Fireworks Background Population Demo",
+  "description": "Demo showing an animated fireworks background with a higher population.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/fireworks-background"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/backgrounds/fireworks-background-population-demo/index.tsx",
+      "content": "'use client';\n\nimport { FireworksBackground } from '@/components/animate-ui/fireworks-background';\n\nexport default function FireworksBackgroundPopulationDemo() {\n  return (\n    <FireworksBackground\n      className=\"absolute inset-0 flex items-center justify-center rounded-xl\"\n      population={8}\n    />\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/fireworks-background-population-demo.tsx"
+    }
+  ]
+}

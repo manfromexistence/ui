@@ -1,0 +1,47 @@
+name: 🐞 Bug report
+description: Help improve React Bits.
+labels: ["bug"]
+title: "[BUG]: "
+body:
+    - type: markdown
+      attributes:
+          value: |
+              ## Thanks for trying to improve React Bits!
+              Before continuing make sure you have checked other issues to see if your issue has already been reported / addressed.
+    - type: textarea
+      id: desc
+      attributes:
+          label: Describe the issue
+          description: What is happening right now? What is supposed to happen?
+          placeholder: When I do ..., it does ... but it should do ...
+      validations:
+          required: true
+    - type: markdown
+      attributes:
+          value: |
+              ## Reproduction
+
+              Please provide code snippets/screenshots and, if possible/needed, a codesandbox environment where your bug can be reproduced.
+    - type: input
+      id: reproduction-link
+      attributes:
+          label: Reproduction Link
+          description: Link a codesandbox environment you used to reproduce.
+          placeholder: https://github.com/DavidHDev/react-bits
+      validations:
+          required: false
+    - type: textarea
+      id: repro-steps
+      attributes:
+          label: Steps to reproduce
+          description: What steps should be taken to reproduce your issue. 
+      validations:
+          required: true
+    - type: checkboxes
+      id: terms
+      attributes:
+          label: Validations
+          description: Please make sure you have checked all of the following.
+          options:
+              - label: I have checked other issues to see if my issue was already reported or addressed
+                required: true

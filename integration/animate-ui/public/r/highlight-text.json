@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "highlight-text",
+  "type": "registry:ui",
+  "title": "Highlight Text",
+  "description": "Highlight text component",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/text/highlight-text/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useInView,\n  type HTMLMotionProps,\n  type Transition,\n  type UseInViewOptions,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface HighlightTextProps extends HTMLMotionProps<'span'> {\n  text: string;\n  inView?: boolean;\n  inViewMargin?: UseInViewOptions['margin'];\n  inViewOnce?: boolean;\n  transition?: Transition;\n}\n\nconst animation = { backgroundSize: '100% 100%' };\n\nconst HighlightText = React.forwardRef<HTMLSpanElement, HighlightTextProps>(\n  (\n    {\n      text,\n      className,\n      inView = false,\n      inViewMargin = '0px',\n      transition = { duration: 2, ease: 'easeInOut' },\n      ...props\n    },\n    ref,\n  ) => {\n    const localRef = React.useRef<HTMLSpanElement>(null);\n    React.useImperativeHandle(ref, () => localRef.current as HTMLSpanElement);\n\n    const inViewResult = useInView(localRef, {\n      once: true,\n      margin: inViewMargin,\n    });\n    const isInView = !inView || inViewResult;\n\n    return (\n      <motion.span\n        ref={localRef}\n        initial={{\n          backgroundSize: '0% 100%',\n        }}\n        animate={isInView ? animation : undefined}\n        transition={transition}\n        style={{\n          backgroundRepeat: 'no-repeat',\n          backgroundPosition: 'left center',\n          display: 'inline',\n        }}\n        className={cn(\n          `relative inline-block px-2 py-1 rounded-lg bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-500 dark:to-purple-500`,\n          className,\n        )}\n        {...props}\n      >\n        {text}\n      </motion.span>\n    );\n  },\n);\nHighlightText.displayName = 'HighlightText';\n\nexport { HighlightText, type HighlightTextProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/highlight-text.tsx"
+    }
+  ]
+}

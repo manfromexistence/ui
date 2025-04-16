@@ -1,0 +1,175 @@
+.component-nav-container {
+  width: 100%;
+  max-width: 1440px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.component-nav-container div {
+  flex: 1 1 calc(20% - 10px);
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.component-nav-container div .circle,
+.component-nav-container div .square {
+  cursor: pointer;
+  border: 5px solid;
+  background-color: #0d0d0d;
+  transition: 0.3s ease;
+}
+
+.component-nav-container div .circle::before,
+.component-nav-container div .square::before {
+  content: "";
+  letter-spacing: -2px;
+  font-size: 24px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  background: linear-gradient(to top, #0d0d0d, #0d0d0da7);
+  font-weight: 900;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.component-nav-container div .circle:hover::before,
+.component-nav-container div .square:hover::before {
+  opacity: 1;
+  top: 50%;
+  transition: 0.3s ease;
+}
+
+.component-nav-container div .square {
+  border-radius: 50px;
+}
+
+.component-nav-container div .circle {
+  border-radius: 50%;
+}
+
+.component-nav-container div .link {
+  border-color: #00d8ff;
+  background-color: #00d8ff;
+}
+
+.component-nav-container div .link::before {
+  display: none;
+}
+
+.component-nav-container div .feat-1 {
+  border-color: #ff87b2;
+}
+
+.component-nav-container div .feat-1:hover {
+  transform: scale(0.95);
+  transition: 0.3s ease;
+}
+
+.component-nav-container div .feat-1::before {
+  content: "<MetaBalls />";
+}
+
+.component-nav-container div .feat-2 {
+  border-color: #ff9346;
+}
+
+.component-nav-container div .feat-2:hover {
+  transform: scale(0.95);
+  transition: 0.3s ease;
+}
+
+.component-nav-container div .feat-2::before {
+  content: "<Waves />";
+}
+
+.component-nav-container div .feat-2 .content {
+  transform: scale(0.7);
+}
+
+.component-nav-container div .feat-3 {
+  border-color: #7cff67;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.component-nav-container div .feat-3::before {
+  content: "<LetterGlitch />";
+}
+
+.component-nav-container div .feat-3:hover {
+  transform: scale(0.95);
+  transition: 0.3s ease;
+}
+
+.component-nav-container div .feat-3 p {
+  position: absolute;
+  z-index: 4;
+  color: #7cff67;
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+.component-nav-container div .feat-4 {
+  border-color: #ffee51;
+}
+
+.component-nav-container div .feat-4:hover {
+  transform: scale(0.95);
+  transition: 0.3s ease;
+}
+
+.component-nav-container div .feat-4::before {
+  content: "<Squares />";
+}
+
+.component-nav-container .link {
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  color: #0d0d0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.component-nav-container .link .docs-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.component-nav-container .link .docs-link img {
+  margin-bottom: 0.6em;
+  width: 16px;
+}
+
+.component-nav-container .link:hover .docs-link {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+
+  .component-nav-container .circle,
+  .component-nav-container .square {
+    display: none !important;
+  }
+}

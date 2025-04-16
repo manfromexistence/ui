@@ -1,0 +1,50 @@
+---
+title: Scroll Progress
+description: A scroll progress component that displays the progress of the scroll.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="scroll-progress-demo" />
+
+## Installation
+
+<ComponentInstallation name="scroll-progress" />
+
+## Usage
+
+### Global Scroll Progress
+
+```tsx
+<ScrollProgress />
+```
+
+### Local Scroll Progress
+
+```tsx
+<ScrollProgress progressProps={{ className: 'absolute' }}>...</ScrollProgress>
+```
+
+## Props
+
+<TypeTable
+  type={{
+    progressProps: {
+      description: 'The props for the progress element',
+      type: 'HTMLMotionProps<"div">',
+      required: false,
+    },
+    className: {
+      description: 'The class name for the scroll progress',
+      type: 'string',
+      required: false,
+    },
+    children: {
+      description:
+        'The children for the scroll progress (if not provided, the progress will be global)',
+      type: 'React.ReactNode',
+      required: false,
+    },
+  }}
+/>

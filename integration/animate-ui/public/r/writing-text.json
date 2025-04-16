@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "writing-text",
+  "type": "registry:ui",
+  "title": "Writing Text",
+  "description": "Writing text component",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/text/writing-text/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useInView,\n  type Transition,\n  type UseInViewOptions,\n} from 'motion/react';\n\ninterface WritingTextProps\n  extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {\n  transition?: Transition;\n  inView?: boolean;\n  inViewMargin?: UseInViewOptions['margin'];\n  inViewOnce?: boolean;\n  spacing?: number | string;\n  text: string;\n}\n\nconst WritingText = React.forwardRef<HTMLSpanElement, WritingTextProps>(\n  (\n    {\n      inView = false,\n      inViewMargin = '0px',\n      inViewOnce = true,\n      spacing = 5,\n      text,\n      transition = { type: 'spring', bounce: 0, duration: 2, delay: 0.5 },\n      ...props\n    },\n    ref,\n  ) => {\n    const localRef = React.useRef<HTMLSpanElement>(null);\n    React.useImperativeHandle(ref, () => localRef.current as HTMLSpanElement);\n\n    const inViewResult = useInView(localRef, {\n      once: inViewOnce,\n      margin: inViewMargin,\n    });\n    const isInView = !inView || inViewResult;\n\n    const words = React.useMemo(() => text.split(' '), [text]);\n\n    return (\n      <span ref={localRef} {...props}>\n        {words.map((word, index) => (\n          <motion.span\n            key={index}\n            className=\"inline-block will-change-transform will-change-opacity\"\n            style={{ marginRight: spacing }}\n            initial={{ opacity: 0, y: 10 }}\n            animate={isInView ? { opacity: 1, y: 0 } : undefined}\n            transition={{\n              ...transition,\n              delay: index * (transition?.delay ?? 0),\n            }}\n          >\n            {word}{' '}\n          </motion.span>\n        ))}\n      </span>\n    );\n  },\n);\nWritingText.displayName = 'WritingText';\n\nexport { WritingText, type WritingTextProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/writing-text.tsx"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-tabs",
+  "type": "registry:ui",
+  "title": "Radix Tabs",
+  "description": "Radix UI tabs component",
+  "dependencies": ["motion", "@radix-ui/react-tabs"],
+  "registryDependencies": ["https://animate-ui.com/r/motion-highlight"],
+  "files": [
+    {
+      "path": "registry/radix/radix-tabs/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-tabs.tsx"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-popover",
+  "type": "registry:ui",
+  "title": "Popover",
+  "description": "Popover component",
+  "dependencies": [
+    "motion",
+    "@radix-ui/react-popover"
+  ],
+  "files": [
+    {
+      "path": "registry/radix/radix-popover/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport * as PopoverPrimitive from '@radix-ui/react-popover';\nimport { AnimatePresence, motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface PopoverContextType {\n  isOpen: boolean;\n}\nconst PopoverContext = React.createContext<PopoverContextType>({\n  isOpen: false,\n});\n\nconst usePopover = (): PopoverContextType => {\n  const context = React.useContext(PopoverContext);\n  if (!context) {\n    throw new Error('usePopover must be used within a Popover');\n  }\n  return context;\n};\n\ntype PopoverProps = React.ComponentPropsWithoutRef<\n  typeof PopoverPrimitive.Root\n>;\n\nconst Popover: React.FC<PopoverProps> = ({ children, ...props }) => {\n  const [isOpen, setIsOpen] = React.useState(\n    props?.open ?? props?.defaultOpen ?? false,\n  );\n\n  React.useEffect(() => {\n    if (props?.open !== undefined) setIsOpen(props.open);\n  }, [props?.open]);\n\n  const handleOpenChange = React.useCallback(\n    (open: boolean) => {\n      setIsOpen(open);\n      props.onOpenChange?.(open);\n    },\n    [props],\n  );\n\n  return (\n    <PopoverContext.Provider value={{ isOpen }}>\n      <PopoverPrimitive.Root {...props} onOpenChange={handleOpenChange}>\n        {children}\n      </PopoverPrimitive.Root>\n    </PopoverContext.Provider>\n  );\n};\n\ntype PopoverTriggerProps = React.ComponentPropsWithoutRef<\n  typeof PopoverPrimitive.Trigger\n>;\n\nconst PopoverTrigger = PopoverPrimitive.Trigger;\n\ntype PopoverContentProps = React.ComponentPropsWithoutRef<\n  typeof PopoverPrimitive.Content\n> & {\n  transition?: Transition;\n};\n\nconst PopoverContent = React.forwardRef<\n  React.ElementRef<typeof PopoverPrimitive.Content>,\n  PopoverContentProps\n>(\n  (\n    {\n      className,\n      align = 'center',\n      sideOffset = 4,\n      transition = { type: 'spring', stiffness: 300, damping: 25 },\n      children,\n      ...props\n    },\n    ref,\n  ) => {\n    const { isOpen } = usePopover();\n\n    return (\n      <AnimatePresence>\n        {isOpen && (\n          <PopoverPrimitive.Portal forceMount>\n            <PopoverPrimitive.Content\n              forceMount\n              align={align}\n              sideOffset={sideOffset}\n              ref={ref}\n              className=\"z-50\"\n              {...props}\n            >\n              <motion.div\n                key=\"popover\"\n                initial={{ opacity: 0, scale: 0.5, y: 25 }}\n                animate={{ opacity: 1, scale: 1, y: 0 }}\n                exit={{ opacity: 0, scale: 0.5, y: 25 }}\n                transition={transition}\n                className={cn(\n                  'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',\n                  className,\n                )}\n              >\n                {children}\n              </motion.div>\n            </PopoverPrimitive.Content>\n          </PopoverPrimitive.Portal>\n        )}\n      </AnimatePresence>\n    );\n  },\n);\nPopoverContent.displayName = PopoverPrimitive.Content.displayName;\n\nexport {\n  Popover,\n  PopoverTrigger,\n  PopoverContent,\n  usePopover,\n  type PopoverContextType,\n  type PopoverProps,\n  type PopoverTriggerProps,\n  type PopoverContentProps,\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-popover.tsx"
+    }
+  ]
+}

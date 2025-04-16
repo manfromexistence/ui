@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-disclosure-demo",
+  "type": "registry:ui",
+  "title": "Headless Disclosure Demo",
+  "description": "Demo showing an animated headless disclosure.",
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["https://animate-ui.com/r/headless-disclosure"],
+  "files": [
+    {
+      "path": "registry/demo/headless/headless-disclosure-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-disclosure-demo.tsx"
+    }
+  ]
+}

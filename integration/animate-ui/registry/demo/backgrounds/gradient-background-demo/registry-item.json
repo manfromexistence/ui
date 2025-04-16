@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-background-demo",
+  "type": "registry:ui",
+  "title": "Gradient Background Demo",
+  "description": "Demo showing an animated gradient background.",
+  "registryDependencies": ["https://animate-ui.com/r/gradient-background"],
+  "files": [
+    {
+      "path": "registry/demo/backgrounds/gradient-background-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/gradient-background-demo.tsx"
+    }
+  ]
+}

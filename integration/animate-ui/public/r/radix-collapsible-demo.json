@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-collapsible-demo",
+  "type": "registry:ui",
+  "title": "Radix Collapsible Demo",
+  "description": "Demo showing an animated radix collapsible.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-collapsible",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-collapsible-demo/index.tsx",
+      "content": "import { Button } from '@/components/ui/button';\nimport {\n  Collapsible,\n  CollapsibleContent,\n  CollapsibleTrigger,\n} from '@/components/animate-ui/radix-collapsible';\nimport { ChevronsUpDown } from 'lucide-react';\n\nexport const RadixCollapsibleDemo = () => {\n  return (\n    <Collapsible className=\"w-[350px]\">\n      <div className=\"space-y-2 mb-2\">\n        <div className=\"flex items-center justify-between space-x-4\">\n          <h4 className=\"text-sm font-semibold\">\n            @peduarte starred 3 repositories\n          </h4>\n          <CollapsibleTrigger asChild>\n            <Button variant=\"outline\" size=\"sm\" className=\"w-9 p-0\">\n              <ChevronsUpDown className=\"h-4 w-4\" />\n              <span className=\"sr-only\">Toggle</span>\n            </Button>\n          </CollapsibleTrigger>\n        </div>\n        <div className=\"rounded-md border px-4 py-3 font-mono text-sm\">\n          @radix-ui/primitives\n        </div>\n      </div>\n      <CollapsibleContent className=\"space-y-2\">\n        <div className=\"rounded-md border px-4 py-3 font-mono text-sm\">\n          @radix-ui/colors\n        </div>\n        <div className=\"rounded-md border px-4 py-3 font-mono text-sm\">\n          @stitches/react\n        </div>\n      </CollapsibleContent>\n    </Collapsible>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-collapsible-demo.tsx"
+    }
+  ]
+}

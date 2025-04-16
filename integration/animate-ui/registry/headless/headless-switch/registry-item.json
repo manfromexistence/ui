@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-switch",
+  "type": "registry:ui",
+  "title": "Headless Switch",
+  "description": "Headless UI switch component",
+  "dependencies": ["@headlessui/react", "motion"],
+  "files": [
+    {
+      "path": "registry/headless/headless-switch/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-switch.tsx"
+    }
+  ]
+}

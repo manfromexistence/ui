@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-accordion-demo",
+  "type": "registry:ui",
+  "title": "Headless Accordion Demo",
+  "description": "Demo showing an animated headless accordion.",
+  "registryDependencies": ["https://animate-ui.com/r/headless-accordion"],
+  "files": [
+    {
+      "path": "registry/demo/headless/headless-accordion-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-accordion-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+---
+title: Expandable Card
+publishedAt: 2025-01-02
+summary: An interactive, expandable card component for displaying project status and details with smooth animations.
+author: codehagen
+slug: components/expandable-card
+related: ["introduction"]
+---
+
+<ComponentPreview name="expandable-card-basic" />
+
+<Note variant="info">
+  The Expandable Card component provides an elegant way to display project status information with an expandable interface. Perfect for project dashboards, task management, and GitHub repository overviews.
+</Note>
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <ComponentSource name="expandable-card" isCli />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="expandable-card" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Examples
+
+<ComponentPreview name="expandable-card-demo" />
+
+### Hooks
+You also need to install the `useExpandable` hook.
+
+<ComponentSource name="use-expandable" />
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import { ProjectStatusCard } from "@/components/prismui/expandable-card"
+
+export default function Example() {
+  return (
+    <ProjectStatusCard
+      title="UI Component Library"
+      progress={75}
+      dueDate="Jan 15, 2024"
+      contributors={[
+        { name: "Sarah" },
+        { name: "Mike" },
+        { name: "Alex" },
+        { name: "Emma" }
+      ]}
+      tasks={[
+        { title: "Update Button Components", completed: true },
+        { title: "Add Dark Mode Support", completed: true },
+        { title: "Implement Form Validation", completed: false },
+        { title: "Write Documentation", completed: false }
+      ]}
+      githubStars={128}
+      openIssues={5}
+    />
+  )
+}
+```
+
+### Types
+
+```tsx
+interface Contributor {
+  name: string;
+  image?: string;
+}
+
+interface Task {
+  title: string;
+  completed: boolean;
+}
+
+interface ProjectStatusCardProps {
+  title: string;
+  progress: number;
+  dueDate: string;
+  contributors: Contributor[];
+  tasks: Task[];
+  githubStars: number;
+  openIssues: number;
+}
+```
+
+## Customization
+
+<Steps>
+  <Step>Custom Animation Settings</Step>
+  ```tsx
+  <motion.div
+    style={{ height: animatedHeight }}
+    transition={{ 
+      type: "spring", 
+      stiffness: 300, 
+      damping: 30 
+    }}
+  >
+    {/* ... */}
+  </motion.div>
+  ```
+
+  <Step>Custom Styling</Step>
+  ```tsx
+  <Card className="w-full max-w-md cursor-pointer transition-all duration-300 hover:shadow-lg">
+    {/* ... */}
+  </Card>
+  ```
+
+  <Step>Custom Badge Colors</Step>
+  ```tsx
+  <Badge
+    variant="secondary"
+    className={
+      progress === 100
+        ? "bg-green-100 text-green-600"
+        : "bg-blue-100 text-blue-600"
+    }
+  >
+    {progress === 100 ? "Completed" : "In Progress"}
+  </Badge>
+  ```
+</Steps>
+
+## Notes
+
+- Built with Framer Motion for smooth animations
+- Uses Lucide React for consistent iconography
+- Responsive design with mobile-first approach
+- Interactive expand/collapse functionality
+- TypeScript support with proper types
+- Integrates with Shadcn UI components
+- Supports custom styling and theming
+- Optimized performance with proper hooks usage
+
+## Features
+
+- Smooth expand/collapse animations
+- Progress tracking
+- Contributor avatars with tooltips
+- Task completion status
+- GitHub integration display
+- Interactive buttons and badges
+- Responsive layout
+- Accessibility features
+
+## Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| title | string | Project title |
+| progress | number | Progress percentage (0-100) |
+| dueDate | string | Project due date |
+| contributors | Contributor[] | Array of project contributors |
+| tasks | Task[] | Array of project tasks |
+| githubStars | number | Number of GitHub stars |
+| openIssues | number | Number of open issues |
+ 

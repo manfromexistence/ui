@@ -1,0 +1,308 @@
+---
+title: Pill
+description: A flexible badge component designed for a variety of use cases.
+icon: Pill
+---
+
+<PoweredBy packages={[
+  { name: 'Lucide', url: 'https://lucide.dev/' },
+]} />
+
+<Preview name="pill" code={`'use client';
+
+import {
+  Pill,
+  PillAvatar,
+  PillButton,
+  PillStatus,
+  PillIndicator,
+  PillDelta,
+  PillIcon,
+  PillAvatarGroup,
+} from '@/components/ui/kibo-ui/pill';
+import { ArrowUpRightIcon, XIcon, CheckCircleIcon, UsersIcon } from 'lucide-react';
+
+const Example = () => (
+  <div className="flex w-full h-screen items-center justify-center p-8">
+    <div className="flex flex-wrap gap-2 items-center justify-center">
+      <Pill>
+        <PillAvatar src="https://pbs.twimg.com/profile_images/1748718473595789312/PbqJh9hk_400x400.jpg" fallback="HB" />
+        @haydenbleasel
+      </Pill>
+      <Pill>
+        <PillStatus>
+          <CheckCircleIcon size={12} className="text-emerald-500" />
+          Passed
+        </PillStatus>
+        Approval Status
+      </Pill>
+      <Pill>
+        #kibo-ui
+        <PillButton variant="ghost" size="icon">
+          <XIcon size={12} />
+        </PillButton>
+      </Pill>
+      <Pill>
+        <PillIndicator variant="success" pulse />
+        Active
+      </Pill>
+      <Pill>
+        <PillIndicator variant="error" />
+        Error
+      </Pill>
+      <Pill>
+        <PillDelta delta={10} />
+        Up 10%
+      </Pill>
+      <Pill>
+        <PillDelta delta={-5} />
+        Down 5%
+      </Pill>
+      <Pill>
+        <PillDelta delta={0} />
+        No change
+      </Pill>
+      <Pill>
+        <PillIcon icon={UsersIcon} />
+        17 users
+      </Pill>
+      <Pill>
+        <PillAvatarGroup>
+          <PillAvatar src="https://pbs.twimg.com/profile_images/1748718473595789312/PbqJh9hk_400x400.jpg" fallback="HB" />
+          <PillAvatar src="https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg" fallback="SC" />
+          <PillAvatar src="https://pbs.twimg.com/profile_images/1862717563311968256/xfgt1L9l_400x400.jpg" fallback="LR" />
+        </PillAvatarGroup>
+        Loved by millions
+      </Pill>
+    </div>
+  </div>
+);
+
+export default Example;`} />
+
+## Installation
+
+<Installer packageName="pill" />
+
+## Features
+
+- Customizable badge-like component with rounded corners and consistent padding
+- Support for avatars with fallback options
+- Built-in status indicators with variants (success, error, warning, info) and pulse animation
+- Delta indicators for showing changes (increase/decrease)
+- Icon support with consistent styling
+- Avatar groups with overlapping effect
+- Ghost button integration
+- Themeable variants
+
+## Examples
+
+### Avatar
+
+A simple pill with an avatar and text.
+
+<Preview name="pill" code={`'use client';
+
+import { Pill, PillAvatar } from '@/components/ui/kibo-ui/pill';
+
+const Example = () => (
+  <div className="flex w-full items-center justify-center p-8 h-screen">
+    <Pill>
+      <PillAvatar src="https://pbs.twimg.com/profile_images/1748718473595789312/PbqJh9hk_400x400.jpg" fallback="HB" />
+      @haydenbleasel
+    </Pill>
+  </div>
+);
+
+export default Example;`} />
+
+### Status
+
+A pill with a status indicator and text.
+
+<Preview name="pill" code={`'use client';
+
+import { Pill, PillStatus } from '@/components/ui/kibo-ui/pill';
+import { CheckCircleIcon } from 'lucide-react';
+
+const Example = () => (
+  <div className="flex w-full items-center justify-center p-8 h-screen">
+    <Pill>
+      <PillStatus>
+        <CheckCircleIcon size={12} className="text-emerald-500" />
+        Passed
+      </PillStatus>
+      Approval Status
+    </Pill>
+  </div>
+);
+
+export default Example;`} />
+
+### Button
+
+A pill with a button for dismissal.
+
+<Preview name="pill" code={`'use client';
+
+import { Pill, PillButton } from '@/components/ui/kibo-ui/pill';
+import { XIcon } from 'lucide-react';
+
+const Example = () => (
+  <div className="flex w-full items-center justify-center p-8 h-screen">
+    <Pill>
+      #kibo-ui
+      <PillButton variant="ghost" size="icon">
+        <XIcon size={12} />
+      </PillButton>
+    </Pill>
+  </div>
+);
+
+export default Example;`} />
+
+### Indicator
+
+Pills with different indicator states.
+
+<Preview name="pill" code={`'use client';
+
+import { Pill, PillIndicator } from '@/components/ui/kibo-ui/pill';
+
+const Example = () => (
+  <div className="flex w-full items-center justify-center gap-2 p-8 h-screen">
+    <Pill>
+      <PillIndicator variant="success" pulse />
+      Active
+    </Pill>
+    <Pill>
+      <PillIndicator variant="error" />
+      Error
+    </Pill>
+  </div>
+);
+
+export default Example;`} />
+
+### Delta
+
+Pills showing different delta states.
+
+<Preview name="pill" code={`'use client';
+
+import { Pill, PillDelta } from '@/components/ui/kibo-ui/pill';
+
+const Example = () => (
+  <div className="flex w-full items-center justify-center gap-2 p-8 h-screen">
+    <Pill>
+      <PillDelta delta={10} />
+      Up 10%
+    </Pill>
+    <Pill>
+      <PillDelta delta={-5} />
+      Down 5%
+    </Pill>
+    <Pill>
+      <PillDelta delta={0} />
+      No change
+    </Pill>
+  </div>
+);
+
+export default Example;`} />
+
+### Icon
+
+A pill with an icon and text.
+
+<Preview name="pill" code={`'use client';
+
+import { Pill, PillIcon } from '@/components/ui/kibo-ui/pill';
+import { UsersIcon } from 'lucide-react';
+
+const Example = () => (
+  <div className="flex w-full items-center justify-center p-8 h-screen">
+    <Pill>
+      <PillIcon icon={UsersIcon} />
+      17 users
+    </Pill>
+  </div>
+);
+
+export default Example;`} />
+
+### Avatar Group
+
+A pill with multiple avatars grouped together.
+
+<Preview name="pill" code={`'use client';
+
+import { Pill, PillAvatar, PillAvatarGroup } from '@/components/ui/kibo-ui/pill';
+
+const Example = () => (
+  <div className="flex w-full items-center justify-center p-8 h-screen">
+    <Pill>
+      <PillAvatarGroup>
+        <PillAvatar src="https://pbs.twimg.com/profile_images/1748718473595789312/PbqJh9hk_400x400.jpg" fallback="HB" />
+        <PillAvatar src="https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg" fallback="SC" />
+        <PillAvatar src="https://pbs.twimg.com/profile_images/1862717563311968256/xfgt1L9l_400x400.jpg" fallback="LR" />
+      </PillAvatarGroup>
+      Loved by millions
+    </Pill>
+  </div>
+);
+
+export default Example;`} />
+
+
+## Props
+
+The pill is made up of the following subcomponents:
+
+### Pill
+
+The `Pill` component is used to display a pill.
+
+<AutoTypeTable path="node_modules/@repo/pill/index.tsx" name="PillProps" />
+
+### PillAvatar
+
+The `PillAvatar` component is used to display an avatar.
+
+<AutoTypeTable path="node_modules/@repo/pill/index.tsx" name="PillAvatarProps" />
+
+### PillStatus
+
+The `PillStatus` component is used to display a status.
+
+<AutoTypeTable path="node_modules/@repo/pill/index.tsx" name="PillStatusProps" />
+
+### PillButton
+
+The `PillButton` component is used to display a button.
+
+<AutoTypeTable path="node_modules/@repo/pill/index.tsx" name="PillButtonProps" />
+
+### PillIndicator
+
+The `PillIndicator` component is used to display an indicator.
+
+<AutoTypeTable path="node_modules/@repo/pill/index.tsx" name="PillIndicatorProps" />
+
+### PillDelta
+
+The `PillDelta` component is used to display a delta.
+
+<AutoTypeTable path="node_modules/@repo/pill/index.tsx" name="PillDeltaProps" />
+
+### PillIcon
+
+The `PillIcon` component is used to display an icon.
+
+<AutoTypeTable path="node_modules/@repo/pill/index.tsx" name="PillIconProps" />
+
+### PillAvatarGroup
+
+The `PillAvatarGroup` component is used to display an avatar group.
+
+<AutoTypeTable path="node_modules/@repo/pill/index.tsx" name="PillAvatarGroupProps" />

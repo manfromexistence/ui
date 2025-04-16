@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typing-text-demo",
+  "type": "registry:ui",
+  "title": "Typing Text Demo",
+  "description": "Demo showing an animated typing text.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/typing-text"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/text/typing-text-demo/index.tsx",
+      "content": "import { TypingText } from '@/components/animate-ui/typing-text';\n\nexport const TypingTextDemo = () => {\n  return (\n    <TypingText\n      className=\"text-4xl\"\n      text=\"Typing Text\"\n      cursor\n      cursorClassName=\"h-9\"\n    />\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/typing-text-demo.tsx"
+    }
+  ]
+}

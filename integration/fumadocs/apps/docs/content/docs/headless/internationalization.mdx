@@ -1,0 +1,64 @@
+---
+title: Internationalization
+description: Support multiple languages in your documentation
+icon: Globe
+---
+
+## Introduction
+
+Fumadocs core provides necessary middleware and options for i18n support.
+
+You can define a config to share between utilities.
+
+```json doc-gen:file
+{
+  "file": "../../examples/i18n/lib/i18n.ts",
+  "codeblock": {
+    "lang": "ts",
+    "meta": "title=\"lib/i18n.ts\""
+  }
+}
+```
+
+### Middleware
+
+Redirects users to appropriate locale.
+
+```json doc-gen:file
+{
+  "file": "../../examples/i18n/middleware.ts",
+  "codeblock": {
+    "lang": "ts",
+    "meta": "title=\"middleware.ts\""
+  }
+}
+```
+
+You can also customise the i18n middleware from `i18n.ts`.
+
+#### Hide Locale Prefix
+
+To hide the locale prefix, for example, use `/` instead of `/en`, use the `hideLocale` option.
+
+| Mode             | Description                                        |
+| ---------------- | -------------------------------------------------- |
+| `always`         | Always hide the prefix, detect locale from cookies |
+| `default-locale` | Only hide the default locale                       |
+| `never`          | Never hide the prefix (default)                    |
+
+```ts
+import type { I18nConfig } from 'fumadocs-core/i18n';
+
+export const i18n: I18nConfig = {
+  defaultLanguage: 'en',
+  languages: ['en', 'cn'],
+  hideLocale: 'default-locale',
+};
+```
+
+> It uses `NextResponse.rewrite` to hide locale prefixes.
+
+It's **not recommended** to use `always`.
+On this mode, locale is stored as a cookie, read and set on the middleware.
+
+This may cause undesired cache problems on your hosting platform, and need to pay extra attention on SEO to ensure search engines can index your pages correctly.

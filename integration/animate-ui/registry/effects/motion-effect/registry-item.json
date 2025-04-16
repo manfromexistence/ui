@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion-effect",
+  "type": "registry:ui",
+  "title": "Motion Effect",
+  "description": "Motion effect component that displays the motion effect.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/effects/motion-effect/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/motion-effect.tsx"
+    }
+  ]
+}

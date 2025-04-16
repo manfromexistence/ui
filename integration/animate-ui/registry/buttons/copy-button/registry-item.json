@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "copy-button",
+  "type": "registry:ui",
+  "title": "Copy Button",
+  "description": "A copy button component",
+  "dependencies": ["motion", "lucide-react", "class-variance-authority"],
+  "files": [
+    {
+      "path": "registry/buttons/copy-button/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/copy-button.tsx"
+    }
+  ]
+}

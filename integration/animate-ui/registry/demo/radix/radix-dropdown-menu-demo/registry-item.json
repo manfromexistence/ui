@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-dropdown-menu-demo",
+  "type": "registry:ui",
+  "title": "Radix Dropdown Menu Demo",
+  "description": "Demo showing an animated radix dropdown menu.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-dropdown-menu",
+    "button"
+  ],
+  "dependencies": ["lucide-react", "motion"],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-dropdown-menu-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-dropdown-menu-demo.tsx"
+    }
+  ]
+}

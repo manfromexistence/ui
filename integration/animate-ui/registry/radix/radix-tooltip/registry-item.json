@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-tooltip",
+  "type": "registry:ui",
+  "title": "Radix Tooltip",
+  "description": "Radix UI tooltip component",
+  "dependencies": ["motion", "@radix-ui/react-tooltip"],
+  "files": [
+    {
+      "path": "registry/radix/radix-tooltip/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-tooltip.tsx"
+    }
+  ]
+}

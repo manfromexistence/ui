@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icon-button-demo",
+  "type": "registry:ui",
+  "title": "Icon Button Demo",
+  "description": "Demo showing an icon button.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/icon-button"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/buttons/icon-button-demo/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Star } from 'lucide-react';\n\nimport { IconButton } from '@/components/animate-ui/icon-button';\n\nexport const IconButtonDemo = () => {\n  const [active, setActive] = React.useState(false);\n\n  return (\n    <IconButton\n      icon={Star}\n      active={active}\n      onClick={() => setActive(!active)}\n    />\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/icon-button-demo.tsx"
+    }
+  ]
+}

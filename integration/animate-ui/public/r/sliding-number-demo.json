@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sliding-number-demo",
+  "type": "registry:ui",
+  "title": "Sliding Number Demo",
+  "description": "Demo showing an animated sliding number.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/sliding-number"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/text/sliding-number-demo/index.tsx",
+      "content": "import { SlidingNumber } from '@/components/animate-ui/sliding-number';\n\nexport const SlidingNumberDemo = () => {\n  return (\n    <SlidingNumber\n      number={new Date().getFullYear()}\n      padStart\n      className=\"text-4xl\"\n    />\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/sliding-number-demo.tsx"
+    }
+  ]
+}

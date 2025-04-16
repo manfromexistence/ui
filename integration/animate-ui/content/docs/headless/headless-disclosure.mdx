@@ -1,0 +1,89 @@
+---
+title: Disclosure
+description: A simple, accessible foundation for building custom UIs that show and hide content, like togglable accordion panels.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="headless-disclosure-demo" />
+
+## Installation
+
+<ComponentInstallation name="headless-disclosure" />
+
+## Props
+
+<div className="flex flex-row gap-x-3">
+  <ExternalLink href="https://headlessui.com/react/disclosure" text="Docs" />
+  <ExternalLink
+    href="https://headlessui.com/react/disclosure#component-api"
+    text="API Reference"
+  />
+</div>
+
+### Animate UI props
+
+#### DisclosurePanel
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the disclosure panel',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 150, damping: 17 }",
+    },
+  }}
+/>
+
+## Don't delete from the DOM
+
+The choice made is the same as Headless UI, i.e. to remove the element from the DOM for accessibility and performance reasons. However, this may pose a problem for SEO. If you want your Disclosure content to be taken into account by Google, please **replace the DisclosurePanel component with**:
+
+```tsx title="components/animate-ui/headless-disclosure.tsx"
+const DisclosurePanel = React.forwardRef<HTMLDivElement, DisclosurePanelProps>(
+  (
+    {
+      className,
+      children,
+      transition = { type: 'spring', stiffness: 150, damping: 17 },
+      as = React.Fragment,
+      ...props
+    },
+    ref,
+  ) => {
+    const { isOpen } = useDisclosure();
+
+    return (
+      <DisclosurePanelPrimitive static as={as} {...props}>
+        {(bag) => (
+          <motion.div
+            initial={false}
+            animate={
+              isOpen
+                ? { height: 'auto', opacity: 1, '--mask-stop': '100%' }
+                : { height: 0, opacity: 0, '--mask-stop': '0%' }
+            }
+            transition={transition}
+            style={{
+              maskImage:
+                'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',
+              WebkitMaskImage:
+                'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',
+            }}
+            className={cn('overflow-hidden', className)}
+            ref={ref}
+          >
+            {typeof children === 'function' ? children(bag) : children}
+          </motion.div>
+        )}
+      </DisclosurePanelPrimitive>
+    );
+  },
+);
+```
+
+## Credits
+
+- We use [Headless UI](https://headlessui.com/react/disclosure) for the disclosure component.

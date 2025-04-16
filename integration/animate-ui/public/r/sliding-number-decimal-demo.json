@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sliding-number-decimal-demo",
+  "type": "registry:ui",
+  "title": "Sliding Number Decimal Demo",
+  "description": "Demo showing an animated sliding number with a decimal separator.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/sliding-number"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/text/sliding-number-decimal-demo/index.tsx",
+      "content": "import { SlidingNumber } from '@/components/animate-ui/sliding-number';\n\nexport const SlidingNumberDecimalDemo = () => {\n  return (\n    <SlidingNumber\n      number={12345.67}\n      decimalSeparator=\",\"\n      padStart\n      className=\"text-4xl\"\n      inView\n    />\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/sliding-number-decimal-demo.tsx"
+    }
+  ]
+}

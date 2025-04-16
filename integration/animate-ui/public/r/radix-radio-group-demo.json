@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-radio-group-demo",
+  "type": "registry:ui",
+  "title": "Radix Radio Group Demo",
+  "description": "Demo showing an animated radix radio group.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-radio-group",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-radio-group-demo/index.tsx",
+      "content": "import { Label } from '@/components/ui/label';\nimport { RadioGroup, RadioGroupItem } from '@/components/animate-ui/radix-radio-group';\n\nexport function RadioGroupDemo() {\n  return (\n    <RadioGroup defaultValue=\"default\">\n      <div className=\"flex items-center space-x-2\">\n        <RadioGroupItem value=\"default\" id=\"r1\" />\n        <Label htmlFor=\"r1\">Default</Label>\n      </div>\n      <div className=\"flex items-center space-x-2\">\n        <RadioGroupItem value=\"comfortable\" id=\"r2\" />\n        <Label htmlFor=\"r2\">Comfortable</Label>\n      </div>\n      <div className=\"flex items-center space-x-2\">\n        <RadioGroupItem value=\"compact\" id=\"r3\" />\n        <Label htmlFor=\"r3\">Compact</Label>\n      </div>\n    </RadioGroup>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-radio-group-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion-highlight",
+  "type": "registry:ui",
+  "title": "Motion Highlight",
+  "description": "Motion highlight component that displays the motion highlight effect.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/effects/motion-highlight/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/motion-highlight.tsx"
+    }
+  ]
+}

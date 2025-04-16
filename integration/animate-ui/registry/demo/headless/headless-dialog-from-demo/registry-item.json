@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-dialog-from-demo",
+  "type": "registry:ui",
+  "title": "Headless Dialog From Demo",
+  "description": "Demo showing an animated headless dialog with a from prop.",
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["https://animate-ui.com/r/headless-dialog"],
+  "files": [
+    {
+      "path": "registry/demo/headless/headless-dialog-from-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-dialog-from-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+---
+title: Gradient Text
+description: A text component featuring a smoothly animated gradient effect.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="gradient-text-demo" />
+
+## Installation
+
+<ComponentInstallation name="gradient-text" />
+
+## Props
+
+<TypeTable
+  type={{
+    text: {
+      description: 'The text to display',
+      type: 'string',
+      required: true,
+    },
+    transition: {
+      description: 'The transition of the gradient text',
+      type: 'Transition',
+      required: false,
+      default: "{ duration: 50, repeat: Infinity, ease: 'linear' }",
+    },
+    gradient: {
+      description: 'The gradient of the neon text',
+      type: 'string',
+      default:
+        'linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)',
+      required: false,
+    },
+    neon: {
+      description: 'Use a neon effect',
+      type: 'boolean',
+      default: 'false',
+      required: false,
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [Jhey](https://codepen.io/jh3y/pen/jENwqvE) for the inspiration

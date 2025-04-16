@@ -1,0 +1,69 @@
+---
+title: Theme Switcher
+description: A component to switch between light, dark and system theme.
+icon: Moon
+---
+
+<PoweredBy packages={[
+  { name: 'Motion', url: 'https://motion.dev/' },
+  { name: 'Lucide', url: 'https://lucide.dev/' },
+]} />
+
+<Preview name="theme-switcher" code={`'use client';
+
+import { ThemeSwitcher } from '@/components/ui/kibo-ui/theme-switcher';
+import { useState } from 'react';
+
+const Example = () => {
+  const [theme, setTheme] = useState<'light' | 'dark' | 'system'>('system');
+
+  return (
+    <div
+      className={[
+        'w-full h-screen flex items-center justify-center',
+        theme === 'dark' && 'dark bg-black',
+      ].join(' ')}
+    >
+      <ThemeSwitcher value={theme} onChange={setTheme} />
+    </div>
+  );
+};
+
+export default Example;`} />
+
+## Installation
+
+<Installer packageName="theme-switcher" />
+
+## Features
+
+- Switch between light, dark and system theme
+- Controlled and uncontrolled mode
+
+## Examples
+
+### Uncontrolled mode
+
+Check the console for the onChange event.
+
+<Preview name="theme-switcher" code={`'use client';
+
+import { ThemeSwitcher } from '@/components/ui/kibo-ui/theme-switcher';
+
+const Example = () => (
+  <div className="w-full h-screen flex items-center justify-center">
+    <ThemeSwitcher defaultValue="system" onChange={console.log} />
+  </div>
+);
+
+export default Example;`} />
+
+## Props
+
+The theme switcher is made up of the following props:
+
+### ThemeSwitcher
+
+The `ThemeSwitcher` component is used to switch between light, dark and system theme.
+
+<AutoTypeTable path="node_modules/@repo/theme-switcher/index.tsx" name="ThemeSwitcherProps" />

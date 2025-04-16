@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-dialog",
+  "type": "registry:ui",
+  "title": "Dialog",
+  "description": "Dialog component",
+  "dependencies": ["motion", "lucide-react", "@radix-ui/react-dialog"],
+  "files": [
+    {
+      "path": "registry/radix/radix-dialog/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-dialog.tsx"
+    }
+  ]
+}

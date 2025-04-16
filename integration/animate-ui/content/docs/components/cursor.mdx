@@ -1,0 +1,77 @@
+---
+title: Cursor
+description: An animated cursor component that allows you to customize both the cursor and cursor follow elements with smooth animations.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="cursor-demo" />
+
+## Installation
+
+<ComponentInstallation name="cursor" />
+
+## Examples
+
+### Cursor Follow Only
+
+You can use only the `CursorFollow` (like the example below) component or the `Cursor` component.
+
+<ComponentPreview name="cursor-follow-only-demo" />
+
+## Props
+
+### CursorProvider
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the cursor provider',
+      type: 'React.ReactNode',
+      required: true,
+    },
+  }}
+/>
+
+### Cursor
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the cursor',
+      type: 'React.ReactNode',
+      required: true,
+    },
+  }}
+/>
+
+### CursorFollow
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the cursor follow',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    sideOffset: {
+      description: 'The side offset of the cursor follow',
+      type: 'number',
+      required: false,
+      default: 15,
+    },
+    align: {
+      description: 'The align of the cursor follow',
+      type: "'top' | 'top-left' | 'top-right' | 'bottom' | 'bottom-left' | 'bottom-right' | 'left' | 'right' | 'center'",
+      required: false,
+      default: 'bottom-right',
+    },
+    transition: {
+      description: 'The transition of the cursor follow',
+      type: 'SpringOptions',
+      required: false,
+      default: '{ stiffness: 500, damping: 50, bounce: 0 }',
+    },
+  }}
+/>

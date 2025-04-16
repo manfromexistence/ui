@@ -1,0 +1,69 @@
+.app-header {
+  height: 80px;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  padding: 0 4em;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  background: rgba(6, 6, 6, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.app-header .header-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1440px;
+}
+
+.app-header .header-content .logo {
+  min-width: 136px;
+}
+
+.app-header .header-content .menu-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+}
+
+.app-header .header-content .menu-items a {
+  height: 50px;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: opacity 0.3s ease;
+}
+
+.app-header .header-content .menu-items a:hover {
+  opacity: 0.7;
+}
+
+.app-header .header-content .menu-items a img {
+  margin-right: 6px;
+}
+
+@media (max-width: 1024px) {
+  .app-header {
+    padding: 0 2em;
+  }
+
+  .app-header .header-content .logo {
+    width: 110px;
+  }
+
+  .app-header .header-content .logo img {
+    width: 110px;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion-effect-image-grid-demo",
+  "type": "registry:ui",
+  "title": "Motion Effect Image Grid Demo",
+  "description": "Demo showing the motion effect image grid.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/motion-effect",
+    "use-mobile"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/effects/motion-effect-image-grid-demo/index.tsx",
+      "content": "'use client';\n\nimport { useIsMobile } from '@/hooks/use-mobile';\nimport { MotionEffect } from '@/components/animate-ui/motion-effect';\n\nexport const MotionEffectImageGridDemo = () => {\n  const isMobile = useIsMobile();\n\n  return (\n    <div className=\"grid grid-cols-1 sm:grid-cols-2 gap-4\">\n      {Array.from({ length: isMobile ? 2 : 4 }).map((_, index) => (\n        <MotionEffect\n          key={index}\n          slide={{\n            direction: 'down',\n          }}\n          fade\n          zoom\n          inView\n          delay={0.5 + index * 0.1}\n        >\n          <img\n            src={`https://picsum.photos/seed/${index + 100}/600/400`}\n            alt=\"Slide In Demo\"\n            className=\"w-[300px] h-[200px] object-cover object-center bg-muted rounded-xl flex items-center justify-center\"\n          />\n        </MotionEffect>\n      ))}\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/motion-effect-image-grid-demo.tsx"
+    }
+  ]
+}

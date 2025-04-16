@@ -1,0 +1,76 @@
+---
+title: Sliding Number
+description: A numeric display component that smoothly animates number changes with a sliding transition effect.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="sliding-number-demo" />
+
+## Installation
+
+<ComponentInstallation name="sliding-number" />
+
+## Examples
+
+### With decimal
+
+<ComponentPreview name="sliding-number-decimal-demo" />
+
+## Props
+
+<TypeTable
+  type={{
+    className: {
+      description: 'The className of the component',
+      type: 'string',
+      required: false,
+    },
+    number: {
+      description: 'The number to display',
+      type: 'number | string',
+      required: true,
+    },
+    inView: {
+      description: 'Enable animation when in view.',
+      type: 'boolean',
+      default: 'false',
+      required: false,
+    },
+    inViewMargin: {
+      description: 'The margin of the in view.',
+      type: 'string',
+      required: false,
+      default: '0px',
+    },
+    inViewOnce: {
+      description: 'Enable animation when in view once.',
+      type: 'boolean',
+      required: false,
+      default: 'true',
+    },
+    padStart: {
+      description: 'Whether to pad the start of the number with a zero',
+      type: 'boolean',
+      default: 'false',
+      required: false,
+    },
+    decimalSeparator: {
+      description: 'The decimal separator to use',
+      type: 'string',
+      default: '.',
+      required: false,
+    },
+    transition: {
+      description: 'The spring transition of the sliding number',
+      type: 'SpringOptions',
+      default: '{ stiffness: 200, damping: 20, mass: 0.4 }',
+      required: false,
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [motion primitives](https://motion-primitives.com/docs/sliding-number) for the inspiration

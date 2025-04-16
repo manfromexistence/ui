@@ -1,0 +1,83 @@
+.rotating-text-demo {
+  width: 100%;
+  height: 100%;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  overflow: hidden;
+  padding: 3rem;
+  color: #fff;
+}
+
+.rotating-text-main {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+  background-color: #67e8f9;
+  color: #000;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  border-radius: 0.5rem;
+}
+
+.rotating-text-split {
+  overflow: hidden;
+  padding-bottom: 0.125rem;
+}
+
+.rotating-text-ptag {
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+}
+
+@media (min-width: 640px) {
+  .rotating-text-split {
+    padding-bottom: 0.25rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .rotating-text-main {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .rotating-text-main {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .rotating-text-demo {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    padding: 5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .rotating-text-demo {
+    font-size: 3rem;
+    line-height: 1;
+    padding: 6rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .rotating-text-demo {
+    color: var(--muted);
+  }
+}

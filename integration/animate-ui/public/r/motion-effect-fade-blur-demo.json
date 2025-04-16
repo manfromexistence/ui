@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion-effect-fade-blur-demo",
+  "type": "registry:ui",
+  "title": "Motion Effect Fade Blur Demo",
+  "description": "Demo showing the motion effect fade blur.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/motion-effect"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/effects/motion-effect-fade-blur-demo/index.tsx",
+      "content": "import { MotionEffect } from '@/components/animate-ui/motion-effect';\n\nexport const MotionEffectFadeBlurDemo = () => {\n  return (\n    <MotionEffect\n      fade\n      blur=\"10px\"\n      transition={{\n        duration: 0.5,\n        ease: 'easeInOut',\n      }}\n      inView\n    >\n      <p className=\"text-4xl font-bold\">Motion Effect Fade Blur</p>\n    </MotionEffect>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/motion-effect-fade-blur-demo.tsx"
+    }
+  ]
+}

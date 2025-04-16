@@ -1,0 +1,91 @@
+---
+title: Fireworks Background
+description: A background component that displays a fireworks animation.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="fireworks-background-demo" />
+
+_Click on the background to make it rain fireworks._
+
+## Installation
+
+<ComponentInstallation name="fireworks-background" />
+
+## Examples
+
+### With a high population
+
+<ComponentPreview name="fireworks-background-population-demo" />
+
+### With a high size and speed
+
+<ComponentPreview name="fireworks-background-size-speed-demo" />
+
+### Circle effect with a fixed size and speed
+
+<ComponentPreview name="fireworks-background-fix-size-speed-demo" />
+
+## Props
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the component',
+      type: 'React.ReactNode',
+      required: false,
+    },
+    className: {
+      description: 'The className of the component',
+      type: 'string',
+      required: false,
+    },
+    canvasProps: {
+      description: 'The props for the canvas element',
+      type: 'React.HTMLAttributes<HTMLCanvasElement>',
+      required: false,
+    },
+    color: {
+      description: 'The color of the fireworks',
+      type: 'string | string[]',
+      required: false,
+      default: 'randColor()',
+    },
+    population: {
+      description: 'The number of fireworks to display',
+      type: 'number',
+      required: false,
+      default: 1,
+    },
+    fireworkSpeed: {
+      description: 'The speed of the fireworks',
+      type: '{ min: number; max: number } | number',
+      required: false,
+      default: '{ min: 4, max: 8 }',
+    },
+    fireworkSize: {
+      description: 'The size of the fireworks',
+      type: '{ min: number; max: number } | number',
+      required: false,
+      default: '{ min: 2, max: 5 }',
+    },
+    particleSpeed: {
+      description: 'The speed of the particles',
+      type: '{ min: number; max: number } | number',
+      required: false,
+      default: '{ min: 2, max: 7 }',
+    },
+    particleSize: {
+      description: 'The size of the particles',
+      type: '{ min: number; max: number } | number',
+      required: false,
+      default: '{ min: 1, max: 5 }',
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [Matt Cannon](https://codepen.io/matt-cannon/pen/YPKGBGm) for the inspiration

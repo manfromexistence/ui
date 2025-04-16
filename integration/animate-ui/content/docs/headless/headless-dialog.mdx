@@ -1,0 +1,49 @@
+---
+title: Dialog
+description: A fully-managed, renderless dialog component jam-packed with accessibility and keyboard features, perfect for building completely custom dialogs and alerts.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="headless-dialog-demo" />
+
+## Installation
+
+<ComponentInstallation name="headless-dialog" />
+
+## Examples
+
+### From Left
+
+Use the `from` prop to change the direction of the dialog flip animation.
+
+<ComponentPreview name="headless-dialog-from-demo" />
+
+## Props
+
+### Animate UI props
+
+#### DialogPanel
+
+<TypeTable
+  type={{
+    from: {
+      description: 'The direction of the dialog flip animation',
+      type: "'top' | 'bottom' | 'left' | 'right'",
+      required: false,
+      default: 'top',
+    },
+    transition: {
+      description: 'The transition of the dialog panel',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 150, damping: 25 }",
+    },
+  }}
+/>
+
+## Credits
+
+- We use [Headless UI](https://headlessui.com/react/dialog) for the dialog component.
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/dialog) for the dialog style.

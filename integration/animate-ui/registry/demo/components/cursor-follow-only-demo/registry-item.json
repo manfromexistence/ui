@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cursor-follow-only-demo",
+  "type": "registry:ui",
+  "title": "Cursor Follow Only Demo",
+  "description": "Demo showing a cursor follow component.",
+  "registryDependencies": ["https://animate-ui.com/r/cursor"],
+  "files": [
+    {
+      "path": "registry/demo/components/cursor-follow-only-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/cursor-follow-only-demo.tsx"
+    }
+  ]
+}

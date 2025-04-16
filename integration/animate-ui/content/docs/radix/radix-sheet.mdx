@@ -1,0 +1,58 @@
+---
+title: Sheet
+description: Extends the Dialog component to display content that complements the main content of the screen.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+new: true
+---
+
+<ComponentPreview name="radix-sheet-demo" />
+
+## Installation
+
+<ComponentInstallation name="radix-sheet" />
+
+## Props
+
+### Radix UI
+
+<div className="flex flex-row gap-x-3">
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/dialog"
+    text="Docs"
+  />
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/dialog#api-reference"
+    text="API Reference"
+  />
+</div>
+
+### Shadcn UI
+
+<div className="flex flex-row gap-x-3">
+  <ExternalLink
+    href="https://ui.shadcn.com/docs/components/sheet"
+    text="Docs"
+  />
+</div>
+
+### Animate UI props
+
+#### SheetContent
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the sheet',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 150, damping: 25 }",
+    },
+  }}
+/>
+
+## Credits
+
+- We use [Radix UI](https://www.radix-ui.com/primitives/docs/components/dialog) for the sheet component.
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/sheet) for the sheet style.

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-popover-datepicker-demo",
+  "type": "registry:ui",
+  "title": "Radix Popover DatePicker ",
+  "description": "Radix Popover DatePicker",
+  "dependencies": ["date-fns", "lucide-react"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-popover-datepicker-demo",
+    "button",
+    "calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-popover-datepicker-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-popover-datepicker-demo.tsx"
+    }
+  ]
+}

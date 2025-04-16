@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-accordion-demo",
+  "type": "registry:ui",
+  "title": "Headless Accordion Demo",
+  "description": "Demo showing an animated headless accordion.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/headless-accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/headless/headless-accordion-demo/index.tsx",
+      "content": "import {\n  Accordion,\n  AccordionItem,\n  AccordionButton,\n  AccordionPanel,\n} from '@/components/animate-ui/headless-accordion';\n\nexport const HeadlessAccordionDemo = () => {\n  return (\n    <Accordion className=\"max-w-[400px] w-full\">\n      <AccordionItem defaultOpen>\n        <AccordionButton>What is Animate UI?</AccordionButton>\n        <AccordionPanel>\n          Animate UI is an open-source distribution of React components built\n          with TypeScript, Tailwind CSS, and Motion.\n        </AccordionPanel>\n      </AccordionItem>\n      <AccordionItem>\n        <AccordionButton>\n          How is it different from other libraries?\n        </AccordionButton>\n        <AccordionPanel>\n          Instead of installing via NPM, you copy and paste the components\n          directly. This gives you full control to modify or customize them as\n          needed.\n        </AccordionPanel>\n      </AccordionItem>\n      <AccordionItem>\n        <AccordionButton>Is Animate UI free to use?</AccordionButton>\n        <AccordionPanel>\n          Absolutely! Animate UI is fully open-source. You can use, modify, and\n          adapt it to fit your needs.\n        </AccordionPanel>\n      </AccordionItem>\n    </Accordion>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-accordion-demo.tsx"
+    }
+  ]
+}

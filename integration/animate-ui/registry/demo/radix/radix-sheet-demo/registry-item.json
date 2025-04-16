@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-sheet-demo",
+  "type": "registry:ui",
+  "title": "Radix Sheet Demo",
+  "description": "Demo showing a sheet with radix dialog.",
+  "dependencies": ["lucide-react", "motion"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-sheet",
+    "button",
+    "label",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-sheet-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-sheet-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hexagon-background-demo",
+  "type": "registry:ui",
+  "title": "Hexagon Background Demo",
+  "description": "Demo showing an animated hexagon background.",
+  "registryDependencies": ["https://animate-ui.com/r/hexagon-background"],
+  "files": [
+    {
+      "path": "registry/demo/backgrounds/hexagon-background-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/hexagon-background-demo.tsx"
+    }
+  ]
+}

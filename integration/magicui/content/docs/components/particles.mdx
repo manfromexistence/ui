@@ -1,0 +1,67 @@
+---
+title: Particles
+date: 2024-06-04
+description: Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="particles-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/particles"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="particles" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Particles } from "@/components/magicui/particles";
+```
+
+```tsx
+<div className="relative overflow-hidden h-[500px] w-full">
+  <Particle />
+</div>
+```
+
+## Props
+
+| Prop        | Type      | Default   | Description                      |
+| ----------- | --------- | --------- | -------------------------------- |
+| `className` | `string`  | `-`       | The class name for the component |
+| `quantity`  | `number`  | `100`     | The number of particles          |
+| `staticity` | `number`  | `50`      | The staticity of the particles   |
+| `ease`      | `number`  | `50`      | The ease of the particles        |
+| `size`      | `number`  | `0.4`     | The size of the particles        |
+| `refresh`   | `boolean` | `false`   | Whether to refresh the particles |
+| `color`     | `string`  | `#ffffff` | The color of the particles       |
+| `vx`        | `number`  | `0`       | The x velocity of the particles  |
+| `vy`        | `number`  | `0`       | The y velocity of the particles  |

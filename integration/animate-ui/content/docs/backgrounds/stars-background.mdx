@@ -1,0 +1,91 @@
+---
+title: Stars Background
+description: A dark, interactive background featuring animated dots of varying sizes and speeds, simulating a dynamic and immersive starry space effect.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="stars-background-demo" />
+
+## Installation
+
+<ComponentInstallation name="stars-background" />
+
+## Props
+
+### StarsBackground
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the component',
+      type: 'React.ReactNode',
+      required: false,
+    },
+    className: {
+      description: 'The className of the component',
+      type: 'string',
+      required: false,
+    },
+    factor: {
+      description: 'The factor of the component',
+      type: 'number',
+      default: '0.05',
+      required: false,
+    },
+    speed: {
+      description: 'The speed of the component',
+      type: 'number',
+      default: '50',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the interactive movement',
+      type: 'SpringOptions',
+      required: false,
+      default: '{ stiffness: 50, damping: 20 }',
+    },
+    starColor: {
+      description: 'The color of the stars',
+      type: 'string',
+      default: '#fff',
+      required: false,
+    },
+  }}
+/>
+
+### StarLayer
+
+<TypeTable
+  type={{
+    count: {
+      description: 'The number of stars',
+      type: 'number',
+      default: '1000',
+      required: false,
+    },
+    size: {
+      description: 'The size of the stars',
+      type: 'number',
+      default: '1',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the stars',
+      type: 'Transition',
+      required: false,
+      default: '{ repeat: Infinity, duration: 50, ease: "linear" }',
+    },
+    starColor: {
+      description: 'The color of the stars',
+      type: 'string',
+      default: '#fff',
+      required: false,
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [umangladani](https://codepen.io/umangladani/pen/wvgwgjK) for the inspiration

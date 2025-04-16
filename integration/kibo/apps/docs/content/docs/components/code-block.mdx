@@ -1,0 +1,1024 @@
+---
+title: Code Block
+description: Provides syntax highlighting, line numbers, and copy to clipboard functionality for code blocks.
+icon: Braces
+---
+
+<PoweredBy packages={[
+  { name: 'Lucide', url: 'https://lucide.dev/' },
+  { name: 'Simple Icons', url: 'https://simpleicons.org/' },
+  { name: 'Shiki', url: 'https://shiki.matsu.io/' },
+]} />
+
+<Preview name="code-block" code={`'use client';
+
+import { useState } from 'react';
+import {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockFilename,
+  CodeBlockSelect,
+  CodeBlockSelectTrigger,
+  CodeBlockSelectItem,
+  CodeBlockSelectValue,
+  CodeBlockSelectContent,
+  CodeBlockCopyButton,
+  CodeBlockContent,
+  CodeBlockBody,
+} from '@/components/ui/kibo-ui/code-block';
+
+const code = [{
+  language: 'jsx',
+  filename: 'MyComponent.jsx',
+  code: \`function MyComponent(props) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1>
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`,
+}, {
+  language: 'tsx',
+  filename: 'MyComponent.tsx',
+  code: \`function MyComponent(props: { name: string }) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1>
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`
+}];
+
+const Example = () => (
+  <div className="p-4">
+    <CodeBlock defaultValue={code[0].language}>
+      <CodeBlockHeader>
+        {code.map((item) => (
+          <CodeBlockFilename key={item.language} value={item.language}>
+            {item.filename}
+          </CodeBlockFilename>
+        ))}
+        <CodeBlockSelect>
+          <CodeBlockSelectTrigger>
+            <CodeBlockSelectValue />
+          </CodeBlockSelectTrigger>
+          <CodeBlockSelectContent>
+            {code.map((item) => (
+              <CodeBlockSelectItem key={item.language} value={item.language}>
+                {item.language}
+              </CodeBlockSelectItem>
+            ))}
+          </CodeBlockSelectContent>
+        </CodeBlockSelect>
+        <CodeBlockCopyButton
+          onCopy={() =>
+            console.log(\`Copied code to clipboard\`)
+          }
+          onError={() =>
+            console.error(\`Failed to copy code to clipboard\`)
+          }
+        />
+      </CodeBlockHeader>
+      {code.map((item) => (
+        <CodeBlockBody key={item.language} value={item.language}>
+          <CodeBlockContent language={item.language}>
+            {item.code}
+          </CodeBlockContent>
+        </CodeBlockBody>
+      ))}
+    </CodeBlock>
+  </div>
+);
+
+export default Example;`} />
+
+## Installation
+
+<Installer packageName="code-block" />
+
+## Features
+
+- Syntax highlighting
+- Line numbers
+- Copy to clipboard
+- Support for filenames
+- Highlighted lines and words
+- Focused line
+- Diff
+- Language detection
+- Theme support
+- Customizable styles
+
+## Examples
+
+### No filename
+
+<Preview name="code-block" code={`'use client';
+
+import { useState } from 'react';
+import {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockFilename,
+  CodeBlockSelect,
+  CodeBlockSelectTrigger,
+  CodeBlockSelectItem,
+  CodeBlockSelectValue,
+  CodeBlockSelectContent,
+  CodeBlockCopyButton,
+  CodeBlockContent,
+  CodeBlockBody,
+} from '@/components/ui/kibo-ui/code-block';
+
+const code = [{
+  language: 'jsx',
+  filename: 'MyComponent.jsx',
+  code: \`function MyComponent(props) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1>
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`,
+}, {
+  language: 'tsx',
+  filename: 'MyComponent.tsx',
+  code: \`function MyComponent(props: { name: string }) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1>
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`
+}];
+
+const Example = () => (
+  <div className="p-4">
+    <CodeBlock defaultValue={code[0].language}>
+      {code.map((item) => (
+        <CodeBlockBody key={item.language} value={item.language}>
+          <CodeBlockContent language={item.language}>
+            {item.code}
+          </CodeBlockContent>
+        </CodeBlockBody>
+      ))}
+    </CodeBlock>
+  </div>
+);
+
+export default Example;`} />
+
+### Highlighted lines
+
+<Preview name="code-block" code={`'use client';
+
+import { useState } from 'react';
+import {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockFilename,
+  CodeBlockSelect,
+  CodeBlockSelectTrigger,
+  CodeBlockSelectItem,
+  CodeBlockSelectValue,
+  CodeBlockSelectContent,
+  CodeBlockCopyButton,
+  CodeBlockContent,
+  CodeBlockBody,
+} from '@/components/ui/kibo-ui/code-block';
+
+const code = [{
+  language: 'jsx',
+  filename: 'MyComponent.jsx',
+  code: \`function MyComponent(props) { // [!code highlight]
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1> // [!code highlight]
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`,
+}, {
+  language: 'tsx',
+  filename: 'MyComponent.tsx',
+  code: \`function MyComponent(props: { name: string }) { // [!code highlight]
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1> // [!code highlight]
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`
+}];
+
+const Example = () => (
+  <div className="p-4">
+    <CodeBlock defaultValue={code[0].language}>
+      <CodeBlockHeader>
+        {code.map((item) => (
+          <CodeBlockFilename key={item.language} value={item.language}>
+            {item.filename}
+          </CodeBlockFilename>
+        ))}
+        <CodeBlockSelect>
+          <CodeBlockSelectTrigger>
+            <CodeBlockSelectValue />
+          </CodeBlockSelectTrigger>
+          <CodeBlockSelectContent>
+            {code.map((item) => (
+              <CodeBlockSelectItem key={item.language} value={item.language}>
+                {item.language}
+              </CodeBlockSelectItem>
+            ))}
+          </CodeBlockSelectContent>
+        </CodeBlockSelect>
+        <CodeBlockCopyButton
+          onCopy={() =>
+            console.log(\`Copied code to clipboard\`)
+          }
+          onError={() =>
+            console.error(\`Failed to copy code to clipboard\`)
+          }
+        />
+      </CodeBlockHeader>
+      {code.map((item) => (
+        <CodeBlockBody key={item.language} value={item.language}>
+          <CodeBlockContent language={item.language}>
+            {item.code}
+          </CodeBlockContent>
+        </CodeBlockBody>
+      ))}
+    </CodeBlock>
+  </div>
+);
+
+export default Example;`} />
+
+### Highlighted words
+
+<Preview name="code-block" code={`'use client';
+
+import { useState } from 'react';
+import {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockFilename,
+  CodeBlockSelect,
+  CodeBlockSelectTrigger,
+  CodeBlockSelectItem,
+  CodeBlockSelectValue,
+  CodeBlockSelectContent,
+  CodeBlockCopyButton,
+  CodeBlockContent,
+  CodeBlockBody,
+} from '@/components/ui/kibo-ui/code-block';
+
+const code = [{
+  language: 'jsx',
+  filename: 'MyComponent.jsx',
+  code: \`function MyComponent(props) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1> // [!code word:props.name]
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`,
+}, {
+  language: 'tsx',
+  filename: 'MyComponent.tsx',
+  code: \`function MyComponent(props: { name: string }) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1> // [!code word:props.name]
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`
+}];
+
+const Example = () => (
+  <div className="p-4">
+    <CodeBlock defaultValue={code[0].language}>
+      <CodeBlockHeader>
+        {code.map((item) => (
+          <CodeBlockFilename key={item.language} value={item.language}>
+            {item.filename}
+          </CodeBlockFilename>
+        ))}
+        <CodeBlockSelect>
+          <CodeBlockSelectTrigger>
+            <CodeBlockSelectValue />
+          </CodeBlockSelectTrigger>
+          <CodeBlockSelectContent>
+            {code.map((item) => (
+              <CodeBlockSelectItem key={item.language} value={item.language}>
+                {item.language}
+              </CodeBlockSelectItem>
+            ))}
+          </CodeBlockSelectContent>
+        </CodeBlockSelect>
+        <CodeBlockCopyButton
+          onCopy={() =>
+            console.log(\`Copied code to clipboard\`)
+          }
+          onError={() =>
+            console.error(\`Failed to copy code to clipboard\`)
+          }
+        />
+      </CodeBlockHeader>
+      {code.map((item) => (
+        <CodeBlockBody key={item.language} value={item.language}>
+          <CodeBlockContent language={item.language}>
+            {item.code}
+          </CodeBlockContent>
+        </CodeBlockBody>
+      ))}
+    </CodeBlock>
+  </div>
+);
+
+export default Example;`} />
+
+### Diff
+
+<Preview name="code-block" code={`'use client';
+
+import { useState } from 'react';
+import {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockFilename,
+  CodeBlockSelect,
+  CodeBlockSelectTrigger,
+  CodeBlockSelectItem,
+  CodeBlockSelectValue,
+  CodeBlockSelectContent,
+  CodeBlockCopyButton,
+  CodeBlockContent,
+  CodeBlockBody,
+} from '@/components/ui/kibo-ui/code-block';
+
+const code = [{
+  language: 'jsx',
+  filename: 'MyComponent.jsx',
+  code: \`function MyComponent(props) {
+  return (
+    <div>
+      <h1>Hello, random user!</h1>// [!code --]
+      <h1>Hello, {props.name}!</h1>// [!code ++]
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`,
+}, {
+  language: 'tsx',
+  filename: 'MyComponent.tsx',
+  code: \`function MyComponent(props: { name: string }) {
+  return (
+    <div>
+      <h1>Hello, random user!</h1>// [!code --]
+      <h1>Hello, {props.name}!</h1>// [!code ++]
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`
+}];
+
+const Example = () => (
+  <div className="p-4">
+    <CodeBlock defaultValue={code[0].language}>
+      <CodeBlockHeader>
+        {code.map((item) => (
+          <CodeBlockFilename key={item.language} value={item.language}>
+            {item.filename}
+          </CodeBlockFilename>
+        ))}
+        <CodeBlockSelect>
+          <CodeBlockSelectTrigger>
+            <CodeBlockSelectValue />
+          </CodeBlockSelectTrigger>
+          <CodeBlockSelectContent>
+            {code.map((item) => (
+              <CodeBlockSelectItem key={item.language} value={item.language}>
+                {item.language}
+              </CodeBlockSelectItem>
+            ))}
+          </CodeBlockSelectContent>
+        </CodeBlockSelect>
+        <CodeBlockCopyButton
+          onCopy={() =>
+            console.log(\`Copied code to clipboard\`)
+          }
+          onError={() =>
+            console.error(\`Failed to copy code to clipboard\`)
+          }
+        />
+      </CodeBlockHeader>
+      {code.map((item) => (
+        <CodeBlockBody key={item.language} value={item.language}>
+          <CodeBlockContent language={item.language}>
+            {item.code}
+          </CodeBlockContent>
+        </CodeBlockBody>
+      ))}
+    </CodeBlock>
+  </div>
+);
+
+export default Example;`} />
+
+### Focus
+
+<Preview name="code-block" code={`'use client';
+
+import { useState } from 'react';
+import {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockFilename,
+  CodeBlockSelect,
+  CodeBlockSelectTrigger,
+  CodeBlockSelectItem,
+  CodeBlockSelectValue,
+  CodeBlockSelectContent,
+  CodeBlockCopyButton,
+  CodeBlockContent,
+  CodeBlockBody,
+} from '@/components/ui/kibo-ui/code-block';
+
+const code = [{
+  language: 'jsx',
+  filename: 'MyComponent.jsx',
+  code: \`function MyComponent(props) {
+  return (
+    <div>
+      <h1>Hello, random user!</h1> // [!code focus]
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`,
+}, {
+  language: 'tsx',
+  filename: 'MyComponent.tsx',
+  code: \`function MyComponent(props: { name: string }) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1> // [!code focus]
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`
+}];
+
+const Example = () => (
+  <div className="p-4">
+    <CodeBlock defaultValue={code[0].language}>
+      <CodeBlockHeader>
+        {code.map((item) => (
+          <CodeBlockFilename key={item.language} value={item.language}>
+            {item.filename}
+          </CodeBlockFilename>
+        ))}
+        <CodeBlockSelect>
+          <CodeBlockSelectTrigger>
+            <CodeBlockSelectValue />
+          </CodeBlockSelectTrigger>
+          <CodeBlockSelectContent>
+            {code.map((item) => (
+              <CodeBlockSelectItem key={item.language} value={item.language}>
+                {item.language}
+              </CodeBlockSelectItem>
+            ))}
+          </CodeBlockSelectContent>
+        </CodeBlockSelect>
+        <CodeBlockCopyButton
+          onCopy={() =>
+            console.log(\`Copied code to clipboard\`)
+          }
+          onError={() =>
+            console.error(\`Failed to copy code to clipboard\`)
+          }
+        />
+      </CodeBlockHeader>
+      {code.map((item) => (
+        <CodeBlockBody key={item.language} value={item.language}>
+          <CodeBlockContent language={item.language}>
+            {item.code}
+          </CodeBlockContent>
+        </CodeBlockBody>
+      ))}
+    </CodeBlock>
+  </div>
+);
+
+export default Example;`} />
+
+### Hidden line numbers
+
+<Preview name="code-block" code={`'use client';
+
+import { useState } from 'react';
+import {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockFilename,
+  CodeBlockSelect,
+  CodeBlockSelectTrigger,
+  CodeBlockSelectItem,
+  CodeBlockSelectValue,
+  CodeBlockSelectContent,
+  CodeBlockCopyButton,
+  CodeBlockContent,
+  CodeBlockBody,
+} from '@/components/ui/kibo-ui/code-block';
+
+const code = [{
+  language: 'jsx',
+  filename: 'MyComponent.jsx',
+  code: \`function MyComponent(props) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1>
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`,
+}, {
+  language: 'tsx',
+  filename: 'MyComponent.tsx',
+  code: \`function MyComponent(props: { name: string }) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1>
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`
+}];
+
+const Example = () => (
+  <div className="p-4">
+    <CodeBlock defaultValue={code[0].language}>
+      <CodeBlockHeader>
+        {code.map((item) => (
+          <CodeBlockFilename key={item.language} value={item.language}>
+            {item.filename}
+          </CodeBlockFilename>
+        ))}
+        <CodeBlockSelect>
+          <CodeBlockSelectTrigger>
+            <CodeBlockSelectValue />
+          </CodeBlockSelectTrigger>
+          <CodeBlockSelectContent>
+            {code.map((item) => (
+              <CodeBlockSelectItem key={item.language} value={item.language}>
+                {item.language}
+              </CodeBlockSelectItem>
+            ))}
+          </CodeBlockSelectContent>
+        </CodeBlockSelect>
+        <CodeBlockCopyButton
+          onCopy={() =>
+            console.log(\`Copied code to clipboard\`)
+          }
+          onError={() =>
+            console.error(\`Failed to copy code to clipboard\`)
+          }
+        />
+      </CodeBlockHeader>
+      {code.map((item) => (
+        <CodeBlockBody key={item.language} value={item.language}>
+          <CodeBlockContent lineNumbers={false}>
+            {item.code}
+          </CodeBlockContent>
+        </CodeBlockBody>
+      ))}
+    </CodeBlock>
+  </div>
+);
+
+export default Example;`} />
+
+### Custom highlight color
+
+<Preview name="code-block" code={`'use client';
+
+import { useState } from 'react';
+import {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockFilename,
+  CodeBlockSelect,
+  CodeBlockSelectTrigger,
+  CodeBlockSelectItem,
+  CodeBlockSelectValue,
+  CodeBlockSelectContent,
+  CodeBlockCopyButton,
+  CodeBlockContent,
+  CodeBlockBody,
+} from '@/components/ui/kibo-ui/code-block';
+
+const code = [{
+  language: 'jsx',
+  filename: 'MyComponent.jsx',
+  code: \`function MyComponent(props) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1> // [!code highlight]
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`,
+}, {
+  language: 'tsx',
+  filename: 'MyComponent.tsx',
+  code: \`function MyComponent(props: { name: string }) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1> // [!code highlight]
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`
+}];
+
+const Example = () => (
+  <div className="p-4">
+    <CodeBlock defaultValue={code[0].language}>
+      <CodeBlockHeader>
+        {code.map((item) => (
+          <CodeBlockFilename key={item.language} value={item.language}>
+            {item.filename}
+          </CodeBlockFilename>
+        ))}
+        <CodeBlockSelect>
+          <CodeBlockSelectTrigger>
+            <CodeBlockSelectValue />
+          </CodeBlockSelectTrigger>
+          <CodeBlockSelectContent>
+            {code.map((item) => (
+              <CodeBlockSelectItem key={item.language} value={item.language}>
+                {item.language}
+              </CodeBlockSelectItem>
+            ))}
+          </CodeBlockSelectContent>
+        </CodeBlockSelect>
+        <CodeBlockCopyButton
+          onCopy={() =>
+            console.log(\`Copied code to clipboard\`)
+          }
+          onError={() =>
+            console.error(\`Failed to copy code to clipboard\`)
+          }
+        />
+      </CodeBlockHeader>
+      {code.map((item) => (
+        <CodeBlockBody key={item.language} value={item.language}>
+          <CodeBlockContent className="[&_.line.highlighted]:bg-purple-50 [&_.line.highlighted]:after:bg-purple-500">
+            {item.code}
+          </CodeBlockContent>
+        </CodeBlockBody>
+      ))}
+    </CodeBlock>
+  </div>
+);
+
+export default Example;`} />
+
+### No syntax highlighting
+
+<Preview name="code-block" code={`'use client';
+
+import { useState } from 'react';
+import {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockFilename,
+  CodeBlockSelect,
+  CodeBlockSelectTrigger,
+  CodeBlockSelectItem,
+  CodeBlockSelectValue,
+  CodeBlockSelectContent,
+  CodeBlockCopyButton,
+  CodeBlockContent,
+  CodeBlockBody,
+} from '@/components/ui/kibo-ui/code-block';
+
+const code = [{
+  language: 'jsx',
+  filename: 'MyComponent.jsx',
+  code: \`function MyComponent(props) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1>
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`,
+}, {
+  language: 'tsx',
+  filename: 'MyComponent.tsx',
+  code: \`function MyComponent(props: { name: string }) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1>
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`
+}];
+
+const Example = () => (
+  <div className="p-4">
+    <CodeBlock defaultValue={code[0].language}>
+      <CodeBlockHeader>
+        {code.map((item) => (
+          <CodeBlockFilename key={item.language} value={item.language}>
+            {item.filename}
+          </CodeBlockFilename>
+        ))}
+        <CodeBlockSelect>
+          <CodeBlockSelectTrigger>
+            <CodeBlockSelectValue />
+          </CodeBlockSelectTrigger>
+          <CodeBlockSelectContent>
+            {code.map((item) => (
+              <CodeBlockSelectItem key={item.language} value={item.language}>
+                {item.language}
+              </CodeBlockSelectItem>
+            ))}
+          </CodeBlockSelectContent>
+        </CodeBlockSelect>
+        <CodeBlockCopyButton
+          onCopy={() =>
+            console.log(\`Copied code to clipboard\`)
+          }
+          onError={() =>
+            console.error(\`Failed to copy code to clipboard\`)
+          }
+        />
+      </CodeBlockHeader>
+      {code.map((item) => (
+        <CodeBlockBody key={item.language} value={item.language}>
+          <CodeBlockContent syntaxHighlighting={false}>
+            {item.code}
+          </CodeBlockContent>
+        </CodeBlockBody>
+      ))}
+    </CodeBlock>
+  </div>
+);
+
+export default Example;`} />
+
+### Dark mode (class)
+
+<Preview name="code-block" code={`'use client';
+
+import { useState } from 'react';
+import {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockFilename,
+  CodeBlockSelect,
+  CodeBlockSelectTrigger,
+  CodeBlockSelectItem,
+  CodeBlockSelectValue,
+  CodeBlockSelectContent,
+  CodeBlockCopyButton,
+  CodeBlockContent,
+  CodeBlockBody,
+} from '@/components/ui/kibo-ui/code-block';
+
+const code = [{
+  language: 'jsx',
+  filename: 'MyComponent.jsx',
+  code: \`function MyComponent(props) {
+  return (
+    <div> // [!code highlight]
+      <h1>Hello, {props.name}!</h1> // [!code word:props.name]
+      <p>This is an example React component.</p> // [!code ++]
+      <p>This is an example component.</p> // [!code --]
+    </div>
+  );
+}\`,
+}, {
+  language: 'tsx',
+  filename: 'MyComponent.tsx',
+  code: \`function MyComponent(props: { name: string }) {
+  return ( 
+    <div>
+      <h1>Hello, {props.name}!</h1>
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`
+}];
+
+const Example = () => (
+  <div className="p-4 dark">
+    <CodeBlock defaultValue={code[0].language}>
+      <CodeBlockHeader>
+        {code.map((item) => (
+          <CodeBlockFilename key={item.language} value={item.language}>
+            {item.filename}
+          </CodeBlockFilename>
+        ))}
+        <CodeBlockSelect>
+          <CodeBlockSelectTrigger>
+            <CodeBlockSelectValue />
+          </CodeBlockSelectTrigger>
+          <CodeBlockSelectContent>
+            {code.map((item) => (
+              <CodeBlockSelectItem key={item.language} value={item.language}>
+                {item.language}
+              </CodeBlockSelectItem>
+            ))}
+          </CodeBlockSelectContent>
+        </CodeBlockSelect>
+        <CodeBlockCopyButton
+          onCopy={() =>
+            console.log(\`Copied code to clipboard\`)
+          }
+          onError={() =>
+            console.error(\`Failed to copy code to clipboard\`)
+          }
+        />
+      </CodeBlockHeader>
+      {code.map((item) => (
+        <CodeBlockBody key={item.language} value={item.language}>
+          <CodeBlockContent language={item.language}>
+            {item.code}
+          </CodeBlockContent>
+        </CodeBlockBody>
+      ))}
+    </CodeBlock>
+  </div>
+);
+
+export default Example;`} />
+
+### Custom Theme
+
+<Preview name="code-block" code={`'use client';
+
+import { useState } from 'react';
+import {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockFilename,
+  CodeBlockSelect,
+  CodeBlockSelectTrigger,
+  CodeBlockSelectItem,
+  CodeBlockSelectValue,
+  CodeBlockSelectContent,
+  CodeBlockCopyButton,
+  CodeBlockContent,
+  CodeBlockBody,
+} from '@/components/ui/kibo-ui/code-block';
+
+const code = [{
+  language: 'jsx',
+  filename: 'MyComponent.jsx',
+  code: \`function MyComponent(props) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1>
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`,
+}, {
+  language: 'tsx',
+  filename: 'MyComponent.tsx',
+  code: \`function MyComponent(props: { name: string }) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1>
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`
+}];
+
+const Example = () => (
+  <div className="p-4">
+    <CodeBlock defaultValue={code[0].language}>
+      <CodeBlockHeader>
+        {code.map((item) => (
+          <CodeBlockFilename key={item.language} value={item.language}>
+            {item.filename}
+          </CodeBlockFilename>
+        ))}
+        <CodeBlockSelect>
+          <CodeBlockSelectTrigger>
+            <CodeBlockSelectValue />
+          </CodeBlockSelectTrigger>
+          <CodeBlockSelectContent>
+            {code.map((item) => (
+              <CodeBlockSelectItem key={item.language} value={item.language}>
+                {item.language}
+              </CodeBlockSelectItem>
+            ))}
+          </CodeBlockSelectContent>
+        </CodeBlockSelect>
+        <CodeBlockCopyButton
+          onCopy={() =>
+            console.log(\`Copied code to clipboard\`)
+          }
+          onError={() =>
+            console.error(\`Failed to copy code to clipboard\`)
+          }
+        />
+      </CodeBlockHeader>
+      {code.map((item) => (
+        <CodeBlockBody key={item.language} value={item.language}>
+          <CodeBlockContent language={item.language} themes={{
+            light: 'github-light',
+            dark: 'github-dark-default',
+          }}>
+            {item.code}
+          </CodeBlockContent>
+        </CodeBlockBody>
+      ))}
+    </CodeBlock>
+  </div>
+);
+
+export default Example;`} />
+
+## Notes
+
+### React Server Component
+
+You can use the RSC version of the Code Block component by importing the `CodeBlockContent` component from `code-block/server` i.e.
+
+```tsx
+import {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockFilename,
+  CodeBlockSelect,
+  CodeBlockSelectTrigger,
+  CodeBlockSelectItem,
+  CodeBlockSelectValue,
+  CodeBlockSelectContent,
+  CodeBlockCopyButton,
+  CodeBlockBody,
+  // CodeBlockContent,
+} from '@/components/ui/kibo-ui/code-block';
+import { CodeBlockContent } from '@/components/kibo-ui/code-block/server';
+```
+
+## Props
+
+The Code Block component is made up of the following subcomponents:
+
+### CodeBlock
+
+<AutoTypeTable path="node_modules/@repo/code-block/index.tsx" name="CodeBlockProps" />
+
+### CodeBlockHeader
+
+<AutoTypeTable path="node_modules/@repo/code-block/index.tsx" name="CodeBlockHeaderProps" />
+
+### CodeBlockFilename
+
+<AutoTypeTable path="node_modules/@repo/code-block/index.tsx" name="CodeBlockFilenameProps" />
+
+### CodeBlockSelect
+
+<AutoTypeTable path="node_modules/@repo/code-block/index.tsx" name="CodeBlockSelectProps" />
+
+### CodeBlockSelectTrigger
+
+<AutoTypeTable path="node_modules/@repo/code-block/index.tsx" name="CodeBlockSelectTriggerProps" />
+
+### CodeBlockSelectValue
+
+<AutoTypeTable path="node_modules/@repo/code-block/index.tsx" name="CodeBlockSelectValueProps" />
+
+### CodeBlockSelectContent
+
+<AutoTypeTable path="node_modules/@repo/code-block/index.tsx" name="CodeBlockSelectContentProps" />
+
+### CodeBlockSelectItem
+
+<AutoTypeTable path="node_modules/@repo/code-block/index.tsx" name="CodeBlockSelectItemProps" />
+
+### CodeBlockCopyButton
+
+<AutoTypeTable path="node_modules/@repo/code-block/index.tsx" name="CodeBlockCopyButtonProps" />
+
+### CodeBlockBody
+
+<AutoTypeTable path="node_modules/@repo/code-block/index.tsx" name="CodeBlockBodyProps" />
+
+### CodeBlockContent
+
+<AutoTypeTable path="node_modules/@repo/code-block/index.tsx" name="CodeBlockContentProps" />

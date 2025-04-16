@@ -1,0 +1,51 @@
+---
+title: Counter
+description: A numeric input control featuring increment and decrement buttons, smoothly animating number transitions using the SlidingNumber component.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="counter-demo" />
+
+## Installation
+
+<ComponentInstallation name="counter" />
+
+## Props
+
+<TypeTable
+  type={{
+    buttonProps: {
+      description: 'The props to pass to the Button component',
+      type: "Omit<React.ComponentProps<typeof Button>, 'onClick'>",
+      required: false,
+    },
+    className: {
+      description: 'The className to pass to the component',
+      type: 'string',
+      required: false,
+    },
+    number: {
+      description: 'The number to display',
+      type: 'number',
+      required: true,
+    },
+    setNumber: {
+      description: 'The function to set the number',
+      type: '(number: number) => void',
+      required: true,
+    },
+    slidingNumberProps: {
+      description: 'The props to pass to the SlidingNumber component',
+      type: "Omit<SlidingNumberProps, 'number'>",
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the counter width',
+      type: 'Transition',
+      required: false,
+      default: '{ type: "spring", bounce: 0, stiffness: 300, damping: 30 }',
+    },
+  }}
+/>

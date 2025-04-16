@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hole-background",
+  "type": "registry:ui",
+  "title": "Hole Background",
+  "description": "Hole background component",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/backgrounds/hole-background/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/hole-background.tsx"
+    }
+  ]
+}

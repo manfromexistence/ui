@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ripple-button",
+  "type": "registry:ui",
+  "title": "Ripple Button",
+  "description": "A ripple button component",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/buttons/ripple-button/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { type HTMLMotionProps, motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ninterface Ripple {\n  id: number;\n  x: number;\n  y: number;\n}\n\ninterface RippleButtonProps extends HTMLMotionProps<'button'> {\n  children: React.ReactNode;\n  rippleClassName?: string;\n  scale?: number;\n  transition?: Transition;\n}\n\nconst RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(\n  (\n    {\n      children,\n      onClick,\n      className,\n      rippleClassName,\n      scale = 10,\n      transition = { duration: 0.6, ease: 'easeOut' },\n      ...props\n    },\n    ref,\n  ) => {\n    const [ripples, setRipples] = React.useState<Ripple[]>([]);\n    const buttonRef = React.useRef<HTMLButtonElement>(null);\n    React.useImperativeHandle(\n      ref,\n      () => buttonRef.current as HTMLButtonElement,\n    );\n\n    const createRipple = React.useCallback(\n      (event: React.MouseEvent<HTMLButtonElement>) => {\n        const button = buttonRef.current;\n        if (!button) return;\n\n        const rect = button.getBoundingClientRect();\n        const x = event.clientX - rect.left;\n        const y = event.clientY - rect.top;\n\n        const newRipple: Ripple = {\n          id: Date.now(),\n          x,\n          y,\n        };\n\n        setRipples((prev) => [...prev, newRipple]);\n\n        setTimeout(() => {\n          setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));\n        }, 600);\n      },\n      [],\n    );\n\n    const handleClick = React.useCallback(\n      (event: React.MouseEvent<HTMLButtonElement>) => {\n        createRipple(event);\n        if (onClick) {\n          onClick(event);\n        }\n      },\n      [createRipple, onClick],\n    );\n\n    return (\n      <motion.button\n        ref={buttonRef}\n        onClick={handleClick}\n        whileTap={{ scale: 0.95 }}\n        whileHover={{ scale: 1.05 }}\n        className={cn(\n          'relative h-10 px-4 py-2 text-sm font-medium text-primary-foreground overflow-hidden bg-primary cursor-pointer rounded-lg focus:outline-none',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n        {ripples.map((ripple) => (\n          <motion.span\n            key={ripple.id}\n            initial={{ scale: 0, opacity: 0.5 }}\n            animate={{ scale, opacity: 0 }}\n            transition={transition}\n            className={cn(\n              'absolute bg-primary-foreground rounded-full size-5 pointer-events-none',\n              rippleClassName,\n            )}\n            style={{\n              top: ripple.y - 10,\n              left: ripple.x - 10,\n            }}\n          />\n        ))}\n      </motion.button>\n    );\n  },\n);\n\nRippleButton.displayName = 'RippleButton';\n\nexport { RippleButton, type RippleButtonProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/ripple-button.tsx"
+    }
+  ]
+}

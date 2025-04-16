@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-checkbox-demo",
+  "type": "registry:ui",
+  "title": "Headless Checkbox Demo",
+  "description": "Demo showing an animated headless checkbox.",
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["https://animate-ui.com/r/headless-checkbox"],
+  "files": [
+    {
+      "path": "registry/demo/headless/headless-checkbox-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-checkbox-demo.tsx"
+    }
+  ]
+}

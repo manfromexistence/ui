@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rolling-text",
+  "type": "registry:ui",
+  "title": "Rolling Text",
+  "description": "Rolling text component",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/text/rolling-text/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport {\n  motion,\n  useInView,\n  type UseInViewOptions,\n  type Transition,\n} from 'motion/react';\n\nconst ENTRY_ANIMATION = {\n  initial: { rotateX: 0 },\n  animate: { rotateX: 90 },\n};\n\nconst EXIT_ANIMATION = {\n  initial: { rotateX: 90 },\n  animate: { rotateX: 0 },\n};\n\nconst formatCharacter = (char: string): string => {\n  return char === ' ' ? '\\u00A0' : char;\n};\n\ninterface RollingTextProps\n  extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {\n  transition?: Transition;\n  inView?: boolean;\n  inViewMargin?: UseInViewOptions['margin'];\n  inViewOnce?: boolean;\n  text: string;\n}\n\nconst RollingText = React.forwardRef<HTMLSpanElement, RollingTextProps>(\n  (\n    {\n      transition = { duration: 0.5, delay: 0.1, ease: 'easeOut' },\n      inView = false,\n      inViewMargin = '0px',\n      inViewOnce = true,\n      text,\n      ...props\n    },\n    ref,\n  ) => {\n    const localRef = React.useRef<HTMLSpanElement>(null);\n    React.useImperativeHandle(ref, () => localRef.current!);\n\n    const inViewResult = useInView(localRef, {\n      once: inViewOnce,\n      margin: inViewMargin,\n    });\n    const isInView = !inView || inViewResult;\n\n    const characters = React.useMemo(() => text.split(''), [text]);\n\n    return (\n      <span {...props} ref={ref}>\n        {characters.map((char, idx) => (\n          <span\n            key={idx}\n            className=\"relative inline-block perspective-[9999999px] transform-3d w-auto\"\n            aria-hidden=\"true\"\n          >\n            <motion.span\n              className=\"absolute inline-block backface-hidden origin-[50%_25%]\"\n              initial={ENTRY_ANIMATION.initial}\n              animate={isInView ? ENTRY_ANIMATION.animate : undefined}\n              transition={{\n                ...transition,\n                delay: idx * (transition?.delay ?? 0),\n              }}\n            >\n              {formatCharacter(char)}\n            </motion.span>\n            <motion.span\n              className=\"absolute inline-block backface-hidden origin-[50%_100%]\"\n              initial={EXIT_ANIMATION.initial}\n              animate={isInView ? EXIT_ANIMATION.animate : undefined}\n              transition={{\n                ...transition,\n                delay: idx * (transition?.delay ?? 0) + 0.3,\n              }}\n            >\n              {formatCharacter(char)}\n            </motion.span>\n            <span className=\"invisible\">{formatCharacter(char)}</span>\n          </span>\n        ))}\n\n        <span className=\"sr-only\">{text}</span>\n      </span>\n    );\n  },\n);\nRollingText.displayName = 'RollingText';\n\nexport { RollingText, type RollingTextProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/rolling-text.tsx"
+    }
+  ]
+}

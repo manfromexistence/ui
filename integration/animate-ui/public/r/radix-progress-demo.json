@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-progress-demo",
+  "type": "registry:ui",
+  "title": "Radix Progress Demo",
+  "description": "Demo showing an animated radix progress.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-progress"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-progress-demo/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Progress } from '@/components/animate-ui/radix-progress';\n\nexport const RadixProgressDemo = () => {\n  const [progress, setProgress] = React.useState(0);\n\n  React.useEffect(() => {\n    const timer = setInterval(() => {\n      setProgress((prev) => {\n        if (prev >= 100) return 100;\n        return prev + 25;\n      });\n    }, 2000);\n    return () => clearInterval(timer);\n  }, []);\n\n  React.useEffect(() => {\n    if (progress >= 100) setTimeout(() => setProgress(0), 4000);\n  }, [progress]);\n\n  return <Progress value={progress} className=\"w-[300px]\" />;\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-progress-demo.tsx"
+    }
+  ]
+}

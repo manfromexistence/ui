@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-toggle-group-multiple-demo",
+  "type": "registry:ui",
+  "title": "Radix Toggle Group Multiple Demo",
+  "description": "Demo showing an animated Radix UI toggle group with multiple values.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-toggle-group"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-toggle-group-multiple-demo/index.tsx",
+      "content": "import {\n  ToggleGroup,\n  ToggleGroupItem,\n} from '@/components/animate-ui/radix-toggle-group';\nimport { Bold, Italic, Underline } from 'lucide-react';\n\nexport const RadixToggleGroupMultipleDemo = () => {\n  return (\n    <ToggleGroup type=\"multiple\" defaultValue={['bold']}>\n      <ToggleGroupItem value=\"bold\" aria-label=\"Toggle bold\">\n        <Bold className=\"h-4 w-4\" />\n      </ToggleGroupItem>\n      <ToggleGroupItem value=\"italic\" aria-label=\"Toggle italic\">\n        <Italic className=\"h-4 w-4\" />\n      </ToggleGroupItem>\n      <ToggleGroupItem value=\"underline\" aria-label=\"Toggle underline\">\n        <Underline className=\"h-4 w-4\" />\n      </ToggleGroupItem>\n    </ToggleGroup>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-toggle-group-multiple-demo.tsx"
+    }
+  ]
+}

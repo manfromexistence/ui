@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-progress-demo",
+  "type": "registry:ui",
+  "title": "Radix Progress Demo",
+  "description": "Demo showing an animated radix progress.",
+  "registryDependencies": ["https://animate-ui.com/r/radix-progress"],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-progress-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-progress-demo.tsx"
+    }
+  ]
+}

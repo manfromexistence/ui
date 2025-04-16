@@ -1,0 +1,109 @@
+@import 'tailwindcss' source(none);
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+@import 'fumadocs-twoslash/twoslash.css';
+
+@source ".";
+@source "../components";
+@source "../content";
+@source '../node_modules/fumadocs-ui/dist/**/*.js';
+@source '../node_modules/fumadocs-openapi/dist/**/*.js';
+@plugin 'tailwindcss-animate';
+
+@theme {
+  @keyframes stroke {
+    from {
+      stroke-dasharray: 1000;
+    }
+    to {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 2000;
+    }
+  }
+
+  --animate-stroke: stroke 5s linear infinite;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-gradient-radial: radial-gradient(circle, var(--tw-gradient-stops));
+  --color-repeat-gradient-to-r: repeating-linear-gradient(
+    to right,
+    var(--tw-gradient-stops)
+  );
+  --color-repeat-gradient-to-br: repeating-linear-gradient(
+    to bottom right,
+    var(--tw-gradient-stops)
+  );
+}
+
+.ui {
+  --color-fd-primary: var(--ui-color);
+}
+
+.headless {
+  --color-fd-primary: var(--headless-color);
+}
+
+:root {
+  --headless-color: hsl(250, 80%, 54%);
+  --ui-color: hsl(220, 91%, 54%);
+}
+
+body {
+  overscroll-behavior-y: none;
+  background-color: var(--color-fd-background);
+}
+
+.dark {
+  --headless-color: hsl(250 100% 80%);
+  --ui-color: hsl(217 92% 76%);
+}
+
+.uwu {
+  --color-fd-background: hsl(240 80% 94%) !important;
+  --color-fd-popover: hsl(240 80% 94%) !important;
+  --color-fd-primary: hsl(230 90% 72%) !important;
+  --color-fd-border: hsl(230 30% 87%) !important;
+  --color-fd-accent: hsl(250 80% 90%) !important;
+  --color-fd-secondary: hsl(230 40% 94%) !important;
+  --color-fd-muted: hsl(230 80% 92%) !important;
+  --color-fd-card: hsl(230 90% 94%) !important;
+}
+
+.uwu.dark {
+  --color-fd-background: hsl(240 40% 20%) !important;
+  --color-fd-primary: hsl(250 70% 94%) !important;
+  --color-fd-popover: hsl(240 20% 20%) !important;
+  --color-fd-border: hsl(230 30% 30%) !important;
+  --color-fd-muted: hsl(230 30% 36.3%) !important;
+  --color-fd-secondary: hsl(250 30% 36.3%) !important;
+  --color-fd-accent: hsl(250 20% 38.3%) !important;
+  --color-fd-muted-foreground: hsl(230 80% 84%) !important;
+  --color-fd-card: hsl(230 40% 26.3%) !important;
+}
+
+@keyframes circuit_1 {
+  0% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(100px);
+  }
+}
+
+@keyframes circuit_1_x_energy {
+  0%,
+  46% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  47%,
+  70% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(212px);
+  }
+}

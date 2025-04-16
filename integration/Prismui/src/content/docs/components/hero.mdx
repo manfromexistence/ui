@@ -1,0 +1,165 @@
+---
+title: Hero
+publishedAt: 2025-01-02
+summary: A modern, animated hero section component with support for pills, content, and preview sections.
+author: codehagen
+slug: components/hero
+related: ["introduction"]
+---
+
+<ComponentPreview name="hero-basic" />
+
+<Note variant="info">
+  The Hero component provides a flexible and animated way to create hero sections with support for pills, content, and preview sections. Perfect for landing pages, marketing sites, and product showcases.
+</Note>
+
+
+## Examples
+
+<ComponentPreview name="hero-demo" />
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import { Hero } from "@/components/prismui/hero"
+
+export default function Example() {
+  return (
+    <Hero
+      content={{
+        title: "Welcome to",
+        titleHighlight: "my website",
+        description: "A beautiful landing page built with PrismUI.",
+        primaryAction: {
+          href: "/get-started",
+          text: "Get Started",
+        },
+      }}
+    />
+  );
+}
+```
+
+### With Pill and Preview
+
+```tsx
+<Hero
+  pill={{
+    text: "New Feature!",
+    href: "/features",
+  }}
+  content={{
+    title: "Introducing",
+    titleHighlight: "new features",
+    description: "Check out our latest updates and improvements.",
+    primaryAction: {
+      href: "/features",
+      text: "Learn More",
+      icon: <Icons.book className="h-4 w-4" />,
+    },
+    secondaryAction: {
+      href: "/docs",
+      text: "Documentation",
+      icon: <Icons.component className="h-4 w-4" />,
+    },
+  }}
+  preview={<YourPreviewComponent />}
+/>
+```
+
+## Customization
+
+<Steps>
+  <Step>Custom Animations</Step>
+  ```tsx
+  // Adjust the ease constant in the component
+  const ease = [0.16, 1, 0.3, 1];
+  ```
+
+  <Step>Custom Styling</Step>
+  ```tsx
+  <Hero
+    content={{
+      title: "Custom Styled",
+      titleHighlight: "hero section",
+      description: "With custom styling.",
+    }}
+    className="bg-gradient-to-r from-blue-500 to-purple-500"
+  />
+  ```
+
+  <Step>Custom Preview Content</Step>
+  ```tsx
+  <Hero
+    content={{
+      // ... content props
+    }}
+    preview={
+      <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+        {/* Your custom preview content */}
+      </div>
+    }
+  />
+  ```
+</Steps>
+
+## Notes
+
+- Built with Framer Motion for smooth animations
+- Responsive design with mobile-first approach
+- Customizable content and styling
+- TypeScript support with proper types
+- SSR compatible with "use client" directive
+- Optimized performance with proper memoization
+- Supports reduced motion preferences
+- ARIA attributes for accessibility
+
+## Features
+
+- Smooth animations with spring physics
+- Responsive layout
+- Customizable pill component
+- Flexible content structure
+- Optional preview section
+- TypeScript support
+- SSR compatibility
+- Accessibility features
+
+## Props
+
+### Hero Props
+
+| Prop | Type | Description | Default |
+| --- | --- | --- | --- |
+| pill | `HeroPillProps` | Configuration for the pill component | - |
+| content | `HeroContentProps` | Main content configuration | Required |
+| preview | `React.ReactNode` | Optional preview content | - |
+
+### HeroPillProps
+
+| Prop | Type | Description | Default |
+| --- | --- | --- | --- |
+| href | string | Link destination | "/docs" |
+| text | string | Pill text content | Required |
+| icon | React.ReactNode | Custom icon | `<Icons.logo />` |
+| endIcon | React.ReactNode | Custom end icon | `<Icons.chevronRight />` |
+
+### HeroContentProps
+
+| Prop | Type | Description | Default |
+| --- | --- | --- | --- |
+| title | string | Main title text | Required |
+| titleHighlight | string | Highlighted portion of title | - |
+| description | string | Description text | Required |
+| primaryAction | ActionProps | Primary button configuration | - |
+| secondaryAction | ActionProps | Secondary button configuration | - |
+
+### ActionProps
+
+| Prop | Type | Description | Default |
+| --- | --- | --- | --- |
+| href | string | Button link destination | Required |
+| text | string | Button text | Required |
+| icon | React.ReactNode | Button icon | - |

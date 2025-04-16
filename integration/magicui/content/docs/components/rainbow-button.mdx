@@ -1,0 +1,91 @@
+---
+title: Rainbow Button
+date: 2024-09-19
+description: An animated button with a rainbow effect.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="rainbow-button-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/rainbow-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="rainbow-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Update `globals.css`</Step>
+
+Add the following to your `globals.css` file:
+
+```css title="app/globals.css" {2-6}
+:root {
+  --color-1: 0 100% 63%;
+  --color-2: 270 100% 63%;
+  --color-3: 210 100% 63%;
+  --color-4: 195 100% 63%;
+  --color-5: 90 100% 63%;
+}
+```
+
+<Step>Add the required CSS animations</Step>
+
+Add the following animations to your global CSS file.
+
+```css title="app/globals.css" {2, 4-11}
+@theme inline {
+  --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
+
+  @keyframes rainbow {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { RainbowButton } from "@/components/magicui/rainbow-button";
+```
+
+```tsx
+<RainbowButton>Rainbow Button</RainbowButton>
+```
+
+## Props
+
+| Prop        | Type              | Default | Description                                         |
+| ----------- | ----------------- | ------- | --------------------------------------------------- |
+| `children`  | `React.ReactNode` | `-`     | The content to be displayed inside the button.      |
+| `className` | `string`          | `-`     | Additional CSS classes to be applied to the button. |

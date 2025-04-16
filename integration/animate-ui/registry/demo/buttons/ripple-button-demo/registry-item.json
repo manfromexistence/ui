@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ripple-button-demo",
+  "type": "registry:ui",
+  "title": "Ripple Button Demo",
+  "description": "Demo showing an animated button with ripple effect.",
+  "registryDependencies": ["https://animate-ui.com/r/ripple-button"],
+  "files": [
+    {
+      "path": "registry/demo/buttons/ripple-button-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/ripple-button-demo.tsx"
+    }
+  ]
+}

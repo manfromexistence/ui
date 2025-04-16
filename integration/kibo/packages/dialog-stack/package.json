@@ -1,0 +1,19 @@
+{
+  "name": "@repo/dialog-stack",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@radix-ui/react-portal": "^1.1.5",
+    "@radix-ui/react-use-controllable-state": "^1.1.1",
+    "@repo/shadcn-ui": "workspace:*",
+    "lucide-react": "^0.488.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}

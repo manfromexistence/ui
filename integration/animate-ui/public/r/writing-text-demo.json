@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "writing-text-demo",
+  "type": "registry:ui",
+  "title": "Writing Text Demo",
+  "description": "Demo showing an animated writing text.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/writing-text"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/text/writing-text-demo/index.tsx",
+      "content": "import { WritingText } from '@/components/animate-ui/writing-text';\n\nexport const WritingTextDemo = () => {\n  return (\n    <WritingText\n      className=\"text-4xl\"\n      text=\"Writing Text With Effect\"\n      spacing={9}\n    />\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/writing-text-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion-highlight-cards-hover-demo",
+  "type": "registry:ui",
+  "title": "Motion Highlight Cards Hover Demo",
+  "description": "Demo showing the motion highlight cards hover effect.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/motion-highlight"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/effects/motion-highlight-cards-hover-demo/index.tsx",
+      "content": "import { Blocks, BringToFront, GitPullRequest } from 'lucide-react';\n\nimport ShadcnIcon from '@/components/icons/shadcn-icon';\nimport { MotionHighlight } from '@/components/animate-ui/motion-highlight';\n\nconst CARDS = [\n  {\n    value: '1',\n    icon: BringToFront,\n    title: 'Animated Components',\n    description: 'Beautiful Motion-animated components for dynamic websites.',\n  },\n  {\n    value: '2',\n    icon: GitPullRequest,\n    title: 'Open Source',\n    description:\n      'A project built for the dev community with the dev community.',\n  },\n  {\n    value: '3',\n    icon: ShadcnIcon,\n    title: 'Complementary to Shadcn UI',\n    description:\n      'The components are designed to be used with Shadcn UI components.',\n  },\n  {\n    value: '4',\n    icon: Blocks,\n    title: 'Component Distribution',\n    description:\n      'Install the components in your project and modify them as you wish.',\n  },\n];\n\nexport const MotionHighlightCardsHoverDemo = () => {\n  return (\n    <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4\">\n      <MotionHighlight hover className=\"rounded-xl\">\n        {CARDS.map((card) => (\n          <div key={card.value} data-value={card.value}>\n            <div className=\"p-4 flex flex-col border rounded-xl\">\n              <div className=\"flex items-center justify-around size-10 rounded-lg bg-blue-500/10 mb-2\">\n                <card.icon className=\"size-5 text-blue-500\" />\n              </div>\n              <p className=\"text-base font-medium mb-1\">{card.title}</p>\n              <p className=\"text-sm text-muted-foreground\">\n                {card.description}\n              </p>\n            </div>\n          </div>\n        ))}\n      </MotionHighlight>\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/motion-highlight-cards-hover-demo.tsx"
+    }
+  ]
+}

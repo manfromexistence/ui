@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "files-demo",
+  "type": "registry:ui",
+  "title": "Files Demo",
+  "description": "Demo showing an files.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/files"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/files-demo/index.tsx",
+      "content": "'use client';\n\nimport React from 'react';\nimport { File, Folder, Files } from '@/components/animate-ui/files';\n\nexport const FilesDemo = () => {\n  return (\n    <Files className=\"max-w-[500px] w-full\" defaultOpen={['app']}>\n      <Folder name=\"app\" defaultOpen={['(home)']}>\n        <Folder name=\"(home)\">\n          <File name=\"page.tsx\" />\n          <File name=\"layout.tsx\" />\n        </Folder>\n        <File name=\"layout.tsx\" />\n        <File name=\"page.tsx\" />\n        <File name=\"global.css\" />\n      </Folder>\n      <Folder name=\"components\">\n        <File name=\"button.tsx\" />\n        <File name=\"tabs.tsx\" />\n        <File name=\"dialog.tsx\" />\n        <Folder name=\"empty\" />\n      </Folder>\n      <File name=\"package.json\" />\n    </Files>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/files-demo.tsx"
+    }
+  ]
+}

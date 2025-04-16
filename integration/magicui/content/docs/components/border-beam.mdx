@@ -1,0 +1,83 @@
+---
+title: Border Beam
+date: 2024-02-06
+description: An animated beam of light which travels along the border of its container.
+author: dillionverma
+published: true
+video: https://cdn.magicui.design/border-beam.mp4
+---
+
+<ComponentPreview name="border-beam-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/border-beam"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="border-beam" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Examples
+
+### 2 Border Beams
+
+<ComponentPreview name="border-beam-demo-2" />
+
+### Reverse
+
+<ComponentPreview name="border-beam-demo-3" />
+
+### Spring Animation
+
+<ComponentPreview name="border-beam-demo-4" />
+
+## Usage
+
+```tsx
+import { BorderBeam } from "@/components/magicui/border-beam.tsx";
+```
+
+```tsx
+<div className="relative h-[500px] w-full overflow-hidden">
+  <BorderBeam />
+</div>
+```
+
+## Props
+
+### Border Beam
+
+| Prop            | Type                  | Default   | Description                            |
+| --------------- | --------------------- | --------- | -------------------------------------- |
+| `className`     | `string`              | `-`       | Custom class to apply to the component |
+| `size`          | `number`              | `50`      | Size of the beam                       |
+| `duration`      | `number`              | `6`       | Duration of the animation in seconds   |
+| `delay`         | `number`              | `0`       | Delay before the animation starts      |
+| `colorFrom`     | `string`              | `#ffaa40` | Start color of the beam gradient       |
+| `colorTo`       | `string`              | `#9c40ff` | End color of the beam gradient         |
+| `transition`    | `Transition`          | `-`       | Custom motion transition configuration |
+| `style`         | `React.CSSProperties` | `-`       | Custom CSS styles to apply             |
+| `reverse`       | `boolean`             | `false`   | Whether to reverse animation direction |
+| `initialOffset` | `number`              | `0`       | Initial offset position (0-100)        |

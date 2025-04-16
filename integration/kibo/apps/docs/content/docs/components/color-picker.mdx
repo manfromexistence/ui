@@ -1,0 +1,96 @@
+---
+title: Color Picker
+description: A color picker is a UI component that allows users to select a color. It is modeled after the color picker in Figma, considered to be best in class.
+icon: Palette
+---
+
+<PoweredBy packages={[
+  { name: 'Lucide', url: 'https://lucide.dev/' },
+  { name: 'color', url: 'https://github.com/Qix-/color' },
+]} />
+
+<Preview name="color-picker" code={`'use client';
+
+import {
+  ColorPicker,
+  ColorPickerSelection,
+  ColorPickerHue,
+  ColorPickerAlpha,
+  ColorPickerOutput,
+  ColorPickerEyeDropper,
+  ColorPickerFormat,
+} from '@/components/ui/kibo-ui/color-picker';
+
+const Example = () => (
+  <div className="flex w-full h-screen items-center justify-center gap-4 bg-secondary">
+    <ColorPicker className="w-full max-w-[300px] rounded-md border bg-background p-4 shadow-sm">
+      <ColorPickerSelection />
+      <div className="flex items-center gap-4">
+        <ColorPickerEyeDropper />
+        <div className="w-full grid gap-1">
+          <ColorPickerHue />
+          <ColorPickerAlpha />
+        </div>
+      </div>
+      <div className="flex items-center gap-2">
+        <ColorPickerOutput />
+        <ColorPickerFormat />
+      </div>
+    </ColorPicker>
+  </div>
+);
+
+export default Example;`} />
+
+## Installation
+
+<Installer packageName="color-picker" />
+
+## Features
+
+- Interactive color selection with drag and drop functionality
+- Hue and alpha sliders for precise color adjustments
+- EyeDropper tool for picking colors from anywhere on screen
+- Multiple color format outputs (HEX, RGB, CSS, HSL)
+- Real-time color preview
+- Fully customizable through className and props
+
+## Props
+
+The color picker is made up of the following subcomponents:
+
+### ColorPicker
+
+The `ColorPicker` component is used to display a color picker.
+
+<AutoTypeTable path="node_modules/@repo/color-picker/index.tsx" name="ColorPickerProps" />
+
+### ColorPickerSelection
+
+The `ColorPickerSelection` component is used to display the selected color.
+
+<AutoTypeTable path="node_modules/@repo/color-picker/index.tsx" name="ColorPickerSelectionProps" />
+
+### ColorPickerHue
+
+The `ColorPickerHue` component is used to display the hue slider.
+
+<AutoTypeTable path="node_modules/@repo/color-picker/index.tsx" name="ColorPickerHueProps" />
+
+### ColorPickerAlpha
+
+The `ColorPickerAlpha` component is used to display the alpha slider.
+
+<AutoTypeTable path="node_modules/@repo/color-picker/index.tsx" name="ColorPickerAlphaProps" />
+
+### ColorPickerOutput
+
+The `ColorPickerOutput` component is used to display the output of the selected color.
+
+<AutoTypeTable path="node_modules/@repo/color-picker/index.tsx" name="ColorPickerOutputProps" />
+
+### ColorPickerFormat
+
+The `ColorPickerFormat` component is used to display the format of the selected color.
+
+<AutoTypeTable path="node_modules/@repo/color-picker/index.tsx" name="ColorPickerFormatProps" />

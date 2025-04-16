@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fireworks-background-size-speed-demo",
+  "type": "registry:ui",
+  "title": "Fireworks Background Size Speed Demo",
+  "description": "Demo showing an animated fireworks background with high size and speed.",
+  "registryDependencies": ["https://animate-ui.com/r/fireworks-background"],
+  "files": [
+    {
+      "path": "registry/demo/backgrounds/fireworks-background-size-speed-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/fireworks-background-size-speed-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-progress-demo",
+  "type": "registry:ui",
+  "title": "Scroll Progress Demo",
+  "description": "Demo showing a scroll progress.",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/scroll-progress"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/scroll-progress-demo/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { ArrowDown } from 'lucide-react';\nimport { motion } from 'motion/react';\n\nimport { ScrollProgress } from '@/components/animate-ui/scroll-progress';\n\nexport const ScrollProgressDemo = () => {\n  return (\n    <div className=\"absolute inset-0\">\n      <div className=\"relative h-full w-full overflow-hidden rounded-xl\">\n        <ScrollProgress progressProps={{ className: 'absolute' }}>\n          <div className=\"size-full flex items-center justify-center dark:bg-neutral-950 bg-white\">\n            <p className=\"flex items-center gap-2 font-medium\">\n              Scroll down to see the progress bar{' '}\n              <motion.span\n                animate={{ y: [3, -3, 3] }}\n                transition={{\n                  duration: 1.25,\n                  repeat: Infinity,\n                  ease: 'easeInOut',\n                  type: 'keyframes',\n                }}\n              >\n                <ArrowDown className=\"size-5\" />\n              </motion.span>\n            </p>\n          </div>\n          <div className=\"size-full dark:bg-neutral-900 bg-neutral-100\" />\n          <div className=\"size-full dark:bg-neutral-950 bg-white\" />\n          <div className=\"size-full dark:bg-neutral-900 bg-neutral-100\" />\n          <div className=\"size-full dark:bg-neutral-950 bg-white\" />\n        </ScrollProgress>\n      </div>\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/scroll-progress-demo.tsx"
+    }
+  ]
+}

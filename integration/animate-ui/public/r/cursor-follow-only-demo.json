@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cursor-follow-only-demo",
+  "type": "registry:ui",
+  "title": "Cursor Follow Only Demo",
+  "description": "Demo showing a cursor follow component.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/cursor"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/cursor-follow-only-demo/index.tsx",
+      "content": "import { CursorFollow, CursorProvider } from '@/components/animate-ui/cursor';\n\nexport const CursorFollowOnlyDemo = () => {\n  return (\n    <div className=\"size-[400px] rounded-xl bg-muted flex items-center justify-center\">\n      <p className=\"font-medium\">Move your mouse over the div</p>\n      <CursorProvider>\n        <CursorFollow>\n          <div className=\"bg-blue-500 text-white px-2 py-1 rounded-lg text-sm shadow-lg\">\n            Designer\n          </div>\n        </CursorFollow>\n      </CursorProvider>\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/cursor-follow-only-demo.tsx"
+    }
+  ]
+}

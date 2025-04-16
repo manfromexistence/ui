@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-button-demo",
+  "type": "registry:ui",
+  "title": "Input Button Demo",
+  "description": "Demo showing an animated button with input effect.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/input-button"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/buttons/input-button-demo/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport {\n  Button,\n  Buttons,\n  Input,\n  InputButton,\n  SubmitButton,\n} from '@/components/animate-ui/input-button';\n\nexport const InputButtonDemo = () => {\n  return (\n    <InputButton>\n      <Buttons>\n        <Button>Join the newsletter</Button>\n        <SubmitButton>Subscribe</SubmitButton>\n      </Buttons>\n      <Input type=\"email\" placeholder=\"your-email@example.com\" />\n    </InputButton>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/input-button-demo.tsx"
+    }
+  ]
+}

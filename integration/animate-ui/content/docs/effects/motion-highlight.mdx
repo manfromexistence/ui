@@ -1,0 +1,337 @@
+---
+title: Motion Highlight
+description: Motion highlight component that displays the motion highlight effect.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+new: true
+---
+
+<ComponentPreview name="motion-highlight-cards-hover-demo" />
+
+## Installation
+
+<ComponentInstallation name="motion-highlight" />
+
+## Examples
+
+### Tabs
+
+<ComponentPreview name="motion-highlight-tabs-demo" />
+
+### Tabs Hover
+
+<ComponentPreview name="motion-highlight-tabs-hover-demo" />
+
+### Tabs Hover with Parent Mode
+
+<ComponentPreview name="motion-highlight-tabs-hover-parent-demo" />
+
+## Usage
+
+### Uncontrolled Items
+
+By default, child items will have the highlight effect. This will map the children elements and surround them with the `MotionHighlightItem` element.
+
+```tsx
+<MotionHighlight>
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</MotionHighlight>
+```
+
+### Controlled Items
+
+Using the `controlledItems` props, you place your `MotionHighlightItem` wherever you like in the `MotionHighlight` component.
+
+```tsx
+<MotionHighlight controlledItems>
+  <MotionHighlightItem>Item 1</MotionHighlightItem>
+  <div>
+    <MotionHighlightItem>Item 2</MotionHighlightItem>
+  </div>
+  <MotionHighlightItem>Item 3</MotionHighlightItem>
+</MotionHighlight>
+```
+
+### Children Mode
+
+By default, in `mode` with the value `children` the highlight is placed in the `MotionHighlightItem` component using Motion's `layoutId` technique. This technique should be preferred in most cases. However, in some cases, you may run into z-index problems, so it's best to use the `parent` mode to avoid visual bugs.
+
+```tsx
+<MotionHighlight>
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</MotionHighlight>
+```
+
+### Parent Mode
+
+By using the `mode` property with the value `parent`, the `MotionHighlight` component will set the highlight to absolute in `MotionHighlight`. This may be useful in some cases to avoid the visual z-index bugs you can get with `mode` `children`.
+
+```tsx
+<MotionHighlight mode="parent">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</MotionHighlight>
+```
+
+### MotionHighlightItem asChild
+
+#### Children Mode
+
+```tsx
+// With asChild
+<MotionHighlight>
+  <MotionHighlightItem asChild>
+    <div id="item-1">Item 1</div>
+  </MotionHighlightItem>
+  <MotionHighlightItem asChild>
+    <div id="item-2">Item 2</div>
+  </MotionHighlightItem>
+</MotionHighlight>
+// Result
+<div className="relative" id="item-1">
+  <div /> {/* Highlight */}
+  <div className="relative z-[1]">Item 1</div>
+</div>
+<div className="relative" id="item-2">
+  <div /> {/* Highlight */}
+  <div className="relative z-[1]">Item 2</div>
+</div>
+
+// Without asChild
+<MotionHighlight>
+  <MotionHighlightItem>
+    <div id="item-1">Item 1</div>
+  </MotionHighlightItem>
+  <MotionHighlightItem>
+    <div id="item-2">Item 2</div>
+  </MotionHighlightItem>
+</MotionHighlight>
+// Result
+<div className="relative" >
+  <div /> {/* Highlight */}
+  <div className="relative z-[1]" id="item-1">Item 1</div>
+</div>
+<div className="relative" >
+  <div /> {/* Highlight */}
+  <div className="relative z-[1]" id="item-2">Item 2</div>
+</div>
+```
+
+#### Parent Mode
+
+```tsx
+// With asChild
+<MotionHighlight mode="parent">
+  <MotionHighlightItem asChild>
+    <div id="item-1">Item 1</div>
+  </MotionHighlightItem>
+  <MotionHighlightItem asChild>
+    <div id="item-2">Item 2</div>
+  </MotionHighlightItem>
+</MotionHighlight>
+// Result
+<div className="relative">
+  <div /> {/* Highlight */}
+  <div id="item-1">Item 1</div>
+  <div id="item-2">Item 2</div>
+</div>
+
+// Without asChild
+<MotionHighlight mode="parent">
+  <MotionHighlightItem>
+    <div id="item-1">Item 1</div>
+  </MotionHighlightItem>
+  <MotionHighlightItem>
+    <div id="item-2">Item 2</div>
+  </MotionHighlightItem>
+</MotionHighlight>
+// Result
+<div className="relative">
+  <div /> {/* Highlight */}
+  <div>
+    <div id="item-1">Item 1</div>
+  </div>
+  <div>
+    <div id="item-2">Item 2</div>
+  </div>
+</div>
+```
+
+## Props
+
+### MotionHighlight
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the motion highlight',
+      type: 'React.ReactElement | React.ReactElement[]',
+      required: true,
+    },
+    children: {
+      description: 'The children of the motion highlight',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    className: {
+      description: 'The className of the motion highlight',
+      type: 'string',
+      required: false,
+    },
+    containerClassName: {
+      description:
+        'The className of the container of the motion highlight (only used when mode is "parent")',
+      type: 'string',
+      required: false,
+    },
+    itemsClassName: {
+      description:
+        'The className of the items of the motion highlight (only used when controlledItems is true)',
+      type: 'string',
+      required: false,
+    },
+    controlledItems: {
+      description: 'Whether the motion highlight is controlled',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    value: {
+      description: 'The value of the motion highlight',
+      type: 'string | null',
+      required: false,
+    },
+    defaultValue: {
+      description: 'The default value of the motion highlight',
+      type: 'string | null',
+      required: false,
+    },
+    onValueChange: {
+      description: 'The function to call when the value changes',
+      type: '(value: string | null) => void',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the motion highlight',
+      type: 'Transition',
+      required: false,
+      default: '{ type: "spring", stiffness: 200, damping: 25 }',
+    },
+    hover: {
+      description: 'Whether the motion highlight is on hover',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    disabled: {
+      description: 'Whether the motion highlight items is disabled',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    exitDelay: {
+      description: 'The delay of the exit of the motion highlight items',
+      type: 'number',
+      required: false,
+      default: '0.2',
+    },
+    mode: {
+      description: 'The mode of the motion highlight',
+      type: "'children' | 'parent'",
+      required: false,
+      default: 'children',
+    },
+    boundsOffset: {
+      description:
+        'The offset of the bounds of the motion highlight (only used when mode is "parent"). For example, you need to add an offset of the same size as the border when setting a border in containerClassName.',
+      type: 'Partial<Bounds>',
+      required: false,
+      default: 'undefined',
+    },
+    forceUpdateBounds: {
+      description:
+        'Whether to force update the bounds of the motion highlight items (only used when mode is "parent")',
+      type: 'boolean',
+      required: false,
+      default: 'undefined',
+    },
+  }}
+/>
+
+### MotionHighlightItem
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the motion highlight item',
+      type: 'React.ReactElement',
+      required: true,
+    },
+    className: {
+      description: 'The className of the motion highlight item',
+      type: 'string',
+      required: false,
+    },
+    activeClassName: {
+      description: 'The className of the active motion highlight item',
+      type: 'string',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the motion highlight item',
+      type: 'Transition',
+      required: false,
+    },
+    id: {
+      description: 'The id of the motion highlight item',
+      type: 'string',
+      required: false,
+    },
+    value: {
+      description: 'The value of the motion highlight item',
+      type: 'string',
+      required: false,
+    },
+    disabled: {
+      description: 'Whether the motion highlight item is disabled',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    exitDelay: {
+      description: 'The delay of the exit of the motion highlight item',
+      type: 'number',
+      required: false,
+    },
+    withoutDataAttributes: {
+      description:
+        'Whether to not add data attributes to the component wrapped with the MotionHighlightItem',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    asChild: {
+      description: 'Whether to use the child component as the component',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    forceUpdateBounds: {
+      description:
+        'Whether to force update the bounds of the motion highlight item (only used when mode is "parent")',
+      type: 'boolean',
+      required: false,
+      default: 'undefined',
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [motion-primitives](https://motion-primitives.com/docs/animated-background) for the inspiration

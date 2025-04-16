@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion-effect-slide-demo",
+  "type": "registry:ui",
+  "title": "Motion Effect Slide Demo",
+  "description": "Demo showing the motion effect slide.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/motion-effect"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/effects/motion-effect-slide-demo/index.tsx",
+      "content": "import { MotionEffect } from '@/components/animate-ui/motion-effect';\n\nexport const MotionEffectSlideDemo = () => {\n  return (\n    <MotionEffect slide inView>\n      <p className=\"text-4xl font-bold\">Motion Effect Slide</p>\n    </MotionEffect>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/motion-effect-slide-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-background-demo",
+  "type": "registry:ui",
+  "title": "Gradient Background Demo",
+  "description": "Demo showing an animated gradient background.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/gradient-background"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/backgrounds/gradient-background-demo/index.tsx",
+      "content": "import { GradientBackground } from '../../../backgrounds/gradient-background';\n\nexport const GradientBackgroundDemo = () => {\n  return (\n    <GradientBackground className=\"absolute inset-0 flex items-center justify-center rounded-xl\" />\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/gradient-background-demo.tsx"
+    }
+  ]
+}

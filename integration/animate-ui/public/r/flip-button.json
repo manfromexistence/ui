@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flip-button",
+  "type": "registry:ui",
+  "title": "Flip Button",
+  "description": "A flip button component",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/buttons/flip-button/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport {\n  type HTMLMotionProps,\n  type Transition,\n  type Variant,\n  motion,\n} from 'motion/react';\n\nimport { cn } from '@/lib/utils';\n\ntype FlipDirection = 'top' | 'bottom' | 'left' | 'right';\n\ninterface FlipButtonProps extends HTMLMotionProps<'button'> {\n  frontText: string;\n  backText: string;\n  transition?: Transition;\n  frontClassName?: string;\n  backClassName?: string;\n  from?: FlipDirection;\n}\n\nconst defaultSpanClassName =\n  'absolute inset-0 flex items-center justify-center rounded-lg';\n\nconst FlipButton = React.forwardRef<HTMLButtonElement, FlipButtonProps>(\n  (\n    {\n      frontText,\n      backText,\n      transition = { type: 'spring', stiffness: 280, damping: 20 },\n      className,\n      frontClassName,\n      backClassName,\n      from = 'top',\n      ...props\n    },\n    ref,\n  ) => {\n    const isVertical = from === 'top' || from === 'bottom';\n    const rotateAxis = isVertical ? 'rotateX' : 'rotateY';\n\n    const frontOffset = from === 'top' || from === 'left' ? '50%' : '-50%';\n    const backOffset = from === 'top' || from === 'left' ? '-50%' : '50%';\n\n    const buildVariant = (\n      opacity: number,\n      rotation: number,\n      offset: string | null = null,\n    ): Variant => ({\n      opacity,\n      [rotateAxis]: rotation,\n      ...(isVertical && offset !== null ? { y: offset } : {}),\n      ...(!isVertical && offset !== null ? { x: offset } : {}),\n    });\n\n    const frontVariants = {\n      initial: buildVariant(1, 0, '0%'),\n      hover: buildVariant(0, 90, frontOffset),\n    };\n\n    const backVariants = {\n      initial: buildVariant(0, 90, backOffset),\n      hover: buildVariant(1, 0, '0%'),\n    };\n\n    return (\n      <motion.button\n        ref={ref}\n        initial=\"initial\"\n        whileHover=\"hover\"\n        whileTap={{ scale: 0.95 }}\n        className={cn(\n          'relative inline-block h-10 px-4 py-2 text-sm font-medium cursor-pointer perspective-[1000px] focus:outline-none',\n          className,\n        )}\n        {...props}\n      >\n        <motion.span\n          variants={frontVariants}\n          transition={transition}\n          className={cn(\n            defaultSpanClassName,\n            'bg-muted text-black dark:text-white',\n            frontClassName,\n          )}\n        >\n          {frontText}\n        </motion.span>\n        <motion.span\n          variants={backVariants}\n          transition={transition}\n          className={cn(\n            defaultSpanClassName,\n            'bg-primary text-primary-foreground',\n            backClassName,\n          )}\n        >\n          {backText}\n        </motion.span>\n        <span className=\"invisible\">{frontText}</span>\n      </motion.button>\n    );\n  },\n);\n\nFlipButton.displayName = 'FlipButton';\n\nexport { FlipButton, type FlipButtonProps, type FlipDirection };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/flip-button.tsx"
+    }
+  ]
+}

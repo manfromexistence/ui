@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-button-loading-demo",
+  "type": "registry:ui",
+  "title": "Input Button Loading Demo",
+  "description": "Demo showing an animated button with input effect.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/input-button"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/buttons/input-button-loading-demo/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport {\n  Button,\n  Buttons,\n  Input,\n  InputButton,\n  SubmitButton,\n} from '@/components/animate-ui/input-button';\nimport { Check, Loader2 } from 'lucide-react';\nimport { motion } from 'motion/react';\n\nconst sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));\n\nexport const InputButtonLoadingDemo = () => {\n  const [showInput, setShowInput] = React.useState(false);\n  const [pending, startTransition] = React.useTransition();\n  const [success, setSuccess] = React.useState(false);\n  const [value, setValue] = React.useState('');\n\n  const handleSubmit = React.useCallback(\n    (e: React.FormEvent<HTMLFormElement>) => {\n      e.preventDefault();\n\n      if (!showInput) {\n        setShowInput(true);\n        return;\n      }\n\n      startTransition(async () => {\n        await sleep(2000);\n        setSuccess(true);\n        await sleep(2000);\n        setSuccess(false);\n        setShowInput(false);\n        setValue('');\n      });\n    },\n    [showInput, setShowInput, setSuccess, setValue],\n  );\n\n  return (\n    <form\n      onSubmit={handleSubmit}\n      className=\"w-full flex items-center justify-center\"\n    >\n      <InputButton showInput={showInput} setShowInput={setShowInput}>\n        <Buttons>\n          <Button onClick={() => {}}>Join the newsletter</Button>\n          <SubmitButton\n            onClick={() => {}}\n            type=\"submit\"\n            disabled={pending}\n            className={pending || success ? 'aspect-square px-0' : ''}\n          >\n            {success ? (\n              <motion.span\n                key=\"success\"\n                initial={{ opacity: 0, scale: 0 }}\n                animate={{ opacity: 1, scale: 1 }}\n                transition={{ duration: 0.2 }}\n              >\n                <Check />\n              </motion.span>\n            ) : pending ? (\n              <motion.span\n                key=\"pending\"\n                initial={{ opacity: 0, scale: 0 }}\n                animate={{ opacity: 1, scale: 1 }}\n                transition={{ duration: 0.2 }}\n              >\n                <Loader2 className=\"animate-spin\" />\n              </motion.span>\n            ) : (\n              'Subscribe'\n            )}\n          </SubmitButton>\n        </Buttons>\n        <Input\n          type=\"email\"\n          placeholder=\"your-email@example.com\"\n          value={value}\n          onChange={(e) => setValue(e.target.value)}\n          disabled={pending}\n          autoFocus\n        />\n      </InputButton>\n    </form>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/input-button-loading-demo.tsx"
+    }
+  ]
+}

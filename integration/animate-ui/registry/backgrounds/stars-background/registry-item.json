@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stars-background",
+  "type": "registry:ui",
+  "title": "Stars Background",
+  "description": "Stars background component",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/backgrounds/stars-background/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/stars-background.tsx"
+    }
+  ]
+}

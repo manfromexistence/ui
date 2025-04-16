@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flip-button",
+  "type": "registry:ui",
+  "title": "Flip Button",
+  "description": "A flip button component",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/buttons/flip-button/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/flip-button.tsx"
+    }
+  ]
+}

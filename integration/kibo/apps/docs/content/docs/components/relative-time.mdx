@@ -1,0 +1,208 @@
+---
+title: Relative Time
+description: A component that displays time in various timezones.
+icon: Clock
+---
+
+<Preview name="relative-time" code={`'use client';
+
+import {
+  RelativeTime,
+  RelativeTimeZone,
+  RelativeTimeZoneDate,
+  RelativeTimeZoneDisplay,
+  RelativeTimeZoneLabel,
+} from '@/components/ui/kibo-ui/relative-time';
+
+const timezones = [
+  { label: 'EST', zone: 'America/New_York' },
+  { label: 'GMT', zone: 'Europe/London' },
+  { label: 'JST', zone: 'Asia/Tokyo' },
+];
+
+const Example = () => (
+  <div className="flex w-full h-screen items-center justify-center gap-4 bg-secondary">
+    <div className="bg-background border rounded-md p-4">
+      <RelativeTime>
+        {timezones.map(({ zone, label }) => (
+          <RelativeTimeZone key={zone} zone={zone}>
+            <RelativeTimeZoneLabel>{label}</RelativeTimeZoneLabel>
+            <RelativeTimeZoneDate />
+            <RelativeTimeZoneDisplay />
+          </RelativeTimeZone>
+        ))}
+      </RelativeTime>
+    </div>
+  </div>
+);
+
+export default Example;`} />
+
+## Installation
+
+<Installer packageName="relative-time" />
+
+## Features
+
+- Displays multiple timezones simultaneously
+- Supports both controlled and uncontrolled time states
+- Auto-updates every second when no time is provided
+- Customizable date and time format options
+- Clean, minimal UI with timezone labels and formatted times
+- Responsive layout with flex positioning
+
+## Examples
+
+### Custom date format
+
+<Preview name="relative-time" code={`'use client';
+
+import {
+  RelativeTime,
+  RelativeTimeZone,
+  RelativeTimeZoneDate,
+  RelativeTimeZoneDisplay,
+  RelativeTimeZoneLabel,
+} from '@/components/ui/kibo-ui/relative-time';
+
+const timezones = [
+  { label: 'EST', zone: 'America/New_York' },
+  { label: 'GMT', zone: 'Europe/London' },
+  { label: 'JST', zone: 'Asia/Tokyo' },
+];
+
+const Example = () => (
+  <div className="flex w-full h-screen items-center justify-center gap-4 bg-secondary">
+    <div className="bg-background border rounded-md p-4">
+      <RelativeTime dateFormatOptions={{ dateStyle: 'full' }}>
+        {timezones.map(({ zone, label }) => (
+          <RelativeTimeZone key={zone} zone={zone}>
+            <RelativeTimeZoneLabel>{label}</RelativeTimeZoneLabel>
+            <RelativeTimeZoneDate />
+            <RelativeTimeZoneDisplay />
+          </RelativeTimeZone>
+        ))}
+      </RelativeTime>
+    </div>
+  </div>
+);
+
+export default Example;`} />
+
+### Custom time format
+
+<Preview name="relative-time" code={`'use client';
+
+import {
+  RelativeTime,
+  RelativeTimeZone,
+  RelativeTimeZoneDate,
+  RelativeTimeZoneDisplay,
+  RelativeTimeZoneLabel,
+} from '@/components/ui/kibo-ui/relative-time';
+
+const timezones = [
+  { label: 'EST', zone: 'America/New_York' },
+  { label: 'GMT', zone: 'Europe/London' },
+  { label: 'JST', zone: 'Asia/Tokyo' },
+];
+
+const Example = () => (
+  <div className="flex w-full h-screen items-center justify-center gap-4 bg-secondary">
+    <div className="bg-background border rounded-md p-4">
+      <RelativeTime timeFormatOptions={{ hour: '2-digit', minute: '2-digit' }}>
+        {timezones.map(({ zone, label }) => (
+          <RelativeTimeZone key={zone} zone={zone}>
+            <RelativeTimeZoneLabel>{label}</RelativeTimeZoneLabel>
+            <RelativeTimeZoneDate />
+            <RelativeTimeZoneDisplay />
+          </RelativeTimeZone>
+        ))}
+      </RelativeTime>
+    </div>
+  </div>
+);
+
+export default Example;`} />
+
+### Controlled time
+
+<Preview name="relative-time" code={`'use client';
+
+import {
+  RelativeTime,
+  RelativeTimeZone,
+  RelativeTimeZoneDate,
+  RelativeTimeZoneDisplay,
+  RelativeTimeZoneLabel,
+} from '@/components/ui/kibo-ui/relative-time';
+import { useEffect, useState } from 'react';
+
+const timezones = [
+  { label: 'EST', zone: 'America/New_York' },
+  { label: 'GMT', zone: 'Europe/London' },
+  { label: 'JST', zone: 'Asia/Tokyo' },
+];
+
+const Example = () => {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="flex w-full h-screen items-center justify-center gap-4 bg-secondary">
+      <div className="bg-background border rounded-md p-4">
+        <RelativeTime time={time} onTimeChange={setTime}>
+          {timezones.map(({ zone, label }) => (
+            <RelativeTimeZone key={zone} zone={zone}>
+              <RelativeTimeZoneLabel>{label}</RelativeTimeZoneLabel>
+              <RelativeTimeZoneDate />
+              <RelativeTimeZoneDisplay />
+            </RelativeTimeZone>
+          ))}
+        </RelativeTime>
+      </div>
+    </div>
+  );
+};
+
+export default Example;`} />
+
+## Props
+
+The relative time component is made up of the following subcomponents:
+
+### RelativeTime
+
+The `RelativeTime` component is used to display the relative time.
+
+<AutoTypeTable path="node_modules/@repo/relative-time/index.tsx" name="RelativeTimeProps" />
+
+### RelativeTimeZone
+
+The `RelativeTimeZone` component is used to display the relative time for a specific timezone.
+
+<AutoTypeTable path="node_modules/@repo/relative-time/index.tsx" name="RelativeTimeZoneProps" />
+
+### RelativeTimeZoneLabel
+
+The `RelativeTimeZoneLabel` component is used to display the label for a specific timezone.
+
+<AutoTypeTable path="node_modules/@repo/relative-time/index.tsx" name="RelativeTimeZoneLabelProps" />
+
+### RelativeTimeZoneDate
+
+The `RelativeTimeZoneDate` component is used to display the date for a specific timezone.
+
+<AutoTypeTable path="node_modules/@repo/relative-time/index.tsx" name="RelativeTimeZoneDateProps" />
+
+### RelativeTimeZoneDisplay
+
+The `RelativeTimeZoneDisplay` component is used to display the time for a specific timezone.
+
+<AutoTypeTable path="node_modules/@repo/relative-time/index.tsx" name="RelativeTimeZoneDisplayProps" />

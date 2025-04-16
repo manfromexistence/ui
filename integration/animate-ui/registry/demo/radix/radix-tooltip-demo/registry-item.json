@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-tooltip-demo",
+  "type": "registry:ui",
+  "title": "Radix Tooltip Demo",
+  "description": "Demo showing an animated radix tooltip.",
+  "registryDependencies": ["https://animate-ui.com/r/radix-tooltip"],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-tooltip-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-tooltip-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+---
+title: Ripple Button
+description: A clickable button featuring a ripple animation effect on click.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="ripple-button-demo" />
+
+## Installation
+
+<ComponentInstallation name="ripple-button" />
+
+## Props
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the component',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    className: {
+      description: 'The className of the component',
+      type: 'string',
+      required: false,
+    },
+    rippleClassName: {
+      description: 'The className of the ripple',
+      type: 'string',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the ripple',
+      type: 'Transition',
+      required: false,
+      default: '{ duration: 0.6, ease: "easeOut" }',
+    },
+    scale: {
+      description: 'The scale of the ripple',
+      type: 'number',
+      required: false,
+      default: 10,
+    },
+  }}
+/>

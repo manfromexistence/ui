@@ -1,0 +1,21 @@
+{
+  "name": "@repo/code-block",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@icons-pack/react-simple-icons": "^12.6.0",
+    "@radix-ui/react-use-controllable-state": "^1.1.1",
+    "@repo/shadcn-ui": "workspace:*",
+    "@shikijs/transformers": "^3.2.2",
+    "lucide-react": "^0.488.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "shiki": "^3.2.2"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}

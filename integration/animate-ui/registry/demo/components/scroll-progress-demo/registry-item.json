@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-progress-demo",
+  "type": "registry:ui",
+  "title": "Scroll Progress Demo",
+  "description": "Demo showing a scroll progress.",
+  "dependencies": ["lucide-react", "motion"],
+  "registryDependencies": ["https://animate-ui.com/r/scroll-progress"],
+  "files": [
+    {
+      "path": "registry/demo/components/scroll-progress-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/scroll-progress-demo.tsx"
+    }
+  ]
+}

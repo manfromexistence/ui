@@ -1,0 +1,65 @@
+---
+title: Flip Button
+description: A clickable button featuring a smooth flipping animation triggered on hover.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="flip-button-demo" />
+
+## Installation
+
+<ComponentInstallation name="flip-button" />
+
+## Examples
+
+### From Left
+
+Use the `from` prop to change the direction of the flip.
+
+<ComponentPreview name="flip-button-from-demo" />
+
+## Props
+
+<TypeTable
+  type={{
+    frontText: {
+      description: 'The text to display on the front of the button',
+      type: 'string',
+      required: true,
+    },
+    backText: {
+      description: 'The text to display on the back of the button',
+      type: 'string',
+      required: true,
+    },
+    transition: {
+      description: 'The transition of the button',
+      type: 'Transition',
+      required: false,
+      default: '{ type: "spring", stiffness: 280, damping: 20 }',
+    },
+    className: {
+      description: 'The className of the component',
+      type: 'string',
+      required: false,
+    },
+    frontClassName: {
+      description: 'The className of the front of the button',
+      type: 'string',
+      required: false,
+    },
+    backClassName: {
+      description: 'The className of the back of the button',
+      type: 'string',
+      required: false,
+    },
+    from: {
+      description: 'The direction of the flip',
+      type: 'string',
+      required: false,
+      default: 'top',
+    },
+  }}
+/>

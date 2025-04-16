@@ -1,0 +1,41 @@
+---
+title: Popover
+description: Popovers are perfect for floating panels with arbitrary content like navigation menus, mobile menus and flyout menus.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="headless-popover-demo" />
+
+## Installation
+
+<ComponentInstallation name="headless-popover" />
+
+## Props
+
+<div className="flex flex-row gap-x-3">
+  <ExternalLink href="https://headlessui.com/react/popover" text="Docs" />
+  <ExternalLink
+    href="https://headlessui.com/react/popover#component-api"
+    text="API Reference"
+  />
+</div>
+
+### Animate UI props
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the disclosure panel',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 300, damping: 25 }",
+    },
+  }}
+/>
+
+## Credits
+
+- We use [Headless UI](https://headlessui.com/react/popover) for the popover component.
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/popover) for the popover style.

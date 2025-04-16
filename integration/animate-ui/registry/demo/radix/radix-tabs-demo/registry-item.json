@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-tabs-demo",
+  "type": "registry:ui",
+  "title": "Radix Tabs Demo",
+  "description": "Demo showing an animated Radix UI tabs.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-tabs",
+    "label",
+    "input",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-tabs-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-tabs-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-radio-group",
+  "type": "registry:ui",
+  "title": "Radio Group",
+  "description": "Radio Group component",
+  "dependencies": ["motion", "lucide-react", "@radix-ui/react-radio-group"],
+  "files": [
+    {
+      "path": "registry/radix/radix-radio-group/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-radio-group.tsx"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+---
+title: Accordion
+description: A vertically stacked set of interactive headings that each reveal an associated section of content.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="radix-accordion-demo" />
+
+## Installation
+
+<ComponentInstallation name="radix-accordion" />
+
+## Props
+
+<div className="flex flex-row gap-x-3">
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/accordion"
+    text="Docs"
+  />
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/accordion#api-reference"
+    text="API Reference"
+  />
+</div>
+
+### Animate UI props
+
+#### AccordionTrigger
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the accordion chevron',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 150, damping: 17 }",
+    },
+    chevron: {
+      description: 'Whether to show the accordion chevron',
+      type: 'boolean',
+      required: false,
+      default: 'true',
+    },
+  }}
+/>
+
+#### AccordionContent
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the accordion content',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 150, damping: 17 }",
+    },
+  }}
+/>
+
+## Don't delete from the DOM
+
+The choice made is the same as Radix UI, i.e. to remove the element from the DOM for accessibility and performance reasons. However, this may pose a problem for SEO. If you want your Accordion content to be taken into account by Google, please **replace the AccordionContent component with**:
+
+```tsx title="components/animate-ui/radix-accordion.tsx"
+const AccordionContent = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Content>,
+  AccordionContentProps
+>(
+  (
+    {
+      className,
+      children,
+      transition = { type: 'spring', stiffness: 150, damping: 17 },
+      ...props
+    },
+    ref,
+  ) => {
+    const { isOpen } = useAccordionItem();
+
+    return (
+      <AccordionPrimitive.Content forceMount {...props}>
+        <motion.div
+          key="accordion-content"
+          initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}
+          animate={
+            isOpen
+              ? { height: 'auto', opacity: 1, '--mask-stop': '100%' }
+              : { height: 0, opacity: 0, '--mask-stop': '0%' }
+          }
+          transition={transition}
+          style={{
+            maskImage:
+              'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',
+            WebkitMaskImage:
+              'linear-gradient(black var(--mask-stop), transparent var(--mask-stop))',
+          }}
+          className="overflow-hidden"
+          ref={ref}
+        >
+          <div className={cn('pb-4 pt-0 text-sm', className)}>{children}</div>
+        </motion.div>
+      </AccordionPrimitive.Content>
+    );
+  },
+);
+```
+
+## Credits
+
+- We use [Radix UI](https://www.radix-ui.com/primitives/docs/components/accordion) for the accordion component.
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/accordion) for the accordion style.

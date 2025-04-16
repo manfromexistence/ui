@@ -1,0 +1,51 @@
+---
+title: Hexagon Background
+description: A background component featuring an interactive hexagon grid.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="hexagon-background-demo" />
+
+## Installation
+
+<ComponentInstallation name="hexagon-background" />
+
+## Props
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the component',
+      type: 'React.ReactNode',
+      required: false,
+    },
+    className: {
+      description: 'The className of the component',
+      type: 'string',
+      required: false,
+    },
+    hexagonProps: {
+      description: 'The props of the hexagon',
+      type: 'React.HTMLAttributes<HTMLDivElement>',
+      required: false,
+    },
+    hexagonSize: {
+      description: 'The size of the hexagon',
+      type: 'number',
+      required: false,
+      default: '75',
+    },
+    hexagonMargin: {
+      description: 'The margin of the hexagon',
+      type: 'number',
+      required: false,
+      default: '3',
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [Denis Klak](https://codepen.io/d3nis031/pen/QWyeNYx) for the inspiration

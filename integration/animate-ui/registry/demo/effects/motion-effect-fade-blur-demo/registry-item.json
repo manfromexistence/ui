@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion-effect-fade-blur-demo",
+  "type": "registry:ui",
+  "title": "Motion Effect Fade Blur Demo",
+  "description": "Demo showing the motion effect fade blur.",
+  "registryDependencies": ["https://animate-ui.com/r/motion-effect"],
+  "files": [
+    {
+      "path": "registry/demo/effects/motion-effect-fade-blur-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/motion-effect-fade-blur-demo.tsx"
+    }
+  ]
+}

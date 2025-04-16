@@ -1,0 +1,28 @@
+name: 🐞 Bug report
+description: Report a bug with Animate UI components.
+labels: ['bug']
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: A detailed description of the issue that you are encountering, and how other people can reproduce it.
+      placeholder: |
+        Reproduction steps...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Code example
+      description: Provide an example code snippet that has the problem.
+  - type: input
+    id: provider
+    attributes:
+      label: Concerned component
+      description: The component that you are experiencing the issue with.
+      placeholder: |
+        Counter
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: |
+        Any extra information that might help us investigate.

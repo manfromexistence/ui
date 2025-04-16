@@ -1,0 +1,67 @@
+---
+title: Input Button
+description: A button that shows an input when clicked.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="input-button-demo" />
+
+## Installation
+
+<ComponentInstallation name="input-button" />
+
+## Examples
+
+### Newsletter Form with Loading State
+
+<ComponentPreview name="input-button-loading-demo" />
+
+## Props
+
+### InputButton
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the component',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 300, damping: 20 }",
+    },
+    showInput: {
+      description: 'Whether to show the input',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+    },
+    setShowInput: {
+      description: 'The function to set the showInput state',
+      type: 'React.Dispatch<React.SetStateAction<boolean>>',
+      required: false,
+    },
+    id: {
+      description: 'The id of the component',
+      type: 'string',
+      required: false,
+    },
+  }}
+/>
+
+### SubmitButton
+
+<TypeTable
+  type={{
+    icon: {
+      description: 'The icon of the component',
+      type: 'React.ElementType',
+      required: false,
+      default: 'ArrowRight',
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [Adam Wathan](https://x.com/adamwathan/status/1890105358519341205) for the inspiration

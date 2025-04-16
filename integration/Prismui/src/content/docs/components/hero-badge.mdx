@@ -1,0 +1,171 @@
+---
+title: Hero Badge
+publishedAt: 2025-01-02
+summary: A versatile, animated badge component for highlighting new features, announcements, or important links.
+author: codehagen
+slug: components/hero-badge
+related: ["introduction"]
+---
+
+<ComponentPreview name="hero-badge-basic" />
+
+<Note variant="info">
+  The Hero Badge component provides an elegant way to highlight important information or links with smooth animations and hover effects. Perfect for announcements, feature highlights, or call-to-action elements.
+</Note>
+
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <ComponentSource name="hero-badge" isCli />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="hero-badge" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Examples
+
+<ComponentPreview name="hero-badge-demo" />
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import { HeroBadge } from "@/components/prismui/hero-badge"
+import { Icons } from "@/components/icons"
+
+export default function Example() {
+  return (
+    <HeroBadge
+      href="/docs"
+      text="New! PrismUI Components"
+      icon={<Icons.logo className="h-4 w-4" />}
+      endIcon={<Icons.chevronRight className="h-4 w-4" />}
+    />
+  )
+}
+```
+
+### Variants
+
+```tsx
+<HeroBadge
+  text="Default Badge"
+  variant="default"
+  icon={<Icons.logo className="h-4 w-4" />}
+/>
+
+<HeroBadge
+  text="Outline Badge"
+  variant="outline"
+  icon={<Icons.component className="h-4 w-4" />}
+/>
+
+<HeroBadge
+  text="Ghost Badge"
+  variant="ghost"
+  icon={<Icons.book className="h-4 w-4" />}
+/>
+```
+
+### Sizes
+
+```tsx
+<HeroBadge
+  text="Small Badge"
+  size="sm"
+  icon={<Icons.logo className="h-3 w-3" />}
+/>
+
+<HeroBadge
+  text="Medium Badge"
+  size="md"
+  icon={<Icons.logo className="h-4 w-4" />}
+/>
+
+<HeroBadge
+  text="Large Badge"
+  size="lg"
+  icon={<Icons.logo className="h-5 w-5" />}
+/>
+```
+
+## Customization
+
+<Steps>
+  <Step>Custom Animation Settings</Step>
+  ```tsx
+  <motion.div
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ 
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1]
+    }}
+  >
+    {/* ... */}
+  </motion.div>
+  ```
+
+  <Step>Custom Icon Animation</Step>
+  ```tsx
+  const iconAnimationVariants = {
+    initial: { rotate: 0 },
+    hover: { rotate: -10, scale: 1.1 },
+  }
+  ```
+
+  <Step>Custom Styling</Step>
+  ```tsx
+  <HeroBadge
+    text="Custom Badge"
+    className="bg-gradient-to-r from-purple-500 to-pink-500 text-white"
+    icon={<Icons.logo className="h-4 w-4" />}
+  />
+  ```
+</Steps>
+
+## Notes
+
+- Built with Framer Motion for smooth animations
+- Uses React Server Components (RSC) with "use client" directive
+- Responsive design with mobile-first approach
+- Interactive hover animations
+- TypeScript support with proper types
+- Supports custom styling and theming
+- Optimized performance with proper hooks usage
+
+## Features
+
+- Smooth entrance animations
+- Icon rotation on hover
+- Multiple size variants
+- Multiple style variants
+- Link and button functionality
+- Customizable icons
+- Responsive design
+- Accessibility features
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| text | string | - | The text content of the badge |
+| href | string | - | Optional URL for the badge to link to |
+| icon | ReactNode | - | Optional icon component to display before the text |
+| endIcon | ReactNode | - | Optional icon component to display after the text |
+| variant | "default" \| "outline" \| "ghost" | "default" | The visual style variant of the badge |
+| size | "sm" \| "md" \| "lg" | "md" | The size of the badge |
+| className | string | - | Additional CSS classes to apply |
+| onClick | () => void | - | Optional click handler (used when no href is provided) |

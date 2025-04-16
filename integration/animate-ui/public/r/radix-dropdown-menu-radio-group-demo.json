@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-dropdown-menu-radio-group-demo",
+  "type": "registry:ui",
+  "title": "Radix Dropdown Menu Radio Group Demo",
+  "description": "Demo showing an animated radix dropdown menu with radio groups.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-dropdown-menu",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-dropdown-menu-radio-group-demo/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { motion } from 'motion/react';\n\nimport { Button } from '@/components/ui/button';\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuLabel,\n  DropdownMenuRadioGroup,\n  DropdownMenuRadioItem,\n  DropdownMenuSeparator,\n  DropdownMenuTrigger,\n} from '@/components/animate-ui/radix-dropdown-menu';\n\nexport const RadixDropdownMenuRadioGroupDemo = () => {\n  const [position, setPosition] = React.useState('bottom');\n\n  return (\n    <DropdownMenu>\n      <DropdownMenuTrigger asChild>\n        <Button variant=\"outline\" asChild>\n          <motion.button\n            whileHover={{ scale: 1.05 }}\n            whileTap={{ scale: 0.95 }}\n          >\n            Open\n          </motion.button>\n        </Button>\n      </DropdownMenuTrigger>\n      <DropdownMenuContent className=\"w-56\">\n        <DropdownMenuLabel>Panel Position</DropdownMenuLabel>\n        <DropdownMenuSeparator />\n        <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>\n          <DropdownMenuRadioItem value=\"top\">Top</DropdownMenuRadioItem>\n          <DropdownMenuRadioItem value=\"bottom\">Bottom</DropdownMenuRadioItem>\n          <DropdownMenuRadioItem value=\"right\">Right</DropdownMenuRadioItem>\n        </DropdownMenuRadioGroup>\n      </DropdownMenuContent>\n    </DropdownMenu>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-dropdown-menu-radio-group-demo.tsx"
+    }
+  ]
+}

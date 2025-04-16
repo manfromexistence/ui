@@ -1,0 +1,166 @@
+---
+title: Themes
+description: Add Theme to Fumadocs UI
+---
+
+## Usage
+
+Note only Tailwind CSS v4 is supported:
+
+```css title="Tailwind CSS"
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+/* path of `fumadocs-ui` relative to the CSS file */
+@source '../node_modules/fumadocs-ui/dist/**/*.js';
+```
+
+### Preflight Changes
+
+By using the Tailwind CSS plugin, or the pre-built stylesheet, your default border, text and background
+colors will be changed.
+
+### Light/Dark Modes
+
+Fumadocs supports light/dark modes with [`next-themes`](https://github.com/pacocoursey/next-themes), it is included in Root Provider.
+
+See [Root Provider](/docs/ui/layouts/root-provider#theme-provider) to learn more.
+
+### RTL Layout
+
+RTL (Right-to-left) layout is supported.
+
+To enable RTL, set the `dir` prop to `rtl` in body and root provider (required for Radix UI).
+
+```tsx
+import { RootProvider } from 'fumadocs-ui/provider';
+import type { ReactNode } from 'react';
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body dir="rtl">
+        <RootProvider dir="rtl">{children}</RootProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+### Prefix
+
+Fumadocs UI has its own colors, animations, and utilities.
+By default, it adds a `fd-` prefix to avoid conflicts with Shadcn UI or your own CSS variables.
+
+You can use them without the prefix by adding some aliases:
+
+```css title="Tailwind CSS"
+@theme {
+  --color-primary: var(--color-fd-primary);
+}
+```
+
+> You can use it with CSS media queries for responsive design.
+
+### Layout Width
+
+Customise the max width of docs layout with CSS Variables.
+
+```css
+:root {
+  --fd-layout-width: 1400px;
+}
+```
+
+<WidthTrigger />
+
+## Tailwind CSS Preset
+
+The Tailwind CSS preset introduces new colors and extra utilities including `fd-steps`.
+
+### Themes
+
+It comes with many themes out-of-the-box, you can pick one you prefer.
+
+```css
+@import 'fumadocs-ui/css/<theme>.css';
+
+/* Example */
+@import 'fumadocs-ui/css/black.css';
+```
+
+<Tabs items={['neutral', 'black', 'vitepress', 'dusk', 'catppuccin', 'ocean', 'purple']}>
+
+    <Tab value='neutral'>
+
+![Neutral](/themes/neutral.png)
+
+    </Tab>
+
+    <Tab value='black'>
+
+![Black](/themes/black.png)
+
+    </Tab>
+
+    <Tab value='vitepress'>
+
+![Vitepress](/themes/vitepress.png)
+
+    </Tab>
+
+    <Tab value='dusk'>
+
+![Dusk](/themes/dusk.png)
+
+    </Tab>
+
+    <Tab value='Catppuccin'>
+
+![Catppuccin](/themes/catppuccin.png)
+
+    </Tab>
+
+    <Tab value='ocean'>
+
+![Ocean](/themes/ocean.png)
+
+    </Tab>
+
+    <Tab value='purple'>
+
+![Purple](/themes/purple.png)
+
+    </Tab>
+
+</Tabs>
+
+### Colors
+
+The design system was inspired by [Shadcn UI](https://ui.shadcn.com), you can easily customize the colors using CSS variables.
+
+```css title="global.css"
+:root {
+  --color-fd-background: hsl(0, 0%, 100%);
+}
+
+.dark {
+  --color-fd-background: hsl(0, 0%, 0%);
+}
+```
+
+### Typography
+
+We have a built-in plugin forked from [Tailwind CSS Typography](https://tailwindcss.com/docs/typography-plugin).
+
+The plugin adds a `prose` class and variants to customise it.
+
+```tsx
+<div className="prose">
+  <h1>Good Heading</h1>
+</div>
+```
+
+> The plugin works with and only with Fumadocs UI's MDX components, it may conflict with `@tailwindcss/typography`.
+> If you need to use `@tailwindcss/typography` over the default plugin, [set a class name option](https://github.com/tailwindlabs/tailwindcss-typography/blob/main/README.md#changing-the-default-class-name) to avoid conflicts.

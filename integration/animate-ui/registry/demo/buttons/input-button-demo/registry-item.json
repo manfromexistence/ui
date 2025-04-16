@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-button-demo",
+  "type": "registry:ui",
+  "title": "Input Button Demo",
+  "description": "Demo showing an animated button with input effect.",
+  "registryDependencies": ["https://animate-ui.com/r/input-button"],
+  "files": [
+    {
+      "path": "registry/demo/buttons/input-button-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/input-button-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "files-advanced-demo",
+  "type": "registry:ui",
+  "title": "Files Advanced Demo",
+  "description": "Demo showing an advanced files component.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/files"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/files-advanced-demo/index.tsx",
+      "content": "'use client';\n\nimport React from 'react';\nimport { File, Folder, Files } from '@/components/animate-ui/files';\n\nexport const FilesAdvancedDemo = () => {\n  return (\n    <Files className=\"max-w-[500px] w-full\" defaultOpen={['app']}>\n      <Folder\n        name=\"app\"\n        className=\"text-amber-500 justify-between\"\n        sideComponent={<div className=\"bg-amber-500 rounded-full size-2\" />}\n        defaultOpen={['(home)']}\n      >\n        <Folder\n          name=\"(home)\"\n          className=\"text-green-500 justify-between\"\n          sideComponent={<div className=\"bg-green-500 rounded-full size-2\" />}\n        >\n          <File\n            name=\"page.tsx\"\n            className=\"text-green-500 justify-between\"\n            sideComponent={<span className=\"font-medium\">U</span>}\n          />\n          <File\n            name=\"layout.tsx\"\n            className=\"text-green-500 justify-between\"\n            sideComponent={<span className=\"font-medium\">U</span>}\n          />\n        </Folder>\n        <File name=\"layout.tsx\" />\n        <File\n          name=\"page.tsx\"\n          className=\"text-amber-500 justify-between\"\n          sideComponent={<span className=\"font-medium\">M</span>}\n        />\n        <File name=\"global.css\" />\n      </Folder>\n      <Folder name=\"components\">\n        <File name=\"button.tsx\" />\n        <File name=\"tabs.tsx\" />\n        <File name=\"dialog.tsx\" />\n        <Folder name=\"empty\" />\n      </Folder>\n      <File name=\"package.json\" />\n    </Files>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/files-advanced-demo.tsx"
+    }
+  ]
+}

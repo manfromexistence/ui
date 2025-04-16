@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-switch-demo",
+  "type": "registry:ui",
+  "title": "Radix Switch Demo",
+  "description": "Demo showing an animated radix switch.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-switch",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-switch-demo/index.tsx",
+      "content": "import { Label } from '@/components/ui/label';\nimport { Switch } from '@/components/animate-ui/radix-switch';\n\nexport const RadixSwitchDemo = () => {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Label htmlFor=\"airplane-mode\">Airplane mode</Label>\n      <Switch defaultChecked id=\"airplane-mode\" />\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-switch-demo.tsx"
+    }
+  ]
+}

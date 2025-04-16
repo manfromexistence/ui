@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "files-demo",
+  "type": "registry:ui",
+  "title": "Files Demo",
+  "description": "Demo showing an files.",
+  "registryDependencies": ["https://animate-ui.com/r/files"],
+  "files": [
+    {
+      "path": "registry/demo/components/files-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/files-demo.tsx"
+    }
+  ]
+}

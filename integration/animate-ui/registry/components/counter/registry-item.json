@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "counter",
+  "type": "registry:ui",
+  "title": "Counter",
+  "description": "Counter component",
+  "dependencies": ["motion"],
+  "registryDependencies": ["button", "https://animate-ui.com/r/sliding-number"],
+  "files": [
+    {
+      "path": "registry/components/counter/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/counter.tsx"
+    }
+  ]
+}

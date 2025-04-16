@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-dropdown-menu-radio-group-demo",
+  "type": "registry:ui",
+  "title": "Radix Dropdown Menu Radio Group Demo",
+  "description": "Demo showing an animated radix dropdown menu with radio groups.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-dropdown-menu",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-dropdown-menu-radio-group-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-dropdown-menu-radio-group-demo.tsx"
+    }
+  ]
+}

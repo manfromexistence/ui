@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "counter-demo",
+  "type": "registry:ui",
+  "title": "Counter Demo",
+  "description": "Demo showing an animated counter.",
+  "registryDependencies": ["https://animate-ui.com/r/counter"],
+  "files": [
+    {
+      "path": "registry/demo/components/counter-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/counter-demo.tsx"
+    }
+  ]
+}

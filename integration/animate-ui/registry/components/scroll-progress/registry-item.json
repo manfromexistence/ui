@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-progress",
+  "type": "registry:ui",
+  "title": "Scroll Progress",
+  "description": "Scroll progress component",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/components/scroll-progress/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/scroll-progress.tsx"
+    }
+  ]
+}

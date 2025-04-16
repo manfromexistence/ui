@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "install-tabs",
+  "type": "registry:ui",
+  "title": "Install Tabs",
+  "description": "Install tabs component",
+  "dependencies": ["shiki"],
+  "registryDependencies": [
+    "https://animate-ui.com/r/tabs",
+    "https://animate-ui.com/r/copy-button"
+  ],
+  "files": [
+    {
+      "path": "registry/components/install-tabs/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/install-tabs.tsx"
+    }
+  ]
+}

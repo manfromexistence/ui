@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-popover-datepicker-demo",
+  "type": "registry:ui",
+  "title": "Radix Popover DatePicker ",
+  "description": "Radix Popover DatePicker",
+  "dependencies": [
+    "date-fns",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/radix-popover-datepicker-demo",
+    "button",
+    "calendar"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-popover-datepicker-demo/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { format } from 'date-fns';\nimport { CalendarIcon } from 'lucide-react';\n\nimport { cn } from '@/lib/utils';\nimport { Button } from '@/components/ui/button';\nimport { Calendar } from '@/components/ui/calendar';\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from '@/components/animate-ui/radix-popover';\n\nexport function DatePickerDemo() {\n  const [date, setDate] = React.useState<Date>();\n\n  return (\n    <Popover>\n      <PopoverTrigger asChild>\n        <Button\n          variant={'outline'}\n          className={cn(\n            'w-[240px] justify-start text-left font-normal',\n            !date && 'text-muted-foreground',\n          )}\n        >\n          <CalendarIcon />\n          {date ? format(date, 'PPP') : <span>Pick a date</span>}\n        </Button>\n      </PopoverTrigger>\n      <PopoverContent className=\"w-auto p-0\" align=\"start\">\n        <Calendar\n          mode=\"single\"\n          selected={date}\n          onSelect={setDate}\n          initialFocus\n        />\n      </PopoverContent>\n    </Popover>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-popover-datepicker-demo.tsx"
+    }
+  ]
+}

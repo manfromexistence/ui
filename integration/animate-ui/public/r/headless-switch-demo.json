@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-switch-demo",
+  "type": "registry:ui",
+  "title": "Headless Switch Demo",
+  "description": "Demo showing an animated headless switch.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/headless-switch"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/headless/headless-switch-demo/index.tsx",
+      "content": "import { Switch } from '@/components/animate-ui/headless-switch';\nimport { Field, Label } from '@headlessui/react';\n\nexport const HeadlessSwitchDemo = () => {\n  return (\n    <Field className=\"flex items-center space-x-2\">\n      <Label htmlFor=\"airplane-mode\" className=\"text-sm font-medium\">\n        Airplane mode\n      </Label>\n      <Switch defaultChecked id=\"airplane-mode\" />\n    </Field>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-switch-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+name: 📄 Documentation
+description: Suggest an improvement or correction to the documentation.
+labels: ['documentation']
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: A detailed description of the improvement or correction you would like to see.
+      placeholder: |
+        Reproduction steps...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: |
+        Any extra information that might help us understand your suggestion.
+      placeholder: |
+        Additional context...

@@ -1,0 +1,48 @@
+---
+title: Install Tabs
+description: A tabs component that displays install commands for different package managers.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="install-tabs-demo" />
+
+## Installation
+
+<ComponentInstallation name="install-tabs" />
+
+## Props
+
+<TypeTable
+  type={{
+    commands: {
+      description: 'The commands to display in the tabs',
+      type: 'Record<string, string>',
+      required: true,
+    },
+    lang: {
+      description: 'The language of the commands',
+      type: 'string',
+      required: false,
+      default: 'bash',
+    },
+    themes: {
+      description: 'The shiki themes to display in the tabs',
+      type: 'Record<string, string>',
+      required: false,
+      default: "{ light: 'github-light', dark: 'github-dark' }",
+    },
+    copyButton: {
+      description: 'Whether to show the copy button.',
+      type: 'boolean',
+      required: false,
+      default: 'true',
+    },
+    onCopy: {
+      description: 'The function to call when copy is successful.',
+      type: '(content: string) => void',
+      required: false,
+    },
+  }}
+/>

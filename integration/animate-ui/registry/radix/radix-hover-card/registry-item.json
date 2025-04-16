@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-hover-card",
+  "type": "registry:ui",
+  "title": "Hover Card",
+  "description": "Hover Card component",
+  "dependencies": ["motion", "@radix-ui/react-hover-card"],
+  "files": [
+    {
+      "path": "registry/radix/radix-hover-card/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-hover-card.tsx"
+    }
+  ]
+}

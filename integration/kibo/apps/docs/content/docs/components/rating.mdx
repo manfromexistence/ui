@@ -1,0 +1,134 @@
+---
+title: Rating
+description: A star rating component with keyboard navigation and hover effects.
+icon: Star
+---
+
+<PoweredBy packages={[
+  { name: 'Lucide', url: 'https://lucide.dev/' },
+]} />
+
+<Preview name="rating" code={`'use client';
+
+import { Rating, RatingButton } from '@/components/ui/kibo-ui/rating';
+
+const Example = () => (
+  <div className="flex w-full h-screen items-center justify-center gap-4">
+    <Rating defaultValue={3}>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <RatingButton key={index} />
+      ))}
+    </Rating>
+  </div>
+);
+
+export default Example;`} />
+
+## Installation
+
+<Installer packageName="rating" />
+
+## Features
+
+- Customizable number of stars and size
+- Support for keyboard navigation
+- Hover and focus states
+- Accessible ARIA attributes
+- Read-only mode
+- Hidden input support for forms
+
+## Examples
+
+### Custom colors
+
+<Preview name="rating" code={`'use client';
+
+import { Rating, RatingButton } from '@/components/ui/kibo-ui/rating';
+
+const Example = () => (
+  <div className="flex w-full h-screen items-center justify-center gap-4">
+    <Rating defaultValue={3}>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <RatingButton key={index} className="text-yellow-500" />
+      ))}
+    </Rating>
+  </div>
+);
+
+export default Example;`} />
+
+### Custom size
+
+<Preview name="rating" code={`'use client';
+
+import { Rating, RatingButton } from '@/components/ui/kibo-ui/rating';
+
+const Example = () => (
+  <div className="flex w-full h-screen items-center justify-center gap-4">
+    <Rating defaultValue={3}>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <RatingButton key={index} size={30} />
+      ))}
+    </Rating>
+  </div>
+);
+
+export default Example;`} />
+
+### Custom icon
+
+<Preview name="rating" code={`'use client';
+
+import { Rating, RatingButton } from '@/components/ui/kibo-ui/rating';
+import { HeartIcon } from 'lucide-react';
+
+const Example = () => (
+  <div className="flex w-full h-screen items-center justify-center gap-4">
+    <Rating defaultValue={3}>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <RatingButton key={index} icon={<HeartIcon />} />
+      ))}
+    </Rating>
+  </div>
+);
+
+export default Example;`} />
+
+### Controlled
+
+<Preview name="rating" code={`'use client';
+
+import { Rating, RatingButton } from '@/components/ui/kibo-ui/rating';
+import { Input } from '@/components/ui/input';
+import { useState } from 'react';
+
+const Example = () => {
+  const [value, setValue] = useState(3);
+
+  return (
+    <div className="flex flex-col w-full h-screen items-center justify-center gap-4 p-8 bg-secondary">
+      <Rating value={value} onValueChange={setValue}>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <RatingButton key={index} />
+        ))}
+      </Rating>
+      <Input min={0} max={5} type="number" className="w-32 bg-background" value={value} onChange={(e) => setValue(Number(e.target.value))} />
+    </div>
+  );
+};
+
+export default Example;`} />
+
+## Props
+
+### Rating
+
+The `Rating` component is used to display a star rating.
+
+<AutoTypeTable path="node_modules/@repo/rating/index.tsx" name="RatingProps" />
+
+### RatingButton
+
+The `RatingButton` component is used to display a single star.
+
+<AutoTypeTable path="node_modules/@repo/rating/index.tsx" name="RatingButtonProps" />

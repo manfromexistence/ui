@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flip-button-from-demo",
+  "type": "registry:ui",
+  "title": "Flip Button From Demo",
+  "description": "Demo showing an animated button with flip effect.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/flip-button"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/buttons/flip-button-from-demo/index.tsx",
+      "content": "import { FlipButton } from '@/components/animate-ui/flip-button';\n\nexport const FlipButtonFromDemo = () => {\n  return <FlipButton frontText=\"Front Text\" backText=\"Back Text\" from=\"left\" />;\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/flip-button-from-demo.tsx"
+    }
+  ]
+}

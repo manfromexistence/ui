@@ -1,0 +1,58 @@
+---
+title: Hole Background
+description: A background with a hole animation effect.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="hole-background-demo" />
+
+## Installation
+
+<ComponentInstallation name="hole-background" />
+
+## Props
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the component',
+      type: 'React.ReactNode',
+      required: false,
+    },
+    className: {
+      description: 'The className of the component',
+      type: 'string',
+      required: false,
+    },
+    strokeColor: {
+      description: 'The color of the stroke',
+      type: 'string',
+      required: false,
+      default: '#737373',
+    },
+    numberOfLines: {
+      description: 'The number of lines',
+      type: 'number',
+      required: false,
+      default: '50',
+    },
+    numberOfDiscs: {
+      description: 'The number of discs',
+      type: 'number',
+      required: false,
+      default: '50',
+    },
+    particleRGBColor: {
+      description: 'The RGB color of the particles',
+      type: 'number[]',
+      required: false,
+      default: '[255, 255, 255]',
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [Antoine Wodniack](https://codepen.io/wodniack/pen/VYwGEGg) for the inspiration

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-accordion-demo",
+  "type": "registry:ui",
+  "title": "Radix Accordion Demo",
+  "description": "Demo showing an animated radix accordion.",
+  "registryDependencies": ["https://animate-ui.com/r/radix-accordion"],
+  "files": [
+    {
+      "path": "registry/demo/radix/radix-accordion-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-accordion-demo.tsx"
+    }
+  ]
+}

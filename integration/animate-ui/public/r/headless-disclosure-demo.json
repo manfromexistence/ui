@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-disclosure-demo",
+  "type": "registry:ui",
+  "title": "Headless Disclosure Demo",
+  "description": "Demo showing an animated headless disclosure.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/headless-disclosure"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/headless/headless-disclosure-demo/index.tsx",
+      "content": "'use client';\n\nimport { Button } from '@/components/ui/button';\nimport {\n  Disclosure,\n  DisclosureButton,\n  DisclosurePanel,\n} from '@/components/animate-ui/headless-disclosure';\nimport { ChevronsUpDown } from 'lucide-react';\n\nexport const RadixCollapsibleDemo = () => {\n  return (\n    <Disclosure className=\"w-[350px]\" as=\"div\">\n      <div className=\"space-y-2 mb-2\">\n        <div className=\"flex items-center justify-between space-x-4\">\n          <h4 className=\"text-sm font-semibold\">\n            @peduarte starred 3 repositories\n          </h4>\n          <DisclosureButton\n            as={Button}\n            variant=\"outline\"\n            size=\"sm\"\n            className=\"w-9 p-0\"\n          >\n            <ChevronsUpDown className=\"h-4 w-4\" />\n            <span className=\"sr-only\">Toggle</span>\n          </DisclosureButton>\n        </div>\n        <div className=\"rounded-md border px-4 py-3 font-mono text-sm\">\n          @headlessui/react\n        </div>\n      </div>\n      <DisclosurePanel className=\"space-y-2\">\n        <div className=\"rounded-md border px-4 py-3 font-mono text-sm\">\n          @headlessui/vue\n        </div>\n        <div className=\"rounded-md border px-4 py-3 font-mono text-sm\">\n          @stitches/react\n        </div>\n      </DisclosurePanel>\n    </Disclosure>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-disclosure-demo.tsx"
+    }
+  ]
+}

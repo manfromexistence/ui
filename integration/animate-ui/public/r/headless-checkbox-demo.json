@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-checkbox-demo",
+  "type": "registry:ui",
+  "title": "Headless Checkbox Demo",
+  "description": "Demo showing an animated headless checkbox.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/headless-checkbox"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/headless/headless-checkbox-demo/index.tsx",
+      "content": "import { Checkbox } from '@/components/animate-ui/headless-checkbox';\nimport { Field, Label } from '@headlessui/react';\n\nexport const HeadlessCheckboxDemo = () => {\n  return (\n    <Field className=\"flex items-center space-x-2\">\n      <Checkbox id=\"terms\" />\n      <Label htmlFor=\"terms\" className=\"text-sm font-medium\">\n        Accept terms and conditions\n      </Label>\n    </Field>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-checkbox-demo.tsx"
+    }
+  ]
+}

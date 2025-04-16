@@ -1,0 +1,142 @@
+---
+title: Tabs
+description: A set of layered sections with the same height of content—known as tab panels—that are displayed one at a time.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="tabs-demo" />
+
+## Installation
+
+<ComponentInstallation name="tabs" />
+
+## Props
+
+### Tabs
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the tabs',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    className: {
+      description: 'The className of the tabs',
+      type: 'string',
+      required: false,
+    },
+    defaultValue: {
+      description: 'The default value of the tabs',
+      type: 'string',
+      required: false,
+    },
+    onValueChange: {
+      description: 'The function to handle the value change',
+      type: '(value: string) => void',
+      required: false,
+    },
+    value: {
+      description: 'The value of the tabs',
+      type: 'string',
+      required: false,
+    },
+  }}
+/>
+
+### TabsList
+
+<TypeTable
+  type={{
+    activeClassName: {
+      description: 'The className of the active tab',
+      type: 'string',
+      required: false,
+    },
+    children: {
+      description: 'The children of the tabs list',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    className: {
+      description: 'The className of the tabs list',
+      type: 'string',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the tabs list',
+      type: 'Transition',
+      required: false,
+      default: '{ type: "spring", stiffness: 200, damping: 25 }',
+    },
+  }}
+/>
+
+### TabsTrigger
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the tabs trigger',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    className: {
+      description: 'The className of the tabs trigger',
+      type: 'string',
+      required: false,
+    },
+    value: {
+      description: 'The value of the tabs trigger',
+      type: 'string',
+      required: true,
+    },
+  }}
+/>
+
+### TabsContents
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the tabs contents',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    className: {
+      description: 'The className of the tabs contents',
+      type: 'string',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the tabs contents',
+      type: 'Transition',
+      required: false,
+      default: '{ duration: 0.4, ease: "easeInOut" }',
+    },
+  }}
+/>
+
+### TabsContent
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the tabs content',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    className: {
+      description: 'The className of the tabs content',
+      type: 'string',
+      required: false,
+    },
+    value: {
+      description: 'The value of the tabs content',
+      type: 'string',
+      required: true,
+    },
+  }}
+/>

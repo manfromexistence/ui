@@ -1,0 +1,87 @@
+---
+title: Tabs
+description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="radix-tabs-demo" />
+
+## Installation
+
+<ComponentInstallation name="radix-tabs" />
+
+## Props
+
+<div className="flex flex-row gap-x-3">
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/tabs"
+    text="Docs"
+  />
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/tabs#api-reference"
+    text="API Reference"
+  />
+</div>
+
+### Animate UI props
+
+#### TabsList
+
+<TypeTable
+  type={{
+    activeClassName: {
+      description: 'The class name to apply to the active tab',
+      type: 'string',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the tabs list',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', bounce: 0, stiffness: 200, damping: 25 }",
+    },
+  }}
+/>
+
+#### TabsContents
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the tabs contents',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    className: {
+      description: 'The class name to apply to the tabs contents',
+      type: 'string',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the tabs contents',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 200, damping: 25 }",
+    },
+  }}
+/>
+
+#### TabContent
+
+<TypeTable
+  type={{
+    transition: {
+      description: 'The transition of the tab content',
+      type: 'Transition',
+      required: false,
+      default: "{ duration: 0.5, ease: 'easeInOut' }",
+    },
+  }}
+/>
+
+## Credits
+
+- We use [Radix UI](https://www.radix-ui.com/primitives/docs/components/tabs) for the tabs component.
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/tabs) for the tabs style.

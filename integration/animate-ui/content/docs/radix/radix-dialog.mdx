@@ -1,0 +1,60 @@
+---
+title: Dialog
+description: A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+---
+
+<ComponentPreview name="radix-dialog-demo" />
+
+## Installation
+
+<ComponentInstallation name="radix-dialog" />
+
+## Examples
+
+### From Left
+
+Use the `from` prop to change the direction of the dialog flip animation.
+
+<ComponentPreview name="radix-dialog-from-demo" />
+
+## Props
+
+<div className="flex flex-row gap-x-3">
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/dialog"
+    text="Docs"
+  />
+  <ExternalLink
+    href="https://www.radix-ui.com/primitives/docs/components/dialog#api-reference"
+    text="API Reference"
+  />
+</div>
+
+### Animate UI props
+
+#### DialogContent
+
+<TypeTable
+  type={{
+    from: {
+      description: 'The direction of the dialog flip animation',
+      type: "'top' | 'bottom' | 'left' | 'right'",
+      required: false,
+      default: 'top',
+    },
+    transition: {
+      description: 'The transition of the dialog content',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 150, damping: 25 }",
+    },
+  }}
+/>
+
+## Credits
+
+- We use [Radix UI](https://www.radix-ui.com/primitives/docs/components/dialog) for the dialog component.
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/dialog) for the dialog style.

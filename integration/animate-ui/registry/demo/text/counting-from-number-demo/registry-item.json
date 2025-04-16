@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "counting-from-number-demo",
+  "type": "registry:ui",
+  "title": "Counting From Number Demo",
+  "description": "Demo showing a counting number starting from a specific number.",
+  "registryDependencies": ["https://animate-ui.com/r/counting-number"],
+  "files": [
+    {
+      "path": "registry/demo/text/counting-from-number-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/counting-from-number-demo.tsx"
+    }
+  ]
+}

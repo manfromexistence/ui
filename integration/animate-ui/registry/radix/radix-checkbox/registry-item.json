@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-checkbox",
+  "type": "registry:ui",
+  "title": "Checkbox",
+  "description": "Checkbox component",
+  "dependencies": ["motion", "@radix-ui/react-checkbox"],
+  "files": [
+    {
+      "path": "registry/radix/radix-checkbox/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/radix-checkbox.tsx"
+    }
+  ]
+}

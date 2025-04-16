@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typing-text",
+  "type": "registry:ui",
+  "title": "Typing Text",
+  "description": "Typing text component",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/text/typing-text/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/typing-text.tsx"
+    }
+  ]
+}

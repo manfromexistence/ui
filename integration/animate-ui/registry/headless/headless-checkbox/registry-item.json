@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "headless-checkbox",
+  "type": "registry:ui",
+  "title": "Headless Checkbox",
+  "description": "Headless UI checkbox component",
+  "dependencies": ["@headlessui/react", "motion"],
+  "files": [
+    {
+      "path": "registry/headless/headless-checkbox/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/headless-checkbox.tsx"
+    }
+  ]
+}

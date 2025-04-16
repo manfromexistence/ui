@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion-effect",
+  "type": "registry:ui",
+  "title": "Motion Effect",
+  "description": "Motion effect component that displays the motion effect.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/motion-effect/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport {\n  AnimatePresence,\n  motion,\n  useInView,\n  type MotionProps,\n  type UseInViewOptions,\n  type Transition,\n  type Variant,\n} from 'motion/react';\n\ninterface MotionEffectProps extends MotionProps {\n  children: React.ReactNode;\n  className?: string;\n  transition?: Transition;\n  delay?: number;\n  inView?: boolean;\n  inViewMargin?: UseInViewOptions['margin'];\n  inViewOnce?: boolean;\n  blur?: string | boolean;\n  slide?:\n    | {\n        direction?: 'up' | 'down' | 'left' | 'right';\n        offset?: number;\n      }\n    | boolean;\n  fade?: { initialOpacity?: number; opacity?: number } | boolean;\n  zoom?:\n    | {\n        initialScale?: number;\n        scale?: number;\n      }\n    | boolean;\n}\n\nconst MotionEffect = React.forwardRef<HTMLDivElement, MotionEffectProps>(\n  (\n    {\n      children,\n      className,\n      transition = { type: 'spring', stiffness: 200, damping: 20 },\n      delay = 0,\n      inView = false,\n      inViewMargin = '0px',\n      inViewOnce = true,\n      blur = false,\n      slide = false,\n      fade = false,\n      zoom = false,\n      ...props\n    }: MotionEffectProps,\n    ref,\n  ) => {\n    const localRef = React.useRef<HTMLDivElement>(null);\n    React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);\n\n    const inViewResult = useInView(localRef, {\n      once: inViewOnce,\n      margin: inViewMargin,\n    });\n    const isInView = !inView || inViewResult;\n\n    const hiddenVariant: Variant = {};\n    const visibleVariant: Variant = {};\n\n    if (slide) {\n      const offset = typeof slide === 'boolean' ? 100 : (slide.offset ?? 100);\n      const direction =\n        typeof slide === 'boolean' ? 'left' : (slide.direction ?? 'left');\n      const axis = direction === 'up' || direction === 'down' ? 'y' : 'x';\n      hiddenVariant[axis] =\n        direction === 'left' || direction === 'up' ? -offset : offset;\n      visibleVariant[axis] = 0;\n    }\n\n    if (fade) {\n      hiddenVariant.opacity =\n        typeof fade === 'boolean' ? 0 : (fade.initialOpacity ?? 0);\n      visibleVariant.opacity =\n        typeof fade === 'boolean' ? 1 : (fade.opacity ?? 1);\n    }\n\n    if (zoom) {\n      hiddenVariant.scale =\n        typeof zoom === 'boolean' ? 0.5 : (zoom.initialScale ?? 0.5);\n      visibleVariant.scale = typeof zoom === 'boolean' ? 1 : (zoom.scale ?? 1);\n    }\n\n    if (blur) {\n      hiddenVariant.filter =\n        typeof blur === 'boolean' ? 'blur(10px)' : `blur(${blur})`;\n      visibleVariant.filter = 'blur(0px)';\n    }\n\n    return (\n      <AnimatePresence>\n        <motion.div\n          ref={localRef}\n          initial=\"hidden\"\n          animate={isInView ? 'visible' : 'hidden'}\n          exit=\"hidden\"\n          variants={{\n            hidden: hiddenVariant,\n            visible: visibleVariant,\n          }}\n          transition={{\n            ...transition,\n            delay: (transition?.delay ?? 0) + delay,\n          }}\n          className={className}\n          {...props}\n        >\n          {children}\n        </motion.div>\n      </AnimatePresence>\n    );\n  },\n);\n\nMotionEffect.displayName = 'MotionEffect';\n\nexport { MotionEffect, type MotionEffectProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/motion-effect.tsx"
+    }
+  ]
+}

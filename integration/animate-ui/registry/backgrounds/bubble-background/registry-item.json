@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bubble-background",
+  "type": "registry:ui",
+  "title": "Bubble Background",
+  "description": "Bubble background component",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/backgrounds/bubble-background/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/bubble-background.tsx"
+    }
+  ]
+}

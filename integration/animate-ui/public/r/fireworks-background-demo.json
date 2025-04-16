@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fireworks-background-demo",
+  "type": "registry:ui",
+  "title": "Fireworks Background Demo",
+  "description": "Demo showing an animated fireworks background.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/fireworks-background"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/backgrounds/fireworks-background-demo/index.tsx",
+      "content": "'use client';\n\nimport { FireworksBackground } from '@/components/animate-ui/fireworks-background';\nimport { useTheme } from 'next-themes';\nexport default function FireworksBackgroundDemo() {\n  const { resolvedTheme: theme } = useTheme();\n\n  return (\n    <FireworksBackground\n      className=\"absolute inset-0 flex items-center justify-center rounded-xl\"\n      color={theme === 'dark' ? 'white' : 'black'}\n    />\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/fireworks-background-demo.tsx"
+    }
+  ]
+}

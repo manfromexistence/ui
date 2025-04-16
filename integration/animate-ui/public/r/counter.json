@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "counter",
+  "type": "registry:ui",
+  "title": "Counter",
+  "description": "Counter component",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "button",
+    "https://animate-ui.com/r/sliding-number"
+  ],
+  "files": [
+    {
+      "path": "registry/components/counter/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { type HTMLMotionProps, type Transition, motion } from 'motion/react';\n\nimport {\n  SlidingNumber,\n  type SlidingNumberProps,\n} from '@/components/animate-ui/sliding-number';\nimport { Button } from '@/components/ui/button';\nimport { cn } from '@/lib/utils';\n\ninterface CounterProps extends HTMLMotionProps<'div'> {\n  number: number;\n  setNumber: (number: number) => void;\n  slidingNumberProps?: Omit<SlidingNumberProps, 'number'>;\n  buttonProps?: Omit<React.ComponentProps<typeof Button>, 'onClick'>;\n  transition?: Transition;\n}\n\nconst Counter = React.forwardRef<HTMLDivElement, CounterProps>(\n  (\n    {\n      number,\n      setNumber,\n      className,\n      slidingNumberProps,\n      buttonProps,\n      transition = { type: 'spring', bounce: 0, stiffness: 300, damping: 30 },\n      ...props\n    },\n    ref,\n  ) => {\n    return (\n      <motion.div\n        ref={ref}\n        layout\n        transition={transition}\n        className={cn(\n          'flex items-center gap-x-2 p-1 rounded-xl bg-neutral-100 dark:bg-neutral-800',\n          className,\n        )}\n        {...props}\n      >\n        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>\n          <Button\n            size=\"icon\"\n            {...buttonProps}\n            onClick={() => setNumber(number - 1)}\n            className={cn(\n              'bg-white dark:bg-neutral-950 hover:bg-white/70 dark:hover:bg-neutral-950/70 text-neutral-950 dark:text-white text-2xl font-light pb-[3px]',\n              buttonProps?.className,\n            )}\n          >\n            -\n          </Button>\n        </motion.div>\n\n        <SlidingNumber\n          number={number}\n          {...slidingNumberProps}\n          className={cn('text-lg', slidingNumberProps?.className)}\n        />\n\n        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>\n          <Button\n            size=\"icon\"\n            {...buttonProps}\n            onClick={() => setNumber(number + 1)}\n            className={cn(\n              'bg-white dark:bg-neutral-950 hover:bg-white/70 dark:hover:bg-neutral-950/70 text-neutral-950 dark:text-white text-2xl font-light pb-[3px]',\n              buttonProps?.className,\n            )}\n          >\n            +\n          </Button>\n        </motion.div>\n      </motion.div>\n    );\n  },\n);\nCounter.displayName = 'Counter';\n\nexport { Counter, type CounterProps };\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/counter.tsx"
+    }
+  ]
+}

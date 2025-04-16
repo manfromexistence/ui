@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-editor-demo",
+  "type": "registry:ui",
+  "title": "Code Editor Demo",
+  "description": "Demo showing an animated code editor.",
+  "registryDependencies": ["https://animate-ui.com/r/code-editor"],
+  "files": [
+    {
+      "path": "registry/demo/components/code-editor-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/code-editor-demo.tsx"
+    }
+  ]
+}
