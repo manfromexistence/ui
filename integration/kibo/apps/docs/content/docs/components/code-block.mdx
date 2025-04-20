@@ -16,6 +16,7 @@ import { useState } from 'react';
 import {
   CodeBlock,
   CodeBlockHeader,
+  CodeBlockFiles,
   CodeBlockFilename,
   CodeBlockSelect,
   CodeBlockSelectTrigger,
@@ -53,19 +54,21 @@ const code = [{
 
 const Example = () => (
   <div className="p-4">
-    <CodeBlock defaultValue={code[0].language}>
+    <CodeBlock data={code} defaultValue={code[0].language}>
       <CodeBlockHeader>
-        {code.map((item) => (
-          <CodeBlockFilename key={item.language} value={item.language}>
-            {item.filename}
-          </CodeBlockFilename>
-        ))}
+        <CodeBlockFiles>
+          {((item) => (
+            <CodeBlockFilename key={item.language} value={item.language}>
+              {item.filename}
+            </CodeBlockFilename>
+          ))}
+        </CodeBlockFiles>
         <CodeBlockSelect>
           <CodeBlockSelectTrigger>
             <CodeBlockSelectValue />
           </CodeBlockSelectTrigger>
           <CodeBlockSelectContent>
-            {code.map((item) => (
+            {((item) => (
               <CodeBlockSelectItem key={item.language} value={item.language}>
                 {item.language}
               </CodeBlockSelectItem>
@@ -81,13 +84,13 @@ const Example = () => (
           }
         />
       </CodeBlockHeader>
-      {code.map((item) => (
-        <CodeBlockBody key={item.language} value={item.language}>
-          <CodeBlockContent language={item.language}>
+      <CodeBlockBody>
+        {((item) => (
+          <CodeBlockContent key={item.language} value={item.language} language={item.language}>
             {item.code}
           </CodeBlockContent>
-        </CodeBlockBody>
-      ))}
+        ))}
+      </CodeBlockBody>
     </CodeBlock>
   </div>
 );
@@ -113,15 +116,13 @@ export default Example;`} />
 
 ## Examples
 
-### No filename
+### No header
 
 <Preview name="code-block" code={`'use client';
 
 import { useState } from 'react';
 import {
   CodeBlock,
-  CodeBlockHeader,
-  CodeBlockFilename,
   CodeBlockSelect,
   CodeBlockSelectTrigger,
   CodeBlockSelectItem,
@@ -158,14 +159,14 @@ const code = [{
 
 const Example = () => (
   <div className="p-4">
-    <CodeBlock defaultValue={code[0].language}>
-      {code.map((item) => (
-        <CodeBlockBody key={item.language} value={item.language}>
-          <CodeBlockContent language={item.language}>
+    <CodeBlock data={code} defaultValue={code[0].language}>
+      <CodeBlockBody>
+        {((item) => (
+          <CodeBlockContent key={item.language} value={item.language} language={item.language}>
             {item.code}
           </CodeBlockContent>
-        </CodeBlockBody>
-      ))}
+        ))}
+      </CodeBlockBody>
     </CodeBlock>
   </div>
 );
@@ -180,6 +181,7 @@ import { useState } from 'react';
 import {
   CodeBlock,
   CodeBlockHeader,
+  CodeBlockFiles,
   CodeBlockFilename,
   CodeBlockSelect,
   CodeBlockSelectTrigger,
@@ -217,19 +219,21 @@ const code = [{
 
 const Example = () => (
   <div className="p-4">
-    <CodeBlock defaultValue={code[0].language}>
+    <CodeBlock data={code} defaultValue={code[0].language}>
       <CodeBlockHeader>
-        {code.map((item) => (
-          <CodeBlockFilename key={item.language} value={item.language}>
-            {item.filename}
-          </CodeBlockFilename>
-        ))}
+        <CodeBlockFiles>
+          {((item) => (
+            <CodeBlockFilename key={item.language} value={item.language}>
+              {item.filename}
+            </CodeBlockFilename>
+          ))}
+        </CodeBlockFiles>
         <CodeBlockSelect>
           <CodeBlockSelectTrigger>
             <CodeBlockSelectValue />
           </CodeBlockSelectTrigger>
           <CodeBlockSelectContent>
-            {code.map((item) => (
+            {((item) => (
               <CodeBlockSelectItem key={item.language} value={item.language}>
                 {item.language}
               </CodeBlockSelectItem>
@@ -245,13 +249,13 @@ const Example = () => (
           }
         />
       </CodeBlockHeader>
-      {code.map((item) => (
-        <CodeBlockBody key={item.language} value={item.language}>
-          <CodeBlockContent language={item.language}>
+      <CodeBlockBody>
+        {((item) => (
+          <CodeBlockContent key={item.language} value={item.language} language={item.language}>
             {item.code}
           </CodeBlockContent>
-        </CodeBlockBody>
-      ))}
+        ))}
+      </CodeBlockBody>
     </CodeBlock>
   </div>
 );
@@ -266,6 +270,7 @@ import { useState } from 'react';
 import {
   CodeBlock,
   CodeBlockHeader,
+  CodeBlockFiles,
   CodeBlockFilename,
   CodeBlockSelect,
   CodeBlockSelectTrigger,
@@ -283,7 +288,8 @@ const code = [{
   code: \`function MyComponent(props) {
   return (
     <div>
-      <h1>Hello, {props.name}!</h1> // [!code word:props.name]
+      // [!code word:props.name]
+      <h1>Hello, {props.name}!</h1>
       <p>This is an example React component.</p>
     </div>
   );
@@ -294,7 +300,8 @@ const code = [{
   code: \`function MyComponent(props: { name: string }) {
   return (
     <div>
-      <h1>Hello, {props.name}!</h1> // [!code word:props.name]
+      // [!code word:props.name]
+      <h1>Hello, {props.name}!</h1>
       <p>This is an example React component.</p>
     </div>
   );
@@ -303,19 +310,21 @@ const code = [{
 
 const Example = () => (
   <div className="p-4">
-    <CodeBlock defaultValue={code[0].language}>
+    <CodeBlock data={code} defaultValue={code[0].language}>
       <CodeBlockHeader>
-        {code.map((item) => (
-          <CodeBlockFilename key={item.language} value={item.language}>
-            {item.filename}
-          </CodeBlockFilename>
-        ))}
+        <CodeBlockFiles>
+          {((item) => (
+            <CodeBlockFilename key={item.language} value={item.language}>
+              {item.filename}
+            </CodeBlockFilename>
+          ))}
+        </CodeBlockFiles>
         <CodeBlockSelect>
           <CodeBlockSelectTrigger>
             <CodeBlockSelectValue />
           </CodeBlockSelectTrigger>
           <CodeBlockSelectContent>
-            {code.map((item) => (
+            {((item) => (
               <CodeBlockSelectItem key={item.language} value={item.language}>
                 {item.language}
               </CodeBlockSelectItem>
@@ -331,13 +340,13 @@ const Example = () => (
           }
         />
       </CodeBlockHeader>
-      {code.map((item) => (
-        <CodeBlockBody key={item.language} value={item.language}>
-          <CodeBlockContent language={item.language}>
+      <CodeBlockBody>
+        {((item) => (
+          <CodeBlockContent key={item.language} value={item.language} language={item.language}>
             {item.code}
           </CodeBlockContent>
-        </CodeBlockBody>
-      ))}
+        ))}
+      </CodeBlockBody>
     </CodeBlock>
   </div>
 );
@@ -352,6 +361,7 @@ import { useState } from 'react';
 import {
   CodeBlock,
   CodeBlockHeader,
+  CodeBlockFiles,
   CodeBlockFilename,
   CodeBlockSelect,
   CodeBlockSelectTrigger,
@@ -369,8 +379,8 @@ const code = [{
   code: \`function MyComponent(props) {
   return (
     <div>
-      <h1>Hello, random user!</h1>// [!code --]
-      <h1>Hello, {props.name}!</h1>// [!code ++]
+      <h1>Hello, random user!</h1> // [!code --]
+      <h1>Hello, {props.name}!</h1> // [!code ++]
       <p>This is an example React component.</p>
     </div>
   );
@@ -381,8 +391,8 @@ const code = [{
   code: \`function MyComponent(props: { name: string }) {
   return (
     <div>
-      <h1>Hello, random user!</h1>// [!code --]
-      <h1>Hello, {props.name}!</h1>// [!code ++]
+      <h1>Hello, random user!</h1> // [!code --]
+      <h1>Hello, {props.name}!</h1> // [!code ++]
       <p>This is an example React component.</p>
     </div>
   );
@@ -391,19 +401,21 @@ const code = [{
 
 const Example = () => (
   <div className="p-4">
-    <CodeBlock defaultValue={code[0].language}>
+    <CodeBlock data={code} defaultValue={code[0].language}>
       <CodeBlockHeader>
-        {code.map((item) => (
-          <CodeBlockFilename key={item.language} value={item.language}>
-            {item.filename}
-          </CodeBlockFilename>
-        ))}
+        <CodeBlockFiles>
+          {((item) => (
+            <CodeBlockFilename key={item.language} value={item.language}>
+              {item.filename}
+            </CodeBlockFilename>
+          ))}
+        </CodeBlockFiles>
         <CodeBlockSelect>
           <CodeBlockSelectTrigger>
             <CodeBlockSelectValue />
           </CodeBlockSelectTrigger>
           <CodeBlockSelectContent>
-            {code.map((item) => (
+            {((item) => (
               <CodeBlockSelectItem key={item.language} value={item.language}>
                 {item.language}
               </CodeBlockSelectItem>
@@ -419,13 +431,13 @@ const Example = () => (
           }
         />
       </CodeBlockHeader>
-      {code.map((item) => (
-        <CodeBlockBody key={item.language} value={item.language}>
-          <CodeBlockContent language={item.language}>
+      <CodeBlockBody>
+        {((item) => (
+          <CodeBlockContent key={item.language} value={item.language} language={item.language}>
             {item.code}
           </CodeBlockContent>
-        </CodeBlockBody>
-      ))}
+        ))}
+      </CodeBlockBody>
     </CodeBlock>
   </div>
 );
@@ -440,6 +452,7 @@ import { useState } from 'react';
 import {
   CodeBlock,
   CodeBlockHeader,
+  CodeBlockFiles,
   CodeBlockFilename,
   CodeBlockSelect,
   CodeBlockSelectTrigger,
@@ -477,19 +490,21 @@ const code = [{
 
 const Example = () => (
   <div className="p-4">
-    <CodeBlock defaultValue={code[0].language}>
+    <CodeBlock data={code} defaultValue={code[0].language}>
       <CodeBlockHeader>
-        {code.map((item) => (
-          <CodeBlockFilename key={item.language} value={item.language}>
-            {item.filename}
-          </CodeBlockFilename>
-        ))}
+        <CodeBlockFiles>
+          {((item) => (
+            <CodeBlockFilename key={item.language} value={item.language}>
+              {item.filename}
+            </CodeBlockFilename>
+          ))}
+        </CodeBlockFiles>
         <CodeBlockSelect>
           <CodeBlockSelectTrigger>
             <CodeBlockSelectValue />
           </CodeBlockSelectTrigger>
           <CodeBlockSelectContent>
-            {code.map((item) => (
+            {((item) => (
               <CodeBlockSelectItem key={item.language} value={item.language}>
                 {item.language}
               </CodeBlockSelectItem>
@@ -505,13 +520,13 @@ const Example = () => (
           }
         />
       </CodeBlockHeader>
-      {code.map((item) => (
-        <CodeBlockBody key={item.language} value={item.language}>
-          <CodeBlockContent language={item.language}>
+      <CodeBlockBody>
+        {((item) => (
+          <CodeBlockContent key={item.language} value={item.language} language={item.language}>
             {item.code}
           </CodeBlockContent>
-        </CodeBlockBody>
-      ))}
+        ))}
+      </CodeBlockBody>
     </CodeBlock>
   </div>
 );
@@ -526,6 +541,7 @@ import { useState } from 'react';
 import {
   CodeBlock,
   CodeBlockHeader,
+  CodeBlockFiles,
   CodeBlockFilename,
   CodeBlockSelect,
   CodeBlockSelectTrigger,
@@ -563,19 +579,21 @@ const code = [{
 
 const Example = () => (
   <div className="p-4">
-    <CodeBlock defaultValue={code[0].language}>
+    <CodeBlock data={code} defaultValue={code[0].language}>
       <CodeBlockHeader>
-        {code.map((item) => (
-          <CodeBlockFilename key={item.language} value={item.language}>
-            {item.filename}
-          </CodeBlockFilename>
-        ))}
+        <CodeBlockFiles>
+          {((item) => (
+            <CodeBlockFilename key={item.language} value={item.language}>
+              {item.filename}
+            </CodeBlockFilename>
+          ))}
+        </CodeBlockFiles>
         <CodeBlockSelect>
           <CodeBlockSelectTrigger>
             <CodeBlockSelectValue />
           </CodeBlockSelectTrigger>
           <CodeBlockSelectContent>
-            {code.map((item) => (
+            {((item) => (
               <CodeBlockSelectItem key={item.language} value={item.language}>
                 {item.language}
               </CodeBlockSelectItem>
@@ -591,13 +609,13 @@ const Example = () => (
           }
         />
       </CodeBlockHeader>
-      {code.map((item) => (
-        <CodeBlockBody key={item.language} value={item.language}>
-          <CodeBlockContent lineNumbers={false}>
+      <CodeBlockBody>
+        {((item) => (
+          <CodeBlockContent key={item.language} value={item.language} language={item.language} lineNumbers={false}>
             {item.code}
           </CodeBlockContent>
-        </CodeBlockBody>
-      ))}
+        ))}
+      </CodeBlockBody>
     </CodeBlock>
   </div>
 );
@@ -612,6 +630,7 @@ import { useState } from 'react';
 import {
   CodeBlock,
   CodeBlockHeader,
+  CodeBlockFiles,
   CodeBlockFilename,
   CodeBlockSelect,
   CodeBlockSelectTrigger,
@@ -649,19 +668,21 @@ const code = [{
 
 const Example = () => (
   <div className="p-4">
-    <CodeBlock defaultValue={code[0].language}>
+    <CodeBlock data={code} defaultValue={code[0].language}>
       <CodeBlockHeader>
-        {code.map((item) => (
-          <CodeBlockFilename key={item.language} value={item.language}>
-            {item.filename}
-          </CodeBlockFilename>
-        ))}
+        <CodeBlockFiles>
+          {((item) => (
+            <CodeBlockFilename key={item.language} value={item.language}>
+              {item.filename}
+            </CodeBlockFilename>
+          ))}
+        </CodeBlockFiles>
         <CodeBlockSelect>
           <CodeBlockSelectTrigger>
             <CodeBlockSelectValue />
           </CodeBlockSelectTrigger>
           <CodeBlockSelectContent>
-            {code.map((item) => (
+            {((item) => (
               <CodeBlockSelectItem key={item.language} value={item.language}>
                 {item.language}
               </CodeBlockSelectItem>
@@ -677,13 +698,13 @@ const Example = () => (
           }
         />
       </CodeBlockHeader>
-      {code.map((item) => (
-        <CodeBlockBody key={item.language} value={item.language}>
-          <CodeBlockContent className="[&_.line.highlighted]:bg-purple-50 [&_.line.highlighted]:after:bg-purple-500">
+      <CodeBlockBody>
+        {((item) => (
+          <CodeBlockContent key={item.language} value={item.language} language={item.language}>
             {item.code}
           </CodeBlockContent>
-        </CodeBlockBody>
-      ))}
+        ))}
+      </CodeBlockBody>
     </CodeBlock>
   </div>
 );
@@ -698,6 +719,7 @@ import { useState } from 'react';
 import {
   CodeBlock,
   CodeBlockHeader,
+  CodeBlockFiles,
   CodeBlockFilename,
   CodeBlockSelect,
   CodeBlockSelectTrigger,
@@ -735,19 +757,21 @@ const code = [{
 
 const Example = () => (
   <div className="p-4">
-    <CodeBlock defaultValue={code[0].language}>
+    <CodeBlock data={code} defaultValue={code[0].language}>
       <CodeBlockHeader>
-        {code.map((item) => (
-          <CodeBlockFilename key={item.language} value={item.language}>
-            {item.filename}
-          </CodeBlockFilename>
-        ))}
+        <CodeBlockFiles>
+          {((item) => (
+            <CodeBlockFilename key={item.language} value={item.language}>
+              {item.filename}
+            </CodeBlockFilename>
+          ))}
+        </CodeBlockFiles>
         <CodeBlockSelect>
           <CodeBlockSelectTrigger>
             <CodeBlockSelectValue />
           </CodeBlockSelectTrigger>
           <CodeBlockSelectContent>
-            {code.map((item) => (
+            {((item) => (
               <CodeBlockSelectItem key={item.language} value={item.language}>
                 {item.language}
               </CodeBlockSelectItem>
@@ -763,13 +787,13 @@ const Example = () => (
           }
         />
       </CodeBlockHeader>
-      {code.map((item) => (
-        <CodeBlockBody key={item.language} value={item.language}>
-          <CodeBlockContent syntaxHighlighting={false}>
+      <CodeBlockBody>
+        {((item) => (
+          <CodeBlockContent key={item.language} value={item.language} language={item.language} syntaxHighlighting={false}>
             {item.code}
           </CodeBlockContent>
-        </CodeBlockBody>
-      ))}
+        ))}
+      </CodeBlockBody>
     </CodeBlock>
   </div>
 );
@@ -784,6 +808,7 @@ import { useState } from 'react';
 import {
   CodeBlock,
   CodeBlockHeader,
+  CodeBlockFiles,
   CodeBlockFilename,
   CodeBlockSelect,
   CodeBlockSelectTrigger,
@@ -822,19 +847,21 @@ const code = [{
 
 const Example = () => (
   <div className="p-4 dark">
-    <CodeBlock defaultValue={code[0].language}>
+    <CodeBlock data={code} defaultValue={code[0].language}>
       <CodeBlockHeader>
-        {code.map((item) => (
-          <CodeBlockFilename key={item.language} value={item.language}>
-            {item.filename}
-          </CodeBlockFilename>
-        ))}
+        <CodeBlockFiles>
+          {((item) => (
+            <CodeBlockFilename key={item.language} value={item.language}>
+              {item.filename}
+            </CodeBlockFilename>
+          ))}
+        </CodeBlockFiles>
         <CodeBlockSelect>
           <CodeBlockSelectTrigger>
             <CodeBlockSelectValue />
           </CodeBlockSelectTrigger>
           <CodeBlockSelectContent>
-            {code.map((item) => (
+            {((item) => (
               <CodeBlockSelectItem key={item.language} value={item.language}>
                 {item.language}
               </CodeBlockSelectItem>
@@ -850,13 +877,13 @@ const Example = () => (
           }
         />
       </CodeBlockHeader>
-      {code.map((item) => (
-        <CodeBlockBody key={item.language} value={item.language}>
-          <CodeBlockContent language={item.language}>
+      <CodeBlockBody>
+        {((item) => (
+          <CodeBlockContent key={item.language} value={item.language} language={item.language}>
             {item.code}
           </CodeBlockContent>
-        </CodeBlockBody>
-      ))}
+        ))}
+      </CodeBlockBody>
     </CodeBlock>
   </div>
 );
@@ -871,6 +898,7 @@ import { useState } from 'react';
 import {
   CodeBlock,
   CodeBlockHeader,
+  CodeBlockFiles,
   CodeBlockFilename,
   CodeBlockSelect,
   CodeBlockSelectTrigger,
@@ -908,19 +936,21 @@ const code = [{
 
 const Example = () => (
   <div className="p-4">
-    <CodeBlock defaultValue={code[0].language}>
+    <CodeBlock data={code} defaultValue={code[0].language}>
       <CodeBlockHeader>
-        {code.map((item) => (
-          <CodeBlockFilename key={item.language} value={item.language}>
-            {item.filename}
-          </CodeBlockFilename>
-        ))}
+        <CodeBlockFiles>
+          {((item) => (
+            <CodeBlockFilename key={item.language} value={item.language}>
+              {item.filename}
+            </CodeBlockFilename>
+          ))}
+        </CodeBlockFiles>
         <CodeBlockSelect>
           <CodeBlockSelectTrigger>
             <CodeBlockSelectValue />
           </CodeBlockSelectTrigger>
           <CodeBlockSelectContent>
-            {code.map((item) => (
+            {((item) => (
               <CodeBlockSelectItem key={item.language} value={item.language}>
                 {item.language}
               </CodeBlockSelectItem>
@@ -936,14 +966,22 @@ const Example = () => (
           }
         />
       </CodeBlockHeader>
-      {code.map((item) => (
-        <CodeBlockBody key={item.language} value={item.language}>
-          <CodeBlockContent language={item.language} themes={{
-            light: 'github-light',
-            dark: 'github-dark-default',
-          }}>
+      <CodeBlockBody>
+        {((item) => (
+          <CodeBlockContent
+            key={item.language}
+            value={item.language}
+            language={item.language}
+            themes={{
+              light: 'github-light',
+              dark: 'github-dark-default',
+            }}
+          >
             {item.code}
           </CodeBlockContent>
+        ))}
+      </CodeBlockBody>
+    </CodeBlock>
         </CodeBlockBody>
       ))}
     </CodeBlock>
@@ -962,13 +1000,7 @@ You can use the RSC version of the Code Block component by importing the `CodeBl
 import {
   CodeBlock,
   CodeBlockHeader,
-  CodeBlockFilename,
-  CodeBlockSelect,
-  CodeBlockSelectTrigger,
-  CodeBlockSelectItem,
-  CodeBlockSelectValue,
-  CodeBlockSelectContent,
-  CodeBlockCopyButton,
+  // ... the rest of the components
   CodeBlockBody,
   // CodeBlockContent,
 } from '@/components/ui/kibo-ui/code-block';
@@ -986,6 +1018,10 @@ The Code Block component is made up of the following subcomponents:
 ### CodeBlockHeader
 
 <AutoTypeTable path="node_modules/@repo/code-block/index.tsx" name="CodeBlockHeaderProps" />
+
+### CodeBlockFiles
+
+<AutoTypeTable path="node_modules/@repo/code-block/index.tsx" name="CodeBlockFilesProps" />
 
 ### CodeBlockFilename
 

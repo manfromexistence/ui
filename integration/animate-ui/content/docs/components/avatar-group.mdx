@@ -1,0 +1,211 @@
+---
+title: Avatar Group
+description: An animated avatar group that displays overlapping user images and smoothly shifts each avatar forward on hover to highlight it.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+new: true
+---
+
+## AvatarGroup
+
+An animated avatar group built with TailwindCSS and Motion, where avatars gently shift forward on hover to highlight each user.
+For a CSS-only version with a mask effect that blends seamlessly into any background, check out the [AvatarGroupMask](#avatargroupmask) component.
+
+<ComponentPreview name="avatar-group-demo" />
+
+### Installation
+
+<ComponentInstallation name="avatar-group" />
+
+### Usage
+
+```tsx
+<AvatarGroup>
+  {AVATARS.map((avatar, index) => (
+    <Avatar key={index}>
+      <AvatarImage src={avatar.src} />
+      <AvatarFallback>{avatar.fallback}</AvatarFallback>
+      <AvatarGroupTooltip>
+        <p>{avatar.tooltip}</p>
+      </AvatarGroupTooltip>
+    </Avatar>
+  ))}
+</AvatarGroup>
+```
+
+### Examples
+
+#### Bottom translation
+
+<ComponentPreview name="avatar-group-bottom-demo" />
+
+### Props
+
+#### AvatarGroup
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The avatars to display in the avatar group',
+      type: 'React.ReactElement[]',
+      required: true,
+    },
+    className: {
+      description: 'The className of the avatar group',
+      type: 'string',
+      required: false,
+    },
+    transition: {
+      description: 'The transition of the avatar group',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 300, damping: 17 }",
+    },
+    invertOverlap: {
+      description:
+        'By default, the avatar group is rendered in the same z-index as the avatars. This prop allows you to invert the z-index of the avatar group.',
+      type: 'boolean',
+      required: false,
+      default: false,
+    },
+    translate: {
+      description: 'The translate y of the avatar group',
+      type: 'string | number',
+      required: false,
+      default: '-30%',
+    },
+    tooltipProps: {
+      description: 'The props to pass to the tooltip',
+      type: 'TooltipProps',
+      required: false,
+      default: "{ side: 'top', sideOffset: 20 }",
+    },
+  }}
+/>
+
+#### AvatarGroupTooltip
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the avatar group tooltip',
+      type: 'React.ReactNode',
+      required: true,
+    },
+  }}
+/>
+
+## AvatarGroupMask
+
+A sleek, CSS-only avatar group using TailwindCSS for the translate animation and a mask effect. Perfect for layered or custom backgrounds — inspired by [Jhey](https://codepen.io/jh3y/pen/yyLmmMW)'s awesome work.
+
+<Callout type="warn">
+  You need **TailwindCSS 4.1 or higher** to use this component.
+</Callout>
+
+<ComponentPreview name="avatar-group-mask-demo" />
+
+### Installation
+
+<ComponentInstallation name="avatar-group-mask" />
+
+### Usage
+
+```tsx
+<AvatarGroup>
+  {AVATARS.map((avatar, index) => (
+    <Avatar key={index}>
+      <AvatarImage src={avatar.src} />
+      <AvatarFallback>{avatar.fallback}</AvatarFallback>
+      <AvatarGroupTooltip>
+        <p>{avatar.tooltip}</p>
+      </AvatarGroupTooltip>
+    </Avatar>
+  ))}
+</AvatarGroup>
+```
+
+### Examples
+
+#### Bottom translation
+
+<ComponentPreview name="avatar-group-mask-bottom-demo" />
+
+### Props
+
+#### AvatarGroup
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The avatars to display in the avatar group',
+      type: 'React.ReactElement[]',
+      required: true,
+    },
+    className: {
+      description: 'The className of the avatar group',
+      type: 'string',
+      required: false,
+    },
+    invertOverlap: {
+      description:
+        'By default, mask is rendered in the left side of the avatar group. This prop allows you to invert the mask to the right side.',
+      type: 'boolean',
+      required: false,
+      default: false,
+    },
+    size: {
+      description: 'The size of the avatar group',
+      type: 'string | number',
+      required: false,
+      default: '43px',
+    },
+    border: {
+      description: 'The border of the avatar group',
+      type: 'string | number',
+      required: false,
+      default: '3px',
+    },
+    columnSize: {
+      description: 'The size of the avatar group',
+      type: 'string | number',
+      required: false,
+      default: '37px',
+    },
+    align: {
+      description: 'The alignment of the avatar group',
+      type: '"start" | "center" | "end"',
+      required: false,
+      default: 'end',
+    },
+    translate: {
+      description: 'The translate y of the avatar group',
+      type: 'number',
+      required: false,
+      default: '-30%',
+    },
+    tooltipProps: {
+      description: 'The props to pass to the tooltip',
+      type: 'TooltipProps',
+      required: false,
+      default: "{ side: 'top', sideOffset: 20 }",
+    },
+  }}
+/>
+
+#### AvatarGroupTooltip
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the avatar group tooltip',
+      type: 'React.ReactNode',
+      required: true,
+    },
+  }}
+/>
+
+## Credits
+
+- Credits to [Jhey](https://codepen.io/jh3y/pen/yyLmmMW) for the inspiration.

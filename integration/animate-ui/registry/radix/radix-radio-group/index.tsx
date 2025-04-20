@@ -3,7 +3,12 @@
 import * as React from 'react';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import { Circle } from 'lucide-react';
-import { AnimatePresence, motion, type Transition } from 'motion/react';
+import {
+  AnimatePresence,
+  motion,
+  type HTMLMotionProps,
+  type Transition,
+} from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -61,9 +66,10 @@ RadioGroupIndicator.displayName = RadioGroupPrimitive.Indicator.displayName;
 
 type RadioGroupItemProps = React.ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Item
-> & {
-  transition?: Transition;
-};
+> &
+  HTMLMotionProps<'button'> & {
+    transition?: Transition;
+  };
 
 const RadioGroupItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
@@ -86,6 +92,7 @@ const RadioGroupItem = React.forwardRef<
           )}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          {...props}
         >
           <RadioGroupIndicator transition={transition} />
         </motion.button>

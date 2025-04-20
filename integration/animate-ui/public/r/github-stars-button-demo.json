@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demo/buttons/github-stars-button-demo/index.tsx",
-      "content": "import { GitHubStarsButton } from '@/components/animate-ui/github-stars-button';\n\nexport const GitHubStarsButtonDemo = () => {\n  return <GitHubStarsButton username=\"imskyleen\" repo=\"animate-ui\" />;\n};\n",
+      "content": "import { GitHubStarsButton } from '@/components/animate-ui/github-stars-button';\n\nexport const GitHubStarsButtonDemo = () => {\n  return <GitHubStarsButton username=\"animate-ui\" repo=\"animate-ui\" />;\n};\n",
       "type": "registry:ui",
       "target": "components/animate-ui/github-stars-button-demo.tsx"
     }

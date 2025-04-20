@@ -2,17 +2,18 @@
 
 import * as React from 'react';
 import * as SwitchPrimitives from '@radix-ui/react-switch';
-import { motion } from 'motion/react';
+import { motion, type HTMLMotionProps } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
 type SwitchProps = React.ComponentPropsWithoutRef<
   typeof SwitchPrimitives.Root
-> & {
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
-  thumbIcon?: React.ReactNode;
-};
+> &
+  HTMLMotionProps<'button'> & {
+    leftIcon?: React.ReactNode;
+    rightIcon?: React.ReactNode;
+    thumbIcon?: React.ReactNode;
+  };
 
 const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
@@ -52,6 +53,7 @@ const Switch = React.forwardRef<
           onTapStart={() => setIsTapped(true)}
           onTapCancel={() => setIsTapped(false)}
           onTap={() => setIsTapped(false)}
+          {...props}
         >
           {leftIcon && (
             <motion.div

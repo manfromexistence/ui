@@ -6,7 +6,14 @@ export const CodeEditorDemo = () => {
     <CodeEditor
       cursor
       className="w-[640px] h-[480px]"
-      code={`'use client';
+      lang="tsx"
+      title="component.tsx"
+      icon={<ReactIcon />}
+      duration={15}
+      delay={0.5}
+      copyButton
+    >
+      {`'use client';
 
 import * as React from 'react';
 
@@ -26,12 +33,6 @@ const MyComponent = React.forwardRef<HTMLDivElement, MyComponentProps>(
 MyComponent.displayName = 'MyComponent';
 
 export { MyComponent, type MyComponentProps };`}
-      lang="tsx"
-      title="component.tsx"
-      icon={<ReactIcon />}
-      duration={15}
-      delay={0.5}
-      copyButton
-    />
+    </CodeEditor>
   );
 };

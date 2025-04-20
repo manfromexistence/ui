@@ -109,15 +109,15 @@ const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
         ref={ref}
       >
         <AnimatePresence mode="wait">
-          <motion.div
-            key={isCopied ? 'check' : 'copy'}
+          <motion.span
+            key={localIsCopied ? 'check' : 'copy'}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0 }}
             transition={{ duration: 0.15 }}
           >
             <Icon />
-          </motion.div>
+          </motion.span>
         </AnimatePresence>
       </motion.button>
     );

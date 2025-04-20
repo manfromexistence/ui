@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-group",
+  "type": "registry:ui",
+  "title": "Avatar Group",
+  "description": "Avatar group component",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "https://animate-ui.com/r/tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/components/avatar-group/index.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { motion, type Transition } from 'motion/react';\n\nimport { cn } from '@/lib/utils';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n  type TooltipProps,\n  type TooltipContentProps,\n} from '@/components/animate-ui/tooltip';\n\ninterface AvatarProps extends TooltipProps {\n  children: React.ReactNode;\n  index: number;\n  zIndex: number;\n  transition: Transition;\n  translate: string | number;\n}\n\nconst Avatar: React.FC<AvatarProps> = ({\n  children,\n  index,\n  zIndex,\n  transition,\n  translate,\n  ...props\n}: AvatarProps) => (\n  <Tooltip {...props}>\n    <TooltipTrigger>\n      <motion.div\n        initial=\"initial\"\n        whileHover=\"hover\"\n        whileTap=\"hover\"\n        className=\"relative\"\n        style={{ zIndex }}\n      >\n        <motion.div\n          variants={{\n            initial: { translateY: 0 },\n            hover: { translateY: translate },\n          }}\n          transition={transition}\n        >\n          {children}\n        </motion.div>\n      </motion.div>\n    </TooltipTrigger>\n  </Tooltip>\n);\n\ntype AvatarGroupTooltipProps = TooltipContentProps;\n\nconst AvatarGroupTooltip: React.FC<AvatarGroupTooltipProps> = ({\n  children,\n  ...props\n}) => <TooltipContent {...props}>{children}</TooltipContent>;\nAvatarGroupTooltip.displayName = 'AvatarGroupTooltip';\n\ninterface AvatarGroupProps\n  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'translate'> {\n  children: React.ReactElement[];\n  transition?: Transition;\n  invertOverlap?: boolean;\n  translate?: string | number;\n  tooltipProps?: Omit<TooltipProps, 'children'>;\n}\n\nconst AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(\n  (\n    {\n      children,\n      className,\n      transition = { type: 'spring', stiffness: 300, damping: 17 },\n      invertOverlap = false,\n      translate = '-30%',\n      tooltipProps = { side: 'top', sideOffset: 20 },\n      ...props\n    },\n    ref,\n  ) => (\n    <TooltipProvider openDelay={0} closeDelay={0}>\n      <div\n        ref={ref}\n        className={cn('flex flex-row -space-x-2 items-center h-8', className)}\n        {...props}\n      >\n        {children?.map((child, index) => (\n          <Avatar\n            key={index}\n            index={index}\n            zIndex={\n              invertOverlap ? React.Children.count(children) - index : index\n            }\n            transition={transition}\n            translate={translate}\n            {...tooltipProps}\n          >\n            {child}\n          </Avatar>\n        ))}\n      </div>\n    </TooltipProvider>\n  ),\n);\nAvatarGroup.displayName = 'AvatarGroup';\n\nexport {\n  AvatarGroup,\n  AvatarGroupTooltip,\n  type AvatarGroupProps,\n  type AvatarGroupTooltipProps,\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/avatar-group.tsx"
+    }
+  ]
+}

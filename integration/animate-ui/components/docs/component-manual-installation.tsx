@@ -9,7 +9,6 @@ import { CollapsibleTrigger } from 'fumadocs-ui/components/ui/collapsible';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { useRef, useState } from 'react';
-import { track } from '@vercel/analytics';
 import ReactIcon from '../icons/react-icon';
 
 const getDepsCommands = (dependencies?: string[]) => {
@@ -102,11 +101,6 @@ export const ComponentManualInstallation = ({
                   lang="tsx"
                   title={`${name}.tsx`}
                   icon={<ReactIcon />}
-                  onCopy={() => {
-                    track('Manual Code Copy', {
-                      component: name,
-                    });
-                  }}
                 />
               </div>
             </CollapsibleContent>

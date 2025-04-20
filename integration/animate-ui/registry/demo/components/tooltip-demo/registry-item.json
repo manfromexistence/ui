@@ -1,0 +1,42 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip-demo",
+  "type": "registry:ui",
+  "title": "Tooltip Demo",
+  "description": "Demo showing an animated tooltip.",
+  "registryDependencies": ["https://animate-ui.com/r/tooltip"],
+  "files": [
+    {
+      "path": "registry/demo/components/tooltip-demo/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/tooltip-demo.tsx"
+    }
+  ],
+  "demoProps": {
+    "Tooltip Provider": {
+      "openDelay": { "value": 700, "min": 0, "max": 2000, "step": 100 },
+      "closeDelay": { "value": 300, "min": 0, "max": 2000, "step": 100 }
+    },
+    "Tooltip": {
+      "side": {
+        "value": "top",
+        "options": {
+          "top": "top",
+          "bottom": "bottom",
+          "left": "left",
+          "right": "right"
+        }
+      },
+      "sideOffset": { "value": 4 },
+      "align": {
+        "value": "center",
+        "options": {
+          "start": "start",
+          "center": "center",
+          "end": "end"
+        }
+      },
+      "alignOffset": { "value": 0 }
+    }
+  }
+}

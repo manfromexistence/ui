@@ -1,0 +1,125 @@
+---
+title: Tooltip
+description: An animated tooltip that shows contextual info on hover or focus and smoothly glides to the next element without disappearing between transitions.
+author:
+  name: imskyleen
+  url: https://github.com/imskyleen
+new: true
+---
+
+<ComponentPreview name="tooltip-demo" />
+
+## Installation
+
+<ComponentInstallation name="tooltip" />
+
+## Usage
+
+```tsx
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger>Hover me</TooltipTrigger>
+    <TooltipContent>Tooltip content</TooltipContent>
+  </Tooltip>
+  <Tooltip>
+    <TooltipTrigger>And me</TooltipTrigger>
+    <TooltipContent>Tooltip content</TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+```
+
+## Props
+
+### TooltipProvider
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the tooltip provider',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    openDelay: {
+      description: 'The delay in milliseconds before the tooltip is shown',
+      type: 'number',
+      required: false,
+      default: 700,
+    },
+    closeDelay: {
+      description: 'The delay in milliseconds before the tooltip is hidden',
+      type: 'number',
+      required: false,
+      default: 300,
+    },
+    transition: {
+      description: 'The transition of the tooltip',
+      type: 'Transition',
+      required: false,
+      default: "{ type: 'spring', stiffness: 300, damping: 25 }",
+    },
+  }}
+/>
+
+### Tooltip
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the tooltip',
+      type: 'React.ReactNode',
+      required: true,
+    },
+    side: {
+      description: 'The side of the tooltip',
+      type: '"top" | "bottom" | "left" | "right"',
+      required: false,
+      default: 'top',
+    },
+    sideOffset: {
+      description: 'The offset of the tooltip',
+      type: 'number',
+      required: false,
+      default: 4,
+    },
+    align: {
+      description: 'The alignment of the tooltip',
+      type: '"start" | "center" | "end"',
+      required: false,
+      default: 'center',
+    },
+    alignOffset: {
+      description: 'The offset of the tooltip',
+      type: 'number',
+      required: false,
+      default: 0,
+    },
+  }}
+/>
+
+### TooltipContent
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the tooltip content',
+      type: 'React.ReactNode',
+      required: true,
+    },
+  }}
+/>
+
+### TooltipTrigger
+
+<TypeTable
+  type={{
+    children: {
+      description: 'The children of the tooltip trigger',
+      type: 'React.ReactElement',
+      required: true,
+    },
+  }}
+/>
+
+## Credits
+
+- We take our inspiration from [Shadcn UI](https://ui.shadcn.com/docs/components/tooltip) for the tooltip style.

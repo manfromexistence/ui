@@ -157,6 +157,19 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "smooth-cursor",
+    description:
+      "A customizable, physics-based smooth cursor animation component with spring animations and rotation effects",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/magicui/smooth-cursor.tsx",
+        type: "registry:ui",
+      },
+    ],
+    dependencies: ["framer-motion"],
+  },
+  {
     name: "neon-gradient-card",
     type: "registry:ui",
     title: "Neon Gradient Card",
@@ -356,7 +369,7 @@ export const ui: Registry["items"] = [
     title: "Globe",
     description:
       "An autorotating, interactive, and highly performant globe made using WebGL.",
-    dependencies: ["cobe"],
+    dependencies: ["cobe", "motion"],
     files: [
       {
         path: "registry/magicui/globe.tsx",
@@ -1157,6 +1170,20 @@ export const ui: Registry["items"] = [
         path: "registry/magicui/terminal.tsx",
         type: "registry:ui",
         target: "components/magicui/terminal.tsx",
+      },
+    ],
+  },
+  {
+    name: "video-text",
+    type: "registry:ui",
+    title: "Video Text",
+    description:
+      "A component that displays text with a video playing in the background.",
+    files: [
+      {
+        path: "registry/magicui/video-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/video-text.tsx",
       },
     ],
   },

@@ -8,7 +8,7 @@ import XIcon from '@/components/icons/x-icon';
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <DocsLayout
-      githubUrl="https://github.com/imskyleen/animate-ui"
+      githubUrl="https://github.com/animate-ui/animate-ui"
       links={[
         {
           icon: <XIcon />,

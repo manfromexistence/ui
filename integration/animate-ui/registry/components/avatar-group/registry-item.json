@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-group",
+  "type": "registry:ui",
+  "title": "Avatar Group",
+  "description": "Avatar group component",
+  "dependencies": ["motion"],
+  "registryDependencies": ["https://animate-ui.com/r/tooltip"],
+  "files": [
+    {
+      "path": "registry/components/avatar-group/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/avatar-group.tsx"
+    }
+  ]
+}

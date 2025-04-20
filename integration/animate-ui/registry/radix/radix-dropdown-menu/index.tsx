@@ -3,7 +3,12 @@
 import * as React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { Check, ChevronRight, Circle } from 'lucide-react';
-import { AnimatePresence, motion, type Transition } from 'motion/react';
+import {
+  AnimatePresence,
+  motion,
+  type HTMLMotionProps,
+  type Transition,
+} from 'motion/react';
 
 import { cn } from '@/lib/utils';
 import {
@@ -146,9 +151,10 @@ DropdownMenuSubContent.displayName =
 
 type DropdownMenuContentProps = React.ComponentPropsWithoutRef<
   typeof DropdownMenuPrimitive.Content
-> & {
-  transition?: Transition;
-};
+> &
+  HTMLMotionProps<'div'> & {
+    transition?: Transition;
+  };
 const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
   DropdownMenuContentProps
@@ -194,7 +200,8 @@ const DropdownMenuContent = React.forwardRef<
                   scale: 0.95,
                 }}
                 transition={transition}
-                style={{ willChange: 'opacity, transform, clip-path' }}
+                style={{ willChange: 'opacity, transform' }}
+                {...props}
               >
                 <MotionHighlight
                   hover

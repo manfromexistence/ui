@@ -41,12 +41,14 @@ type ToggleGroupContextProps = VariantProps<typeof toggleVariants> & {
   type?: 'single' | 'multiple';
   transition?: Transition;
   activeClassName?: string;
+  globalId: string;
 };
 
 const ToggleGroupContext = React.createContext<ToggleGroupContextProps>({
   size: 'default',
   variant: 'default',
   type: 'single',
+  globalId: '',
 });
 
 const useToggleGroup = (): ToggleGroupContextProps => {
@@ -81,6 +83,8 @@ const ToggleGroup = React.forwardRef<
     },
     ref,
   ) => {
+    const globalId = React.useId();
+
     return (
       <ToggleGroupContext.Provider
         value={{
@@ -89,6 +93,7 @@ const ToggleGroup = React.forwardRef<
           type: props.type,
           transition,
           activeClassName,
+          globalId,
         }}
       >
         <ToggleGroupPrimitive.Root
@@ -130,6 +135,7 @@ const ToggleGroupItem = React.forwardRef<
       type,
       variant: contextVariant,
       size: contextSize,
+      globalId,
     } = useToggleGroup();
     const itemRef = React.useRef<HTMLButtonElement | null>(null);
     React.useImperativeHandle(ref, () => itemRef.current as HTMLButtonElement);
@@ -177,7 +183,7 @@ const ToggleGroupItem = React.forwardRef<
           <AnimatePresence initial={false}>
             {isActive && type === 'single' && (
               <motion.span
-                layoutId="active-toggle-group-item"
+                layoutId={`active-toggle-group-item-${globalId}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}

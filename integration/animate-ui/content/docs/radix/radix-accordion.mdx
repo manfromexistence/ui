@@ -12,6 +12,25 @@ author:
 
 <ComponentInstallation name="radix-accordion" />
 
+## Usage
+
+```tsx
+<Accordion type="single">
+  <AccordionItem>
+    <AccordionTrigger>Accordion Item 1</AccordionTrigger>
+    <AccordionContent>Accordion Content 1</AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Accordion Item 2</AccordionTrigger>
+    <AccordionContent>Accordion Content 2</AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Accordion Item 3</AccordionTrigger>
+    <AccordionContent>Accordion Content 3</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
 ## Props
 
 <div className="flex flex-row gap-x-3">
@@ -54,7 +73,7 @@ author:
       description: 'The transition of the accordion content',
       type: 'Transition',
       required: false,
-      default: "{ type: 'spring', stiffness: 150, damping: 17 }",
+      default: "{ type: 'spring', stiffness: 150, damping: 22 }",
     },
   }}
 />

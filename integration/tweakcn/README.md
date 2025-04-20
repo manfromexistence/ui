@@ -18,16 +18,17 @@
 
 ![tweakcn.com](public/og-image.png)
 
-
 ## Motivation
 
 Websites made with shadcn/ui famously look the same. tweakcn is a tool that helps you customize shadcn/ui components visually, to make your components stand-out.
 Currently in beta, starting with a Tailwind CSS theme editor. Support for all other shadcn/ui components is planned.
 
 ## Current Features
+
 You can find the full feature list here: https://tweakcn.com/#features
 
 ## Roadmap
+
 You can find the updated roadmap here: https://tweakcn.com/#roadmap
 
 ## Run Locally
@@ -58,9 +59,10 @@ npm install
 npm run dev
 ```
 
-4. Open [http://localhost:8080](http://localhost:8080) in your browser.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Contributors
+
 <a href="https://github.com/jnsahaj/tweakcn/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=jnsahaj/tweakcn" />
 </a>
@@ -68,6 +70,7 @@ npm run dev
 Made with [contrib.rocks](https://contrib.rocks).
 
 ### Interested in Contributing?
+
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 # Star History

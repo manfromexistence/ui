@@ -232,6 +232,41 @@
       ]
     },
     {
+      "name": "avatar-group",
+      "type": "registry:ui",
+      "title": "Avatar Group",
+      "description": "Avatar group component",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://animate-ui.com/r/tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/components/avatar-group/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/avatar-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-group-mask",
+      "type": "registry:ui",
+      "title": "Avatar Group Mask",
+      "description": "Avatar group mask component",
+      "registryDependencies": [
+        "https://animate-ui.com/r/tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/components/avatar-group-mask/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/avatar-group-mask.tsx"
+        }
+      ]
+    },
+    {
       "name": "code-editor",
       "type": "registry:ui",
       "title": "Code Editor",
@@ -360,6 +395,22 @@
           "path": "registry/components/tabs/index.tsx",
           "type": "registry:ui",
           "target": "components/animate-ui/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Tooltip component",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/components/tooltip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/tooltip.tsx"
         }
       ]
     },
@@ -655,6 +706,70 @@
       ]
     },
     {
+      "name": "avatar-group-bottom-demo",
+      "type": "registry:ui",
+      "title": "Avatar Group Bottom Demo",
+      "description": "Demo showing an animated avatar group with the tooltip on the bottom.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/avatar-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/avatar-group-bottom-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/avatar-group-bottom-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-group-demo",
+      "type": "registry:ui",
+      "title": "Avatar Group Demo",
+      "description": "Demo showing an animated avatar group.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/avatar-group"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/avatar-group-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/avatar-group-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-group-mask-bottom-demo",
+      "type": "registry:ui",
+      "title": "Avatar Group Mask Bottom Demo",
+      "description": "Demo showing an animated avatar group mask with bottom translation.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/avatar-group-mask"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/avatar-group-mask-bottom-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/avatar-group-mask-bottom-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-group-mask-demo",
+      "type": "registry:ui",
+      "title": "Avatar Group Mask Demo",
+      "description": "Demo showing an animated avatar group mask.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/avatar-group-mask"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/avatar-group-mask-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/avatar-group-mask-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "code-editor-demo",
       "type": "registry:ui",
       "title": "Code Editor Demo",
@@ -804,6 +919,63 @@
           "target": "components/animate-ui/tabs-demo.tsx"
         }
       ]
+    },
+    {
+      "name": "tooltip-demo",
+      "type": "registry:ui",
+      "title": "Tooltip Demo",
+      "description": "Demo showing an animated tooltip.",
+      "registryDependencies": [
+        "https://animate-ui.com/r/tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/tooltip-demo/index.tsx",
+          "type": "registry:ui",
+          "target": "components/animate-ui/tooltip-demo.tsx"
+        }
+      ],
+      "demoProps": {
+        "Tooltip Provider": {
+          "openDelay": {
+            "value": 700,
+            "min": 0,
+            "max": 2000,
+            "step": 100
+          },
+          "closeDelay": {
+            "value": 300,
+            "min": 0,
+            "max": 2000,
+            "step": 100
+          }
+        },
+        "Tooltip": {
+          "side": {
+            "value": "top",
+            "options": {
+              "top": "top",
+              "bottom": "bottom",
+              "left": "left",
+              "right": "right"
+            }
+          },
+          "sideOffset": {
+            "value": 4
+          },
+          "align": {
+            "value": "center",
+            "options": {
+              "start": "start",
+              "center": "center",
+              "end": "end"
+            }
+          },
+          "alignOffset": {
+            "value": 0
+          }
+        }
+      }
     },
     {
       "name": "motion-effect-fade-blur-demo",

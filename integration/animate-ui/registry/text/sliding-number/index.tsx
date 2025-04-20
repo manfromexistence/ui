@@ -95,6 +95,7 @@ interface SlidingNumberProps extends React.HTMLAttributes<HTMLSpanElement> {
   inViewOnce?: boolean;
   padStart?: boolean;
   decimalSeparator?: string;
+  decimalPlaces?: number;
   transition?: SpringOptions;
 }
 
@@ -108,6 +109,7 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
       inViewOnce = true,
       padStart = false,
       decimalSeparator = '.',
+      decimalPlaces = 0,
       transition = {
         stiffness: 200,
         damping: 20,
@@ -133,17 +135,23 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
       [number, isInView],
     );
 
-    const numberStr = effectiveNumber.toString();
-    let [newIntStr] = numberStr.split('.');
-    const [, newDecStr] = numberStr.split('.');
-    newIntStr =
-      padStart && newIntStr.length === 1 ? '0' + newIntStr : newIntStr;
+    const formatNumber = React.useCallback(
+      (num: number) =>
+        decimalPlaces != null ? num.toFixed(decimalPlaces) : num.toString(),
+      [decimalPlaces],
+    );
 
-    const prevStr = prevNumberRef.current.toString();
-    let [prevIntStr = ''] = prevStr.split('.');
-    const [, prevDecStr = ''] = prevStr.split('.');
-    prevIntStr =
-      padStart && prevIntStr.length === 1 ? '0' + prevIntStr : prevIntStr;
+    const numberStr = formatNumber(effectiveNumber);
+    const [newIntStrRaw, newDecStrRaw = ''] = numberStr.split('.');
+    const newIntStr =
+      padStart && newIntStrRaw.length === 1 ? '0' + newIntStrRaw : newIntStrRaw;
+
+    const prevFormatted = formatNumber(prevNumberRef.current);
+    const [prevIntStrRaw = '', prevDecStrRaw = ''] = prevFormatted.split('.');
+    const prevIntStr =
+      padStart && prevIntStrRaw.length === 1
+        ? '0' + prevIntStrRaw
+        : prevIntStrRaw;
 
     const adjustedPrevInt = React.useMemo(() => {
       return prevIntStr.length > newIntStr.length
@@ -152,11 +160,11 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
     }, [prevIntStr, newIntStr]);
 
     const adjustedPrevDec = React.useMemo(() => {
-      if (!newDecStr) return '';
-      return prevDecStr.length > newDecStr.length
-        ? prevDecStr.slice(0, newDecStr.length)
-        : prevDecStr.padEnd(newDecStr.length, '0');
-    }, [prevDecStr, newDecStr]);
+      if (!newDecStrRaw) return '';
+      return prevDecStrRaw.length > newDecStrRaw.length
+        ? prevDecStrRaw.slice(0, newDecStrRaw.length)
+        : prevDecStrRaw.padEnd(newDecStrRaw.length, '0');
+    }, [prevDecStrRaw, newDecStrRaw]);
 
     React.useEffect(() => {
       if (isInView) prevNumberRef.current = effectiveNumber;
@@ -172,15 +180,15 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
     );
     const decPlaces = React.useMemo(
       () =>
-        newDecStr
-          ? Array.from({ length: newDecStr.length }, (_, i) =>
-              Math.pow(10, newDecStr.length - i - 1),
+        newDecStrRaw
+          ? Array.from({ length: newDecStrRaw.length }, (_, i) =>
+              Math.pow(10, newDecStrRaw.length - i - 1),
             )
           : [],
-      [newDecStr],
+      [newDecStrRaw],
     );
 
-    const newDecValue = newDecStr ? parseInt(newDecStr, 10) : 0;
+    const newDecValue = newDecStrRaw ? parseInt(newDecStrRaw, 10) : 0;
     const prevDecValue = adjustedPrevDec ? parseInt(adjustedPrevDec, 10) : 0;
 
     return (
@@ -201,7 +209,7 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
           />
         ))}
 
-        {newDecStr && (
+        {newDecStrRaw && (
           <>
             <span>{decimalSeparator}</span>
             {decPlaces.map((place) => (

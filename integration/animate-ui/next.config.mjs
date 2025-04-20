@@ -9,7 +9,7 @@ const config = {
     return [
       {
         source: '/components',
-        destination: '/docs/components/code-editor',
+        destination: '/docs/components/avatar-group',
         permanent: true,
       },
       {
@@ -19,7 +19,7 @@ const config = {
       },
       {
         source: '/docs/components',
-        destination: '/docs/components/code-editor',
+        destination: '/docs/components/avatar-group',
         permanent: true,
       },
       {

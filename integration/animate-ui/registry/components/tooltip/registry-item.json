@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip",
+  "type": "registry:ui",
+  "title": "Tooltip",
+  "description": "Tooltip component",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/components/tooltip/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/tooltip.tsx"
+    }
+  ]
+}

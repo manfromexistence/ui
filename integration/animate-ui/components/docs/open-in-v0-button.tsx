@@ -5,7 +5,7 @@ export function OpenInV0Button({ url }: { url: string }) {
   return (
     <Button
       aria-label="Open in v0"
-      className="h-9 gap-1 rounded-md px-3 text-xs bg-neutral-950 text-white dark:bg-white dark:text-black hover:opacity-80 transition-opacity"
+      className="h-9 md:w-auto w-9 gap-1 rounded-md md:px-3 text-xs bg-neutral-950 text-white dark:bg-white dark:text-black hover:opacity-80 transition-opacity"
       asChild
     >
       <motion.a
@@ -16,7 +16,7 @@ export function OpenInV0Button({ url }: { url: string }) {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        Open in{' '}
+        <span className="hidden md:block">Open in </span>
         <svg
           viewBox="0 0 40 20"
           fill="none"

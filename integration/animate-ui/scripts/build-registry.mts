@@ -174,11 +174,18 @@ export const index: Record<string, any> = {`;
     files: ${JSON.stringify(filesWithContent, null, 2)},
     component: ${
       componentPath
-        ? `React.lazy(async () => {
-      const mod = await import("${componentPath}")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    })`
+        ? `(function() {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import("${componentPath}");
+        const exportName = Object.keys(mod).find(
+          key => typeof mod[key] === 'function' || typeof mod[key] === 'object'
+        ) || "${item.name}";
+        const Comp = mod.default || mod[exportName];
+        return { default: Comp };
+      });
+      LazyComp.demoProps = ${JSON.stringify(item.demoProps ?? {})};
+      return LazyComp;
+    })()`
         : 'null'
     },
     command: 'https://animate-ui.com/r/${item.name}',

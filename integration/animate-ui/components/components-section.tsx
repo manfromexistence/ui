@@ -114,13 +114,14 @@ export const ComponentsSection = () => {
                 </div>
 
                 <CodeEditor
-                  code={tab.code}
                   lang="tsx"
                   writing={false}
                   className="flex-1 w-auto hidden lg:block h-full"
                   title={`${tab.name}.tsx`}
                   copyButton
-                />
+                >
+                  {tab.code}
+                </CodeEditor>
               </TabsContent>
             ))}
 

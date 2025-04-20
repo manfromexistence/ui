@@ -12,6 +12,15 @@ author:
 
 <ComponentInstallation name="radix-collapsible" />
 
+## Usage
+
+```tsx
+<Collapsible>
+  <CollapsibleTrigger>Collapsible Trigger</CollapsibleTrigger>
+  <CollapsibleContent>Collapsible Content</CollapsibleContent>
+</Collapsible>
+```
+
 ## Props
 
 <div className="flex flex-row gap-x-3">
@@ -35,7 +44,7 @@ author:
       description: 'The transition of the collapsible content',
       type: 'Transition',
       required: false,
-      default: "{ type: 'spring', stiffness: 150, damping: 17 }",
+      default: "{ type: 'spring', stiffness: 150, damping: 22 }",
     },
   }}
 />

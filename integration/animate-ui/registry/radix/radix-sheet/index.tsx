@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
-import { AnimatePresence, motion, type Transition } from 'motion/react';
+import {
+  AnimatePresence,
+  motion,
+  type HTMLMotionProps,
+  type Transition,
+} from 'motion/react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { X } from 'lucide-react';
 
@@ -92,11 +97,13 @@ const sheetVariants = cva('fixed z-50 gap-4 bg-background p-6 shadow-lg', {
   },
 });
 
-interface SheetContentProps
-  extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
-    VariantProps<typeof sheetVariants> {
-  transition?: Transition;
-}
+type SheetContentProps = React.ComponentPropsWithoutRef<
+  typeof SheetPrimitive.Content
+> &
+  VariantProps<typeof sheetVariants> &
+  HTMLMotionProps<'div'> & {
+    transition?: Transition;
+  };
 const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
   SheetContentProps
@@ -150,6 +157,7 @@ const SheetContent = React.forwardRef<
                 }
                 transition={transition}
                 className={cn(sheetVariants({ side }), className)}
+                {...props}
               >
                 {children}
                 <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">

@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
-import { AnimatePresence, motion, type Transition } from 'motion/react';
+import {
+  AnimatePresence,
+  motion,
+  type HTMLMotionProps,
+  type Transition,
+} from 'motion/react';
 
 interface CollapsibleContextType {
   isOpen: boolean;
@@ -55,9 +60,10 @@ const CollapsibleTrigger = CollapsiblePrimitive.Trigger;
 
 type CollapsibleContentProps = React.ComponentPropsWithoutRef<
   typeof CollapsiblePrimitive.Content
-> & {
-  transition?: Transition;
-};
+> &
+  HTMLMotionProps<'div'> & {
+    transition?: Transition;
+  };
 const CollapsibleContent = React.forwardRef<
   React.ElementRef<typeof CollapsiblePrimitive.Content>,
   CollapsibleContentProps
@@ -66,7 +72,7 @@ const CollapsibleContent = React.forwardRef<
     {
       className,
       children,
-      transition = { type: 'spring', stiffness: 150, damping: 17 },
+      transition = { type: 'spring', stiffness: 150, damping: 22 },
       ...props
     },
     ref,
@@ -85,6 +91,7 @@ const CollapsibleContent = React.forwardRef<
               exit={{ opacity: 0, height: 0, overflow: 'hidden' }}
               transition={transition}
               className={className}
+              {...props}
             >
               {children}
             </motion.div>

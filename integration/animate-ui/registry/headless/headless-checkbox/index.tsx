@@ -7,7 +7,10 @@ import { motion, type HTMLMotionProps } from 'motion/react';
 import { cn } from '@/lib/utils';
 
 type CheckboxProps = React.ComponentPropsWithoutRef<typeof CheckboxPrimitive> &
-  Omit<HTMLMotionProps<'button'>, 'checked' | 'onChange' | 'defaultChecked'>;
+  Omit<
+    HTMLMotionProps<'button'>,
+    'checked' | 'onChange' | 'defaultChecked' | 'children'
+  >;
 
 const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive>,

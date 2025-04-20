@@ -125,9 +125,10 @@ const TabsTrigger = React.forwardRef<
 });
 TabsTrigger.displayName = 'TabsTrigger';
 
-type TabsContentProps = React.ComponentProps<typeof TabsPrimitive.Content> & {
-  transition?: Transition;
-};
+type TabsContentProps = React.ComponentProps<typeof TabsPrimitive.Content> &
+  HTMLMotionProps<'div'> & {
+    transition?: Transition;
+  };
 
 const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
   (
@@ -156,6 +157,7 @@ const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           exit={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
           transition={transition}
+          {...props}
         >
           {children}
         </motion.div>

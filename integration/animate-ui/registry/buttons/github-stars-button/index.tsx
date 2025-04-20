@@ -169,7 +169,9 @@ const GitHubStarsButton = React.forwardRef<
       >
         {segments.map((segment, index) => (
           <React.Fragment key={index}>
-            <SlidingNumber number={+segment} />
+            {Array.from(segment).map((digit, digitIndex) => (
+              <SlidingNumber key={`${index}-${digitIndex}`} number={+digit} />
+            ))}
             {index < segments.length - 1 && <span>,</span>}
           </React.Fragment>
         ))}

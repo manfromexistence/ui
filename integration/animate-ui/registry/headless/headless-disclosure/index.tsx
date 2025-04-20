@@ -6,7 +6,12 @@ import {
   DisclosureButton as DisclosureButtonPrimitive,
   DisclosurePanel as DisclosurePanelPrimitive,
 } from '@headlessui/react';
-import { AnimatePresence, motion, type Transition } from 'motion/react';
+import {
+  AnimatePresence,
+  motion,
+  type HTMLMotionProps,
+  type Transition,
+} from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -51,16 +56,18 @@ const DisclosureButton = DisclosureButtonPrimitive;
 
 type DisclosurePanelProps = React.ComponentPropsWithoutRef<
   typeof DisclosurePanelPrimitive
-> & {
-  transition?: Transition;
-};
+> &
+  Omit<HTMLMotionProps<'div'>, 'children'> & {
+    transition?: Transition;
+  };
 const DisclosurePanel = React.forwardRef<HTMLDivElement, DisclosurePanelProps>(
   (
     {
       className,
       children,
-      transition = { type: 'spring', stiffness: 150, damping: 17 },
-      as = React.Fragment,
+      transition = { type: 'spring', stiffness: 150, damping: 22 },
+      as = motion.div,
+      unmount,
       ...props
     },
     ref,
@@ -70,7 +77,7 @@ const DisclosurePanel = React.forwardRef<HTMLDivElement, DisclosurePanelProps>(
     return (
       <AnimatePresence>
         {isOpen && (
-          <DisclosurePanelPrimitive static as={as} {...props}>
+          <DisclosurePanelPrimitive static as={as} unmount={unmount}>
             {(bag) => (
               <motion.div
                 key="disclosure-panel"
@@ -86,6 +93,7 @@ const DisclosurePanel = React.forwardRef<HTMLDivElement, DisclosurePanelProps>(
                 }}
                 className={cn('overflow-hidden', className)}
                 ref={ref}
+                {...props}
               >
                 {typeof children === 'function' ? children(bag) : children}
               </motion.div>

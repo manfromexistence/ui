@@ -186,6 +186,19 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "smooth-cursor-demo",
+    description: "Basic smooth cursor example",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/smooth-cursor"],
+    files: [
+      {
+        path: "registry/example/smooth-cursor-demo.tsx",
+        type: "registry:example",
+        target: "components/smooth-cursor-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "neon-gradient-card-demo",
     type: "registry:example",
     title: "Neon Gradient Card Demo",
@@ -1693,6 +1706,20 @@ export const examples: Registry["items"] = [
         path: "registry/example/terminal-demo.tsx",
         type: "registry:example",
         target: "components/terminal-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "video-text-demo",
+    type: "registry:example",
+    title: "Video Text Demo",
+    description: "Example showing text with a video background.",
+    registryDependencies: ["https://magicui.design/r/video-text"],
+    files: [
+      {
+        path: "registry/example/video-text-demo.tsx",
+        type: "registry:example",
+        target: "components/video-text-demo.tsx",
       },
     ],
   },

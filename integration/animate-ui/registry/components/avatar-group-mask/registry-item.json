@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-group-mask",
+  "type": "registry:ui",
+  "title": "Avatar Group Mask",
+  "description": "Avatar group mask component",
+  "registryDependencies": ["https://animate-ui.com/r/tooltip"],
+  "files": [
+    {
+      "path": "registry/components/avatar-group-mask/index.tsx",
+      "type": "registry:ui",
+      "target": "components/animate-ui/avatar-group-mask.tsx"
+    }
+  ]
+}

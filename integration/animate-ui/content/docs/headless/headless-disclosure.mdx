@@ -12,6 +12,15 @@ author:
 
 <ComponentInstallation name="headless-disclosure" />
 
+## Usage
+
+```tsx
+<Disclosure>
+  <DisclosureButton>Disclosure Button</DisclosureButton>
+  <DisclosurePanel>Disclosure Panel</DisclosurePanel>
+</Disclosure>
+```
+
 ## Props
 
 <div className="flex flex-row gap-x-3">
@@ -32,7 +41,7 @@ author:
       description: 'The transition of the disclosure panel',
       type: 'Transition',
       required: false,
-      default: "{ type: 'spring', stiffness: 150, damping: 17 }",
+      default: "{ type: 'spring', stiffness: 150, damping: 22 }",
     },
   }}
 />

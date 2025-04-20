@@ -64,8 +64,6 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
     },
     ref,
   ) => {
-    const MotionIcon = motion(Icon);
-
     return (
       <motion.button
         ref={ref}
@@ -83,20 +81,29 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
         }
         {...props}
       >
-        <Icon
+        <motion.div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 stroke-muted-foreground group-hover/icon-button:stroke-[var(--icon-button-color)]"
           aria-hidden="true"
-        />
+        >
+          <Icon
+            className={
+              active ? 'fill-[var(--icon-button-color)]' : 'fill-transparent'
+            }
+          />
+        </motion.div>
+
         <AnimatePresence mode="wait">
           {active && (
-            <MotionIcon
+            <motion.div
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[var(--icon-button-color)] fill-[var(--icon-button-color)]"
               aria-hidden="true"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
               transition={transition}
-            />
+            >
+              <Icon />
+            </motion.div>
           )}
         </AnimatePresence>
 

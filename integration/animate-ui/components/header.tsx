@@ -97,7 +97,7 @@ export const Header = ({ transition }: { transition: boolean }) => {
         >
           <div className="hidden xs:flex items-center gap-x-1">
             <a
-              href="https://github.com/imskyleen/animate-ui"
+              href="https://github.com/animate-ui/animate-ui"
               rel="noreferrer noopener"
               target="_blank"
               className="inline-flex sm:mt-1 items-center justify-center rounded-md text-sm font-medium transition-colors duration-100 disabled:pointer-events-none disabled:opacity-50 hover:bg-fd-accent hover:text-fd-accent-foreground p-1.5 [&_svg]:size-5 text-fd-muted-foreground sm:[&_svg]:size-5.5"

@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 import { HighlightText } from '@/registry/text/highlight-text';
 import { motion } from 'motion/react';
-import FloatingComponent from './animate-ui/floating-component';
 import { Tabs, TabsList, TabsTrigger } from '@/registry/components/tabs';
 import { Switch } from '@/registry/radix/radix-switch';
 import { useTheme } from 'next-themes';
@@ -122,7 +121,7 @@ export const Hero = () => {
       </div>
 
       <div className="hidden lg:block">
-        <FloatingComponent className="absolute top-10 right-8">
+        <div className="absolute top-10 right-8">
           <Tabs>
             <TabsList className="w-[250px]">
               <TabsTrigger className="w-full" value="code">
@@ -136,29 +135,29 @@ export const Hero = () => {
               </TabsTrigger>
             </TabsList>
           </Tabs>
-        </FloatingComponent>
+        </div>
 
-        <FloatingComponent className="absolute top-28 right-4">
+        <div className="absolute top-28 right-4">
           <InstallTabs
             defaultValue="pnpm"
-            className="max-w-[500px]"
+            className="max-w-[520px]"
             commands={COMMANDS}
           />
-        </FloatingComponent>
+        </div>
 
-        <FloatingComponent className="absolute top-62 right-37">
+        <div className="absolute top-62 right-37">
           <RadixProgressDemo />
-        </FloatingComponent>
+        </div>
 
-        <FloatingComponent className="absolute top-80 right-115">
+        <div className="absolute top-80 right-115">
           <Checkbox
             className="scale-125"
             checked={checkboxChecked}
             onCheckedChange={(checked) => setCheckboxChecked(checked)}
           />
-        </FloatingComponent>
+        </div>
 
-        <FloatingComponent className="absolute top-58 right-14">
+        <div className="absolute top-58 right-14">
           <Switch
             className="scale-125"
             leftIcon={<Sun />}
@@ -166,13 +165,13 @@ export const Hero = () => {
             checked={theme === 'dark'}
             onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
           />
-        </FloatingComponent>
+        </div>
 
-        <FloatingComponent className="absolute top-4 right-85">
-          <GitHubStarsButton repo="animate-ui" username="imskyleen" />
-        </FloatingComponent>
+        <div className="absolute top-4 right-85">
+          <GitHubStarsButton repo="animate-ui" username="animate-ui" />
+        </div>
 
-        <FloatingComponent className="absolute top-75 right-4">
+        <div className="absolute top-75 right-4">
           <Accordion
             type="single"
             defaultValue="item-1"
@@ -194,7 +193,7 @@ export const Hero = () => {
               </AccordionItem>
             ))}
           </Accordion>
-        </FloatingComponent>
+        </div>
       </div>
     </div>
   );

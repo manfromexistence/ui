@@ -225,6 +225,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "smooth-cursor": {
+    name: "smooth-cursor",
+    description:
+      "A customizable, physics-based smooth cursor animation component with spring animations and rotation effects",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/smooth-cursor.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/smooth-cursor.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "neon-gradient-card": {
     name: "neon-gradient-card",
     description: "A beautiful neon card effect",
@@ -1530,6 +1554,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "video-text": {
+    name: "video-text",
+    description:
+      "A component that displays text with a video playing in the background.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/video-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/video-text.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/video-text.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -1822,6 +1870,29 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/pointer-demo-1.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "smooth-cursor-demo": {
+    name: "smooth-cursor-demo",
+    description: "Basic smooth cursor example",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/smooth-cursor"],
+    files: [
+      {
+        path: "registry/example/smooth-cursor-demo.tsx",
+        type: "registry:example",
+        target: "components/smooth-cursor-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/smooth-cursor-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -4316,6 +4387,29 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/terminal-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "video-text-demo": {
+    name: "video-text-demo",
+    description: "Example showing text with a video background.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/video-text"],
+    files: [
+      {
+        path: "registry/example/video-text-demo.tsx",
+        type: "registry:example",
+        target: "components/video-text-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/video-text-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

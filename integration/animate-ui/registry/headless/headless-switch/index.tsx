@@ -2,18 +2,19 @@
 
 import * as React from 'react';
 import { Switch as SwitchPrimitive } from '@headlessui/react';
-import { motion } from 'motion/react';
+import { type HTMLMotionProps, motion } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
 type SwitchProps = React.ComponentPropsWithoutRef<
   typeof SwitchPrimitive<typeof motion.button>
-> & {
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
-  thumbIcon?: React.ReactNode;
-  onCheckedChange?: (checked: boolean) => void;
-};
+> &
+  Omit<HTMLMotionProps<'button'>, 'children'> & {
+    leftIcon?: React.ReactNode;
+    rightIcon?: React.ReactNode;
+    thumbIcon?: React.ReactNode;
+    onCheckedChange?: (checked: boolean) => void;
+  };
 
 const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
   (

@@ -3,7 +3,12 @@
 import * as React from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { ChevronDown } from 'lucide-react';
-import { motion, AnimatePresence, type Transition } from 'motion/react';
+import {
+  motion,
+  AnimatePresence,
+  type Transition,
+  type HTMLMotionProps,
+} from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -71,7 +76,7 @@ const AccordionTrigger = React.forwardRef<
     {
       className,
       children,
-      transition = { type: 'spring', stiffness: 150, damping: 17 },
+      transition = { type: 'spring', stiffness: 150, damping: 22 },
       chevron = true,
       ...props
     },
@@ -136,9 +141,10 @@ AccordionTrigger.displayName = 'AccordionTrigger';
 
 type AccordionContentProps = React.ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Content
-> & {
-  transition?: Transition;
-};
+> &
+  HTMLMotionProps<'div'> & {
+    transition?: Transition;
+  };
 
 const AccordionContent = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Content>,
@@ -148,7 +154,7 @@ const AccordionContent = React.forwardRef<
     {
       className,
       children,
-      transition = { type: 'spring', stiffness: 150, damping: 17 },
+      transition = { type: 'spring', stiffness: 150, damping: 22 },
       ...props
     },
     ref,
@@ -173,6 +179,7 @@ const AccordionContent = React.forwardRef<
               }}
               className="overflow-hidden"
               ref={ref}
+              {...props}
             >
               <div className={cn('pb-4 pt-0 text-sm', className)}>
                 {children}

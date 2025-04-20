@@ -78,6 +78,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "MCP",
+          href: "/docs/mcp",
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
@@ -240,6 +246,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Smooth Cursor",
+          href: `/docs/components/smooth-cursor`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
@@ -357,6 +369,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/aurora-text`,
           items: [],
           label: "",
+        },
+        {
+          title: "Video Text",
+          href: `/docs/components/video-text`,
+          items: [],
+          label: "New",
         },
         {
           title: "Number Ticker",

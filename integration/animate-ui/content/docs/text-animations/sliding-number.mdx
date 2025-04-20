@@ -12,6 +12,12 @@ author:
 
 <ComponentInstallation name="sliding-number" />
 
+## Usage
+
+```tsx
+<SlidingNumber number={1000} />
+```
+
 ## Examples
 
 ### With decimal
@@ -60,6 +66,12 @@ author:
       description: 'The decimal separator to use',
       type: 'string',
       default: '.',
+      required: false,
+    },
+    decimalPlaces: {
+      description: 'The number of decimal places to display',
+      type: 'number',
+      default: '0',
       required: false,
     },
     transition: {

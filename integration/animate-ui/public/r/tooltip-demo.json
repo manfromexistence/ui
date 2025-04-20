@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip-demo",
+  "type": "registry:ui",
+  "title": "Tooltip Demo",
+  "description": "Demo showing an animated tooltip.",
+  "registryDependencies": [
+    "https://animate-ui.com/r/tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/components/tooltip-demo/index.tsx",
+      "content": "import { Button } from '@/components/ui/button';\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n  type TooltipProviderProps,\n  type TooltipProps,\n} from '@/components/animate-ui/tooltip';\nimport React from 'react';\n\ntype TooltipDemoProps = Pick<TooltipProviderProps, 'openDelay' | 'closeDelay'> &\n  Pick<TooltipProps, 'side' | 'sideOffset' | 'align' | 'alignOffset'>;\n\nexport const TooltipDemo = ({\n  openDelay,\n  closeDelay,\n  side,\n  sideOffset,\n  align,\n  alignOffset,\n}: TooltipDemoProps) => {\n  return (\n    <TooltipProvider openDelay={openDelay} closeDelay={closeDelay}>\n      <div className=\"flex flex-col gap-5 justify-center items-center\">\n        <div className=\"flex flex-row gap-5 border rounded-lg p-5\">\n          <Tooltip\n            side={side}\n            sideOffset={sideOffset}\n            align={align}\n            alignOffset={alignOffset}\n          >\n            <TooltipTrigger>\n              <Button variant=\"outline\">Docs</Button>\n            </TooltipTrigger>\n            <TooltipContent>\n              <p>Documentation</p>\n            </TooltipContent>\n          </Tooltip>\n          <Tooltip\n            side={side}\n            sideOffset={sideOffset}\n            align={align}\n            alignOffset={alignOffset}\n          >\n            <TooltipTrigger>\n              <Button variant=\"outline\">API</Button>\n            </TooltipTrigger>\n            <TooltipContent>\n              <p>API Reference</p>\n            </TooltipContent>\n          </Tooltip>\n          <Tooltip\n            side={side}\n            sideOffset={sideOffset}\n            align={align}\n            alignOffset={alignOffset}\n          >\n            <TooltipTrigger>\n              <Button variant=\"outline\">Guide</Button>\n            </TooltipTrigger>\n            <TooltipContent>\n              <p>User Guide</p>\n            </TooltipContent>\n          </Tooltip>\n        </div>\n        <div className=\"flex flex-row gap-5\">\n          <Tooltip\n            side={side}\n            sideOffset={sideOffset}\n            align={align}\n            alignOffset={alignOffset}\n          >\n            <TooltipTrigger>\n              <Button variant=\"outline\">Repo</Button>\n            </TooltipTrigger>\n            <TooltipContent>\n              <p>GitHub</p>\n            </TooltipContent>\n          </Tooltip>\n        </div>\n      </div>\n    </TooltipProvider>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/animate-ui/tooltip-demo.tsx"
+    }
+  ]
+}

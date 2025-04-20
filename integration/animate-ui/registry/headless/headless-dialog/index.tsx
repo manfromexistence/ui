@@ -9,7 +9,12 @@ import {
   Description as DialogDescriptionPrimitive,
   CloseButton,
 } from '@headlessui/react';
-import { motion, AnimatePresence, type Transition } from 'motion/react';
+import {
+  motion,
+  AnimatePresence,
+  type Transition,
+  type HTMLMotionProps,
+} from 'motion/react';
 
 import { cn } from '@/lib/utils';
 import { X } from 'lucide-react';
@@ -59,10 +64,11 @@ type FlipDirection = 'top' | 'bottom' | 'left' | 'right';
 
 type DialogPanelProps = React.ComponentPropsWithoutRef<
   typeof DialogPanelPrimitive<typeof motion.div>
-> & {
-  from?: FlipDirection;
-  transition?: Transition;
-};
+> &
+  Omit<HTMLMotionProps<'div'>, 'children'> & {
+    from?: FlipDirection;
+    transition?: Transition;
+  };
 const DialogPanel = React.forwardRef<
   React.ElementRef<typeof DialogPanelPrimitive>,
   DialogPanelProps

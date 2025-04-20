@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+'use client';
+
 import { index } from '@/__registry__';
 import { ComponentWrapper } from '@/components/docs/component-wrapper';
 import {
@@ -9,26 +13,53 @@ import {
 } from '@/registry/radix/radix-tabs';
 import { cn } from '@/lib/utils';
 import { Loader } from 'lucide-react';
-import { Suspense, useMemo } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import { DynamicCodeBlock } from '@/components/docs/dynamic-codeblock';
 import ReactIcon from '../icons/react-icon';
+import { type Binds, Tweakpane } from '../animate-ui/tweakpane';
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
-  preview?: boolean;
   iframe?: boolean;
   bigScreen?: boolean;
+}
+
+function flattenFirstLevel<T>(input: Record<string, any>): T {
+  return Object.values(input).reduce((acc, current) => {
+    return { ...acc, ...current };
+  }, {} as T);
+}
+
+function unwrapValues(obj: Record<string, any>): Record<string, any> {
+  if (obj !== null && typeof obj === 'object' && !Array.isArray(obj)) {
+    if ('value' in obj) {
+      return obj.value;
+    }
+    const result: Record<string, any> = {};
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        result[key] = unwrapValues(obj[key]);
+      }
+    }
+    return result;
+  }
+  return obj;
 }
 
 export function ComponentPreview({
   name,
   className,
-  preview = false,
   iframe = false,
   bigScreen = false,
   ...props
 }: ComponentPreviewProps) {
-  const Code = useMemo(() => {
+  const [binds, setBinds] = useState<Binds | null>(null);
+  const [componentProps, setComponentProps] = useState<Record<
+    string,
+    unknown
+  > | null>(null);
+
+  const code = useMemo(() => {
     const code = index[name]?.files?.[0]?.content;
 
     if (!code) {
@@ -39,8 +70,14 @@ export function ComponentPreview({
     return code;
   }, [name]);
 
-  const Preview = useMemo(() => {
+  const preview = useMemo(() => {
     const Component = index[name]?.component;
+
+    if (Object.keys(Component?.demoProps ?? {}).length !== 0) {
+      if (componentProps === null)
+        setComponentProps(unwrapValues(Component?.demoProps));
+      if (binds === null) setBinds(Component?.demoProps);
+    }
 
     if (!Component) {
       console.error(`Component with name "${name}" not found in registry.`);
@@ -55,8 +92,13 @@ export function ComponentPreview({
       );
     }
 
-    return <Component />;
-  }, [name]);
+    return <Component {...flattenFirstLevel(componentProps ?? {})} />;
+  }, [name, componentProps, binds]);
+
+  useEffect(() => {
+    if (!binds) return;
+    setComponentProps(unwrapValues(binds));
+  }, [binds]);
 
   return (
     <div
@@ -67,31 +109,42 @@ export function ComponentPreview({
       {...props}
     >
       <Tabs defaultValue="preview" className="relative mr-auto w-full">
-        {!preview && (
-          <div className="flex items-center justify-between pb-2">
-            <TabsList
-              className="justify-start rounded-xl h-10 bg-transparent p-0"
-              activeClassName="bg-neutral-100 dark:bg-neutral-800 shadow-none rounded-lg"
+        <div className="flex items-center justify-between pb-2">
+          <TabsList
+            className="justify-start rounded-xl h-10 bg-transparent p-0"
+            activeClassName="bg-neutral-100 dark:bg-neutral-800 shadow-none rounded-lg"
+          >
+            <TabsTrigger
+              value="preview"
+              className="relative border-none rounded-lg px-4 py-2 h-full font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:text-foreground data-[state=active]:shadow-none"
             >
-              <TabsTrigger
-                value="preview"
-                className="relative border-none rounded-lg px-4 py-2 h-full font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:text-foreground data-[state=active]:shadow-none"
-              >
-                Preview
-              </TabsTrigger>
-              <TabsTrigger
-                value="code"
-                className="relative border-none rounded-lg px-4 py-2 h-full font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:text-foreground data-[state=active]:shadow-none"
-              >
-                Code
-              </TabsTrigger>
-            </TabsList>
-          </div>
-        )}
+              Preview
+            </TabsTrigger>
+            <TabsTrigger
+              value="code"
+              className="relative border-none rounded-lg px-4 py-2 h-full font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:text-foreground data-[state=active]:shadow-none"
+            >
+              Code
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContents>
-          <TabsContent value="preview" className="relative rounded-md">
-            <ComponentWrapper name={name} iframe={iframe} bigScreen={bigScreen}>
+          <TabsContent
+            value="preview"
+            className="relative rounded-md h-full"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+          >
+            <ComponentWrapper
+              name={name}
+              iframe={iframe}
+              bigScreen={bigScreen}
+              tweakpane={
+                binds && <Tweakpane binds={binds} onBindsChange={setBinds} />
+              }
+            >
               <Suspense
                 fallback={
                   <div className="flex items-center text-sm text-muted-foreground">
@@ -100,15 +153,20 @@ export function ComponentPreview({
                   </div>
                 }
               >
-                {Preview}
+                {preview}
               </Suspense>
             </ComponentWrapper>
           </TabsContent>
-          <TabsContent value="code">
+          <TabsContent
+            value="code"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+          >
             <div className="flex flex-col space-y-4">
               <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:max-h-[400px] [&_pre]:overflow-auto">
                 <DynamicCodeBlock
-                  code={Code}
+                  code={code}
                   lang="tsx"
                   title={`${name}.tsx`}
                   icon={<ReactIcon />}

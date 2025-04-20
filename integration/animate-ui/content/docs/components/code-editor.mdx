@@ -13,11 +13,21 @@ updated: true
 
 <ComponentInstallation name="code-editor" />
 
+## Usage
+
+```tsx
+<CodeEditor lang="tsx">
+  {`const a = 1;
+const b = 2;
+const c = a + b;`}
+</CodeEditor>
+```
+
 ## Props
 
 <TypeTable
   type={{
-    code: {
+    children: {
       description: 'The code to display in the editor.',
       type: 'string',
       required: true,

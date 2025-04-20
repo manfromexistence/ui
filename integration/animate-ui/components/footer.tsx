@@ -14,7 +14,7 @@ export const Footer = () => {
             </a>
             . The source code is available on{' '}
             <a
-              href="https://github.com/imskyleen/animate-ui"
+              href="https://github.com/animate-ui/animate-ui"
               rel="noopener noreferrer"
               target="_blank"
             >

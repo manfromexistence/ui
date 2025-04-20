@@ -307,4 +307,11 @@ export const blocksMetadata: BlocksMetadata[] = [
     iframeHeight: "650px",
     type: "file",
   },
+  {
+    id: "dialog-12",
+    category: categoryIds.Dialogs,
+    name: "Dialog with avatar upload",
+    iframeHeight: "650px",
+    type: "file",
+  },
 ];
